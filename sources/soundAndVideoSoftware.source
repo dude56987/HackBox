@@ -1,0 +1,14 @@
+Installing Audacity<::::>apt-fast install audacity --assume-yes >> Install_Log.txt
+# simple screen recorder replaces gtk-recordmydesktop, its faster, simplier, and produces higher quality video
+# Installing Desktop Recorder<::::>apt-fast install gtk-recordmydesktop --assume-yes >> Install_Log.txt
+Installing DeVeDe<::::>apt-fast install devede --assume-yes >> Install_Log.txt
+Installing gPodder Podcast Client<::::>apt-fast install gpodder --assume-yes >> Install_Log.txt
+Installing openshot (Video Editor)<::::>apt-fast install openshot --assume-yes >> Install_Log.txt
+Installing Sound Converter<::::>apt-fast install soundconverter --assume-yes >> Install_Log.txt
+Installing Ogmrip (DVD Ripper)<::::>apt-fast install ogmrip --assume-yes >> Install_Log.txt
+# winff does launch bash scripts it creates but does create them correctly
+Installing winff (audio/video converter)<::::>apt-fast install winff --assume-yes >> Install_Log.txt
+Installing VLC (Video Player)<::::>apt-fast install vlc --assume-yes >> Install_Log.txt
+Installing Radio Tray (Radio Stream Player)<::::>apt-fast install radiotray --assume-yes >> Install_Log.txt
+Installing Easytag (MP3 Tag Editor)<::::>apt-fast install easytag --assume-yes >> Install_Log.txt
+Installing Handbrake (Video Transcoder)<::::>apt-fast install handbrake-gtk --assume-yes >> Install_Log.txt

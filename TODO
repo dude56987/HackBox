@@ -1,0 +1,27 @@
+TODO:
+* change the way sources files work, create 3 types of entrys, type is defined in the first spot
+	delimiter is <:>
+	type 1 is package installer example below
+		package<:>/usr/bin/radiotray<:>install message goes here<:>radiotray
+			the first value is the type,
+			the second is the file to check for, if it exists then do not install, 
+			the third is the install message to be shown on screen, 
+			the fourth is the package name
+	type 2 is a command to run example below
+		command<:>message goes here<:>update
+			the first value is the datatype
+			the second is the message to show before the command
+			the third is the command itself that will be passed to the shell
+	type 3 is something I forgot but I hope I remember latter because it was genius
+* system upgrades
+	setup a text file on the website of the latest mint and getdeb and ubuntu package sources
+	do a cron.monthly download of that textfile and notify the user a upgrade is available if it diffs from the currently installed base sources
+	using zenity or tkmessages give the user a simple yes or no on the upgrade process but inform them that it can take a long ammount of time, a lot of network usage and a plugged in charger to work, check for battery with folder /proc/apci/battery or some such shit
+	also mention that the upgrade process is not recommended and could potentally break the system
+	recommend a backup before proceeding with the process
+	also this will neeed some testing for each release but I think its a good idea in general for a upgrade path to exist when using mint
+
+Screensavers package removal makes you change display managers via a curses menu, fix this issue
+
+# create a list of items for bookmarks to be preinstalled in firefox
+gui system user tool that lets the user create launchers for websites on the start menu

@@ -1,0 +1,8 @@
+# office software sources file
+Installing Workrave(RSI Prevention tool)<::::>apt-fast install workrave --assume-yes >> Install_Log.txt
+Installing Hamster Time Tracker<::::>apt-fast install hamster-applet --assume-yes >> Install_Log.txt
+Installing Scribus<::::>apt-fast install scribus --assume-yes >> Install_Log.txt
+Installing FreeMind<::::>apt-fast install freemind --assume-yes >> Install_Log.txt
+Installing Planner<::::>apt-fast install planner --assume-yes >> Install_Log.txt
+Installing HomeBank<::::>apt-fast install homebank --assume-yes >> Install_Log.txt
+Installing Calibre(Book Management Software)<::::>apt-fast install calibre --assume-yes >> Install_Log.txt

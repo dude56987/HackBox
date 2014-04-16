@@ -1,0 +1,27 @@
+# games and emulation source file
+Installing VirtualBox<::::>apt-fast install virtualbox-qt --assume-yes >> Install_Log.txt
+Installing TuxMath and Tux Typing<::::>apt-fast install tuxmath tuxtype --assume-yes >> Install_Log.txt
+Installing gtypist<::::>apt-fast install gtypist --assume-yes >> Install_Log.txt
+Installing pychess<::::>apt-fast install pychess --assume-yes >> Install_Log.txt
+Installing Gbrainy<::::>apt-fast install gbrainy --assume-yes >> Install_Log.txt
+Installing Pipe Walker<::::>apt-fast install pipewalker --assume-yes >> Install_Log.txt
+Installing nInvaders<::::>apt-fast install ninvaders --assume-yes >> Install_Log.txt
+Installing Bsd Games<::::>apt-fast install bsdgames --assume-yes >> Install_Log.txt
+Installing Py-Tac-Toe<::::>gdebi --non-interactive unsupportedPackages/py-tac-toe_1.0_all.deb >> Install_Log.txt
+Installing TuxPaint<::::>apt-fast install tuxpaint tuxpaint-stamps tuxpaint-plugins --assume-yes >> Install_Log.txt
+Installing qjoypad<::::>apt-fast install qjoypad --assume-yes >> Install_Log.txt
+# retro console emulation with retroarch yo
+# hackbox.py installs the ppa at the begining
+Installing Retroarch(Retro Console Emulator)<::::>apt-fast install retroarch --assume-yes >> Install_Log.txt
+# Super Nintendo Core for retroarch
+Installing Super Nintendo Core for retroarch <::::>apt-fast install libretro-snes9x-next --assume-yes >> Install_Log.txt
+# GBACore for retroarch
+Installing GBACore for retroarch <::::>apt-fast install libretro-vba-next --assume-yes >> Install_Log.txt
+#Sega multi system Core for retroarch
+Installing Sega multi system Core for retroarch <::::>apt-fast install libretro-picodrive --assume-yes >> Install_Log.txt 
+# NES Core for retroarch
+Installing NES Core for retroarch <::::>apt-fast install libretro-nestopia --assume-yes >> Install_Log.txt 
+# Nintendo DS Core for retroarch
+Installing Nintendo DS Core for retroarch <::::>apt-fast install libretro-desmume --assume-yes >> Install_Log.txt 
+# Playstation Core for retroarch
+Installing Playstation Core for retroarch <::::>apt-fast install libretro-pcsx-rearmed --assume-yes >> Install_Log.txt 

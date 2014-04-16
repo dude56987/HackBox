@@ -1,0 +1,17 @@
+Installing git (Version Control System)<::::>apt-fast install git --assume-yes >> Install_Log.txt
+Installing Bazaar (Version Control System)<::::>apt-fast install bzr-explorer --assume-yes >> Install_Log.txt
+Installing gedit plugins (turn text editor into IDE)<::::>apt-fast install gedit-plugins --assume-yes >> Install_Log.txt
+Installing Geany (General IDE)<::::>apt-fast install geany geany-plugins --assume-yes >> Install_Log.txt
+Installing Meld Diff Viewer<::::>apt-fast install meld --assume-yes >> Install_Log.txt
+Installing Lazarus (Pascal RAD IDE)<::::>apt-fast install lazarus --assume-yes >> Install_Log.txt
+Installing Devhelp (Documentation Reader)<::::>apt-fast install devhelp --assume-yes >> Install_Log.txt
+Installing txt2tags (Markup Language to convert to other markup languages)<::::>apt-fast install txt2tags --assume-yes >> Install_Log.txt
+Installing txt2regex (Command line program to build regular expressions)<::::>apt-fast install txt2regex --assume-yes >> Install_Log.txt
+#TODO: create a .desktop file for txt2regx so it appears in start menu
+Installing vim (Command line based text editor SUPERUSER TOOL)<::::>apt-fast install vim --assume-yes >> Install_Log.txt
+Installing devtodo (CLI todo list manager)<::::>apt-fast install devtodo --assume-yes >> Install_Log.txt
+Installing GIT (Version Control System)<::::>apt-fast install git --assume-yes >> Install_Log.txt
+# install unsupported packages
+Installing git-cleanup (CLI util to shrink git repos)<::::>gdebi --non-interactive unsupportedPackages/git-cleanup_1.0_all.deb >> Install_Log.txt
+Installing pyqt4-dev-tools (Qt for python)<::::>apt-fast install pyqt4-dev-tools --assume-yes >> Install_Log.txt
+Installing Alien (Convert between package formats)<::::>apt-fast install alien --assume-yes >> Install_Log.txt

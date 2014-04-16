@@ -1,0 +1,197 @@
+########################################################################
+# source for basic software to install
+########################################################################
+# GENERAL APPLICATIONS #
+########################################################################
+# the section below is still general applications but these are apps 
+# that are installed just in case the standard distro does not include
+# them by default
+########################################################################
+Installing broadcast(message all user on the system)<::::>gdebi --non-interactive unsupportedPackages/broadcast.deb
+Installing ZSH(Shell)<::::>apt-fast install zsh --assume-yes >> Install_Log.txt
+Installing VLC(Video Player)<::::>apt-fast install vlc --assume-yes >> Install_Log.txt
+# totem plugin insted of vlc plugin since vlcs plugin kinda sucks compartively
+Installing Totem Web plugin<::::>apt-fast install totem-mozilla --assume-yes >> Install_Log.txt
+Installing gdebi(Grapical Package Installer)<::::>apt-fast install gdebi --assume-yes >> Install_Log.txt
+Installing Evince(Document Viewer/PDF Viewer)<::::>apt-fast install evince --assume-yes >> Install_Log.txt
+Installing Jockey(Propietry Driver Installer)<::::>apt-fast install jockey-gtk --assume-yes >> Install_Log.txt
+Installing leafpad(Simple Text Editor)<::::>apt-fast install leafpad --assume-yes >> Install_Log.txt
+Installing gnome-system-tools (Allows editing of users and groups)<::::>apt-fast install gnome-system-tools --assume-yes >> Install_Log.txt
+Removing redundant image burners(brasero)<::::>apt-fast purge brasero --assume-yes >> Install_Log.txt
+Removing redundant image burners(k3b)<::::>apt-fast purge k3b --assume-yes >> Install_Log.txt
+Installing Image Burner(xfburn)<::::>apt-fast install xfburn --assume-yes >> Install_Log.txt
+########################################################################
+# The rest of these are apps that are probably not default but should be
+########################################################################
+Installing stopwatch<::::>apt-fast install stopwatch --assume-yes >> Install_Log.txt
+# xterm is set as default terminal emulator but custom configs make it look nicer
+# this is nessary since I cant figure out the configs for perfered applications completely
+Installing xterm<::::>apt-fast install xterm --assume-yes >> Install_Log.txt
+Installing Goldendict(A dictionary that pulls from Wikipedia and Wiktionary)<::::>apt-fast install goldendict --assume-yes >> Install_Log.txt
+Installing GCP(CP but verbose)<::::>apt-fast install gcp --assume-yes >> Install_Log.txt
+Installing Zim<::::>apt-fast install zim --assume-yes >> Install_Log.txt
+Installing chmsee<::::>apt-fast install chmsee --assume-yes >> Install_Log.txt
+# Install libreoffice & extras
+Installing LibreOffice<::::>apt-fast install libreoffice --assume-yes >> Install_Log.txt
+Installing Open Clipart resources for LibreOffice<::::>apt-fast install openclipart-libreoffice --assume-yes >> Install_Log.txt
+Removing Rhythmbox(Music Player)<::::>apt-fast purge rhythmbox --assume-yes >> Install_Log.txt
+# The Package banshee-community-extensions is pulling for user confirmation to setup the infrared remote, so its been removed
+# latter I will add back the comunity extensions individually excluding the IR remote one
+Installing Banshee(Music Player)<::::>apt-fast install banshee --assume-yes >> Install_Log.txt
+Installing MOC(CLI Music Player)<::::>apt-fast install moc --assume-yes >> Install_Log.txt
+Installing ffmpeg support for MOC<::::>apt-fast install moc-ffmpeg-plugin --assume-yes >> Install_Log.txt
+Installing GIMP (Image Manipulation Program) <::::>apt-fast install gimp --assume-yes >> Install_Log.txt
+Installing GIMP plugin resynthesizer<::::>apt-fast install gimp-resynthesizer --assume-yes >> Install_Log.txt
+Installing SpeedCrunch (Calculator) <::::>apt-fast install speedcrunch --assume-yes >> Install_Log.txt
+Installing Gnome-Genius (Really Advanced Graphing Calculator) <::::>apt-fast install gnome-genius --assume-yes >> Install_Log.txt
+Installing convertall (Unit Converter GUI) <::::>apt-fast install convertall --assume-yes >> Install_Log.txt
+Installing terminator (terminal with lots of nice features)<::::>apt-fast install terminator --assume-yes >> Install_Log.txt
+Installing mcomix(Comic Book Viewer)<::::>apt-fast install mcomix --assume-yes >> Install_Log.txt
+# Install archive support
+Removing fileroller<::::>apt-fast purge file-roller --assume-yes >> Install_Log.txt
+Installing Xarchiver (Compressed file manager)<::::>apt-fast install xarchiver --assume-yes >> Install_Log.txt
+# setup thunar archive intergration
+Installing archive support for thunar context actions<::::>apt-fast install thunar-archive-plugin --assume-yes >> Install_Log.txt
+Installing DoThis Shortcuts<::::>gdebi --non-interactive unsupportedPackages/doThis_1.2_all.deb
+# Add a utility that allows users to upgrade their distro by only updating the package sources
+Installing distro-upgrade tool<::::>gdebi --non-interactive unsupportedPackages/distro-upgrade.deb
+Installing pybitmessage-stable-updater(Encrypted Messaging System)<::::>gdebi --non-interactive unsupportedPackages/pybitmessage-stable-updater.deb
+##### Additonal Fonts #####
+Installing fonts(opendyslexic)<::::>apt-fast install fonts-opendyslexic --assume-yes >> Install_Log.txt
+########################################################################
+# UTILITIES #
+########################################################################
+Installing texlive-extra-utils (for pdf croping and compressing commands)<::::>apt-fast install texlive-extra-utils --assume-yes >> Install_Log.txt
+Installing byobu (CLI desktop)<::::>apt-fast install byobu --assume-yes >> Install_Log.txt
+Installing espeak (CLI electronic voice synth)<::::>apt-fast install espeak --assume-yes >> Install_Log.txt
+Installing woof (CLI lan/internet file transfer)<::::>apt-fast install woof --assume-yes >> Install_Log.txt
+########################################################################
+# unetbootin has some issues currently as a depend is not included
+# to the below installs it for ya
+Installing Unetbootin(Burns image files to flash drives)<::::>apt-fast install unetbootin --assume-yes >> Install_Log.txt
+Installing extlinux(depend of unetbootin)<::::>apt-fast install extlinux --assume-yes >> Install_Log.txt
+########################################################################
+Installing Qshutdown<::::>apt-fast install qshutdown --assume-yes >> Install_Log.txt
+Installing Disk Utility (Management tool for storage media)<::::>apt-fast install gnome-disk-utility --assume-yes >> Install_Log.txt
+Installing Midnight Commander<::::>apt-fast install mc --assume-yes >> Install_Log.txt
+Installing wmctrl command line app for window management<::::>apt-fast install wmctrl --assume-yes >> Install_Log.txt
+Installing aptitude (CLI Package Management Tool)<::::>apt-fast install aptitude --assume-yes >> Install_Log.txt
+Installing Xfce Task Manager<::::>apt-fast install xfce4-taskmanager --assume-yes >> Install_Log.txt
+Installing alacarte (Editor for system menu)<::::>apt-fast install alacarte --assume-yes >> Install_Log.txt
+########################
+# install image viewer #
+########################
+Installing Feh (Image Viewer)<::::>apt-fast install feh --assume-yes >> Install_Log.txt
+##################################
+# Remove Redundant Image Viewers #
+Removing gThumb(Image Viewer)<::::>apt-fast purge gthumb --assume-yes >> Install_Log.txt
+Removing EOG(Eye Of Gnome)<::::>apt-fast purge eog --assume-yes >> Install_Log.txt
+Removing Ristretto<::::>apt-fast purge ristretto --assume-yes >> Install_Log.txt
+# photo orgnizers #
+Removing Shotwell<::::>apt-fast purge shotwell --assume-yes >> Install_Log.txt
+###################################
+Installing Font Manager<::::>apt-fast install font-manager --assume-yes >> Install_Log.txt
+Installing Catfish (File Search)<::::>apt-fast install catfish --assume-yes >> Install_Log.txt
+Installing Synapse<::::>apt-fast install synapse --assume-yes >> Install_Log.txt
+Installing Virus Scanner<::::>apt-fast install clamtk --assume-yes >> Install_Log.txt
+Installing iotop(Top for I/O of disk)<::::>apt-fast install iotop --assume-yes >> Install_Log.txt
+Installing iftop(Top for Network Usage)<::::>apt-fast install iotop --assume-yes >> Install_Log.txt
+Installing resetsettings(resets settings to defaults)<::::>gdebi --non-interactive unsupportedPackages/resetsettings.deb
+########################################################################
+# SECTION FOR INTERNET SOFTWARE #
+########################################################################
+Installing dns-precache(Caches top 500 sites)<::::>gdebi --non-interactive unsupportedPackages/dns-precache.deb
+Installing lanscan(scans lan for connected devices)<::::>gdebi --non-interactive unsupportedPackages/lanscan.deb
+# install firefox and firefox custom addons systemwide
+Installing Firefox<::::>apt-fast install firefox --assume-yes >> Install_Log.txt
+# the systemwide addon installer by default installs some security addons and customization addons
+## this is disabled currently because it has issues that need fixing
+#Installing Firefox Customizer(Admin tool for configureing firefox)<::::>gdebi --non-interactive unsupportedPackages/firefox-customizer.deb
+# setup transmission and setup the transmission blocklist updater for security purposes
+Installing Transmission (Torrent Client)<::::>apt-fast install transmission-gtk --assume-yes >> Install_Log.txt
+Setting up Transmission blocklist updater<::::>gdebi --non-interactive unsupportedPackages/transmission-blocklist-updater.deb
+Removing RSS reader<::::>apt-fast purge liferea --assume-yes >> Install_Log.txt
+Installing Thunderbird (Email/Calendar)<::::>apt-fast install thunderbird --assume-yes >> Install_Log.txt
+Installing calendar extention to thunderbird<::::>apt-fast install xul-ext-lightning --assume-yes >> Install_Log.txt
+################
+#install pidgin#
+################
+Installing Pidgin(Instant Messenger)<::::>apt-fast install pidgin --assume-yes >> Install_Log.txt
+##########################
+# install pidgin plugins #
+##########################
+Installing Pidgin Plugin(Away on Lock)<::::>apt-fast install pidgin-awayonlock --assume-yes >> Install_Log.txt
+Installing Pidgin Plugin(Encryption)<::::>apt-fast install pidgin-encryption --assume-yes >> Install_Log.txt
+Installing Pidgin Plugin(Prefs)<::::>apt-fast install pidgin-extprefs --assume-yes >> Install_Log.txt
+Installing Pidgin Plugin(Facebook)<::::>apt-fast install pidgin-facebookchat --assume-yes >> Install_Log.txt
+Installing Pidgin Plugin(Hotkeys)<::::>apt-fast install pidgin-hotkeys --assume-yes >> Install_Log.txt
+Installing Pidgin Plugin(Notify)<::::>apt-fast install pidgin-libnotify --assume-yes >> Install_Log.txt
+Installing Pidgin Plugin(Microblog)<::::>apt-fast install pidgin-microblog --assume-yes >> Install_Log.txt
+Installing Pidgin Plugin(OTR)<::::>apt-fast install pidgin-otr --assume-yes >> Install_Log.txt
+Installing Pidgin Plugin(Skype)<::::>apt-fast install pidgin-skype --assume-yes >> Install_Log.txt
+Installing Pidgin Plugin(Themes)<::::>apt-fast install pidgin-themes --assume-yes >> Install_Log.txt
+Installing Pidgin Plugin(Twitter)<::::>apt-fast install pidgin-twitter --assume-yes >> Install_Log.txt
+Installing Pidgin Plugin(Privacy Please)<::::>apt-fast install pidgin-privacy-please --assume-yes >> Install_Log.txt
+Installing Pidgin Plugin(Pack)<::::>apt-fast install pidgin-plugin-pack --assume-yes >> Install_Log.txt
+########################################################################
+# DESKTOP MODIFICATION UTILITIES : xfce plugins/ tray stuff
+########################################################################
+# the below is removed because the systray does all this crap already, and it interferes by adding another volume icon
+Remove Xfce indicator plugin(ubuntu version of systray)<::::>apt-fast purge xfce4-indicator-plugin --assume-yes >> Install_Log.txt
+#### install volumeicon and remove volumed service to remove redundancy, also remove pulseaudio to simplify the volume options for users
+Install volumeicon<::::>apt-fast install volumeicon-alsa --assume-yes >> Install_Log.txt
+Remove xfce volumed(redundant with above program installed)<::::>apt-fast purge xfce4-volumed --assume-yes >> Install_Log.txt
+Remove xfce volumed(redundant with above program installed)<::::>apt-fast purge pulseaudio --assume-yes >> Install_Log.txt
+####
+Installing countdown timer(xfce4 panel plugin)<::::>apt-fast install xfce4-timer-plugin --assume-yes >> Install_Log.txt
+Installing places(xfce4 panel plugin)<::::>apt-fast install xfce4-places-plugin --assume-yes >> Install_Log.txt
+Installing system load plugin(xfce4 panel plugin)<::::>apt-fast install xfce4-systemload-plugin --assume-yes >> Install_Log.txt
+Installing smartbookmark(xfce4 panel plugin)<::::>apt-fast install xfce4-smartbookmark-plugin --assume-yes >> Install_Log.txt
+Installing verve(xfce4 panel plugin)<::::>apt-fast install xfce4-verve-plugin --assume-yes >> Install_Log.txt
+Installing weather plugin (xfce4 panel plugin)<::::>apt-fast install xfce4-weather-plugin --assume-yes >> Install_Log.txt
+########################################################################
+# DESKTOP MODIFICATION UTILITIES : other
+########################################################################
+# reboot notifyer
+Install reboot-required<::::>gdebi --non-interactive unsupportedPackages/reboot-required.deb
+# remove the crappy notifications you cant click away, install xfce ones
+Remove Junk OSD notification system<::::>apt-fast purge notify-osd --assume-yes >> Install_Log.txt
+Installing Nicer OSD notification system<::::>apt-fast install xfce4-notifyd --assume-yes >> Install_Log.txt
+Setting up mimetypes for HackBox<::::>gdebi --non-interactive unsupportedPackages/hackbox-mimetype-defaults_0.1_all.deb
+# install wally since it supports more desktops and desktop nova development seems stoped
+##Installing Wally(wallpaper Switcher)<::::>apt-fast install wally --assume-yes >> Install_Log.txt
+# disable wally for now since xfce is target desktop and it has built in wallpaper switching
+# need to look for a way to check for non xfce desktop and install wally if it isnt xfce
+# Setting up Autostart for Wally<::::>cp /usr/share/applications/wally.desktop/wally.desktop /etc/xdg/autostart/wally.desktop
+Installing Conky(desktop widget program)<::::>apt-fast install conky-all --assume-yes >> Install_Log.txt
+Installing Conky Wizard(A wizard for conky)<::::>apt-fast install conkywizard --assume-yes >> Install_Log.txt
+Installing Guake(drop down terminal)<::::>apt-fast install guake --assume-yes >> Install_Log.txt
+Setting up Autostart for Guake<::::>cp -v /usr/share/applications/guake.desktop /etc/xdg/autostart/guake.desktop
+Installing tumblerd-extra-plugins(renders thumbnails of videos)<::::>apt-fast install tumbler-plugins-extra --assume-yes >> Install_Log.txt
+Installing Clipman(Clipboard Manager)<::::>apt-fast install xfce4-clipman  xfce4-clipman-plugin --assume-yes >> Install_Log.txt
+# install desktop nova and the xfce module of the program
+# Installing Desktop-Nova(Wallpaper Switcher)####apt-fast install desktopnova --assume-yes >> Install_Log.txt
+# Setting up xfce desktop Support####apt-fast install desktopnova-module-xfce --assume-yes >> Install_Log.txt
+Installing xfce whiskermenu<::::>apt-fast install xfce4-whiskermenu-plugin --assume-yes >> Install_Log.txt
+Installing xfce power manager<::::>apt-fast install xfce4-power-manager --assume-yes >> Install_Log.txt
+Installing xfce cpu graph plugin for panel<::::>apt-fast install xfce4-cpugraph-plugin --assume-yes >> Install_Log.txt
+# remove multuple screensavers from existing on the system
+Installing xscreensaver<::::>apt-fast install xscreensaver --assume-yes >> Install_Log.txt
+Removing extra screensavers<::::>apt-fast purge gnome-screensaver --assume-yes >> Install_Log.txt
+Removing extra screensavers<::::>apt-fast purge mate-screensaver --assume-yes >> Install_Log.txt
+Removing extra screensavers<::::>apt-fast purge cinnamon-screensaver --assume-yes >> Install_Log.txt
+Removing extra screensavers<::::>apt-fast purge kscreensaver --assume-yes >> Install_Log.txt
+########################################################################
+# Basic Security Software
+########################################################################
+Install HostfileBlocklist Program<::::>gdebi --non-interactive unsupportedPackages/hostfileblocklist.deb
+Install HostfileBlocklist GUI<::::>gdebi --non-interactive unsupportedPackages/hostfileblocklist-gui.deb
+########################################################################
+# Remove stupid shit from Ubuntu that tracks your activity
+########################################################################
+Remove Ubuntu spyware<::::>apt-fast purge unity-lens-shopping --assume-yes >> Install_Log.txt
+Remove more Ubuntu spyware<::::>apt-fast purge unity-scope-video-remote --assume-yes >> Install_Log.txt
+Remove even more Ubuntu spyware<::::>apt-fast purge unity-scope-musicstores --assume-yes >> Install_Log.txt
+# remove more stupid shit from ubuntu
+Remove Ubuntu Scrollbar junk<::::>apt-fast purge overlay-scrollbar --assume-yes >> Install_Log.txt
+Remove Ubuntu Scrollbar junk<::::>apt-fast purge overlay-scrollbar-gtk3 --assume-yes >> Install_Log.txt

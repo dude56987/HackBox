@@ -1,0 +1,18 @@
+.dmrc : file = The user session file. This stores language, keyboard layout, and default session for the current user.
+.zshrc : file = The ZSH shell configuration for the current user. Stores themes and all settings for the ZSH shell.
+.bash_logout : file = Runs when the user logs out of the current session. Used for cleaning things up.
+.mozilla : directory = Stores all settings for firefox web browser.
+.goldendict : directory = Stores all settings for Golden Dictonary.
+.qshutdown : directory = Stores settings for qshutdown, shutdown timer program.
+.Xresources : used for making xterm look nicer, stores xterm settings
+.fluxbox : holds all fluxbox settings, for the fluxbox desktop
+.config : holds various settings
+.config/xfce4 : holds various settings for the xfce desktop
+.config/xfce4/helpers.rc : holds the perfered applications list for xfce
+.config/xfce4/xfce4-panel.xml : xml settings file for panel layout
+.config/xfce4/panel/ : holds config files for individual panel items
+.config/xfce4/xfconf/: holds xfce-perchannel-xml folder
+.config/xfce4/xfconf/xfce-perchannel-xml/ : holds xml settings files for various programs in xfce
+.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml : This file holds settings for icons on the desktop and the desktop background
+.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml : Holds more configuration for the panel items and layout of panels
+.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml : themes, icons fonts and gtk settings for xfce are stored here

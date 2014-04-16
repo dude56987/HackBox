@@ -1,0 +1,9 @@
+NAME="HackBox"
+VERSION="0.1, aBox"
+ID=HackBox
+ID_LIKE=debian
+PRETTY_NAME="HackBox 0.1"
+VERSION_ID="0.1"
+HOME_URL="http://www.hacker-haven.com/"
+SUPPORT_URL="http://www.hacker-haven.com/"
+BUG_REPORT_URL="mailto:feedback@hacker-haven.com"

@@ -1,0 +1,8 @@
+[GdmGreeterTheme]
+Encoding=UTF-8
+Greeter=theme.xml
+Name=HackBox
+Description=Modified from Linux Mint's Simple theme.
+Author=HackBox
+Copyright=GPL
+Screenshot=screen.png

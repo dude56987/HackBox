@@ -1,0 +1,27 @@
+# System Tools Source file
+# backup tool #
+# luckybackup is way harder to use than backintime so its getting replaced
+#Installing LuckyBackup (Backup Utility)<::::>apt-fast install luckybackup --assume-yes >> Install_Log.txt
+Installing Back In Time (Backup Utility)<::::>apt-fast install backintime-gnome --assume-yes >> Install_Log.txt
+# the below is dead, keeping for a bit in case it is revived, it eases managing grub
+#Installing Startup Manager<::::>apt-fast install startupmanager --assume-yes >> Install_Log.txt
+# below tool is for cleanup of crap on the pc over time
+Installing Bleachbit (Clean up disk and write over old data)<::::>apt-fast install bleachbit --assume-yes >> Install_Log.txt
+# below is disk recovery tool
+Installing Testdisk(Disk Recovery Tool)<::::>apt-fast install testdisk --assume-yes >> Install_Log.txt
+# remote desktop tool
+Installing Vinagre (Remote Desktop Viewer)<::::>apt-fast install vinagre --assume-yes >> Install_Log.txt
+# super security tools for system security testing adminstration
+# most stuff I have tryed to setup for this section are really complicated so im not including much
+Installing samdump2 windows hash graber<::::>apt-fast install samdump2 --assume-yes >> Install_Log.txt
+Installing john (brute force password cracker)<::::>apt-fast install john --assume-yes >> Install_Log.txt
+# monitoring tools
+Installing htop (CLI Task Manager)<::::>apt-fast install htop --assume-yes >> Install_Log.txt
+Installing iotop (CLI Disk I/O Manager)<::::>apt-fast install iotop --assume-yes >> Install_Log.txt
+Installing psensor (CLI system stress tool)<::::>apt-fast install psensor --assume-yes >> Install_Log.txt
+# data gathering tools
+Installing FSlint<::::>apt-fast install fslint --assume-yes >> Install_Log.txt
+Installing Hardware Lister<::::>apt-fast install lshw-gtk --assume-yes >> Install_Log.txt
+Installing ncdu (CLI Disk Usage Analyzer)<::::>apt-fast install ncdu --assume-yes >> Install_Log.txt
+# stress test tools
+Installing stress (CLI system stress tool)<::::>apt-fast install stress --assume-yes >> Install_Log.txt

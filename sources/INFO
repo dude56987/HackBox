@@ -1,0 +1,5 @@
+#############################################################
+This is a simple info file describing the files in the folder
+#############################################################
+
+    Each of the files in this folder is a .source file. Each .source file has a list of messages and commands to be executed with its included section. This means if the user picks graphics tools to be installed via the main interface it will grab the info from the graphicsTools.source file to know what to install. These files also contain comments. Lines starting with # are comments. Some of the files contain the same packages to be installed which may be viewed as redundant, and it is. This is for instances when the user wants only one section but not all sections. Some commands would be nessassary for graphic design and also web design for example.

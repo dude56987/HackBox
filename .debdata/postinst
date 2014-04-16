@@ -1,0 +1,11 @@
+#! /bin/bash
+# if the user is running xorg then launch a popup on the desktop using zenity
+if ps -e | grep Xorg; then
+	cp -v /opt/hackbox/media/launchers/hackboxRunonce.desktop /etc/xdg/autostart/hackboxRunonce.desktop;
+	chmod ugo+r /etc/xdg/autostart/hackboxRunonce.desktop;
+	zenity --info --text='You will need to log out and back in to start the install process.';
+fi
+if tty | grep tty; then
+	echo 'You will need to run hackboxsetup to start the install process.' | wall;
+fi
+# nohup bash -c 'sleep 10 && killall Xorg' &;
