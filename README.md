@@ -1,7 +1,7 @@
 HackBox
 =======
 
-	HackBox is a set of scripts designed to setup a desktop distro from a freshly installed Ubuntu based distro. It is recommended that you use it with a fresh install of Linux Mint XFCE editon, the standard Ubuntu desktop, or Xubuntu. Each of these platforms have been tested for compatiblity with the script. However this script should work on any Ubuntu based system.
+HackBox is a set of scripts designed to setup a desktop distro from a freshly installed Ubuntu based distro. It is recommended that you use it with a fresh install of Linux Mint XFCE editon, the standard Ubuntu desktop, or Xubuntu. Each of these platforms have been tested for compatiblity with the script. However this script should work on any Ubuntu based system.
 ############################################################################
 TO INSTALL THE PROGRAM USE THE FOLLOWING STEPS.
 
@@ -44,3 +44,6 @@ NOTE:
 KNOWN ISSUES
 ############################################################################
 -NONE CURRENTLY
+=======
+Script to customize Ubuntu or Linux Mint into a custom distro.
+>>>>>>> 77bd1c6c6101cb6c66807cb92fe6a90138e5899b
