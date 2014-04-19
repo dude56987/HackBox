@@ -3,6 +3,7 @@ HackBox
 
 HackBox is a set of scripts designed to setup a desktop distro from a freshly installed Ubuntu based distro. It is recommended that you use it with a fresh install of Linux Mint XFCE editon, the standard Ubuntu desktop, or Xubuntu. Each of these platforms have been tested for compatiblity with the script. However this script should work on any Ubuntu based system.
 ###One-liner UNSTABLE Version Install
+Copy and paste the below command into a terminal and hit enter to install the unstable version of HackBox.
 
     sudo apt-get install git python && git clone https://github.com/dude56987/HackBox.git && cd HackBox && make batman
 
