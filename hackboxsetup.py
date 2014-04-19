@@ -541,15 +541,10 @@ os.system('chmod +x /usr/bin/update')
 # add all ppa's first this will add the software to your repos after you
 # update them, none of these items should output to a logfile either
 printGreen('Adding additional repos...')
-# the below uses the saucy repos by default but distro upgrade tool should correct any use of old repos
-os.system('echo "deb http://archive.getdeb.net/ubuntu saucy-getdeb games apps" >> /etc/apt/sources.list.d/additional-repositories.list')
-# sort and de duplicate the lists
-os.system('sort -u /etc/apt/sources.list.d/additional-repositories.list -o /etc/apt/sources.list.d/additional-repositories.list')
-if os.path.exists('/usr/bin/distro-upgrade') != True:
-	# if distro upgrade is not installed install it
-	os.system('gdebi unsupportedPackages/distro-upgrade.deb --non-interactive')
-# upgrade distro to latest version
-os.system('distro-upgrade --force-yes')
+# add getdeb and playdeb repos using the package files they supply
+os.system('gdebi unsupportedPackages/getdeb.deb --non-interactive')
+os.system('gdebi unsupportedPackages/playdeb.deb --non-interactive')
+# add ppas for cool software
 printGreen('Checking for and adding PPA\'s...')
 if os.path.exists('/usr/sbin/apt-fast') != True:
 	# add apt fast from ppa, this will speed up the install process a lot
