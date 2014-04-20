@@ -16,7 +16,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
-import Tkinter, tkMessageBox, json, os, sys, re
+import json, os, sys, re
+try:
+	import Tkinter, tkMessageBox
+except:
+	os.system('gksu apt-get install python-tk --assume-yes')
+	import Tkinter, tkMessageBox
 ########################################################################
 # below commands initiate the main tk window then hide it
 # this keeps it from popping up behind the pop-ups
