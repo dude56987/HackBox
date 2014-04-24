@@ -117,6 +117,7 @@ pullCustomSoftware:
 	git clone https://github.com/dude56987/DoThis.git customSoftwarePackages/dothis
 	git clone https://github.com/dude56987/Bitmessage-Update.git customSoftwarePackages/bitmessage-update
 	git clone https://github.com/dude56987/HackBox-Update.git customSoftwarePackages/hackbox-update
+	git clone https://github.com/dude56987/ResetSettings.git customSoftwarePackages/resetsettings
 fix-permissions:
 	chmod -R ugo+r *
 	chmod -R go-wx *
