@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="temperature_unit" type="int" value="0"/>
+	<entry name="window_divider_pos" type="int" value="564"/>
+	<entry name="window_h" type="int" value="502"/>
+	<entry name="window_w" type="int" value="1038"/>
+	<entry name="window_y" type="int" value="48"/>
+	<entry name="window_x" type="int" value="0"/>
+	<entry name="window_restore_enabled" type="bool" value="false"/>
+	<entry name="hide_on_startup" type="bool" value="true"/>
+	<entry name="unity_launcher_count_disabled" type="bool" value="false"/>
+	<entry name="menu_bar_disabled" type="bool" value="false"/>
+	<entry name="window_keep_below_enabled" type="bool" value="false"/>
+	<entry name="window_decoration_disabled" type="bool" value="false"/>
+	<entry name="sensorlist_position" type="int" value="0"/>
+</gconf>

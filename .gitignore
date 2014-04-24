@@ -1,2 +1,4 @@
 customSoftwarePackages/
 hackbox_UNSTABLE.deb
+debian/
+packageSize.txt

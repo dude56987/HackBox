@@ -1,0 +1,44 @@
+exec -a banshee mono  /usr/lib/banshee/Banshee.exe    --redirect-log --play-enqueued
+
+[Info  15:40:51.555] Running Banshee 2.6.1: [Ubuntu Saucy Salamander (development branch) (linux-gnu, x86_64) @ 2013-06-05 17:04:07 UTC]
+
+(Banshee:4664): GLib-GObject-WARNING **: attempting to add an interface (AtkComponent) to class (__gtksharp_50_Hyena_Gui_BaseWidgetAccessible) after class_init
+
+(Banshee:4664): GLib-GObject-WARNING **: attempting to add an interface (AtkTable) to class (__gtksharp_51_Hyena_Data_Gui_Accessibility_ListViewAccessible+601+5b+5bBanshee_Collection_TrackInfo+2c+20Banshee_Core+2c+20Version+3d2_6_0_0+2c+20Culture+3dneutral+2c+20PublicKeyToken+3dnull+5d+5d) after class_init
+
+(Banshee:4664): GLib-GObject-WARNING **: attempting to add an interface (AtkSelection) to class (__gtksharp_51_Hyena_Data_Gui_Accessibility_ListViewAccessible+601+5b+5bBanshee_Collection_TrackInfo+2c+20Banshee_Core+2c+20Version+3d2_6_0_0+2c+20Culture+3dneutral+2c+20PublicKeyToken+3dnull+5d+5d) after class_init
+
+(Banshee:4664): GLib-GObject-WARNING **: attempting to add an interface (AtkTable) to class (__gtksharp_57_Hyena_Data_Gui_Accessibility_ListViewAccessible+601+5b+5bBanshee_Collection_Database_QueryFilterInfo+601+5b+5bSystem_String+2c+20mscorlib+2c+20Version+3d4_0_0_0+2c+20Culture+3dneutral+2c+20PublicKeyToken+3db77a5c561934e089+5d+5d+2c+20Banshee_Services+2c+20Version+3d2_6_0_0+2c+20Culture+3dneutral+2c+20PublicKeyToken+3dnull+5d+5d) after class_init
+
+(Banshee:4664): GLib-GObject-WARNING **: attempting to add an interface (AtkSelection) to class (__gtksharp_57_Hyena_Data_Gui_Accessibility_ListViewAccessible+601+5b+5bBanshee_Collection_Database_QueryFilterInfo+601+5b+5bSystem_String+2c+20mscorlib+2c+20Version+3d4_0_0_0+2c+20Culture+3dneutral+2c+20PublicKeyToken+3db77a5c561934e089+5d+5d+2c+20Banshee_Services+2c+20Version+3d2_6_0_0+2c+20Culture+3dneutral+2c+20PublicKeyToken+3dnull+5d+5d) after class_init
+
+(Banshee:4664): GLib-GObject-WARNING **: attempting to add an interface (AtkTable) to class (__gtksharp_63_Hyena_Data_Gui_Accessibility_ListViewAccessible+601+5b+5bBanshee_Collection_ArtistInfo+2c+20Banshee_Core+2c+20Version+3d2_6_0_0+2c+20Culture+3dneutral+2c+20PublicKeyToken+3dnull+5d+5d) after class_init
+
+(Banshee:4664): GLib-GObject-WARNING **: attempting to add an interface (AtkSelection) to class (__gtksharp_63_Hyena_Data_Gui_Accessibility_ListViewAccessible+601+5b+5bBanshee_Collection_ArtistInfo+2c+20Banshee_Core+2c+20Version+3d2_6_0_0+2c+20Culture+3dneutral+2c+20PublicKeyToken+3dnull+5d+5d) after class_init
+
+(Banshee:4664): GLib-GObject-WARNING **: attempting to add an interface (AtkTable) to class (__gtksharp_69_Hyena_Data_Gui_Accessibility_ListViewAccessible+601+5b+5bBanshee_Collection_YearInfo+2c+20Banshee_Core+2c+20Version+3d2_6_0_0+2c+20Culture+3dneutral+2c+20PublicKeyToken+3dnull+5d+5d) after class_init
+
+(Banshee:4664): GLib-GObject-WARNING **: attempting to add an interface (AtkSelection) to class (__gtksharp_69_Hyena_Data_Gui_Accessibility_ListViewAccessible+601+5b+5bBanshee_Collection_YearInfo+2c+20Banshee_Core+2c+20Version+3d2_6_0_0+2c+20Culture+3dneutral+2c+20PublicKeyToken+3dnull+5d+5d) after class_init
+
+(Banshee:4664): GLib-GObject-WARNING **: attempting to add an interface (AtkTable) to class (__gtksharp_75_Hyena_Data_Gui_Accessibility_ListViewAccessible+601+5b+5bBanshee_Collection_AlbumInfo+2c+20Banshee_Core+2c+20Version+3d2_6_0_0+2c+20Culture+3dneutral+2c+20PublicKeyToken+3dnull+5d+5d) after class_init
+
+(Banshee:4664): GLib-GObject-WARNING **: attempting to add an interface (AtkSelection) to class (__gtksharp_75_Hyena_Data_Gui_Accessibility_ListViewAccessible+601+5b+5bBanshee_Collection_AlbumInfo+2c+20Banshee_Core+2c+20Version+3d2_6_0_0+2c+20Culture+3dneutral+2c+20PublicKeyToken+3dnull+5d+5d) after class_init
+[Warn  15:40:52.190] Caught an exception - GLib.GException: Icon 'process-working' not present in theme (in `gtk-sharp')
+  at Gtk.IconTheme.LoadIcon (System.String icon_name, Int32 size, IconLookupFlags flags) [0x00000] in <filename unknown>:0 
+  at Banshee.Gui.Widgets.TaskStatusIcon..ctor () [0x00000] in <filename unknown>:0 
+[Info  15:40:53.129] Updating web proxy from GConf
+[Warn  15:40:53.157] Caught an exception - System.ApplicationException: No support GNOME Settings Daemon could be reached. (in `Banshee.MultimediaKeys')
+  at Banshee.MultimediaKeys.MultimediaKeysService.Banshee.ServiceStack.IExtensionService.Initialize () [0x00000] in <filename unknown>:0 
+  at Banshee.ServiceStack.ServiceManager.StartExtension (Mono.Addins.TypeExtensionNode node) [0x00000] in <filename unknown>:0 
+[Warn  15:40:53.157] Extension `Banshee.MultimediaKeys.MultimediaKeysService' not started: No support GNOME Settings Daemon could be reached.
+[Warn  15:40:53.158] Caught an exception - System.ApplicationException: No support GNOME Settings Daemon could be reached. (in `Banshee.MultimediaKeys')
+  at Banshee.MultimediaKeys.MultimediaKeysService.Banshee.ServiceStack.IExtensionService.Initialize () [0x00000] in <filename unknown>:0 
+  at Banshee.ServiceStack.ServiceManager.StartExtension (Mono.Addins.TypeExtensionNode node) [0x00000] in <filename unknown>:0 
+[Warn  15:40:53.158] Extension `Banshee.MultimediaKeys.MultimediaKeysService' not started: No support GNOME Settings Daemon could be reached.
+[Info  15:40:53.159] All services are started 1.43407
+[Info  15:40:53.441] AmazonMP3 store redirect URL: https://one.ubuntu.com/music/store/amz/
+[Info  15:40:53.608] nereid Client Started
+[Info  15:40:53.645] GStreamer version 1.0.7.0, gapless: True, replaygain: True
+[Info  15:40:53.668] AppleDeviceSource is ignoring unmounted volume Floppy Disk
+[Info  15:40:56.624] AppleDeviceSource is ignoring unmounted volume 60 GB Volume
+[Info  15:40:56.629] AppleDeviceSource is ignoring unmounted volume DukeFlashem

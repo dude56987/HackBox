@@ -18,8 +18,6 @@
 all: batman
 	echo 'This is the default run that builds and installs the program as a package. Everything should be installed if your seeing this.'
 	echo 'When you log out and back in the installer will run automaticly in graphics mode.'
-run: 
-	python hackboxsetup.py
 install : batman
 	echo 'END OF LINE'
 installtosystem:
@@ -64,34 +62,42 @@ build-deb:
 	chmod +x ./debian/usr/bin/hackboxsetup-gui
 	# give everyone read permissions for the media directory of hackbox
 	chmod -Rv ugo+r ./debian/opt/hackbox/media/.
+	# compress the preconfigured settings files
+	# escape the endings to cd works since each line is executed as a separate process
+	cd preconfiguredSettings/topBar/;\
+	ls -A | zip -g -9 -r ../../debian/opt/hackbox/preconfiguredSettings/preconfiguredSettings.zip -@;
+	# each line is executed as a separate process so it pops back to the main directory
+	cd preconfiguredSettings/bottomBar/;\
+	ls -A | zip -g -9 -r ../../debian/opt/hackbox/preconfiguredSettings/preconfiguredSettings_Bottom.zip -@;
 	# add config files n such
-	cp -vfr ./preconfiguredSettings/. ./debian/opt/hackbox/preconfiguredSettings/
+	cp -vfr ./preconfiguredSettings/launchers ./debian/opt/hackbox/preconfiguredSettings/
 	cp -vfr ./media/. ./debian/opt/hackbox/media/
 	cp -vfr ./sources/. ./debian/opt/hackbox/sources/
 	cp -vfr ./unsupportedPackages/. ./debian/opt/hackbox/unsupportedPackages/
-	# start the md5sums file
-	#~ md5sum ./debian/usr/bin/hostfileblocklist > ./debian/DEBIAN/md5sums
-	# create md5 sums for all the config files transfered over
-	#~ find ./debian/ -type f -print0 | xargs -0 md5sum > checksums_backup.md5
-	
-	#~ md5sum ./debian/etc/hostfileBlocklist/* >> ./debian/DEBIAN/md5sums
+	# Create the md5sums file
 	find ./debian/ -type f -print0 | xargs -0 md5sum > ./debian/DEBIAN/md5sums
-	
+	# cut filenames of extra junk
 	sed -i.bak 's/\.\/debian\///g' ./debian/DEBIAN/md5sums
 	sed -i.bak 's/\\n*DEBIAN*\\n//g' ./debian/DEBIAN/md5sums
 	sed -i.bak 's/\\n*DEBIAN*//g' ./debian/DEBIAN/md5sums
-	# the below can not be done in make, bash variables wont work
-	du -sx --exclude DEBIAN ./debian/ | sed "s/[abcdefghijklmnopqrstuvwxyz\ /.]//g" > packageSize.txt
-	#du -sx --exclude DEBIAN ./debian/ | sed "s/[abcdefghijklmnopqrstuvwxyz\ /.\\t]\{1,\}//g" > ./.debdata/packagesize
-	#sed -i.bak 's/Installed-Size: [0123456789]\{2,20\}/Installed-Size: $(more ./.debdata/packagesize)/g' ./.debdata/control
-	#~ rm -v ./.debdata/control.bak
-	rm -v ./debian/DEBIAN/md5sums.bak
+	# copy over the debdata files
 	cp -rv .debdata/. debian/DEBIAN/
+	# figure out the size of the installed package and save the size in kb to a file
+	du -sx --exclude DEBIAN ./debian/ | sed "s/[abcdefghijklmnopqrstuvwxyz\ /.]//g" > packageSize.txt
+	# Attempt to auto set the size of the package in the control file ##CURRENTLY BROKEN##
+	#~ bash -c '\
+	#~ VALUE=$(du -s --exclude DEBIAN ./debian/ | sed "s/[abcdefghijklmnopqrstuvwxyz\ /.\\t]\{1,\}//g");\
+	#~ sed -i.bak "s/Installed-Size: [0123456789]\{2,20\}/Installed-Size: ${VALUE}/g" ./debian/DEBIAN/control;\
+	#~ rm ./debian/DEBIAN/control.bak;\
+	#~ ';
+	# clear up backups from sed operations
+	rm -v ./debian/DEBIAN/md5sums.bak
 	chmod -R 775 ./debian/DEBIAN
 	chmod -Rv ugo+r ./debian/opt/hackbox/media
 	chmod -Rv ugo+x ./debian/opt/hackbox/media/launchers
 	dpkg-deb --build debian
 	cp -v debian.deb hackbox_UNSTABLE.deb
+	# cleanup of unnamed package and package build folder
 	rm -v debian.deb
 	rm -rv debian
 distro-build-env-setup:

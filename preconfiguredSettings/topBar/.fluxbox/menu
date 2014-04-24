@@ -1,0 +1,25 @@
+[begin] (fluxbox)
+	[exec] (Firefox Web Browser) {/usr/bin/firefox} </usr/share/pixmaps/firefox.png>
+	[exec] (Thunar File Browser) {/usr/bin/thunar} </home/dude/.icons/Faenza/apps/32/thunar.png>
+
+	[exec] (Settings Manager) {/usr/bin/xfce4-settings-manager} </home/dude/.icons/Faenza/categories/32/xfce4-settings.png>
+	[separator]
+
+	[submenu] (Backgrounds)
+		[wallpapers] (~/.fluxbox/backgrounds) {feh --bg-scale}
+		[wallpapers] (/usr/share/fluxbox/backgrounds) {feh --bg-scale}
+		[wallpapers] (~/Pictures/Wallpapers/) {feh --bg-scale}
+		[wallpapers] (~/Pictures/Wallpapers/*/) {feh --bg-scale}
+		[wallpapers] (~/Pictures/Wallpapers/*/*/) {feh --bg-scale}
+		[wallpapers] (~/Wallpapers/) {feh --bg-scale}
+		[wallpapers] (~/Wallpapers/*/) {feh --bg-scale}
+		[wallpapers] (~/Pictures/) {feh --bg-scale}
+	[end]
+	[separator]
+	[submenu] (Default Menu)
+		[include] (/etc/X11/fluxbox/fluxbox-menu)
+	[end]
+	[exec] (Shutdown) {/usr/bin/qshutdown} </usr/share/icons/Faenza/actions/32/system-shutdown.png>
+	[exit] (Logout)
+
+[end]

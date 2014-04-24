@@ -1,3 +1,8 @@
+# Settings files are described here
+# core is always used preconfigured settings
+# topBar is settings for placing the bar on top of the desktop
+# bottomBar is settings for placing the bar on the bottom of the desktop
+# the below list shows settings files in the home directory and what they are used for
 .dmrc : file = The user session file. This stores language, keyboard layout, and default session for the current user.
 .zshrc : file = The ZSH shell configuration for the current user. Stores themes and all settings for the ZSH shell.
 .bash_logout : file = Runs when the user logs out of the current session. Used for cleaning things up.
