@@ -20,7 +20,7 @@ import json, os, sys, re
 try:
 	import Tkinter, tkMessageBox
 except:
-	os.system('gksu apt-get install python-tk --assume-yes')
+	os.system('gksu "apt-get install python-tk --assume-yes"')
 	import Tkinter, tkMessageBox
 ########################################################################
 # below commands initiate the main tk window then hide it
