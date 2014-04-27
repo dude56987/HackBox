@@ -1,7 +1,6 @@
 # Insert all user alias commands below this line and before the if statements
 alias ls='ls --color=always' # this will color the output of ls
-alias ll='ls -la' # This is shorthand to show hidden files and permissions
-alias lll='ll | more' # ll but piped into more, for reading a very full directory and searching
+alias ll='ls -la | more -d' # This is shorthand to show hidden files and permissions
 alias lol="espeak 'ha ha ha ha ha'" # Sometimes its good to have a sense of humor
 alias gettowork="cd ~/HackBox/" # This is used by the dev of hackbox, remove it if you want
 alias pullhackboxsource="cd && git clone https://github.com/dude56987/HackBox.git && gettowork" # same as above
