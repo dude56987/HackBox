@@ -64,6 +64,7 @@ Installing fonts(opendyslexic)<::::>apt-fast install fonts-opendyslexic --assume
 Installing texlive-extra-utils (for pdf croping and compressing commands)<::::>apt-fast install texlive-extra-utils --assume-yes >> Install_Log.txt
 Installing byobu (CLI desktop)<::::>apt-fast install byobu --assume-yes >> Install_Log.txt
 Installing screen (splitscreen and multiterminal switching)<::::>apt-fast install screen --assume-yes >> Install_Log.txt
+Installing pdmenu(CLI Curses Menu)<::::>apt-fast install pdmenu --assume-yes >> Install_Log.txt
 Installing espeak (CLI electronic voice synth)<::::>apt-fast install espeak --assume-yes >> Install_Log.txt
 Installing woof (CLI lan/internet file transfer)<::::>apt-fast install woof --assume-yes >> Install_Log.txt
 ########################################################################
