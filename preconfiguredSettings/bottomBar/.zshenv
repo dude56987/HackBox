@@ -8,6 +8,11 @@ alias pullhackboxsource="cd && git clone https://github.com/dude56987/HackBox.gi
 alias console-setup='sudo dpkg-reconfigure console-setup' # this will reconfigure the console allowing you to change the size,font and some other stuff
 # check if the user is in a fullscreen terminal
 if tty | grep tty1; then
+	if [ ! -f /usr/bin/screen ]; then
+		echo "Screen was not found!"
+		echo "Please enter your password to install it..."
+		sudo apt-get install screen --assume-yes;
+	fi
 	# check where the byobu settings are being stored
 	if [ -d .byobu/ ]; then
 		configPath=".byobu/";
