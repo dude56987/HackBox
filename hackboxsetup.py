@@ -544,6 +544,11 @@ printGreen('Adding additional repos...')
 # add getdeb and playdeb repos using the package files they supply
 os.system('gdebi unsupportedPackages/getdeb.deb --non-interactive')
 os.system('gdebi unsupportedPackages/playdeb.deb --non-interactive')
+# cleanup sources, above leaves backup files, other stuff may also
+os.system('rm /etc/apt/sources.list.d/*.bck')
+# these are just to clear any other backed up sources
+os.system('rm /etc/apt/sources.list.d/*.bak')
+os.system('rm /etc/apt/sources.list.d/*.backup')
 # add ppas for cool software
 printGreen('Checking for and adding PPA\'s...')
 if os.path.exists('/usr/sbin/apt-fast') != True:
