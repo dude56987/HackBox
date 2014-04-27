@@ -8,11 +8,6 @@ alias pullhackboxsource="cd && git clone https://github.com/dude56987/HackBox.gi
 alias console-setup='sudo dpkg-reconfigure console-setup' # this will reconfigure the console allowing you to change the size,font and some other stuff
 # check if the user is in a fullscreen terminal
 if tty | grep tty1; then
-	if [ ! -f /usr/bin/screen ]; then
-		echo "Screen was not found!"
-		echo "Please enter your password to install it..."
-		sudo apt-get install screen --assume-yes;
-	fi
 	# check where the byobu settings are being stored
 	if [ -d .byobu/ ]; then
 		configPath=".byobu/";
@@ -22,7 +17,18 @@ if tty | grep tty1; then
 	echo "Config path set as ${configPath}"
 	# check if the user is new and would like help
 	if [ ! -f ${configPath}advanceduser ]; then
-		# set byobu backend to screen for following stuff to work
+		# check if programs are installed for enviorment
+		if [ ! -f /usr/bin/screen ]; then
+			echo "Screen was not found!";
+			echo "Please enter your password to install it...";
+			sudo apt-get install screen --assume-yes;
+		fi
+		if [ ! -f /usr/bin/pdmenu ]; then
+			echo "pdmenu was not found!";
+			echo "Please enter your password to install it...";
+			sudo apt-get install pdmenu --assume-yes;
+		fi
+		#set byobu backend to screen for following stuff to work
 		byobu-select-backend screen;
 		# asks user for input
 		echo "Would you like to view the help file? [y/n]: ";
@@ -41,9 +47,9 @@ if tty | grep tty1; then
 			echo "screen -t SHELL zsh" >> ${configPath}windows;
 			echo "select SHELL" >> ${configPath}windows;
 			# check if the user wants to disable help menu forever
-			echo "Never ask about help file again? [y/n]: ";
+			echo "Ask about the help file next time? [y/n]: ";
 			read userConfirmForever;
-			if [ "$userConfirmForever" = "y" ]; then
+			if [ "$userConfirmForever" = "n" ]; then
 				# add the flag file that prevents this from running
 				echo 'You are truly a supa hakka!' > ${configPath}advanceduser;
 				echo 'To view the help file at any time use the following command.';
