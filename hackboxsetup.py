@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
-import os, sys, shutil, json, zipfile, socket
+import os, sys, shutil, json, zipfile, socket, urllib2
 ########################################################################
 Version = '0.5.0'
 # For Ubuntu Server Edition/Ubuntu Desktop Edition/Linux Mint
@@ -60,27 +60,6 @@ def deleteFile(filePath):
 		print "ERROR: file does not exist, so can not remove it."
 		return False
 ########################################################################
-def replaceLineInFile(fileName,stringToSearchForInLine,replacementText):
-	# open file
-	temp = loadFile(fileName)
-	# if file exists append, if not write
-	newFileText = ''
-	if temp != False:
-		temp = temp.split('\n')
-		for line in temp:
-			if line.find(stringToSearchForInLine) == -1:
-				newFileText += line+'\n'
-			else:
-				if replacementText != '':
-					print 'Replacing line:',line
-					print 'With:',replacementText
-					newFileText += replacementText+'\n'
-				else:
-					print 'Deleting line:',line
-	else:
-		return False
-	writeFile(fileName,newFileText)
-########################################################################
 def loadFile(fileName):
 	try:
 		print "Loading :",fileName
@@ -121,6 +100,44 @@ def writeFile(fileName,contentToWrite):
 	else:
 		print 'Failed to write file, path:',filepath,'does not exist!'
 		return False
+########################################################################
+def downloadFile(fileAddress):
+	try:
+		print "Downloading :",fileAddress
+		downloadedFileObject = urllib2.urlopen(str(fileAddress))
+	except:
+		print "Failed to download :",fileAddress
+		return "FAIL"
+	lineCount = 0
+	fileText = ''
+	for line in downloadedFileObject:
+		fileText += line
+		sys.stdout.write('Loading line '+str(lineCount)+'...\r')
+		lineCount+=1
+	downloadedFileObject.close()
+	print "Finished Loading :",fileAddress
+	return fileText
+########################################################################
+def replaceLineInFile(fileName,stringToSearchForInLine,replacementText):
+	# open file
+	temp = loadFile(fileName)
+	# if file exists append, if not write
+	newFileText = ''
+	if temp != False:
+		temp = temp.split('\n')
+		for line in temp:
+			if line.find(stringToSearchForInLine) == -1:
+				newFileText += line+'\n'
+			else:
+				if replacementText != '':
+					print 'Replacing line:',line
+					print 'With:',replacementText
+					newFileText += replacementText+'\n'
+				else:
+					print 'Deleting line:',line
+	else:
+		return False
+	writeFile(fileName,newFileText)
 ########################################################################
 def currentDirectory():
 	currentDirectory = os.path.abspath(__file__)
@@ -578,8 +595,8 @@ if configData['gamesAndEmulation'] == 'y' :
 	if configData['steamGames'] == 'y':
 		# downloads and installs steam from the offical website, cant include locally since its not gpl
 		try: # since the download may fail
-			writeFile('/opt/hackbox/unsupportedPackages/steam.deb',downloadFile('http://media.steampowered.com/client/installer/steam.deb'))
-			os.system('gdebi --non-interactive unsupportedPackages/steam.deb')
+			writeFile('unsupportedPackages/steam.deb',downloadFile('http://media.steampowered.com/client/installer/steam.deb'))
+			os.system('gdebi unsupportedPackages/steam.deb --non-interactive')
 		except:
 			print (redtext+boldtext+'Steam Client Failed To Install Properly!'+resetTextStyle)
 ######################
