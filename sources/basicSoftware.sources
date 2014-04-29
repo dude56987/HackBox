@@ -140,10 +140,17 @@ Installing Pidgin Plugin(Pack)<::::>apt-fast install pidgin-plugin-pack --assume
 ########################################################################
 # the below is removed because the systray does all this crap already, and it interferes by adding another volume icon
 Remove Xfce indicator plugin(ubuntu version of systray)<::::>apt-fast purge xfce4-indicator-plugin --assume-yes >> Install_Log.txt
-#### install volumeicon and remove volumed service to remove redundancy, also remove pulseaudio to simplify the volume options for users
+#### install volumeicon and remove volumed service to remove redundancy, also remove pulseaudio to simplify the volume options for users, install alsa as sound system
+Install ALSA(Sound System)<::::>apt-fast install alsa --assume-yes >> Install_Log.txt
+Install alsa-oss<::::>apt-fast install alsa-oss --assume-yes >> Install_Log.txt
+Install alsa-utils<::::>apt-fast install alsa-utils --assume-yes >> Install_Log.txt
 Install volumeicon<::::>apt-fast install volumeicon-alsa --assume-yes >> Install_Log.txt
+# copy a launcher for the volumeicon to the autostart directory
+Set volumeicon to autostart<::::>cp -vf preconfiguredSettings/launchers/unsorted/volumeIcon.desktop /etc/xdg/autostart/
 Remove xfce volumed(redundant with above program installed)<::::>apt-fast purge xfce4-volumed --assume-yes >> Install_Log.txt
-Remove xfce volumed(redundant with above program installed)<::::>apt-fast purge pulseaudio --assume-yes >> Install_Log.txt
+Remove pulseaudio<::::>apt-fast purge pulseaudio --assume-yes >> Install_Log.txt
+Remove pavucontrol(pulseaudio volume control)<::::>apt-fast purge pavucontrol --assume-yes >> Install_Log.txt
+Remove  control)<::::>apt-fast purge pavucontrol --assume-yes >> Install_Log.txt
 ####
 Installing countdown timer(xfce4 panel plugin)<::::>apt-fast install xfce4-timer-plugin --assume-yes >> Install_Log.txt
 Installing places(xfce4 panel plugin)<::::>apt-fast install xfce4-places-plugin --assume-yes >> Install_Log.txt
