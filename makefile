@@ -119,8 +119,13 @@ pullCustomSoftware:
 	git clone https://github.com/dude56987/HackBox-Update.git customSoftwarePackages/hackbox-update
 	git clone https://github.com/dude56987/ResetSettings.git customSoftwarePackages/resetsettings
 fix-permissions:
+	# read allowed for all files and all users
 	chmod -R ugo+r *
-	chmod -R go-wx *
-	chmod -R u+rwx *
+	# remove write and execute for all files
+	chmod -R ugo-wx *
+	# user has write permissions on all files
+	chmod -R u+w *
+	# execute and read directories allowed for everyone
+	find . -type d -exec chmod +rx {} \;
 #uninstall : uninstall.py
 #	python uninstall.py
