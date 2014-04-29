@@ -1251,7 +1251,7 @@ if os.path.exists('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf'):
 if configData['redShiftCheck'] == 'y':
 	printGreen('Installing Redshift...')
 	os.system('sudo apt-fast install gtk-redshift --assume-yes >> Install_Log.txt')
-	COPY('/usr/share/applications/gtk-redshift.desktop','/etc/xdg/autostart/')
+	COPY('preconfiguredSettings/launchers/unsorted/redshift.desktop','/etc/xdg/autostart/')
 else:
 	print 'Skipping Redshift Install...';
 ########################################################################

@@ -173,7 +173,6 @@ Setting up mimetypes for HackBox<::::>gdebi --non-interactive unsupportedPackage
 # need to look for a way to check for non xfce desktop and install wally if it isnt xfce
 # Setting up Autostart for Wally<::::>cp /usr/share/applications/wally.desktop/wally.desktop /etc/xdg/autostart/wally.desktop
 Installing Conky(desktop widget program)<::::>apt-fast install conky-all --assume-yes >> Install_Log.txt
-Installing Conky Wizard(A wizard for conky)<::::>apt-fast install conkywizard --assume-yes >> Install_Log.txt
 Installing Guake(drop down terminal)<::::>apt-fast install guake --assume-yes >> Install_Log.txt
 Setting up Autostart for Guake<::::>cp -v /usr/share/applications/guake.desktop /etc/xdg/autostart/guake.desktop
 Installing tumblerd-extra-plugins(renders thumbnails of videos)<::::>apt-fast install tumbler-plugins-extra --assume-yes >> Install_Log.txt
