@@ -2,13 +2,13 @@ Generated File. Do not edit.
 
 [HEADER]
 Version:0.16:$
-Arch:x86_64-gcc3:$
+Arch:x86-gcc3:$
 
 [PLUGINS]
 IcedTeaPlugin.so:$
-/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/IcedTeaPlugin.so:$
+/usr/lib/jvm/java-7-openjdk-i386/jre/lib/i386/IcedTeaPlugin.so:$
 :$
-1394028707000:0:0:$
+1394028683000:0:0:$
 The <a href="http://icedtea.classpath.org/wiki/IcedTea-Web">IcedTea-Web Plugin</a> executes Java applets.:$
 IcedTea-Web Plugin (using IcedTea-Web 1.4 (1.4-3ubuntu2.1)):$
 36
@@ -51,16 +51,49 @@ IcedTea-Web Plugin (using IcedTea-Web 1.4 (1.4-3ubuntu2.1)):$
 libflashplayer.so:$
 /opt/mint-flashplugin-11/libflashplayer.so:$
 11.2.202.341:$
-1393609089000:0:0:$
+1393609283000:0:0:$
 Shockwave Flash 11.2 r202:$
 Shockwave Flash:$
 2
 0:application/x-shockwave-flash:Shockwave Flash:swf:$
 1:application/futuresplash:FutureSplash Player:spl:$
+libtotem-gmp-plugin.so:$
+/usr/lib/mozilla/plugins/libtotem-gmp-plugin.so:$
+:$
+1369542124000:0:0:$
+The <a href="http://www.gnome.org/">Videos</a> 3.8.2 plugin handles video and audio streams.:$
+Windows Media Player Plug-in 10 (compatible; Videos):$
+13
+0:application/x-mplayer2:AVI video:avi, wma, wmv:$
+1:video/x-ms-asf-plugin:ASF video:asf, wmv:$
+2:video/x-msvideo:AVI video:asf, wmv:$
+3:video/x-ms-asf:ASF video:asf:$
+4:video/x-ms-wmv:Windows Media video:wmv:$
+5:video/x-wmv:Windows Media video:wmv:$
+6:video/x-ms-wvx:Windows Media video:wmv:$
+7:video/x-ms-wm:Windows Media video:wmv:$
+8:video/x-ms-wmp:Windows Media video:wmv:$
+9:application/x-ms-wms:Windows Media video:wms:$
+10:application/x-ms-wmp:Windows Media video:wmp:$
+11:application/asx:Microsoft ASX playlist:asx:$
+12:audio/x-ms-wma:Windows Media audio:wma:$
+libtotem-narrowspace-plugin.so:$
+/usr/lib/mozilla/plugins/libtotem-narrowspace-plugin.so:$
+:$
+1369542124000:0:0:$
+The <a href="http://www.gnome.org/">Videos</a> 3.8.2 plugin handles video and audio streams.:$
+QuickTime Plug-in 7.6.6:$
+6
+0:video/quicktime:QuickTime video:mov:$
+1:video/mp4:MPEG-4 video:mp4:$
+2:image/x-macpaint:MacPaint Bitmap image:pntg:$
+3:image/x-quicktime:Macintosh Quickdraw/PICT drawing:pict, pict1, pict2:$
+4:video/x-m4v:MPEG-4 video:m4v:$
+5:application/vnd.apple.mpegurl:HTTP Live Streaming playlist:m3u8:$
 libtotem-mully-plugin.so:$
 /usr/lib/mozilla/plugins/libtotem-mully-plugin.so:$
 :$
-1369542426000:0:0:$
+1369542124000:0:0:$
 DivX Web Player version 1.4.0.233:$
 DivX® Web Player:$
 1
@@ -68,7 +101,7 @@ DivX® Web Player:$
 libtotem-cone-plugin.so:$
 /usr/lib/mozilla/plugins/libtotem-cone-plugin.so:$
 :$
-1369542426000:0:0:$
+1369542124000:0:0:$
 The <a href="http://www.gnome.org/">Videos</a> 3.8.2 plugin handles video and audio streams.:$
 VLC Multimedia Plugin (compatible Videos 3.8.2):$
 23
@@ -95,38 +128,5 @@ VLC Multimedia Plugin (compatible Videos 3.8.2):$
 20:video/webm:WebM video:webm:$
 21:application/x-totem-plugin:Videos multimedia plugin::$
 22:audio/midi:MIDI audio:mid, midi:$
-libtotem-narrowspace-plugin.so:$
-/usr/lib/mozilla/plugins/libtotem-narrowspace-plugin.so:$
-:$
-1369542426000:0:0:$
-The <a href="http://www.gnome.org/">Videos</a> 3.8.2 plugin handles video and audio streams.:$
-QuickTime Plug-in 7.6.6:$
-6
-0:video/quicktime:QuickTime video:mov:$
-1:video/mp4:MPEG-4 video:mp4:$
-2:image/x-macpaint:MacPaint Bitmap image:pntg:$
-3:image/x-quicktime:Macintosh Quickdraw/PICT drawing:pict, pict1, pict2:$
-4:video/x-m4v:MPEG-4 video:m4v:$
-5:application/vnd.apple.mpegurl:HTTP Live Streaming playlist:m3u8:$
-libtotem-gmp-plugin.so:$
-/usr/lib/mozilla/plugins/libtotem-gmp-plugin.so:$
-:$
-1369542426000:0:0:$
-The <a href="http://www.gnome.org/">Videos</a> 3.8.2 plugin handles video and audio streams.:$
-Windows Media Player Plug-in 10 (compatible; Videos):$
-13
-0:application/x-mplayer2:AVI video:avi, wma, wmv:$
-1:video/x-ms-asf-plugin:ASF video:asf, wmv:$
-2:video/x-msvideo:AVI video:asf, wmv:$
-3:video/x-ms-asf:ASF video:asf:$
-4:video/x-ms-wmv:Windows Media video:wmv:$
-5:video/x-wmv:Windows Media video:wmv:$
-6:video/x-ms-wvx:Windows Media video:wmv:$
-7:video/x-ms-wm:Windows Media video:wmv:$
-8:video/x-ms-wmp:Windows Media video:wmv:$
-9:application/x-ms-wms:Windows Media video:wms:$
-10:application/x-ms-wmp:Windows Media video:wmp:$
-11:application/asx:Microsoft ASX playlist:asx:$
-12:audio/x-ms-wma:Windows Media audio:wma:$
 
 [INVALID]
