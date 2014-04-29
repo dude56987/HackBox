@@ -592,7 +592,7 @@ if configData['gamesAndEmulation'] == 'y' :
 	if os.path.exists('/usr/bin/retroarch') != True:
 		printGreen('Adding Retroarch PPA...');
 		os.system('apt-add-repository ppa:hunter-kaller/ppa');
-	if configData['steamGames'] == 'y':
+	if configData['steamGames'] == 'y' and os.path.exists('/usr/bin/steam') != True:
 		# downloads and installs steam from the offical website, cant include locally since its not gpl
 		try: # since the download may fail
 			writeFile('unsupportedPackages/steam.deb',downloadFile('http://media.steampowered.com/client/installer/steam.deb'))
