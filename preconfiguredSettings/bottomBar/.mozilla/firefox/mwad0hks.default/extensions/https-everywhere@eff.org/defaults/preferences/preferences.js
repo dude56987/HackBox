@@ -4,6 +4,18 @@ pref("extensions.https_everywhere.globalEnabled",true);
 // this is the HTTPS Everywhere preferences version (for migrations)
 pref("extensions.https_everywhere.prefs_version", 0);
 
+// this is a popup asking whether the user really meant to be on the dev branch
+pref("extensions.https_everywhere.dev_popup_shown", false);
+
+// show ruleset tests in the menu
+pref("extensions.https_everywhere.show_ruleset_tests", false);
+// run a ruleset performance test at startup
+pref("extensions.https_everywhere.performance_tests", false);
+
+// enable rulesets that trigger mixed content blocking
+pref("extensions.https_everywhere.enable_mixed_rulesets", false);
+
+
 // SSl Observatory preferences
 pref("extensions.https_everywhere._observatory.enabled",false);
 
@@ -29,3 +41,4 @@ pref("extensions.https_everywhere._observatory.self_signed",true);
 pref("extensions.https_everywhere._observatory.priv_dns",false);
 pref("extensions.https_everywhere._observatory.send_asn",true);
 pref("extensions.https_everywhere._observatory.use_whitelist",true);
+pref("extensions.https_everywhere._observatory.clean_config",false);

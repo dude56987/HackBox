@@ -5,6 +5,15 @@ Version:0.16:$
 Arch:x86-gcc3:$
 
 [PLUGINS]
+libflashplayer.so:$
+/opt/mint-flashplugin-11/libflashplayer.so:$
+11.2.202.356:$
+1398950756000:0:0:$
+Shockwave Flash 11.2 r202:$
+Shockwave Flash:$
+2
+0:application/x-shockwave-flash:Shockwave Flash:swf:$
+1:application/futuresplash:FutureSplash Player:spl:$
 IcedTeaPlugin.so:$
 /usr/lib/jvm/java-7-openjdk-i386/jre/lib/i386/IcedTeaPlugin.so:$
 :$
@@ -48,15 +57,6 @@ IcedTea-Web Plugin (using IcedTea-Web 1.4 (1.4-3ubuntu2.1)):$
 33:application/x-java-bean;version=1.7:IcedTea:class,jar:$
 34:application/x-java-bean;jpi-version=1.7.0_50:IcedTea:class,jar:$
 35:application/x-java-vm-npruntime:IcedTea::$
-libflashplayer.so:$
-/opt/mint-flashplugin-11/libflashplayer.so:$
-11.2.202.341:$
-1393609283000:0:0:$
-Shockwave Flash 11.2 r202:$
-Shockwave Flash:$
-2
-0:application/x-shockwave-flash:Shockwave Flash:swf:$
-1:application/futuresplash:FutureSplash Player:spl:$
 libtotem-gmp-plugin.so:$
 /usr/lib/mozilla/plugins/libtotem-gmp-plugin.so:$
 :$

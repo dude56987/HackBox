@@ -31,6 +31,9 @@ const Cc = Components.classes;
 const Cu = Components.utils;
 const Cr = Components.results;
 
+Cu.import("resource://gre/modules/Services.jsm");
+Cu.import("resource://gre/modules/FileUtils.jsm");
+
 const CP_SHOULDPROCESS = 4;
 
 const SERVICE_CTRID = "@eff.org/https-everywhere;1";
@@ -62,7 +65,7 @@ const INCLUDE = function(name) {
             + name + ".js");
     _INCLUDED[name] = true;
   }
-}
+};
 
 const WP_STATE_START = CI.nsIWebProgressListener.STATE_START;
 const WP_STATE_STOP = CI.nsIWebProgressListener.STATE_STOP;
@@ -100,15 +103,16 @@ const WHERE_UNTRUSTED = 1;
 const WHERE_TRUSTED = 2;
 const ANYWHERE = 3;
 
-const N_COHORTS = 1000;  // For partial feature deployment
+const N_COHORTS = 1000; 
 
 const DUMMY_OBJ = {};
 DUMMY_OBJ.wrappedJSObject = DUMMY_OBJ;
-const DUMMY_FUNC = function() {}
+const DUMMY_FUNC = function() {};
 const DUMMY_ARRAY = [];
 
 const EARLY_VERSION_CHECK = !("nsISessionStore" in CI && typeof(/ /) === "object");
 
+// This is probably obsolete since the switch to the channel.redirectTo API
 const OBSERVER_TOPIC_URI_REWRITE = "https-everywhere-uri-rewrite";
 
 // XXX: Better plan for this?
@@ -151,17 +155,17 @@ StorageController.prototype = {
     [ Components.interfaces.nsISupports,
       Components.interfaces.nsIController ]),
   wrappedJSObject: null,  // Initialized by constructor
-  supportsCommand: function (cmd) {return (cmd == this.command)},
-  isCommandEnabled: function (cmd) {return (cmd == this.command)},
-  onEvent: function(eventName) {return true},
-  doCommand: function() {return true}
+  supportsCommand: function (cmd) {return (cmd == this.command);},
+  isCommandEnabled: function (cmd) {return (cmd == this.command);},
+  onEvent: function(eventName) {return true;},
+  doCommand: function() {return true;}
 };
 
 function StorageController(command) {
   this.command = command;
   this.data = {};
   this.wrappedJSObject = this;
-};
+}
 
 /*var Controller = Class("Controller", XPCOM(CI.nsIController), {
   init: function (command, data) {
@@ -181,6 +185,7 @@ function HTTPSEverywhere() {
   this.https_rules = HTTPSRules;
   this.INCLUDE=INCLUDE;
   this.ApplicableList = ApplicableList;
+  this.browser_initialised = false; // the browser is completely loaded
   
   this.prefs = this.get_prefs();
   this.rule_toggle_prefs = this.get_prefs(PREFBRANCH_RULE_TOGGLE);
@@ -198,8 +203,18 @@ function HTTPSEverywhere() {
     this.obsService.addObserver(this, "profile-before-change", false);
     this.obsService.addObserver(this, "profile-after-change", false);
     this.obsService.addObserver(this, "sessionstore-windows-restored", false);
+    this.obsService.addObserver(this, "browser:purge-session-history", false);
   }
-  
+
+  var pref_service = Components.classes["@mozilla.org/preferences-service;1"]
+      .getService(Components.interfaces.nsIPrefBranchInternal);
+  var branch = pref_service.QueryInterface(Components.interfaces.nsIPrefBranchInternal);
+
+  branch.addObserver("extensions.https_everywhere.enable_mixed_rulesets",
+                         this, false);
+  branch.addObserver("security.mixed_content.block_active_content",
+                         this, false);
+
   return;
 }
 
@@ -240,22 +255,46 @@ const shouldLoadTargets = {
   7 : true
 };
 
+
+
+/*
+In recent versions of Firefox and HTTPS Everywhere, the call stack for performing an HTTP -> HTTPS rewrite looks like this:
+
+1. HTTPSEverywhere.observe() gets a callback with the "http-on-modify-request" topic, and the channel as a subject
+
+    2. HTTPS.replaceChannel() 
+
+       3. HTTPSRules.rewrittenURI() 
+            
+           4. HTTPSRules.potentiallyApplicableRulesets uses <target host=""> elements to identify relevant rulesets
+
+           foreach RuleSet:
+
+               4. RuleSet.transformURI()
+
+                   5. RuleSet.apply() does the tests and rewrites with RegExps, returning a string
+
+               4. RuleSet.transformURI() makes a new uri object for the destination string, if required
+
+    2. HTTPS.replaceChannel() calls channel.redirectTo() if a redirect is needed
+
+
+In addition, the following other important tasks happen along the way:
+
+HTTPSEverywhere.observe()    aborts if there is a redirect loop
+                             finds a reference to the ApplicableList or alist that represents the toolbar context menu
+
+HTTPS.replaceChannel()       notices redirect loops (and used to do much more complex XPCOM API work in the NoScript-based past)
+
+HTTPSRules.rewrittenURI()    works around weird URI types like about: and http://user:pass@example.com/
+                             and notifies the alist of what it should display for each ruleset
+
+*/
+
 // This defines for Mozilla what stuff HTTPSEverywhere will implement.
 
-// For FF < 20, we need to use both ContentPolicy and Observer, because there
-// are some things, such as Favicons, who don't get caught by ContentPolicy, 
-// and Observers didn't work for everything until channel.redirectTo landed in FF 20.
-//
-// ChannelEventSink seems to be necessary in order to handle redirects (eg
-// HTTP redirects) correctly.
-
-// Firefox 20 has nsIHTTPChannel.redirectTo
-// it also has https://bugzilla.mozilla.org/show_bug.cgi?id=939180
-var appInfo = CC["@mozilla.org/xre/app-info;1"].getService(CI.nsIXULAppInfo);
-var platformVer = appInfo.platformVersion;
-var versionChecker = CC["@mozilla.org/xpcom/version-comparator;1"]
-                      .getService(CI.nsIVersionComparator);
-var hasRedirectTo = (versionChecker.compare(appInfo.version, "20.0a1") >= 0);
+// ChannelEventSink used to be necessary in order to handle redirects (eg
+// HTTP redirects) correctly.  It may now be obsolete? XXX
 
 HTTPSEverywhere.prototype = {
   prefs: null,
@@ -284,17 +323,12 @@ HTTPSEverywhere.prototype = {
     {
       category: "app-startup",
     },
-    {
-      category: "content-policy",
-    },
   ],
 
   // QueryInterface implementation, e.g. using the generateQI helper
   QueryInterface: XPCOMUtils.generateQI(
     [ Components.interfaces.nsIObserver,
-      Components.interfaces.nsIMyInterface,
       Components.interfaces.nsISupports,
-      Components.interfaces.nsIContentPolicy,
       Components.interfaces.nsISupportsWeakReference,
       Components.interfaces.nsIWebProgressListener,
       Components.interfaces.nsIWebProgressListener2,
@@ -375,28 +409,26 @@ HTTPSEverywhere.prototype = {
 
   getWindowForChannel: function(channel) {
     // Obtain an nsIDOMWindow from a channel
+    let loadContext;
     try {
-      var nc = channel.notificationCallbacks ? channel.notificationCallbacks : channel.loadGroup.notificationCallbacks;
+      loadContext = channel.notificationCallbacks.getInterface(CI.nsILoadContext);
     } catch(e) {
-      this.log(WARN,"no loadgroup notificationCallbacks for "+channel.URI.spec);
-      return null;
+      try {
+        loadContext = channel.loadGroup.notificationCallbacks.getInterface(CI.nsILoadContext);
+      } catch(e) {
+        this.log(NOTE, "No loadContext for " + channel.URI.spec);
+        return null;
+      }
     }
-    if (!nc) {
-      this.log(DBUG, "no window for " + channel.URI.spec);
-      return null;
-    } 
-    try {
-      var domWin = nc.getInterface(CI.nsIDOMWindow);
-    } catch(e) {
-      this.log(INFO, "No window associated with request: " + channel.URI.spec);
-      return null;
-    }
+
+    let domWin = loadContext.associatedWindow;
     if (!domWin) {
       this.log(NOTE, "failed to get DOMWin for " + channel.URI.spec);
       return null;
     }
+
     domWin = domWin.top;
-    return domWin
+    return domWin;
   },
 
   // the lists get made when the urlbar is loading something new, but they
@@ -447,7 +479,7 @@ HTTPSEverywhere.prototype = {
       var lst = this.getApplicableListForChannel(channel); // null if no window is associated (ex: xhr)
       if (channel.URI.spec in https_everywhere_blacklist) {
         this.log(DBUG, "Avoiding blacklisted " + channel.URI.spec);
-        if (lst) lst.breaking_rule(https_everywhere_blacklist[channel.URI.spec])
+        if (lst) lst.breaking_rule(https_everywhere_blacklist[channel.URI.spec]);
         else        this.log(NOTE,"Failed to indicate breakage in content menu");
         return;
       }
@@ -511,6 +543,29 @@ HTTPSEverywhere.prototype = {
     } else if (topic == "sessionstore-windows-restored") {
       this.log(DBUG,"Got sessionstore-windows-restored");
       this.maybeShowObservatoryPopup();
+      this.browser_initialised = true;
+    } else if (topic == "nsPref:changed") {
+        // If the user toggles the Mixed Content Blocker settings, reload the rulesets
+        // to enable/disable the mixedcontent ones
+
+        // this pref gets set to false and then true during FF 26 startup!
+        // so do nothing if we're being notified during startup
+        if (!this.browser_initialised)
+            return;
+        switch (data) {
+            case "security.mixed_content.block_active_content":
+            case "extensions.https_everywhere.enable_mixed_rulesets":
+                var p = CC["@mozilla.org/preferences-service;1"].getService(CI.nsIPrefBranch);
+                var val = p.getBoolPref("security.mixed_content.block_active_content");
+                this.log(INFO,"nsPref:changed for "+data + " to " + val);
+                HTTPSRules.init();
+                break;
+        }
+    } else if (topic == "browser:purge-session-history") {
+      // The list of rulesets that have been loaded from the sqlite DB
+      // constitutes a parallel history store, so we have to clear it.
+      this.log(DBUG, "History cleared, reloading HTTPSRules to avoid information leak.");
+      HTTPSRules.init();
     }
     return;
   },
@@ -533,12 +588,43 @@ HTTPSEverywhere.prototype = {
     };
     if (!shown && !enabled)
       ssl_observatory.registerProxyTestNotification(obs_popup_callback);
+
+    if (shown && enabled)
+      this.maybeCleanupObservatoryPrefs(ssl_observatory);
   },
+
+  maybeCleanupObservatoryPrefs: function(ssl_observatory) {
+    // Recover from a past UI processing bug that would leave the Obsevatory
+    // accidentally disabled for some users
+    // https://trac.torproject.org/projects/tor/ticket/10728
+    var clean = ssl_observatory.myGetBoolPref("clean_config");
+    if (clean) return;
+
+    // unchanged: returns true if a pref has not been modified
+    var unchanged = function(p){return !ssl_observatory.prefs.prefHasUserValue("extensions.https_everywhere._observatory."+p)};
+    var cleanup_obsprefs_callback = function(tor_avail) {
+      // we only run this once
+      ssl_observatory.prefs.setBoolPref("extensions.https_everywhere._observatory.clean_config", true);
+      if (!tor_avail) {
+        // use_custom_proxy is the variable that is often false when it should be true;
+        if (!ssl_observatory.myGetBoolPref("use_custom_proxy")) {
+           // however don't do anything if any of the prefs have been set by the user
+           if (unchanged("alt_roots") && unchanged("self_signed") && unchanged ("send_asn") && unchanged("priv_dns")) {
+             ssl_observatory.prefs.setBoolPref("extensions.https_everywhere._observatory.use_custom_proxy", true);
+           }
+        }
+      }
+    }
+    ssl_observatory.registerProxyTestNotification(cleanup_obsprefs_callback);
+  },
+
 
   getExperimentalFeatureCohort: function() {
     // This variable is used for gradually turning on features for testing and
     // scalability purposes.  It is a random integer [0,N_COHORTS) generated
     // once and stored thereafter.
+    // 
+    // This is not currently used/called in the development branch
     var cohort;
     try {
       cohort = this.prefs.getIntPref("experimental_feature_cohort");
@@ -550,6 +636,7 @@ HTTPSEverywhere.prototype = {
   },
 
   // nsIChannelEventSink implementation
+  // XXX This was here for rewrites in the past.  Do we still need it?
   onChannelRedirect: function(oldChannel, newChannel, flags) {  
     const uri = newChannel.URI;
     this.log(DBUG,"Got onChannelRedirect to "+uri.spec);
@@ -585,29 +672,6 @@ HTTPSEverywhere.prototype = {
   asyncOnChannelRedirect: function(oldChannel, newChannel, flags, callback) {
         this.onChannelRedirect(oldChannel, newChannel, flags);
         callback.onRedirectVerifyCallback(0);
-  },
-
-  // These implement the nsIContentPolicy API; they allow both yes/no answers
-  // to "should this load?", but also allow us to change the thing.
-
-  shouldLoad: function(aContentType, aContentLocation, aRequestOrigin, aContext, aMimeTypeGuess, aInternalCall) {
-    // we don't need contentpolicy if we have channel.redirectTo, and it causes problems
-    if (hasRedirectTo) return true;
-
-    //this.log(WARN,"shouldLoad for " + unwrappedLocation.spec + " of type " + aContentType);
-       if (shouldLoadTargets[aContentType] != null) {
-         var unwrappedLocation = IOUtil.unwrapURL(aContentLocation);
-         var scheme = unwrappedLocation.scheme;
-         var isHTTP = /^https?$/.test(scheme);   // s? -> either http or https
-         this.log(VERB,"shoulLoad for " + aContentLocation.spec);
-         if (isHTTP)
-           HTTPS.forceURI(aContentLocation, null, aContext);
-       } 
-    return true;
-  },
-
-  shouldProcess: function(aContentType, aContentLocation, aRequestOrigin, aContext, aMimeType, aExtra) {
-    return this.shouldLoad(aContentType, aContentLocation, aRequestOrigin, aContext, aMimeType, CP_SHOULDPROCESS);
   },
 
   get_prefs: function(prefBranch) {
@@ -656,23 +720,6 @@ HTTPSEverywhere.prototype = {
     return o_branch;
   },
 
-  /**
-   * Notify observers of the topic OBSERVER_TOPIC_URI_REWRITE.
-   *
-   * @param nsIURI oldURI
-   * @param string newSpec
-   */
-  notifyObservers: function(oldURI, newSpec) {
-    this.log(INFO, "Notifying observers of rewrite from " + oldURI.spec + " to " + newSpec);
-    try {
-      // The subject has to be an nsISupports and the extra data is a string,
-      // that's why one is an nsIURI and the other is a nsIURI.spec string.
-      this.obsService.notifyObservers(oldURI, OBSERVER_TOPIC_URI_REWRITE, newSpec);
-    } catch (e) {
-      this.log(WARN, "Couldn't notify observers: " + e);
-    }
-  },
-
   chrome_opener: function(uri, args) {
     // we don't use window.open, because we need to work around TorButton's 
     // state control
@@ -681,6 +728,16 @@ HTTPSEverywhere.prototype = {
       .getService(CI.nsIWindowMediator) 
       .getMostRecentWindow('navigator:browser')
       .open(uri,'', args );
+  },
+
+  tab_opener: function(uri) {
+    var gb = CC['@mozilla.org/appshell/window-mediator;1']
+      .getService(CI.nsIWindowMediator) 
+      .getMostRecentWindow('navigator:browser')
+      .gBrowser;
+    var tab = gb.addTab(uri);
+    gb.selectedTab = tab;
+    return tab;
   },
 
   toggleEnabledState: function() {
@@ -724,8 +781,6 @@ HTTPSEverywhere.prototype = {
             
             this.log(INFO,"ChannelReplacement.supported = "+ChannelReplacement.supported);
 
-            HTTPSRules.init();
-
             if(!Thread.hostRunning)
                 Thread.hostRunning = true;
             
@@ -735,7 +790,7 @@ HTTPSEverywhere.prototype = {
             catman.addCategoryEntry("net-channel-event-sinks", SERVICE_CTRID,
                 SERVICE_CTRID, false, true);            
             
-            // HTTPSRules.init();  why indeed is that called twice?
+            HTTPSRules.init();          
             this.prefs.setBoolPref("globalEnabled", true);
         }
         catch(e){
@@ -760,7 +815,7 @@ function https_everywhereLog(level, str) {
     threshold = WARN;
   }
   if (level >= threshold) {
-    dump(str+"\n");
+    dump("HTTPS Everywhere: "+str+"\n");
     econsole.logStringMessage("HTTPS Everywhere: " +str);
   }
 }

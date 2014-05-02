@@ -21,14 +21,21 @@ HTTPSEverywhere = CC["@eff.org/https-everywhere;1"]
                       .wrappedJSObject;
 
 // avoid polluting global namespace
+// see: https://developer.mozilla.org/en-US/docs/Security_best_practices_in_extensions#Code_wrapping
 if (!httpsEverywhere) { var httpsEverywhere = {}; }
 
 /**
- * JS Object for used to display toolbar hints to new users and change toolbar
- * UI for cases such as when the toolbar is disabled.
+ * JS Object that acts as a namespace for the toolbar.
  *
+ * Used to display toolbar hints to new users and change toolbar UI for cases
+ * such as when the toolbar is disabled.
  */
 httpsEverywhere.toolbarButton = {
+
+  /**
+   * Name of preference for determining whether to show ruleset counter.
+   */
+  COUNTER_PREF: "extensions.https_everywhere.show_counter",
 
   /**
    * Used to determine if a hint has been previously shown.
@@ -48,6 +55,11 @@ httpsEverywhere.toolbarButton = {
 
     // make sure icon is proper color during init
     tb.changeIcon();
+
+    // make sure the checkbox for showing counter is properly set
+    var showCounter = tb.shouldShowCounter();
+    var counterItem = document.getElementById('https-everywhere-counter-item');
+    counterItem.setAttribute('checked', showCounter ? 'true' : 'false');
 
     // show ruleset counter when a tab is changed
     tb.updateRulesetsApplied();
@@ -128,7 +140,8 @@ httpsEverywhere.toolbarButton = {
   updateRulesetsApplied: function() {
     var toolbarbutton = document.getElementById('https-everywhere-button');
     var enabled = HTTPSEverywhere.prefs.getBoolPref("globalEnabled");
-    if (!enabled) { 
+    var showCounter = httpsEverywhere.toolbarButton.shouldShowCounter();
+    if (!enabled || !showCounter) { 
       toolbarbutton.setAttribute('rulesetsApplied', 0);
       return;
     }
@@ -155,9 +168,39 @@ httpsEverywhere.toolbarButton = {
 
     toolbarbutton.setAttribute('rulesetsApplied', counter);
     HTTPSEverywhere.log(INFO, 'Setting icon counter to: ' + counter);
-  } 
-};
+  },
 
+  /**
+   * Gets whether to show the rulesets applied counter.
+   *
+   * @return {boolean}
+   */
+  shouldShowCounter: function() {
+    var tb = httpsEverywhere.toolbarButton;
+    var sp = Services.prefs;
+
+    var prefExists = sp.getPrefType(tb.COUNTER_PREF);
+
+    // the default behavior is to show the rulesets applied counter.
+    // if no preference exists (default) or its enabled, show the counter
+    return !prefExists || sp.getBoolPref(tb.COUNTER_PREF);
+  },
+
+  /**
+   * Toggles the user's preference for displaying the rulesets applied counter
+   * and updates the UI.
+   */
+  toggleShowCounter: function() {
+    var tb = httpsEverywhere.toolbarButton;
+    var sp = Services.prefs;
+
+    var showCounter = tb.shouldShowCounter();
+    sp.setBoolPref(tb.COUNTER_PREF, !showCounter);
+
+    tb.updateRulesetsApplied();
+  }
+
+};
 
 function https_everywhere_load() {
   window.removeEventListener('load', https_everywhere_load, true);
@@ -200,6 +243,8 @@ function stitch_context_menu2() {
   }
 }
 
+var rulesetTestsMenuItem = null;
+
 function show_applicable_list(menupopup) {
   var domWin = content.document.defaultView.top;
   if (!(domWin instanceof CI.nsIDOMWindow)) {
@@ -218,6 +263,23 @@ function show_applicable_list(menupopup) {
     weird = true;
   }
   alist.populate_menu(document, menupopup, weird);
+
+  // should we also show the ruleset tests menu item?
+  if(HTTPSEverywhere.prefs.getBoolPref("show_ruleset_tests")) {
+
+    if(!rulesetTestsMenuItem) {
+      let strings = document.getElementById('HttpsEverywhereStrings');
+      let label = strings.getString('https-everywhere.menu.ruleset-tests');
+
+      rulesetTestsMenuItem = this.document.createElement('menuitem');
+      rulesetTestsMenuItem.setAttribute('command', 'https-everywhere-menuitem-ruleset-tests');
+      rulesetTestsMenuItem.setAttribute('label', label);
+    }
+
+    if(!menupopup.contains(rulesetTestsMenuItem)) 
+      menupopup.appendChild(rulesetTestsMenuItem);
+  }
+  
 }
 
 function toggle_rule(rule_id) {
@@ -251,8 +313,8 @@ function reload_window() {
 }
 
 function toggleEnabledState(){
-  HTTPSEverywhere.toggleEnabledState();
-  reload_window();	
+	HTTPSEverywhere.toggleEnabledState();
+	reload_window();	
 
   // Change icon depending on enabled state
   httpsEverywhere.toolbarButton.changeIcon();
