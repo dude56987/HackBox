@@ -102,7 +102,8 @@ Installing resetsettings(resets settings to defaults)<::::>gdebi --non-interacti
 ########################################################################
 # SECTION FOR INTERNET SOFTWARE #
 ########################################################################
-Installing dns-precache(Caches top 500 sites)<::::>gdebi --non-interactive unsupportedPackages/dns-precache.deb
+# dns-precache is blanking rc.local on the system, till it is fixed it will be disabled
+#Installing dns-precache(Caches top 500 sites)<::::>gdebi --non-interactive unsupportedPackages/dns-precache.deb
 Installing lanscan(scans lan for connected devices)<::::>gdebi --non-interactive unsupportedPackages/lanscan.deb
 # install firefox and firefox custom addons systemwide
 Installing Firefox<::::>apt-fast install firefox --assume-yes >> Install_Log.txt

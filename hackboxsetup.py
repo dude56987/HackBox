@@ -532,25 +532,7 @@ print '##################################################################'
 ########################################################################
 print 'Checking for updates...';
 # add update command to computer regardless of user decisions
-programFile = open('/usr/bin/update','w')
-temp = '#! /bin/bash\n'
-temp += '# note that the dist-upgrade option is included to update the kernel automatically\n'
-temp += 'sudo apt-fast update --assume-yes\n'
-temp += '# the first command below fixes broken packages, if broken, otherwise it does nothing\n'
-temp += 'sudo apt-fast -f install\n'
-temp += 'sudo apt-fast install --fix-missing\n'
-temp += '# the -o options in the below commands make them automaticly update config files\n'
-temp += '# changed in the updates if they have not been edited by hand\n'
-temp += 'sudo apt-fast -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade --assume-yes\n'
-temp += 'sudo apt-fast -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade --assume-yes\n'
-temp += 'sudo echo "Removing unused packages..."\n'
-temp += 'sudo apt-fast autoremove --assume-yes\n'
-temp += 'sudo echo "Clearing downloaded files..."\n'
-temp += 'sudo apt-fast clean --assume-yes\n'
-temp += 'sudo echo "Update Complete!"\n'
-programFile.write(temp)
-programFile.close()
-os.system('chmod +x /usr/bin/update')
+os.system('gdebi --no unsupportedPackages/update.deb')
 ########################################################################
 # install things that require user interaction to proceed first
 ########################################################################
@@ -1096,37 +1078,6 @@ print '##################################################################'
 # Check before procedeing with section if user wants it configured
 if configData['autoUpdates'] == 'y' :
 	################################################################
-	# Makes the update command run on system boot
-	# setup the config to run on boot
-	print 'Setting up automatic updates at system boot...'
-	programFile = open('/etc/rc.local','r')
-	temp = ''
-	switch = True
-	print 'Reading Config file...'
-	# scan the config file to make shure the changes prepared have
-	# not already been applyed
-	for i in programFile:
-		if i == 'update &\n':
-			switch = False
-	# close file to reset and prepare for rewrite
-	programFile.close()
-	if switch == True:
-		programFile = open('/etc/rc.local','r')
-		for i in programFile:
-			temp += i
-			if i == '# By default this script does nothing.\n':
-				temp += '\n# update added by HackBox Setup\nupdate &\n'
-		programFile.close()
-		print 'Editing Config file...'
-		programFile = open('/etc/rc.local','w')
-		programFile.write(temp)
-		programFile.close()
-		print 'Done working on config file!'
-	else:
-		print 'Config File already Correct!'
-		print 'Moving along...'
-	# set a cron daily task to run updates
-	os.system('link /usr/bin/update /etc/cron.daily/update')
 	# remove other update programs from annoying the user
 	os.system('apt-fast purge mintupdate --assume-yes')
 	os.system('apt-fast purge update-manager --assume-yes')
