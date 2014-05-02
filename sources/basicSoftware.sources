@@ -115,6 +115,7 @@ Setting up Transmission blocklist updater<::::>gdebi --non-interactive unsupport
 Removing RSS reader<::::>apt-fast purge liferea --assume-yes >> Install_Log.txt
 Installing Thunderbird (Email/Calendar)<::::>apt-fast install thunderbird --assume-yes >> Install_Log.txt
 Installing calendar extention to thunderbird<::::>apt-fast install xul-ext-lightning --assume-yes >> Install_Log.txt
+Installing Marble<::::>apt-fast install marble --assume-yes >> Install_Log.txt
 ################
 #install pidgin#
 ################
