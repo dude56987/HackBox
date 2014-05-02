@@ -237,6 +237,8 @@ settingsScreen += 'Netflix Desktop = ' + formatAnwser(configData['netflix']) + '
 # prompt user if they want to proceed or not
 settingsScreen += 'Are the above settings correct?';
 check = askQuestion('FINAL CHECK 20/20',settingsScreen)
+# end all tk instances, close the window so it dont hang open while xterm is running
+rootWindow.destroy()
 if check == 'y' :
 	if os.path.exists('/usr/bin/xterm') == False:
 		os.system('gksu "apt-get install xterm --assume-yes"')
