@@ -29,7 +29,7 @@ Version = '0.5.0'
 # ~ custom distro???
 ########################################################################
 #text formating command globals
-resetTextStyle='\033[0m'
+defaultText='\033[0m'
 boldtext='\033[1m'
 blinktext='\033[5m'
 #textcolors
@@ -50,6 +50,8 @@ bluebackground= '\033[44m'
 magentabackground= '\033[45m'
 cyanbackground= '\033[46m'
 whitebackground= '\033[47m'
+# reset to default style
+resetTextStyle=defaultText+blackbackground+whitetext
 # define functions
 ########################################################################
 def deleteFile(filePath):
@@ -1220,6 +1222,7 @@ print '  | | |_| | |_| |  / / _ '
 print '  |_|\___/ \___/  /_/ (_)'
 print '##################################################################'
 print 'Script finished system setup complete :D';
+print defaultText
 # check to see if the user set it to logout to set the settings
 if configData['customSettingsCheckLogout'] == 'y':
 	os.system('killall Xorg')
