@@ -23,3 +23,5 @@ fi
 
 # Stop screen blanking issue on some systems
 xset s 0 0
+xset s off
+xset -dpms
