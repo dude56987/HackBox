@@ -406,7 +406,7 @@ if configData == {}:
 		printBlue('Do you want the bar on the bottom for newly created users(e.g. like windows)?')
 		configData['bottomBar'] = raw_input('[y/n]: ');
 	# logout check
-	if configData['customSettingsCheck'] == 'y':
+	if configData['customSettingsCheck'] == 'y' and (('--no-reset' in sys.argv) != True):
 		printBlue('Would you like to logout at the end of the script to enable your new settings?')
 		configData['customSettingsCheckLogout'] = raw_input('[y/n]: ');
 	else:
@@ -1232,16 +1232,15 @@ if ('--no-reset' in sys.argv) != True:
 	# check to see if the user set it to logout to set the settings
 	if configData['customSettingsCheckLogout'] == 'y':
 		os.system('killall Xorg')
-	else: # user didnt want to they may want to restart
-		# reboot check
-		if configData['rebootCheck'] == 'y':
-			countdown = 10
-			while countdown > 0:
-				print 'System will REBOOT in',countdown,'seconds!'
-				print 'Press Ctrl-C to Cancel Reboot!'
-				countdown -= 1;
-			print 'Rebooting the system NOW...'
-			os.system('reboot')
+# reboot check
+if configData['rebootCheck'] == 'y' and configData['customSettingsCheckLogout'] != 'y':
+	countdown = 10
+	while countdown > 0:
+		print 'System will REBOOT in',countdown,'seconds!'
+		print 'Press Ctrl-C to Cancel Reboot!'
+		countdown -= 1;
+	print 'Rebooting the system NOW...'
+	os.system('reboot')
 # exit the script
 raw_input('Press enter to end the script...')
 exit(); 

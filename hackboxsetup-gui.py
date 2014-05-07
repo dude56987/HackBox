@@ -116,8 +116,8 @@ totalSections=0;
 ########################################################################
 # make sure the program is being ran as root
 if os.geteuid() != 0:
-	print ('gksu python "'+re.sub(' ','\ ',str(os.path.abspath(__file__)))+'"')
-	os.system('gksu python "'+re.sub(' ','\ ',str(os.path.abspath(__file__)))+'"')
+	print ('gksu "python '+re.sub(' ','\ ',str(os.path.abspath(__file__)))+' '+(' '.join(sys.argv[1:]))+'"')
+	os.system('gksu "python '+re.sub(' ','\ ',str(os.path.abspath(__file__)))+' '+(' '.join(sys.argv[1:]))+'"')
 	exit()
 # set current directory to be same as this file
 os.chdir(currentDirectory())
@@ -169,7 +169,7 @@ if configData == {}:
 	else:
 		configData['bottomBar'] = askQuestion('12/20','Do you want the bar on the bottom for newly created users(e.g. like windows)?')
 	# check to see if the user would like to logout to refresh their settings
-	if configData['customSettingsCheck'] == 'y':
+	if configData['customSettingsCheck'] == 'y' and (('--no-reset' in sys.argv) != True):
 		configData['customSettingsCheckLogout'] = askQuestion('12.1/20','Would you like to logout at the end of the script to enable your new settings?')
 	else:
 		configData['customSettingsCheckLogout'] = 'n'
@@ -239,6 +239,7 @@ settingsScreen += 'Are the above settings correct?';
 check = askQuestion('FINAL CHECK 20/20',settingsScreen)
 # end all tk instances, close the window so it dont hang open while xterm is running
 rootWindow.destroy()
+print sys.argv
 if check == 'y' :
 	if os.path.exists('/usr/bin/xterm') == False:
 		os.system('gksu "apt-get install xterm --assume-yes"')
