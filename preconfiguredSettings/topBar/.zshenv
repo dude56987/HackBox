@@ -2,9 +2,14 @@
 alias ls='ls --color=always' # this will color the output of ls
 alias ll='ls -la | more -d' # This is shorthand to show hidden files and permissions
 alias lol="espeak 'ha ha ha ha ha'" # Sometimes its good to have a sense of humor
-alias gettowork="cd ~/HackBox/" # This is used by the dev of hackbox, remove it if you want
-alias pullhackboxsource="cd && git clone https://github.com/dude56987/HackBox.git && gettowork" # same as above
-alias console-setup='sudo dpkg-reconfigure console-setup' # this will reconfigure the console allowing you to change the size,font and some other stuff
+alias say="espeak" # Speak the following string of text
+# install some helpfull tools for working on a console only system
+alias installConsoleTools='sudo apt-fast install elinks links2 pianobar fbi wicd-curses weechat weechat-plugins weechat-scripts finch' 
+# this will reconfigure the console allowing you to change the size,font and some other stuff
+alias console-setup='sudo dpkg-reconfigure console-setup'
+# The rest of the commands are for use by the dev of hackbox, remove them if you want
+alias gettowork="cd ~/HackBox/"
+alias pullhackboxsource="cd && git clone https://github.com/dude56987/HackBox.git && gettowork"
 # check if the user is in a fullscreen terminal
 if tty | grep tty1; then
 	# check where the byobu settings are being stored
