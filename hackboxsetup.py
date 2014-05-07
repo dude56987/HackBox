@@ -1223,19 +1223,25 @@ print '  |_|\___/ \___/  /_/ (_)'
 print '##################################################################'
 print 'Script finished system setup complete :D';
 print defaultText
-# check to see if the user set it to logout to set the settings
-if configData['customSettingsCheckLogout'] == 'y':
-	os.system('killall Xorg')
-else: # user didnt want to they may want to restart
-	# reboot check
-	if configData['rebootCheck'] == 'y':
-		countdown = 10
-		while countdown > 0:
-			print 'System will REBOOT in',countdown,'seconds!'
-			print 'Press Ctrl-C to Cancel Reboot!'
-			countdown -= 1;
-		print 'Rebooting the system NOW...'
-		os.system('reboot')
+if os.path.exists('/etc/mdm/Init/Default'):
+	# clear the mdm configured startup of hackboxsetup
+	os.system('sed -i.bak "s/hackboxsetup\-gui\ \-\-no\-reset//g" /etc/mdm/Init/Default')
+	os.system('sed -i.bak "/^$/d" /etc/mdm/Init/Default')# clear blank lines
+	os.system('rm -fv /etc/mdm/Init/Default.bak')# remove backups from sed
+if ('--no-reset' in sys.argv) != True:
+	# check to see if the user set it to logout to set the settings
+	if configData['customSettingsCheckLogout'] == 'y':
+		os.system('killall Xorg')
+	else: # user didnt want to they may want to restart
+		# reboot check
+		if configData['rebootCheck'] == 'y':
+			countdown = 10
+			while countdown > 0:
+				print 'System will REBOOT in',countdown,'seconds!'
+				print 'Press Ctrl-C to Cancel Reboot!'
+				countdown -= 1;
+			print 'Rebooting the system NOW...'
+			os.system('reboot')
 # exit the script
 raw_input('Press enter to end the script...')
 exit(); 

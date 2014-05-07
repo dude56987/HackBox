@@ -243,7 +243,11 @@ if check == 'y' :
 	if os.path.exists('/usr/bin/xterm') == False:
 		os.system('gksu "apt-get install xterm --assume-yes"')
 	print 'Starting setup...';
-	os.system('xterm -maximized -T Hackbox\ Setup -e "python hackboxsetup.py --force-use-config"')
+	if '--no-reset' in sys.argv:
+		os.system('xterm -maximized -T Hackbox\ Setup -e "python hackboxsetup.py --force-use-config --no-reset"')
+	else:
+		os.system('xterm -maximized -T Hackbox\ Setup -e "python hackboxsetup.py --force-use-config"')
+
 	if '--runonce' in sys.argv:
 		os.system('rm -v /etc/xdg/autostart/hackboxRunonce.desktop')
 else:
