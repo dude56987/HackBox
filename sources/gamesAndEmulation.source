@@ -25,3 +25,7 @@ Installing NES Core for retroarch <::::>apt-fast install libretro-nestopia --ass
 Installing Nintendo DS Core for retroarch <::::>apt-fast install libretro-desmume --assume-yes >> Install_Log.txt 
 # Playstation Core for retroarch
 Installing Playstation Core for retroarch <::::>apt-fast install libretro-pcsx-rearmed --assume-yes >> Install_Log.txt 
+# Scummvm for old adventure games
+Installing Scummvm Core for retroarch <::::>apt-fast install libretro-scummvm --assume-yes >> Install_Log.txt 
+# dosbox for old dos apps
+Installing Dosbox<::::>apt-fast install dosbox --assume-yes >> Install_Log.txt 
