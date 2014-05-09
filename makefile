@@ -119,13 +119,14 @@ pullCustomSoftware:
 	git clone https://github.com/dude56987/HackBox-Update.git customSoftwarePackages/hackbox-update
 	git clone https://github.com/dude56987/ResetSettings.git customSoftwarePackages/resetsettings
 fix-permissions:
+	# run all commands with sudo or it will fail
 	# read allowed for all files and all users
-	chmod -R ugo+r *
+	sudo chmod -R ugo+r *
 	# remove write and execute for all files
-	chmod -R ugo-wx *
+	sudo chmod -R ugo-wx *
 	# user has write permissions on all files
-	chmod -R u+w *
+	sudo chmod -R u+w *
 	# execute and read directories allowed for everyone
-	find . -type d -exec chmod +rx {} \;
+	sudo find . -type d -exec chmod +rx {} \;
 #uninstall : uninstall.py
 #	python uninstall.py
