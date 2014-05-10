@@ -118,6 +118,7 @@ pullCustomSoftware:
 	git clone https://github.com/dude56987/Bitmessage-Update.git customSoftwarePackages/bitmessage-update
 	git clone https://github.com/dude56987/HackBox-Update.git customSoftwarePackages/hackbox-update
 	git clone https://github.com/dude56987/ResetSettings.git customSoftwarePackages/resetsettings
+	git clone https://github.com/dude56987/Help-Center.git customSoftwarePackages/help-center
 fix-permissions:
 	# run all commands with sudo or it will fail
 	# read allowed for all files and all users
