@@ -27,7 +27,7 @@ Super basic moving around
 #########
 The Mouse
 #########
-    This interface being setup for user friendlyness as far as terminal programs goes. Has the mouse enabled. Go ahead move it around and you should see it onscreen. Some programs on the terminal allow you to use the mouse to click though menus but for the most part it is used for copy and paste operations. This is done by highlighting what you want to copy by left clicking and draging and then right clicking to paste. This works anywhere in the terminal.
+    This interface being setup for user friendlyness as far as terminal programs go. Has the mouse enabled. Go ahead move it around and you should see it onscreen. Some programs on the terminal allow you to use the mouse to click though menus but for the most part it is used for copy and paste operations. This is done by highlighting what you want to copy by left clicking and draging and then middle clicking to paste. This works anywhere in the terminal. 
 
 ###############
 Terminal basics
@@ -61,7 +61,7 @@ Searching for and installing new software
 ##############################
 Other Programs for Other Tasks
 ##############################
-    This is a list of programs for various things you will find usefull on the terminal. Hopefully this saves you a lot of looking around for stuff.
+    This is a list of programs for various things you will find usefull on the terminal. Hopefully this saves you a lot of looking around for stuff. Not all of these are installed by default ,but they can be with the command "installConsoleTools".
 
 pdmenu ---------> Menu for launching apps with curses interface(Hit f3 or f4 enough and you will find it)
 mocp -----------> Music player with curses interface

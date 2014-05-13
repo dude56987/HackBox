@@ -4,7 +4,7 @@ alias ll='ls -la | more -d' # This is shorthand to show hidden files and permiss
 alias lol="espeak 'ha ha ha ha ha'" # Sometimes its good to have a sense of humor
 alias say="espeak" # Speak the following string of text
 # install some helpfull tools for working on a console only system
-alias installConsoleTools='sudo apt-fast install elinks links2 pianobar fbi wicd-curses weechat weechat-plugins weechat-scripts finch' 
+alias installConsoleTools='sudo apt-fast install vlock fbgrab elinks links2 pianobar fbi wicd-curses weechat weechat-plugins weechat-scripts finch vlock' 
 # this will reconfigure the console allowing you to change the size,font and some other stuff
 alias console-setup='sudo dpkg-reconfigure console-setup'
 # The rest of the commands are for use by the dev of hackbox, remove them if you want
@@ -32,10 +32,31 @@ if tty | grep tty1; then
 			echo "Please enter your password to install it...";
 			sudo apt-get install pdmenu --assume-yes;
 		fi
+		if [ ! -f /usr/bin/vlock ]; then
+			echo "vlock was not found!";
+			echo "Please enter your password to install it...";
+			sudo apt-get install vlock --assume-yes;
+		fi
+		if locate libgpm | grep libgpm; then
+			echo "gpm was not found!";
+			echo "Please enter your password to install it...";
+			sudo apt-get install gpm --assume-yes;
+		fi
+		# set the caps lock to work as the escape key
+		if more /etc/default/keyboard | grep 'XKBOPTIONS=\"\"'; then
+			sudo sed -i.bak 's/XKBOPTIONS=""/XKBOPTIONS="caps:escape"/g' /etc/default/keyboard
+			sudo rm -v /etc/default/keyboard.bak
+			sudo dpkg-reconfigure keyboard-configuration
+		fi
+
 		#set byobu backend to screen for following stuff to work
 		byobu-select-backend screen;
 		# asks user for input
-		echo "Would you like to view the help file? [y/n]: ";
+		clear
+		echo "=============================================================="
+		echo "It has been detected that this is your first time using a TTY!"
+		echo "=============================================================="
+		echo "Would you like to view the help file to get you started? [y/n]: ";
 		# read the user input into string variable
 		read userAnwserString; 
 		if [ "$userAnwserString" = "y" ]; then
