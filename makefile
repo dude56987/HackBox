@@ -120,6 +120,7 @@ pullCustomSoftware:
 	git clone https://github.com/dude56987/ResetSettings.git customSoftwarePackages/resetsettings
 	git clone https://github.com/dude56987/Help-Center.git customSoftwarePackages/help-center
 	git clone https://github.com/dude56987/OpenNIC-DNS.git customSoftwarePackages/opennic-dns
+	git clone https://github.com/dude56987/HostfileBlocklist.git customSoftwarePackages/hostfileblocklist
 fix-permissions:
 	# run all commands with sudo or it will fail
 	# read allowed for all files and all users
