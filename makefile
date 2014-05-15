@@ -132,5 +132,10 @@ fix-permissions:
 	sudo chmod -R u+w *
 	# execute and read directories allowed for everyone
 	sudo find . -type d -exec chmod +rx {} \;
+clean-preconfigured-settings:
+	# clean up firefox config settings
+	rm -vf preconfiguredSettings/*Bar/.mozilla/firefox/mwad0hks.default/bookmarkbackups/*.json
+	rm -vf preconfiguredSettings/*Bar/.mozilla/firefox/mwad0hks.default/*.log
+	rm -vf preconfiguredSettings/*Bar/.mozilla/firefox/Crash\ Reports/*
 #uninstall : uninstall.py
 #	python uninstall.py
