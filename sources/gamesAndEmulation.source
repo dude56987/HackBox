@@ -1,5 +1,6 @@
 # games and emulation source file
 Installing VirtualBox<::::>apt-fast install virtualbox-qt --assume-yes >> Install_Log.txt
+Installing VirtualBox(kernel support)<::::>apt-fast install virtualbox-dkms --assume-yes >> Install_Log.txt
 Installing TuxMath and Tux Typing<::::>apt-fast install tuxmath tuxtype --assume-yes >> Install_Log.txt
 Installing gtypist<::::>apt-fast install gtypist --assume-yes >> Install_Log.txt
 Installing pychess<::::>apt-fast install pychess --assume-yes >> Install_Log.txt
