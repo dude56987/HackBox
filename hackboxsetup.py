@@ -610,6 +610,12 @@ if configData['netflix'] == 'y':
 		#install a ppa for netflix-desktop
 		printGreen('Installing Netflix Desktop...')
 		os.system('apt-fast install netflix-desktop --assume-yes')
+if configData['basicSoftwareAndSecurity'] == 'y':
+	if os.path.exists('/usr/bin/hackbox-darknet-setup') != True:
+		#install software that sets up darknet access though privoxy  
+		printGreen('Installing Darknet...')
+		os.system('gdebi --non-interactive unsupportedPackages/hackbox-darknet')
+		os.system('hackbox-darknet-setup')
 ########################################################################
 if configData['updateCheck'] == 'y' :
 	print 'Installing updates...';
