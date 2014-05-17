@@ -172,6 +172,7 @@ user_pref("network.proxy.no_proxies_on", "localhost, 127.0.0.1, .local");
 user_pref("network.proxy.share_proxy_settings", true);
 user_pref("network.proxy.socks", "::1");
 user_pref("network.proxy.socks_port", 8118);
+user_pref("network.proxy.socks_remote_dns", true);
 user_pref("network.proxy.socks_version", 4);
 user_pref("network.proxy.ssl", "::1");
 user_pref("network.proxy.ssl_port", 8118);
