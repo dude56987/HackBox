@@ -121,6 +121,8 @@ Installing Marble<::::>apt-fast install marble --assume-yes >> Install_Log.txt
 #install pidgin#
 ################
 Installing Pidgin(Instant Messenger)<::::>apt-fast install pidgin --assume-yes >> Install_Log.txt
+# allow the firewall to passthrough for pidgin
+Configuring firewall for bonjour chat on lan<::::>ufw allow proto tcp from 192.168.2.0/24 to any port 5298
 ##########################
 # install pidgin plugins #
 ##########################
