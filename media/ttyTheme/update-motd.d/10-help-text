@@ -1,0 +1,7 @@
+#!/bin/sh
+echo
+echo "Welcome to HackBox"
+echo "Hackbox is based off of LinuxMint and Ubuntu"
+echo " * Hackbox Documentation: http://hacker-haven.com/index.php/Hackbox"
+echo " * Mint Documentation:    http://www.linuxmint.com"
+echo " * Ubuntu Documentation:  http://help.ubuntu.com"

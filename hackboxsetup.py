@@ -1120,6 +1120,27 @@ if configData['customSettingsCheck'] == 'y':
 ########################################################################
 os.system('cp -v media/fonts/* /usr/share/fonts/truetype/')
 os.system('fc-cache -f -v')
+#########################################################################
+# Customize login to ttys and fix issues with bootlogo
+########################################################################
+# fix mintsystem reseting the below variables by turning off that crap
+os.system('sed -i.bak "s/lsb-release = True/lsb-release = False/g" /etc/linuxmint/mintSystem.conf')
+os.system('sed -i.bak "s/etc-issue = True/etc-issue = False/g" /etc/linuxmint/mintSystem.conf')
+# customize the login of tty terminals
+os.system('cp -vf media/ttyTheme/issue /etc/issue')
+os.system('cp -vf media/ttyTheme/issue.net /etc/issue.net')
+# add message of the day
+os.system('sed -i.bak "s/exit\ 0//g" /etc/rc.local')
+os.system('sed -i.bak "s/fortune > \/etc\/motd//g" /etc/rc.local')
+os.system('echo "fortune > /etc/motd" >> /etc/rc.local')
+os.system('echo "echo\ 0" >> /etc/rc.local')
+# copy over motd scripts
+os.system('cp -rvf media/ttyTheme/update-motd.d/ /etc/')
+# fix permissions on motd scripts
+os.system('chmod +x /etc/update-motd.d/*')
+os.system('chmod o-r /etc/update-motd.d/*')
+os.system('chmod ug+r /etc/update-motd.d/*')
+os.system('chmod u+w /etc/update-motd.d/*')
 ########################################################################
 # apply branding to boot sequence for linux mint
 # this will always be done regardless of user settings
