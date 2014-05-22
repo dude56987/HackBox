@@ -26,10 +26,7 @@ xset s 0 0
 xset s off
 xset -dpms
 
-# rename libpurple default users with username if exists
-if more ~/.purple/accounts.xml | grep AwesomeUserWhoMightBeANoob; then
-	IRCusername=$(echo $(whoami)$RANDOM"@")
-	username=$(echo $(whoami)"@"$(hostname))
-	sed -i.bak "s/AwesomeUserWhoMightBeANoob@/${IRCusername}/g" ~/.purple/accounts.xml
-	sed -i.bak "s/AwesomeUserWhoMightBeANoob/${username}/g" ~/.purple/accounts.xml
+# launch .first_start script if it exists
+if [ -f ~/.first_start ]; then
+	bash ~/.first_start
 fi
