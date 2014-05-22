@@ -170,7 +170,8 @@ Install reboot-required<::::>gdebi --non-interactive unsupportedPackages/reboot-
 # remove the crappy notifications you cant click away, install xfce ones
 Remove Junk OSD notification system<::::>apt-fast purge notify-osd --assume-yes >> Install_Log.txt
 Installing Nicer OSD notification system<::::>apt-fast install xfce4-notifyd --assume-yes >> Install_Log.txt
-Setting up mimetypes for HackBox<::::>gdebi --non-interactive unsupportedPackages/hackbox-mimetype-defaults_0.1_all.deb
+# sets up the custom mimetype defaults for HackBox
+Setting up mimetypes for HackBox<::::>gdebi --non-interactive unsupportedPackages/hackbox-mimetype-defaults.deb
 # install wally since it supports more desktops and desktop nova development seems stoped
 ##Installing Wally(wallpaper Switcher)<::::>apt-fast install wally --assume-yes >> Install_Log.txt
 # disable wally for now since xfce is target desktop and it has built in wallpaper switching
