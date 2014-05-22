@@ -52,7 +52,6 @@ Removing fileroller<::::>apt-fast purge file-roller --assume-yes >> Install_Log.
 Installing Xarchiver (Compressed file manager)<::::>apt-fast install xarchiver --assume-yes >> Install_Log.txt
 # setup thunar archive intergration
 Installing archive support for thunar context actions<::::>apt-fast install thunar-archive-plugin --assume-yes >> Install_Log.txt
-Installing DoThis Shortcuts<::::>gdebi --non-interactive unsupportedPackages/doThis_1.2_all.deb
 # Add a utility that allows users to upgrade their distro by only updating the package sources
 Installing distro-upgrade tool<::::>gdebi --non-interactive unsupportedPackages/distro-upgrade.deb
 Installing pybitmessage-stable-updater(Encrypted Messaging System)<::::>gdebi --non-interactive unsupportedPackages/pybitmessage-stable-updater.deb
@@ -165,6 +164,8 @@ Installing weather plugin (xfce4 panel plugin)<::::>apt-fast install xfce4-weath
 ########################################################################
 # DESKTOP MODIFICATION UTILITIES : other
 ########################################################################
+# Dothis shortcuts to give the desktop functionality it should have already
+Installing DoThis Shortcuts<::::>gdebi --non-interactive unsupportedPackages/doThis.deb
 # reboot notifyer
 Install reboot-required<::::>gdebi --non-interactive unsupportedPackages/reboot-required.deb
 # remove the crappy notifications you cant click away, install xfce ones
