@@ -123,6 +123,7 @@ pullCustomSoftware:
 	git clone https://github.com/dude56987/HostfileBlocklist.git customSoftwarePackages/hostfileblocklist
 	git clone https://github.com/dude56987/DNS-Precache.git customSoftwarePackages/dns-precache
 	git clone https://github.com/dude56987/HackBox-Darknet.git customSoftwarePackages/hackbox-darknet
+	git clone https://github.com/dude56987/HackBox-Mimetype-Defaults.git customSoftwarePackages/hackbox-mimetype-defaults
 fix-permissions:
 	# run all commands with sudo or it will fail
 	# read allowed for all files and all users
