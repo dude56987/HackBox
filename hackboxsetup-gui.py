@@ -160,7 +160,9 @@ if configData == {}:
 	# runs unattended upgrade and saves session with all open programs which
 	# will make any open programs run on next login at startup
 	# Check before proceeding with section if user wants it configured
-	configData['autoUpdates'] = askQuestion('10/20','Would you like to install and configure automatic updates?')
+	##configData['autoUpdates'] = askQuestion('10/20','Would you like to install and configure automatic updates?')
+	# dont ask the user just install automatic updates 
+	configData['autoUpdates'] = 'y' 
 	# custom desktop setup
 	configData['customSettingsCheck'] = askQuestion('11/20',('Do you want to configure the custom desktop setup for the current user?\n\n'+'This is recommended if you are on a fresh install, '+'HOWEVER'+' it is not recommended if you have transfered your settings from a old system or have already configured things in a way you like.'))
 	if configData['customSettingsCheck'] == 'y':

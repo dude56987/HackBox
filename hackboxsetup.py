@@ -386,12 +386,14 @@ if configData == {}:
 	# runs unattended upgrade and saves session with all open programs which
 	# will make any open programs run on next login at startup
 	# Check before proceeding with section if user wants it configured
-	print banner
-	printBlue('Would you like to install and configure automatic updates?');
-	configData['autoUpdates'] = raw_input('[y/n]: ');
-	if configData['autoUpdates'] == 'y':
-		totalSections += 1;
-	clear();
+	##print banner
+	##printBlue('Would you like to install and configure automatic updates?');
+	##configData['autoUpdates'] = raw_input('[y/n]: ');
+	##if configData['autoUpdates'] == 'y':
+	##	totalSections += 1;
+	##clear();
+	# Always install automatic updates
+	configData['autoUpdates'] = 'y'
 	# custom desktop setup
 	print banner
 	printBlue('Do you want to configure the custom desktop setup for the current user?')
