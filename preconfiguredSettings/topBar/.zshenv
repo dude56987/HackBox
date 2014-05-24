@@ -1,11 +1,11 @@
 # Insert all user alias commands below this line and before the if statements
 alias ls='ls --color=always' # this will color the output of ls
 alias ll='ls -la | more -d' # This is shorthand to show hidden files and permissions
-alias less='less -R' # Make the less command handle escape sequenced colors
+alias less='less -R' # Show colors when escape sequences for them are used 
 alias lol="espeak 'ha ha ha ha ha'" # Sometimes its good to have a sense of humor
 alias say="espeak" # Speak the following string of text
 # install some helpfull tools for working on a console only system
-alias installConsoleTools='sudo apt-fast install vlock fbgrab elinks links2 pianobar fbi wicd-curses weechat weechat-plugins weechat-scripts finch vlock' 
+alias installConsoleTools='sudo apt-fast install fbgrab elinks links2 pianobar fbi wicd-curses weechat weechat-plugins weechat-scripts finch vlock' 
 # this will reconfigure the console allowing you to change the size,font and some other stuff
 alias console-setup='sudo dpkg-reconfigure console-setup'
 # The rest of the commands are for use by the dev of hackbox, remove them if you want
