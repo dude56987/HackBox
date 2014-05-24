@@ -534,6 +534,12 @@ print ' | |_| |  / / _ '
 print '  \___/  /_/ (_)'
 print '##################################################################'
 ########################################################################
+# run some commands that will keeps the screen from blanking during install
+# these will fail in the terminal but that wont stop the program
+os.system('xset s 0 0')
+os.system('xset s off')
+os.system('xset -dpms')
+########################################################################
 print 'Checking for updates...';
 # add update command to computer regardless of user decisions
 os.system('gdebi --no unsupportedPackages/update.deb')
