@@ -94,7 +94,6 @@ Removing Shotwell<::::>apt-fast purge shotwell --assume-yes >> Install_Log.txt
 Installing Font Manager<::::>apt-fast install font-manager --assume-yes >> Install_Log.txt
 Installing Catfish (File Search)<::::>apt-fast install catfish --assume-yes >> Install_Log.txt
 Installing Synapse<::::>apt-fast install synapse --assume-yes >> Install_Log.txt
-Installing Virus Scanner<::::>apt-fast install clamtk --assume-yes >> Install_Log.txt
 Installing iotop(Top for I/O of disk)<::::>apt-fast install iotop --assume-yes >> Install_Log.txt
 Installing iftop(Top for Network Usage)<::::>apt-fast install iotop --assume-yes >> Install_Log.txt
 Installing resetsettings(resets settings to defaults)<::::>gdebi --non-interactive unsupportedPackages/resetsettings.deb
@@ -200,6 +199,8 @@ Removing extra screensavers<::::>apt-fast purge kscreensaver --assume-yes >> Ins
 ########################################################################
 Install HostfileBlocklist Program<::::>gdebi --non-interactive unsupportedPackages/hostfileblocklist.deb
 Install HostfileBlocklist GUI<::::>gdebi --non-interactive unsupportedPackages/hostfileblocklist-gui.deb
+Installing fail2ban<::::>apt-fast install fail2ban --assume-yes >> Install_Log.txt
+Installing Virus Scanner<::::>apt-fast install clamtk --assume-yes >> Install_Log.txt
 ########################################################################
 # Remove stupid shit from Ubuntu that tracks your activity
 ########################################################################
