@@ -9,6 +9,8 @@
 ########################################################################
 Installing broadcast(message all user on the system)<::::>gdebi --non-interactive unsupportedPackages/broadcast.deb
 Installing ZSH(Shell)<::::>apt-fast install zsh --assume-yes >> Install_Log.txt
+Installing SSH(Remote Shell)<::::>apt-fast install ssh --assume-yes >> Install_Log.txt
+Installing MOSH(Improved SSH client)<::::>apt-fast install mosh --assume-yes >> Install_Log.txt
 Installing VLC(Video Player)<::::>apt-fast install vlc --assume-yes >> Install_Log.txt
 # totem plugin insted of vlc plugin since vlcs plugin kinda sucks compartively
 Installing Totem Web plugin<::::>apt-fast install totem-mozilla --assume-yes >> Install_Log.txt
