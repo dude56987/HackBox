@@ -19,6 +19,8 @@ Installing john (brute force password cracker)<::::>apt-fast install john --assu
 Installing htop (CLI Task Manager)<::::>apt-fast install htop --assume-yes >> Install_Log.txt
 Installing iotop (CLI Disk I/O Manager)<::::>apt-fast install iotop --assume-yes >> Install_Log.txt
 Installing psensor (CLI system stress tool)<::::>apt-fast install psensor --assume-yes >> Install_Log.txt
+# log file viewer
+Installing Log File Viewer (GUI Log file viewer)<::::>apt-fast install gnome-system-log --assume-yes >> Install_Log.txt
 # data gathering tools
 Installing FSlint<::::>apt-fast install fslint --assume-yes >> Install_Log.txt
 Installing Hardware Lister<::::>apt-fast install lshw-gtk --assume-yes >> Install_Log.txt
