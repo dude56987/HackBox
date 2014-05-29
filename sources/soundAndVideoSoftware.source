@@ -3,7 +3,10 @@ Installing Audacity<::::>apt-fast install audacity --assume-yes >> Install_Log.t
 # Installing Desktop Recorder<::::>apt-fast install gtk-recordmydesktop --assume-yes >> Install_Log.txt
 Installing DeVeDe<::::>apt-fast install devede --assume-yes >> Install_Log.txt
 Installing gPodder Podcast Client<::::>apt-fast install gpodder --assume-yes >> Install_Log.txt
+# openshot and plugins for openshot
 Installing openshot (Video Editor)<::::>apt-fast install openshot --assume-yes >> Install_Log.txt
+Installing openshot (Additonal Plugins)<::::>apt-fast install frei0r-plugins --assume-yes >> Install_Log.txt
+#####
 Installing Sound Converter<::::>apt-fast install soundconverter --assume-yes >> Install_Log.txt
 Installing Ogmrip (DVD Ripper)<::::>apt-fast install ogmrip --assume-yes >> Install_Log.txt
 # winff does launch bash scripts it creates but does create them correctly
