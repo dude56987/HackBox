@@ -870,8 +870,10 @@ if configData['basicSoftwareAndSecurity'] == 'y' :
 	####################################################################
 	# set zsh to the default shell for new users
 	os.system('useradd -D -s $(which zsh)')
-	for user in os.listdir('/home'):# set zsh to default shell for current users
-		os.system(('chsh -s $(which zsh) '+user))
+	# set zsh to default shell for current users
+	os.system('sed -i.bak "s/bash/zsh/g" /etc/passwd')
+	# remove backup file created by sed above
+	os.system('rm -fv /etc/passwd.bak')
 	####################################################################
 	# install preload if pc has more than 4 gigs of ram, this will attempt
 	# to preload libs the user usses often to ram reducing startup time of
