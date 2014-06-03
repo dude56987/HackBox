@@ -524,7 +524,9 @@ if configData == {}:
 ########################################################################
 # Start Installing everything
 ########################################################################
-os.system('echo "Starting Install Process..." > Install_Log.txt');
+# create the install log
+os.system('echo "Starting Install Process..." >> Install_Log.txt');
+os.system('echo "Started on ${date}" >> Install_Log.txt');
 print '##################################################################'
 print '   ___    _   __'
 print '  / _ \  (_) / /'

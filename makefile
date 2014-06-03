@@ -134,10 +134,23 @@ fix-permissions:
 	sudo chmod -R u+w *
 	# execute and read directories allowed for everyone
 	sudo find . -type d -exec chmod +rx {} \;
+clean-logs:
+	sudo rm -vf /opt/hackbox/Install_Log.txt
+	sudo rm -vf Install_Log.txt
 clean-preconfigured-settings:
 	# clean up firefox config settings
 	rm -vf preconfiguredSettings/*Bar/.mozilla/firefox/mwad0hks.default/bookmarkbackups/*.json
 	rm -vf preconfiguredSettings/*Bar/.mozilla/firefox/mwad0hks.default/*.log
 	rm -vf preconfiguredSettings/*Bar/.mozilla/firefox/Crash\ Reports/*
+test: 
+	# Strange syntax is strange because you need a return value of 0 
+	# aka no errors for each line in a makefile or it will fail completely
+	# and stop execution on the spot. Grep returns a error if no occurences
+	# of the search are found. So it must be done this way to keep the
+	# searches going.
+	bash -c "more /opt/hackbox/Install_Log.txt | grep Error;exit 0"
+	bash -c "more /opt/hackbox/Install_Log.txt | grep Err;exit 0"
+	bash -c "more /opt/hackbox/Install_Log.txt | grep not\ found;exit 0"
+ 
 #uninstall : uninstall.py
 #	python uninstall.py
