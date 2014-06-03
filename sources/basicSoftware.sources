@@ -98,6 +98,7 @@ Installing Catfish (File Search)<::::>apt-fast install catfish --assume-yes >> I
 Installing Synapse<::::>apt-fast install synapse --assume-yes >> Install_Log.txt
 Installing iotop(Top for I/O of disk)<::::>apt-fast install iotop --assume-yes >> Install_Log.txt
 Installing iftop(Top for Network Usage)<::::>apt-fast install iotop --assume-yes >> Install_Log.txt
+Installing fdupes(Remove duplicate files)<::::>apt-fast install fdupes --assume-yes >> Install_Log.txt
 Installing resetsettings(resets settings to defaults)<::::>gdebi --non-interactive unsupportedPackages/resetsettings.deb
 ########################################################################
 # SECTION FOR INTERNET SOFTWARE #
