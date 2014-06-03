@@ -15,6 +15,7 @@ Installing Vinagre (Remote Desktop Viewer)<::::>apt-fast install vinagre --assum
 # most stuff I have tryed to setup for this section are really complicated so im not including much
 Installing samdump2 windows hash graber<::::>apt-fast install samdump2 --assume-yes >> Install_Log.txt
 Installing john (brute force password cracker)<::::>apt-fast install john --assume-yes >> Install_Log.txt
+Installing nmap (Port Scanner)<::::>apt-fast install nmap --assume-yes >> Install_Log.txt
 # monitoring tools
 Installing htop (CLI Task Manager)<::::>apt-fast install htop --assume-yes >> Install_Log.txt
 Installing iotop (CLI Disk I/O Manager)<::::>apt-fast install iotop --assume-yes >> Install_Log.txt
