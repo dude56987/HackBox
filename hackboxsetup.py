@@ -565,6 +565,12 @@ if os.path.exists('/usr/sbin/apt-fast') != True:
 	printGreen('Installing apt-fast to speed up install process...')
 	printGreen('Adding apt-fast PPA...')
 	os.system('add-apt-repository ppa:apt-fast/stable')
+	if os.path.exists('/usr/sbin/apt-fast') != True:
+		# if apt-fast repos are not up to date then install
+		# the local backup debs, apt-fast is really important
+		# for the performance of this installer
+		os.system('gdebi unsupportedPackages/apt-fast_32bit.deb')
+		os.system('gdebi unsupportedPackages/apt-fast_64bit.deb')
 if configData['soundAndVideoTools'] == 'y':
 	if os.path.exists('/usr/bin/simplescreenrecorder') != True:
 		#install a ppa for simple screen recorder
