@@ -1165,6 +1165,7 @@ os.system('chmod u+w /etc/update-motd.d/*')
 ########################################################################
 if os.path.exists('/lib/plymouth/themes/mint-logo/'): #edit linux mint boot themes
 	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/mint-logo/bootlogo.png')
+	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/mint-logo/logo.png')
 	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/mint-logo/shutlogo.png')
 	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/mint-logo/text.png')
 	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/no-logo/no_logo.png')
