@@ -52,9 +52,12 @@ build-deb:
 	cp -vf media/launchers/HackBoxSetup.desktop debian/usr/share/applications/
 	# copy over icons for the launchers
 	cp -vf media/hackboxLogo.png debian/usr/share/pixmaps/
-	# copy over the binary
-	cp -vf hackboxsetup.py ./debian/opt/hackbox/hackboxsetup.py
-	cp -vf hackboxsetup-gui.py ./debian/opt/hackbox/hackboxsetup-gui.py
+	# compile and copy over the binary files
+	pycompile *.py
+	cp -vf hackboxsetup.pyc ./debian/opt/hackbox/hackboxsetup.py
+	cp -vf hackboxsetup-gui.pyc ./debian/opt/hackbox/hackboxsetup-gui.py
+	# clean up those bytecode files
+	rm -vf *.pyc
 	# build the launchers link
 	echo "#! /bin/bash\npython /opt/hackbox/hackboxsetup.py" > ./debian/usr/bin/hackboxsetup
 	chmod +x ./debian/usr/bin/hackboxsetup
