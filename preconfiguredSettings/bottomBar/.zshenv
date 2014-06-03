@@ -11,6 +11,11 @@ alias console-setup='sudo dpkg-reconfigure console-setup'
 # The rest of the commands are for use by the dev of hackbox, remove them if you want
 alias gettowork="cd ~/HackBox/"
 alias pullhackboxsource="cd && git clone https://github.com/dude56987/HackBox.git && gettowork"
+# lulz, you need em sometimes
+if date | grep Apr\ \ 1; then
+	repeat 10 bash -c "echo 'killallhumans';sleep 1"
+	echo 'erm.. uh.. Happy Birthday!'
+fi
 # check if the user is in a fullscreen terminal
 if tty | grep tty1; then
 	# check where the byobu settings are being stored
