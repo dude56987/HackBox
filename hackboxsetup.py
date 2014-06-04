@@ -788,8 +788,8 @@ if configData['basicSoftwareAndSecurity'] == 'y' :
 	os.system('fc-cache -f -v')
 	# Install logos and media
 	makeDir('/usr/share/pixmaps/hackbox')
-	COPY(os.path.join(currentDirectory(),'media/wallpaperBranded.png'),'/usr/share/pixmaps/hackbox')
-	COPY(os.path.join(currentDirectory(),'media/wallpaper.png'),'/usr/share/pixmaps/hackbox')
+	makeDir('/usr/share/pixmaps/wallpapers')
+	os.system('cp -rv media/wallpapers/. /usr/share/pixmaps/wallpapers/')
 	COPY(os.path.join(currentDirectory(),'media/hackboxLogo.png'),'/usr/share/pixmaps/hackbox')
 	COPY(os.path.join(currentDirectory(),'media/hackboxLogoText.png'),'/usr/share/pixmaps/hackbox')
 	
@@ -804,37 +804,7 @@ if configData['basicSoftwareAndSecurity'] == 'y' :
 	os.system('sudo apt-fast purge nautilus --assume-yes')
 	os.system('link /usr/bin/thunar /usr/bin/nautilus')
 		
-##	####################################################################
-##	# Removes guest account from login screen (If using lightDM)
-##	# TODO: This code needs optimized somehow because it seems to
-##	#  complicated in its current form
-##	print 'Editing the lightdm config file to remove the guest account...'
-##	programFile = open('/etc/lightdm/lightdm.conf','r')
-##	temp = ''
-##	switch = True
-##	print 'Reading Config file...'
-##	# scan the config file to make shure the changes prepared have
-##	# not already been applyed
-##	for i in programFile:
-##		if i == 'allow-guest=false\n':
-##			switch = False
-##	# close file to reset and prepare for rewrite
-##	programFile.close()
-##	if switch == True:
-##		programFile = open('/etc/lightdm/lightdm.conf','r')
-##		for i in programFile:
-##			temp += i;
-##		temp += 'allow-guest=false\n'
-##		programFile.close()
-##		programFile = open('/etc/lightdm/lightdm.conf','w')
-##		print 'Editing Config file...'
-##		programFile.write(temp)
-##		programFile.close()
-##		print 'Done working on config file!'
-##	else:
-##		print 'Config File already Correct!'
-##		print 'Moving along...'
-##	################################################################
+	################################################################
 	# Setting Up Network Security
 	####################################################################
 	# install gui for managing the firewall and configure it to be turned on at boot 
@@ -847,13 +817,6 @@ if configData['basicSoftwareAndSecurity'] == 'y' :
 	####################################################################
 	prefix = '.'.join(socket.gethostbyname(socket.gethostname()+'.local').split('.')[:3])
 	os.system('sudo ufw allow from '+prefix+'.0/24 to any port 9119')
-	####################################################################
-	# This is now a .deb package that is installed
-	#~ # compile a hostfile from multuple online hostfile projects in order
-	#~ # to set up a default system level ad/malware blocker for the user
-	#~ os.system('python '+os.path.join(currentDirectory(),'customSoftwarePackages','hostfileBlocklist','compileHostfile.py'))
-	#~ # change the working directory back to the one holding this file
-	#~ os.chdir(currentDirectory())
 	####################################################################
 	# copy over the preconfigured settings for new users, extract from correct zipfile
 	print 'Running editing default user settings in /etc/skel...'

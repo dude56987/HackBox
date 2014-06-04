@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <channel name="xfce4-desktop" version="1.0">
   <property name="backdrop" type="empty">
     <property name="screen0" type="empty">
       <property name="monitor0" type="empty">
-        <property name="image-path" type="string" value="/usr/share/pixmaps/hackbox/wallpaperBranded.png"/>
-        <property name="last-image" type="string" value="/usr/share/pixmaps/hackbox/wallpaperBranded.png"/>
-        <property name="last-single-image" type="string" value="/usr/share/pixmaps/hackbox/wallpaperBranded.png"/>
+        <property name="image-path" type="string" value="/usr/share/pixmaps/wallpapers/hackboxWallpaper.png"/>
+        <property name="last-image" type="string" value="/usr/share/pixmaps/wallpapers/hackboxWallpaper.png"/>
+        <property name="last-single-image" type="string" value="/usr/share/pixmaps/wallpapers/hackboxWallpaper.png"/>
         <property name="brightness" type="int" value="0"/>
       </property>
     </property>
@@ -23,7 +24,7 @@
     <property name="font-size" type="double" value="8.000000"/>
     <property name="style" type="int" value="2"/>
   </property>
-   <property name="desktop-menu" type="empty">
-    <property name="show" type="bool" value="false"/>    
+  <property name="desktop-menu" type="empty">
+    <property name="show" type="bool" value="false"/>
   </property>
 </channel>
