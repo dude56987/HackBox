@@ -101,7 +101,7 @@
     <property name="plugin-4" type="string" value="showdesktop"/>
     <property name="plugin-7" type="string" value="clock">
       <property name="show-frame" type="bool" value="false"/>
-      <property name="digital-format" type="string" value="%r%n%D"/>
+      <property name="digital-format" type="string" value="%r%n%d/%m/%y"/>
     </property>
     <property name="plugin-8" type="string" value="launcher">
       <property name="items" type="array">
