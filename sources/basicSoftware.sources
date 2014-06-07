@@ -95,7 +95,7 @@ Removing Shotwell<::::>apt-fast purge shotwell --assume-yes >> Install_Log.txt
 ###################################
 Installing Font Manager<::::>apt-fast install font-manager --assume-yes >> Install_Log.txt
 Installing Catfish (File Search)<::::>apt-fast install catfish --assume-yes >> Install_Log.txt
-Installing Synapse<::::>apt-fast install synapse --assume-yes >> Install_Log.txt
+Installing Kupfer<::::>apt-fast install kupfer --assume-yes >> Install_Log.txt
 Installing iotop(Top for I/O of disk)<::::>apt-fast install iotop --assume-yes >> Install_Log.txt
 Installing iftop(Top for Network Usage)<::::>apt-fast install iotop --assume-yes >> Install_Log.txt
 Installing fdupes(Remove duplicate files)<::::>apt-fast install fdupes --assume-yes >> Install_Log.txt
