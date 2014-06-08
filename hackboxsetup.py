@@ -287,6 +287,9 @@ clear();
 os.chdir(currentDirectory())
 # check for config file
 configData = {}
+# things that are installed by default
+configData['basicSoftwareAndSecurity'] = 'y'
+configData['autoUpdates'] = 'y'
 if os.path.exists('hackBox.conf'):
 	if (('--force-use-config' in sys.argv) == False):
 		printBlue('Config file detected! Would you like to use it?')
@@ -321,13 +324,6 @@ if configData == {}:
 	printBlue('Do you want to upgrade all current software before install?(This is highly recommended)')
 	configData['updateCheck'] = raw_input('[y/n]: ');
 	if configData['updateCheck'] == 'y':
-		totalSections += 1;
-	clear();
-	# Section for basic software / security needs
-	print banner
-	printBlue('Would you like to install Basic and Security Software?');
-	configData['basicSoftwareAndSecurity'] = raw_input('[y/n]: ');
-	if configData['basicSoftwareAndSecurity'] == 'y':
 		totalSections += 1;
 	clear();
 	# system tools section
@@ -383,17 +379,6 @@ if configData == {}:
 	else:
 		configData['steamGames'] = 'n'
 	clear();
-	# runs unattended upgrade and saves session with all open programs which
-	# will make any open programs run on next login at startup
-	# Check before proceeding with section if user wants it configured
-	##print banner
-	##printBlue('Would you like to install and configure automatic updates?');
-	##configData['autoUpdates'] = raw_input('[y/n]: ');
-	##if configData['autoUpdates'] == 'y':
-	##	totalSections += 1;
-	##clear();
-	# Always install automatic updates
-	configData['autoUpdates'] = 'y'
 	# custom desktop setup
 	print banner
 	printBlue('Do you want to configure the custom desktop setup for the current user?')
@@ -542,9 +527,14 @@ os.system('xset s 0 0')
 os.system('xset s off')
 os.system('xset -dpms')
 ########################################################################
-print 'Checking for updates...';
-# add update command to computer regardless of user decisions
-os.system('gdebi --no unsupportedPackages/update.deb')
+if configData['autoUpdates'] == 'y':
+	print 'Checking for installing automated updates...';
+	# remove other update programs from annoying the user
+	os.system('apt-fast purge mintupdate --assume-yes')
+	os.system('apt-fast purge update-manager --assume-yes')
+	os.system('apt-fast purge update-notifier --assume-yes')
+	# add update command to computer regardless of user decisions
+	os.system('gdebi --no unsupportedPackages/update.deb')
 ########################################################################
 # install things that require user interaction to proceed first
 ########################################################################
@@ -703,6 +693,9 @@ printBlue( '##################################################################')
 #~ else:
 	#~ print 'Skipping Section...';
 # Section for basic software / security needs
+#  basic and security tools are installed by default now
+#  this must remain a variable for later refactoring of the code
+configData['basicSoftwareAndSecurity'] = 'y'
 if configData['basicSoftwareAndSecurity'] == 'y' :
 	########################################################################
 	try:# check if less than one gig of memory, if so install fluxbox
@@ -1049,21 +1042,6 @@ print '  \__, | | | |   / /  '
 print '    / /| |_| |  / / _ '
 print '   /_/  \___/  /_/ (_)'
 print '##################################################################'
-# runs unattended upgrade and saves session with all open programs which
-# will make any open programs run on next login at startup
-# Check before procedeing with section if user wants it configured
-if configData['autoUpdates'] == 'y' :
-	################################################################
-	# remove other update programs from annoying the user
-	os.system('apt-fast purge mintupdate --assume-yes')
-	os.system('apt-fast purge update-manager --assume-yes')
-	os.system('apt-fast purge update-notifier --assume-yes')
-
-##	print 'Installing unattended upgrades...';
-##	os.system('apt-get install unattended-upgrades --assume-yes >> Install_Log.txt');
-##	print 'Finished setting up unattended upgrades';
-else:
-	print 'Skipping section...';
 ########################################################################
 # section for applying custom desktop config files
 ########################################################################
@@ -1088,14 +1066,6 @@ if configData['customSettingsCheck'] == 'y':
 	#~ COPY(os.path.join('media','releaseFiles','lsb-release'),os.path.join('/etc','lsb-release'))
 	# copy the mdm theme over 
 	#~ try:
-########################################################################
-# check if user wants to install the affilate addon
-########################################################################
-#~ if configData['affilateCheck'] == 'y':
-	#~ # install firefox affilate addon for all users
-	#~ if os.path.exists('/usr/bin/firefox'):# if firefox is installed
-		#~ if os.path.exists('/usr/bin/firefox-customizer'):# if firefox-customizer is installed
-			#~ os.system('firefox-customizer -i unsupportedPackages/hackboxAffilatePlugin.xpi')
 ########################################################################
 # install custom fonts for all users on system
 ########################################################################
