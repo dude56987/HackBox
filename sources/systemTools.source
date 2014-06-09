@@ -1,30 +1,47 @@
 # System Tools Source file
 # backup tool #
 # luckybackup is way harder to use than backintime so its getting replaced
-#Installing LuckyBackup (Backup Utility)<::::>apt-fast install luckybackup --assume-yes >> Install_Log.txt
-Installing Back In Time (Backup Utility)<::::>apt-fast install backintime-gnome --assume-yes >> Install_Log.txt
+#catagory<:>message<:>Installing LuckyBackup (Backup Utility)
+catagory<:>package<:>luckybackup
+catagory<:>message<:>Installing Back In Time (Backup Utility)
+catagory<:>package<:>backintime-gnome
 # the below is dead, keeping for a bit in case it is revived, it eases managing grub
-#Installing Startup Manager<::::>apt-fast install startupmanager --assume-yes >> Install_Log.txt
+#catagory<:>message<:>Installing Startup Manager
+catagory<:>package<:>startupmanager
 # below tool is for cleanup of crap on the pc over time
-Installing Bleachbit (Clean up disk and write over old data)<::::>apt-fast install bleachbit --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing Bleachbit (Clean up disk and write over old data)
+catagory<:>package<:>bleachbit
 # below is disk recovery tool
-Installing Testdisk(Disk Recovery Tool)<::::>apt-fast install testdisk --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing Testdisk(Disk Recovery Tool)
+catagory<:>package<:>testdisk
 # remote desktop tool
-Installing Vinagre (Remote Desktop Viewer)<::::>apt-fast install vinagre --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing Vinagre (Remote Desktop Viewer)
+catagory<:>package<:>vinagre
 # super security tools for system security testing adminstration
 # most stuff I have tryed to setup for this section are really complicated so im not including much
-Installing samdump2 windows hash graber<::::>apt-fast install samdump2 --assume-yes >> Install_Log.txt
-Installing john (brute force password cracker)<::::>apt-fast install john --assume-yes >> Install_Log.txt
-Installing nmap (Port Scanner)<::::>apt-fast install nmap --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing samdump2 windows hash graber
+catagory<:>package<:>samdump2
+catagory<:>message<:>Installing john (brute force password cracker)
+catagory<:>package<:>john
+catagory<:>message<:>Installing nmap (Port Scanner)
+catagory<:>package<:>nmap
 # monitoring tools
-Installing htop (CLI Task Manager)<::::>apt-fast install htop --assume-yes >> Install_Log.txt
-Installing iotop (CLI Disk I/O Manager)<::::>apt-fast install iotop --assume-yes >> Install_Log.txt
-Installing psensor (CLI system stress tool)<::::>apt-fast install psensor --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing htop (CLI Task Manager)
+catagory<:>package<:>htop
+catagory<:>message<:>Installing iotop (CLI Disk I/O Manager)
+catagory<:>package<:>iotop
+catagory<:>message<:>Installing psensor (CLI system stress tool)
+catagory<:>package<:>psensor
 # log file viewer
-Installing Log File Viewer (GUI Log file viewer)<::::>apt-fast install gnome-system-log --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing Log File Viewer (GUI Log file viewer)
+catagory<:>package<:>gnome-system-log
 # data gathering tools
-Installing FSlint<::::>apt-fast install fslint --assume-yes >> Install_Log.txt
-Installing Hardware Lister<::::>apt-fast install lshw-gtk --assume-yes >> Install_Log.txt
-Installing ncdu (CLI Disk Usage Analyzer)<::::>apt-fast install ncdu --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing FSlint
+catagory<:>package<:>fslint
+catagory<:>message<:>Installing Hardware Lister
+catagory<:>package<:>lshw-gtk
+catagory<:>message<:>Installing ncdu (CLI Disk Usage Analyzer)
+catagory<:>package<:>ncdu
 # stress test tools
-Installing stress (CLI system stress tool)<::::>apt-fast install stress --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing stress (CLI system stress tool)
+catagory<:>package<:>stress

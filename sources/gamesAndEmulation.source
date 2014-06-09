@@ -1,32 +1,53 @@
 # games and emulation source file
-Installing VirtualBox<::::>apt-fast install virtualbox-qt --assume-yes >> Install_Log.txt
-Installing VirtualBox(kernel support)<::::>apt-fast install virtualbox-dkms --assume-yes >> Install_Log.txt
-Installing TuxMath and Tux Typing<::::>apt-fast install tuxmath tuxtype --assume-yes >> Install_Log.txt
-Installing gtypist<::::>apt-fast install gtypist --assume-yes >> Install_Log.txt
-Installing pychess<::::>apt-fast install pychess --assume-yes >> Install_Log.txt
-Installing Gbrainy<::::>apt-fast install gbrainy --assume-yes >> Install_Log.txt
-Installing Pipe Walker<::::>apt-fast install pipewalker --assume-yes >> Install_Log.txt
-Installing nInvaders<::::>apt-fast install ninvaders --assume-yes >> Install_Log.txt
-Installing Bsd Games<::::>apt-fast install bsdgames --assume-yes >> Install_Log.txt
-Installing Py-Tac-Toe<::::>gdebi --non-interactive unsupportedPackages/py-tac-toe_1.0_all.deb >> Install_Log.txt
-Installing TuxPaint<::::>apt-fast install tuxpaint tuxpaint-stamps tuxpaint-plugins --assume-yes >> Install_Log.txt
-Installing qjoypad<::::>apt-fast install qjoypad --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing VirtualBox
+catagory<:>package<:>virtualbox-qt
+catagory<:>message<:>Installing VirtualBox(kernel support)
+catagory<:>package<:>virtualbox-dkms
+catagory<:>message<:>Installing TuxMath and Tux Typing
+catagory<:>package<:>tuxmath tuxtype
+catagory<:>message<:>Installing gtypist
+catagory<:>package<:>gtypist
+catagory<:>message<:>Installing pychess
+catagory<:>package<:>pychess
+catagory<:>message<:>Installing Gbrainy
+catagory<:>package<:>gbrainy
+catagory<:>message<:>Installing Pipe Walker
+catagory<:>package<:>pipewalker
+catagory<:>message<:>Installing nInvaders
+catagory<:>package<:>ninvaders
+catagory<:>message<:>Installing Bsd Games
+catagory<:>package<:>bsdgames
+catagory<:>message<:>Installing Py-Tac-Toe
+catagory<:>command<:>gdebi --non-interactive unsupportedPackages/py-tac-toe_1.0_all.deb >> Install_Log.txt
+catagory<:>message<:>Installing TuxPaint
+catagory<:>package<:>tuxpaint tuxpaint-stamps tuxpaint-plugins
+catagory<:>message<:>Installing qjoypad
+catagory<:>package<:>qjoypad
 # retro console emulation with retroarch yo
 # hackbox.py installs the ppa at the begining
-Installing Retroarch(Retro Console Emulator)<::::>apt-fast install retroarch --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing Retroarch(Retro Console Emulator)
+catagory<:>package<:>retroarch
 # Super Nintendo Core for retroarch
-Installing Super Nintendo Core for retroarch <::::>apt-fast install libretro-snes9x-next --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing Super Nintendo Core for retroarch 
+catagory<:>package<:>libretro-snes9x-next
 # GBACore for retroarch
-Installing GBACore for retroarch <::::>apt-fast install libretro-vba-next --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing GBACore for retroarch 
+catagory<:>package<:>libretro-vba-next
 #Sega multi system Core for retroarch
-Installing Sega multi system Core for retroarch <::::>apt-fast install libretro-picodrive --assume-yes >> Install_Log.txt 
+catagory<:>message<:>Installing Sega multi system Core for retroarch 
+catagory<:>package<:>libretro-picodrive
 # NES Core for retroarch
-Installing NES Core for retroarch <::::>apt-fast install libretro-nestopia --assume-yes >> Install_Log.txt 
+catagory<:>message<:>Installing NES Core for retroarch 
+catagory<:>package<:>libretro-nestopia
 # Nintendo DS Core for retroarch
-Installing Nintendo DS Core for retroarch <::::>apt-fast install libretro-desmume --assume-yes >> Install_Log.txt 
+catagory<:>message<:>Installing Nintendo DS Core for retroarch 
+catagory<:>package<:>libretro-desmume
 # Playstation Core for retroarch
-Installing Playstation Core for retroarch <::::>apt-fast install libretro-pcsx-rearmed --assume-yes >> Install_Log.txt 
+catagory<:>message<:>Installing Playstation Core for retroarch 
+catagory<:>package<:>libretro-pcsx-rearmed
 # Scummvm for old adventure games
-Installing Scummvm Core for retroarch <::::>apt-fast install libretro-scummvm --assume-yes >> Install_Log.txt 
+catagory<:>message<:>Installing Scummvm Core for retroarch 
+catagory<:>package<:>libretro-scummvm
 # dosbox for old dos apps
-Installing Dosbox<::::>apt-fast install dosbox --assume-yes >> Install_Log.txt 
+catagory<:>message<:>Installing Dosbox
+catagory<:>package<:>dosbox

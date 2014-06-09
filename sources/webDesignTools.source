@@ -1,7 +1,13 @@
-Installing FileZilla<::::>apt-fast install filezilla --assume-yes >> Install_Log.txt
-Installing Chromium Web Browser<::::>apt-fast install chromium-browser --assume-yes >> Install_Log.txt
-Installing Links Text Web Browser<::::>apt-fast install links --assume-yes >> Install_Log.txt
-Installing Bluefish (Web IDE)<::::>apt-fast install bluefish --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing FileZilla
+catagory<:>package<:>filezilla
+catagory<:>message<:>Installing Chromium Web Browser
+catagory<:>package<:>chromium-browser
+catagory<:>message<:>Installing Links Text Web Browser
+catagory<:>package<:>links
+catagory<:>message<:>Installing Bluefish (Web IDE)
+catagory<:>package<:>bluefish
 # BROKEN NO LONGER IN THE REPOS
-# Installing firefox Web Developer addon<::::>apt-fast install firefox-webdeveloper --assume-yes >> Install_Log.txt
-Installing Screen Ruler<::::>apt-fast install screenruler --assume-yes >> Install_Log.txt
+# catagory<:>message<:>Installing firefox Web Developer addon
+#catagory<:>package<:>firefox-webdeveloper
+catagory<:>message<:>Installing Screen Ruler
+catagory<:>package<:>screenruler

@@ -1,14 +1,25 @@
 # Gimp and a lot of the plugins to improve the functionality for users
 ###################################
-Installing GIMP (Image Minipulation Tool)<::::>apt-fast install gimp --assume-yes >> Install_Log.txt
-Installing GIMP (Resynthesizer)<::::>apt-fast install gimp-resynthesizer --assume-yes >> Install_Log.txt
-Installing GIMP (Plugins)<::::>apt-fast install gimp-plugin-registry --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing GIMP (Image Minipulation Tool)
+catagory<:>package<:>gimp
+catagory<:>message<:>Installing GIMP (Resynthesizer)
+catagory<:>package<:>gimp-resynthesizer
+catagory<:>message<:>Installing GIMP (Plugins)
+catagory<:>package<:>gimp-plugin-registry
 ###################################
-Installing Blender (3D Design Tool)<::::>apt-fast install blender --assume-yes >> Install_Log.txt
-Installing Inkscape<::::>apt-fast install inkscape --assume-yes >> Install_Log.txt
-Installing MyPaint<::::>apt-fast install mypaint --assume-yes >> Install_Log.txt
-Installing Alchemy<::::>apt-fast install alchemy --assume-yes >> Install_Log.txt
-Installing Gpick(A color picker that also figures out color schemes)<::::>apt-fast install gpick --assume-yes >> Install_Log.txt
-Installing gcolor2(A simple color picker)<::::>apt-fast install gcolor2 --assume-yes >> Install_Log.txt
-Installing QtQr(QR code Generator + Reader)<::::>apt-fast install qtqr --assume-yes >> Install_Log.txt
-Installing Screen Ruler<::::>apt-fast install screenruler --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing Blender (3D Design Tool)
+catagory<:>package<:>blender
+catagory<:>message<:>Installing Inkscape
+catagory<:>package<:>inkscape
+catagory<:>message<:>Installing MyPaint
+catagory<:>package<:>mypaint
+catagory<:>message<:>Installing Alchemy
+catagory<:>package<:>alchemy
+catagory<:>message<:>Installing Gpick(A color picker that also figures out color schemes)
+catagory<:>package<:>gpick
+catagory<:>message<:>Installing gcolor2(A simple color picker)
+catagory<:>package<:>gcolor2
+catagory<:>message<:>Installing QtQr(QR code Generator + Reader)
+catagory<:>package<:>qtqr
+catagory<:>message<:>Installing Screen Ruler
+catagory<:>package<:>screenruler

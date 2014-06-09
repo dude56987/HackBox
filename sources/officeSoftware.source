@@ -1,8 +1,15 @@
 # office software sources file
-Installing Workrave(RSI Prevention tool)<::::>apt-fast install workrave --assume-yes >> Install_Log.txt
-Installing Hamster Time Tracker<::::>apt-fast install hamster-applet --assume-yes >> Install_Log.txt
-Installing Scribus<::::>apt-fast install scribus --assume-yes >> Install_Log.txt
-Installing FreeMind<::::>apt-fast install freemind --assume-yes >> Install_Log.txt
-Installing Planner<::::>apt-fast install planner --assume-yes >> Install_Log.txt
-Installing HomeBank<::::>apt-fast install homebank --assume-yes >> Install_Log.txt
-Installing Calibre(Book Management Software)<::::>apt-fast install calibre --assume-yes >> Install_Log.txt
+catagory<:>message<:>catagory<:>message<:>Installing Workrave(RSI Prevention tool)
+catagory<:>package<:>workrave
+catagory<:>message<:>catagory<:>message<:>Installing Hamster Time Tracker
+catagory<:>package<:>hamster-applet
+catagory<:>message<:>catagory<:>message<:>Installing Scribus
+catagory<:>package<:>scribus
+catagory<:>message<:>catagory<:>message<:>Installing FreeMind
+catagory<:>package<:>freemind
+catagory<:>message<:>catagory<:>message<:>Installing Planner
+catagory<:>package<:>planner
+catagory<:>message<:>catagory<:>message<:>Installing HomeBank
+catagory<:>package<:>homebank
+catagory<:>message<:>catagory<:>message<:>Installing Calibre(Book Management Software)
+catagory<:>package<:>calibre 

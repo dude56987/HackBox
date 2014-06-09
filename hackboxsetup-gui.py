@@ -138,7 +138,7 @@ if configData == {}:
 	# check if the user wants to upgrade before start
 	configData['updateCheck'] = askQuestion('Upgrade First? 2/20','Do you want to upgrade all current software before install?\n\n(This is highly recommended)');
 	# Section for basic software / security needs
-	configData['basicSoftwareAndSecurity'] = askQuestion('Basic & Security Software? 3/20','Would you like to install Basic and Security Software?');
+	configData['basicSoftwareAndSecurity'] = 'y'
 	# system tools section
 	configData['systemTools'] = askQuestion('System Tools? 4/20','Would you like to install System tools?')
 	# Section for office software

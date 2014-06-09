@@ -1,17 +1,32 @@
-Installing Bazaar (Version Control System)<::::>apt-fast install bzr-explorer --assume-yes >> Install_Log.txt
-Installing gedit plugins (turn text editor into IDE)<::::>apt-fast install gedit-plugins --assume-yes >> Install_Log.txt
-Installing Geany (General IDE)<::::>apt-fast install geany geany-plugins --assume-yes >> Install_Log.txt
-Installing Meld Diff Viewer<::::>apt-fast install meld --assume-yes >> Install_Log.txt
-Installing Lazarus (Pascal RAD IDE)<::::>apt-fast install lazarus --assume-yes >> Install_Log.txt
-Installing Devhelp (Documentation Reader)<::::>apt-fast install devhelp --assume-yes >> Install_Log.txt
-Installing txt2tags (Markup Language to convert to other markup languages)<::::>apt-fast install txt2tags --assume-yes >> Install_Log.txt
-Installing txt2regex (Command line program to build regular expressions)<::::>apt-fast install txt2regex --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing Bazaar (Version Control System)
+catagory<:>package<:>bzr-explorer
+catagory<:>message<:>Installing gedit plugins (turn text editor into IDE)
+catagory<:>package<:>gedit-plugins
+catagory<:>message<:>Installing Geany (General IDE)
+catagory<:>package<:>geany geany-plugins
+catagory<:>message<:>Installing Meld Diff Viewer
+catagory<:>package<:>meld
+catagory<:>message<:>Installing Lazarus (Pascal RAD IDE)
+catagory<:>package<:>lazarus
+catagory<:>message<:>Installing Devhelp (Documentation Reader)
+catagory<:>package<:>devhelp
+catagory<:>message<:>Installing txt2tags (Markup Language to convert to other markup languages)
+catagory<:>package<:>txt2tags
+catagory<:>message<:>Installing txt2regex (Command line program to build regular expressions)
+catagory<:>package<:>txt2regex
 #TODO: create a .desktop file for txt2regx so it appears in start menu
-Installing vim (Command line based text editor SUPERUSER TOOL)<::::>apt-fast install vim --assume-yes >> Install_Log.txt
-Installing devtodo (CLI todo list manager)<::::>apt-fast install devtodo --assume-yes >> Install_Log.txt
-Installing GIT (Version Control System)<::::>apt-fast install git --assume-yes >> Install_Log.txt
-Installing GitHub Backup(Backup User Repos on GitHub)<::::>apt-fast install github-backup --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing vim (Command line based text editor SUPERUSER TOOL)
+catagory<:>package<:>vim
+catagory<:>message<:>Installing devtodo (CLI todo list manager)
+catagory<:>package<:>devtodo
+catagory<:>message<:>Installing GIT (Version Control System)
+catagory<:>package<:>git
+catagory<:>message<:>Installing GitHub Backup(Backup User Repos on GitHub)
+catagory<:>package<:>github-backup
 # install unsupported packages
-Installing git-cleanup (CLI util to shrink git repos)<::::>gdebi --non-interactive unsupportedPackages/git-cleanup_1.0_all.deb >> Install_Log.txt
-Installing pyqt4-dev-tools (Qt for python)<::::>apt-fast install pyqt4-dev-tools --assume-yes >> Install_Log.txt
-Installing Alien (Convert between package formats)<::::>apt-fast install alien --assume-yes >> Install_Log.txt
+catagory<:>message<:>Installing git-cleanup (CLI util to shrink git repos)
+catagory<:>command<:>gdebi --non-interactive unsupportedPackages/git-cleanup_1.0_all.deb >> Install_Log.txt
+catagory<:>message<:>Installing pyqt4-dev-tools (Qt for python)
+catagory<:>package<:>pyqt4-dev-tools
+catagory<:>message<:>Installing Alien (Convert between package formats)
+catagory<:>package<:>alien

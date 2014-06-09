@@ -222,17 +222,42 @@ def installSourcesFile(fileNameOfFile):
 	# first the type of data, second the message to print, third the data
 	# itself, the data would depend on the data type described in the first
 	# space of the line
-	try:
-		fileObject = open(fileNameOfFile,'r')
-	except:
+	packageManager=False
+	if os.path.exists('/usr/bin/apt-get'):
+		packageManager = 'apt-get'
+	if os.path.exists('/usr/sbin/apt-fast'):
+		packageManager = 'apt-fast'
+	if packageManager == False:
+		return False
+	fileObject = loadFile(fileNameOfFile)
+	if fileObject == False:
 		print 'ERROR: Source file',fileNameOfFile,'does not exist!'
 		return False
+	else:
+		fileObject = fileObject.split('\n')
+	# go though each line of the file
 	for line in fileObject:
+		# all lines starting with # are comments	
 		if line[:1] != '#':
-			if line.find('<::::>') != -1:
-				tempInfo = line.split('<::::>')
-				printGreen(tempInfo[0]+'...')
-				os.system(tempInfo[1])
+			if line.find('<:>') != -1:
+				# example format of file
+				# subcatagory<:>type<:>data
+				# types are command, package, and message
+				# command will execute a bash command
+				# package requireds a extra component
+				# subcatagory<:>package<:>packageName
+				tempInfo = line.split('<:>')
+				if tempInfo[1] == 'message':
+					printGreen(tempInfo[2]+'...')
+				elif tempInfo[1] == 'command':
+					# execute command
+					print tempInfo[2]
+					os.system(tempInfo[2])
+				elif tempInfo[1] == 'package':
+					#/usr/share/doc/packagename is checked to see if the package has already been installed
+					# install package
+					if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
+						os.system((packageManager+' install '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
 	return True
 ########################################################################
 # Pre-run checks
@@ -301,7 +326,7 @@ if os.path.exists('hackBox.conf'):
 		# check if all data is in the config file, if not rebuild one
 		try:
 			print 'Checking config file for compatibility...'
-			print (configData['updateCheck']+configData['basicSoftwareAndSecurity']+configData['systemTools']+configData['officeSoftware']+configData['graphicsTools']+configData['soundAndVideoTools']+configData['webDesignTools']+configData['programmingTools']+configData['gamesAndEmulation']+configData['steamGames']+configData['autoUpdates']+configData['customSettingsCheck']+configData['customSettingsCheckLogout']+configData['restrictedExtras']+configData['webcamCheck']+configData['redShiftCheck']+configData['netflix']+configData['rebootCheck'])
+			print (configData['updateCheck']+configData['systemTools']+configData['officeSoftware']+configData['graphicsTools']+configData['soundAndVideoTools']+configData['webDesignTools']+configData['programmingTools']+configData['gamesAndEmulation']+configData['steamGames']+configData['autoUpdates']+configData['customSettingsCheck']+configData['customSettingsCheckLogout']+configData['restrictedExtras']+configData['webcamCheck']+configData['redShiftCheck']+configData['netflix']+configData['rebootCheck'])
 		except:
 			print 'ERROR: Config file not compatible or corrupted!'
 			configData = {}
@@ -472,8 +497,6 @@ if configData == {}:
 	settingsScreen += greentext + 'Total Sections to Install = ' + resetTextStyle
 	settingsScreen += bluetext + boldtext + str(totalSections) + resetTextStyle + '\n'
 	settingsScreen += bluetext+boldtext+('='*60)+resetTextStyle+'\n'
-	#~ settingsScreen += 'Build System From Base = ' + formatAnwser(configData['baseSystemCheck']) + '\t\t'
-	settingsScreen += 'Setup Basic Tools & Security = ' + formatAnwser(configData['basicSoftwareAndSecurity']) + '\n'
 	settingsScreen += 'System Tools = ' + formatAnwser(configData['systemTools']) + '\t\t\t'
 	settingsScreen += 'Office Software = ' + formatAnwser(configData['officeSoftware']) + '\n'
 	settingsScreen += 'Graphics Software = ' + formatAnwser(configData['graphicsTools']) + '\t\t'
@@ -487,7 +510,6 @@ if configData == {}:
 	settingsScreen += 'Install Redshift =' + formatAnwser(configData['redShiftCheck']) + '\t\t\t'
 	settingsScreen += 'Reboot after install =' + formatAnwser(configData['rebootCheck']) + '\n'
 	settingsScreen += 'Upgrade before install = ' + formatAnwser(configData['updateCheck']) + '\t\t'
-	#~ settingsScreen += 'Passively Donate = ' + formatAnwser(configData['affilateCheck']) + '\n'
 	settingsScreen += 'Custom Desktop Config = ' + formatAnwser(configData['customSettingsCheck']) + '\n'
 	settingsScreen += 'Netflix Desktop = ' + formatAnwser(configData['netflix']) + '\n'
 	
