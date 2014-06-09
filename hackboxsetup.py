@@ -549,14 +549,13 @@ os.system('xset s 0 0')
 os.system('xset s off')
 os.system('xset -dpms')
 ########################################################################
-if configData['autoUpdates'] == 'y':
-	print 'Checking for installing automated updates...';
-	# remove other update programs from annoying the user
-	os.system('apt-fast purge mintupdate --assume-yes')
-	os.system('apt-fast purge update-manager --assume-yes')
-	os.system('apt-fast purge update-notifier --assume-yes')
-	# add update command to computer regardless of user decisions
-	os.system('gdebi --no unsupportedPackages/update.deb')
+print 'Checking for installing automated updates...';
+# remove other update programs from annoying the user
+os.system('apt-fast purge mintupdate --assume-yes')
+os.system('apt-fast purge update-manager --assume-yes')
+os.system('apt-fast purge update-notifier --assume-yes')
+# add update command to computer regardless of user decisions
+os.system('gdebi --no unsupportedPackages/update.deb')
 ########################################################################
 # install things that require user interaction to proceed first
 ########################################################################
