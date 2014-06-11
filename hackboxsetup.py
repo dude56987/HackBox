@@ -17,6 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
 import os, sys, shutil, json, zipfile, socket, urllib2
+from time import sleep
 ########################################################################
 Version = '0.5.0'
 # For Ubuntu Server Edition/Ubuntu Desktop Edition/Linux Mint
@@ -109,7 +110,7 @@ def downloadFile(fileAddress):
 		downloadedFileObject = urllib2.urlopen(str(fileAddress))
 	except:
 		print "Failed to download :",fileAddress
-		return "FAIL"
+		return False
 	lineCount = 0
 	fileText = ''
 	for line in downloadedFileObject:
@@ -284,10 +285,6 @@ banner +=resetTextStyle
 
 print banner
 print 'Designed for:'+greentext+'Ubuntu Desktop Edition/Linux Mint Xfce Edition'+resetTextStyle
-if os.geteuid() == 0:
-	print 'Running as root : '+greentext+'YES'+resetTextStyle
-else:
-	print 'Running as root : '+redtext+'NO'+resetTextStyle
 # only prompt the user if --force-use-config is not used in the program launch
 if (('--force-use-config' in sys.argv) == False):
 	# prompt user if they want to proceed or not
@@ -299,10 +296,16 @@ if (('--force-use-config' in sys.argv) == False):
 		clear();
 		print 'Ending script...';
 		exit();
-
-# sets all following commands to root user control
-print 'This program requires your password to proceed. Please input your password.'
-os.system("echo 'Program will now proceed...'");
+# Check for network connection, dont proceed unless it is active
+connected = False
+while connected == False:
+	print 'Checking Network Connection...'
+	connected = bool(downloadFile('http://www.linuxmint.com/'))
+	if connected == False:
+		print 'Connection failed, please connect to the network!'
+		for i in range(20):
+			print ('Will retry again in '+str(20-int(i))+' seconds...')
+			sleep(1)
 ########################################################################
 # Check all of the software before any tasks starts to see which sets
 # the user wants to install, and which special checklist items the user
@@ -326,7 +329,7 @@ if os.path.exists('hackBox.conf'):
 		# check if all data is in the config file, if not rebuild one
 		try:
 			print 'Checking config file for compatibility...'
-			print (configData['updateCheck']+configData['systemTools']+configData['officeSoftware']+configData['graphicsTools']+configData['soundAndVideoTools']+configData['webDesignTools']+configData['programmingTools']+configData['gamesAndEmulation']+configData['steamGames']+configData['autoUpdates']+configData['customSettingsCheck']+configData['customSettingsCheckLogout']+configData['restrictedExtras']+configData['webcamCheck']+configData['redShiftCheck']+configData['netflix']+configData['rebootCheck'])
+			print (configData['systemTools']+configData['officeSoftware']+configData['graphicsTools']+configData['soundAndVideoTools']+configData['webDesignTools']+configData['programmingTools']+configData['gamesAndEmulation']+configData['steamGames']+configData['autoUpdates']+configData['customSettingsCheck']+configData['customSettingsCheckLogout']+configData['restrictedExtras']+configData['webcamCheck']+configData['redShiftCheck']+configData['netflix']+configData['rebootCheck'])
 		except:
 			print 'ERROR: Config file not compatible or corrupted!'
 			configData = {}
@@ -335,22 +338,7 @@ if os.path.exists('hackBox.conf'):
 if configData == {}:
 	# create variable for figuring progress of this process
 	totalSections=0;
-	#~ # Section for base system setup
-	#~ print banner
-	#~ printBlue('Would you like to install the Base System?');
-	#~ printBlue('This is for installing from a bare cli linux system.');
-	#~ configData['baseSystemCheck'] = raw_input('[y/n]: ');
-	#~ if configData['baseSystemCheck'] == 'y':
-		#~ totalSections += 1;
-	#~ clear();
-	# check if the user wants to upgrade before start
 	clear()
-	print banner
-	printBlue('Do you want to upgrade all current software before install?(This is highly recommended)')
-	configData['updateCheck'] = raw_input('[y/n]: ');
-	if configData['updateCheck'] == 'y':
-		totalSections += 1;
-	clear();
 	# system tools section
 	print banner
 	printBlue('Would you like to install System tools?');
@@ -466,15 +454,6 @@ if configData == {}:
 		clear()
 	else:
 		configData['rebootCheck'] = 'n'
-	#~ # check if user would like to donate though the affiliate program
-	#~ print banner
-	#~ printBlue('Do you want to passively donate to the continuation of the project though using our Firefox extension?')
-	#~ print('This will not give us any of your personal info, it will only apply our affiliate tag to purchases though certain websites.')
-	#~ print ('This will '+boldtext+redtext+'NOT'+resetTextStyle+' charge you any money!')
-	#~ configData['affilateCheck'] = raw_input('[y/n]: ');
-	#~ if configData['affilateCheck'] == 'y':
-		#~ totalSections += 1;
-	#~ clear();
 	# Save Settings
 	print banner
 	printBlue('Would you like to save this configuration for next time?');
@@ -506,10 +485,8 @@ if configData == {}:
 	settingsScreen += 'games/emulation/other = ' + formatAnwser(configData['gamesAndEmulation']) + '\t\t'
 	settingsScreen += 'Setup Webcam Support = ' + formatAnwser(configData['webcamCheck']) + '\n'
 	settingsScreen += 'Setup DVD/Flash Support = ' + formatAnwser(configData['restrictedExtras']) + '\t\t'
-	settingsScreen += 'Enable Automatic Updates = ' + formatAnwser(configData['autoUpdates']) + '\n'
 	settingsScreen += 'Install Redshift =' + formatAnwser(configData['redShiftCheck']) + '\t\t\t'
 	settingsScreen += 'Reboot after install =' + formatAnwser(configData['rebootCheck']) + '\n'
-	settingsScreen += 'Upgrade before install = ' + formatAnwser(configData['updateCheck']) + '\t\t'
 	settingsScreen += 'Custom Desktop Config = ' + formatAnwser(configData['customSettingsCheck']) + '\n'
 	settingsScreen += 'Netflix Desktop = ' + formatAnwser(configData['netflix']) + '\n'
 	
@@ -550,10 +527,6 @@ os.system('xset s off')
 os.system('xset -dpms')
 ########################################################################
 print 'Checking for installing automated updates...';
-# remove other update programs from annoying the user
-os.system('apt-fast purge mintupdate --assume-yes')
-os.system('apt-fast purge update-manager --assume-yes')
-os.system('apt-fast purge update-notifier --assume-yes')
 # add update command to computer regardless of user decisions
 os.system('gdebi --no unsupportedPackages/update.deb')
 ########################################################################
@@ -644,10 +617,9 @@ if configData['basicSoftwareAndSecurity'] == 'y':
 		os.system('gdebi --non-interactive unsupportedPackages/hackbox-darknet')
 		os.system('hackbox-darknet-setup')
 ########################################################################
-if configData['updateCheck'] == 'y' :
-	print 'Installing updates...';
-	# May require user interaction so dont output into logfile
-	os.system('update')
+print 'Installing updates...';
+# May require user interaction so dont output into logfile
+os.system('update')
 ########################################################################
 printBlue( '##################################################################')
 printGreen('### BEGINNING AUTOMATED SECTION OF INSTALL GO GRAB A COFFEE... ###')
@@ -1086,7 +1058,13 @@ if configData['customSettingsCheck'] == 'y':
 	#~ COPY(os.path.join('media','releaseFiles','os-release'),os.path.join('/etc','os-release'))
 	#~ COPY(os.path.join('media','releaseFiles','lsb-release'),os.path.join('/etc','lsb-release'))
 	# copy the mdm theme over 
-	#~ try:
+##########################################################
+# Purge System Updaters that will annoy the user
+##########################################################
+# remove other update programs from annoying the user
+os.system('apt-fast purge mintupdate --assume-yes')
+os.system('apt-fast purge update-manager --assume-yes')
+os.system('apt-fast purge update-notifier --assume-yes')
 ########################################################################
 # install custom fonts for all users on system
 ########################################################################
