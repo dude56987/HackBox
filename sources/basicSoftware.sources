@@ -9,6 +9,10 @@
 ########################################################################
 #INFO:NONEYA
 #QUESTION:NONEYA
+# here is some logical scripts
+catagory<:>message<:>Checking if this is a laptop
+catagory<:>script<:>laptop-detect
+###################
 catagory<:>message<:>Installing broadcast(message all user on the system)
 catagory<:>command<:>gdebi --non-interactive unsupportedPackages/broadcast.deb
 catagory<:>message<:>Installing ZSH(Shell)

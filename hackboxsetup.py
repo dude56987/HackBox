@@ -250,6 +250,8 @@ def installSourcesFile(fileNameOfFile):
 				tempInfo = line.split('<:>')
 				if tempInfo[1] == 'message':
 					printGreen(tempInfo[2]+'...')
+				elif tempInfo[1] == 'script':
+					os.system('bash scripts/'+tempInfo[2]+'.sh')
 				elif tempInfo[1] == 'command':
 					# execute command
 					print tempInfo[2]
@@ -299,6 +301,8 @@ def createInstallLoad():
 				tempInfo = line.split('<:>')
 				if tempInfo[1] == 'message':
 					payload.append('echo "'+tempInfo[2]+'"...')
+				elif tempInfo[1] == 'script':
+					payload.append('bash scripts/'+tempInfo[2]+'.sh')
 				elif tempInfo[1] == 'command':
 					# execute command
 					print tempInfo[2]
