@@ -1,3 +1,5 @@
+#INFO:Would you like to install Graphic Design Tools?
+#QUESTION:[y/n]:
 # Gimp and a lot of the plugins to improve the functionality for users
 ###################################
 catagory<:>message<:>Installing GIMP (Image Minipulation Tool)

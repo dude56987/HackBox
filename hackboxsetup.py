@@ -260,6 +260,61 @@ def installSourcesFile(fileNameOfFile):
 					if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
 						os.system((packageManager+' install '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
 	return True
+def createInstallLoad():
+	packageManager=False
+	if os.path.exists('/usr/bin/apt-get'):
+		packageManager = 'apt-get'
+	if os.path.exists('/usr/sbin/apt-fast'):
+		packageManager = 'apt-fast'
+	if packageManager == False:
+		return False
+	# create a payload array of commands to pass though the system
+	payload = []
+	# read list of datafiles
+	datafiles = os.listdir('sources/')
+	for fileName in datafiles:
+		fileObject = loadFile(os.path.join('sources',fileName))
+		if fileObject == False:
+			print 'ERROR: Source file',fileName,'does not exist!'
+		else:
+			fileObject = fileObject.split('\n')
+		# go though each line of the file
+		for line in fileObject:
+			installSection = False
+			# all lines starting with # are comments
+			if line[:6]=='#INFO:':
+				# print the info
+				print line[6:]
+			elif line[:10]=='#QUESTION:':
+				# check for install confrimation
+				installSection = raw_input(line[10:])
+			# run sections if install is set to true for a file
+			if line[:1] != '#' and line.find('<:>') != -1 and installSection == 'y':
+				# example format of file
+				# subcatagory<:>type<:>data
+				# types are command, package, and message
+				# command will execute a bash command
+				# package requireds a extra component
+				# subcatagory<:>package<:>packageName
+				tempInfo = line.split('<:>')
+				if tempInfo[1] == 'message':
+					payload.append('echo "'+tempInfo[2]+'"...')
+				elif tempInfo[1] == 'command':
+					# execute command
+					print tempInfo[2]
+					payload.append(tempInfo[2])
+				elif tempInfo[1] == 'package':
+					#/usr/share/doc/packagename is checked to see if the package has already been installed
+					# install package
+					if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
+						payload.append((packageManager+' install '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
+	# launch the payload commands 
+	for item in payload:
+		print item
+		#os.system(item)
+# run the command
+#createInstallLoad()#DEBUG
+#exit()#DEBUG
 ########################################################################
 # Pre-run checks
 print 'Preforming startup checks...'
@@ -336,6 +391,9 @@ if os.path.exists('hackBox.conf'):
 	else:
 		configData = {}
 if configData == {}:
+	# things that are installed by default
+	configData['basicSoftwareAndSecurity'] = 'y'
+	configData['autoUpdates'] = 'y'
 	# create variable for figuring progress of this process
 	totalSections=0;
 	clear()

@@ -1,3 +1,5 @@
+#INFO:Would you like to install Games & Emulation Software?
+#QUESTION:[y/n]:
 # games and emulation source file
 catagory<:>message<:>Installing VirtualBox
 catagory<:>package<:>virtualbox-qt

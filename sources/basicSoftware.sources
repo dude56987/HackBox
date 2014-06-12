@@ -7,6 +7,8 @@
 # that are installed just in case the standard distro does not include
 # them by default
 ########################################################################
+#INFO:NONEYA
+#QUESTION:NONEYA
 catagory<:>message<:>Installing broadcast(message all user on the system)
 catagory<:>command<:>gdebi --non-interactive unsupportedPackages/broadcast.deb
 catagory<:>message<:>Installing ZSH(Shell)

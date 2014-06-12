@@ -1,3 +1,5 @@
+#INFO:Would you like to install Office Software?
+#QUESTION:[y/n]:
 # office software sources file
 catagory<:>message<:>Installing Workrave(RSI Prevention tool)
 catagory<:>package<:>workrave
