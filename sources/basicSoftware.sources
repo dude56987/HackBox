@@ -84,6 +84,8 @@ catagory<:>message<:>Installing terminator (terminal with lots of nice features)
 catagory<:>package<:>terminator
 catagory<:>message<:>Installing mcomix(Comic Book Viewer)
 catagory<:>package<:>mcomix
+catagory<:>message<:>Installing Disk Usage Tool
+catagory<:>package<:>baobab
 # Install archive support
 catagory<:>message<:>Removing fileroller
 catagory<:>command<:>apt-get purge file-roller --assume-yes >> Install_Log.txt
