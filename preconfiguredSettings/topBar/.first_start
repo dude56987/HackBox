@@ -20,6 +20,15 @@ if [ $temp -ge 1 ]; then
 		SuccessCheck=0
 	fi
 fi
+# Add the default empty directories
+mkdir -p ~/Downloads
+mkdir -p ~/Music
+mkdir -p ~/Templates
+mkdir -p ~/Desktop
+mkdir -p ~/Pictures
+mkdir -p ~/Documents
+mkdir -p ~/Videos
+
 # delete this script if everything has worked 
 if [ $SuccessCheck -ge 1 ]; then
 	rm -v ~/.first_start
