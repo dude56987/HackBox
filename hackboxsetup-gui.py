@@ -128,7 +128,7 @@ if os.path.exists('hackBox.conf'):
 		configData = json.loads(loadFile('hackBox.conf'))
 		# check if all data is in the config file, if not rebuild one
 		try:
-			print (configData['updateCheck']+configData['basicSoftwareAndSecurity']+configData['systemTools']+configData['officeSoftware']+configData['graphicsTools']+configData['soundAndVideoTools']+configData['webDesignTools']+configData['programmingTools']+configData['gamesAndEmulation']+configData['steamGames']+configData['autoUpdates']+configData['customSettingsCheck']+configData['customSettingsCheckLogout']+configData['restrictedExtras']+configData['webcamCheck']+configData['redShiftCheck']+configData['netflix']+configData['rebootCheck'])
+			print (configData['systemTools']+configData['officeSoftware']+configData['graphicsTools']+configData['soundAndVideoTools']+configData['webDesignTools']+configData['programmingTools']+configData['gamesAndEmulation']+configData['steamGames']+configData['customSettingsCheck']+configData['customSettingsCheckLogout']+configData['restrictedExtras']+configData['webcamCheck']+configData['redShiftCheck']+configData['netflix']+configData['rebootCheck'])
 		except:
 			print 'ERROR: Config file not compatible or corrupted!'
 			configData = {}

@@ -374,9 +374,6 @@ clear();
 os.chdir(currentDirectory())
 # check for config file
 configData = {}
-# things that are installed by default
-configData['basicSoftwareAndSecurity'] = 'y'
-configData['autoUpdates'] = 'y'
 if os.path.exists('hackBox.conf'):
 	if (('--force-use-config' in sys.argv) == False):
 		printBlue('Config file detected! Would you like to use it?')
@@ -565,7 +562,10 @@ if configData == {}:
 		print 'Ending script...';
 		exit();
 	clear();
-# now (completed/totalSections)*100=Progress in percentage
+# things that are installed by default
+configData['basicSoftwareAndSecurity'] = 'y'
+configData['autoUpdates'] = 'y'
+#i now (completed/totalSections)*100=Progress in percentage
 #exit();# Uncomment for debug
 ########################################################################
 # Start Installing everything
@@ -1231,6 +1231,7 @@ if os.path.exists('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf'):
 if configData['redShiftCheck'] == 'y':
 	printGreen('Installing Redshift...')
 	os.system('sudo apt-fast install gtk-redshift --assume-yes >> Install_Log.txt')
+	os.system('sudo geolocate --latlon > /etc/latlon')
 	COPY('preconfiguredSettings/launchers/unsorted/redshift.desktop','/etc/xdg/autostart/')
 else:
 	print 'Skipping Redshift Install...';
