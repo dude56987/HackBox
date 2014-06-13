@@ -2,6 +2,7 @@
 alias ls='ls --color=always' # this will color the output of ls
 alias ll='ls -la | more -d' # This is shorthand to show hidden files and permissions
 alias less='less -R' # Show colors when escape sequences for them are used 
+alias logview='tail -f /var/log/*' # View system log updates in realtime 
 alias lol="espeak 'ha ha ha ha ha'" # Sometimes its good to have a sense of humor
 alias say="espeak" # Speak the following string of text
 # install some helpfull tools for working on a console only system
