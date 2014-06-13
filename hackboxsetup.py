@@ -261,6 +261,10 @@ def installSourcesFile(fileNameOfFile):
 					# install package
 					if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
 						os.system((packageManager+' install '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
+				elif tempInfo[1] == 'localdeb':
+					# install package in unsupported packages
+					if (os.path.exists(tempInfo[3]) != True): 
+						os.system(('sudo gdebi --no unsupportedPackages/'+tempInfo[2]+'.deb'))
 	return True
 def createInstallLoad():
 	packageManager=False

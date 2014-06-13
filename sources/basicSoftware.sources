@@ -13,8 +13,11 @@
 catagory<:>message<:>Checking if this is a laptop
 catagory<:>script<:>laptop-detect
 ###################
+catagory<:>message<:>Installing gdebi(Grapical Package Installer)
+catagory<:>package<:>gdebi
+###################
 catagory<:>message<:>Installing broadcast(message all user on the system)
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/broadcast.deb
+catagory<:>localdeb<:>broadcast<:>/usr/bin/broadcast
 catagory<:>message<:>Installing ZSH(Shell)
 catagory<:>package<:>zsh
 catagory<:>message<:>Installing SSH(Remote Shell)
@@ -26,8 +29,6 @@ catagory<:>package<:>vlc
 # totem plugin insted of vlc plugin since vlcs plugin kinda sucks compartively
 catagory<:>message<:>Installing Totem Web plugin
 catagory<:>package<:>totem-mozilla
-catagory<:>message<:>Installing gdebi(Grapical Package Installer)
-catagory<:>package<:>gdebi
 catagory<:>message<:>Installing Evince(Document Viewer/PDF Viewer)
 catagory<:>package<:>evince
 catagory<:>message<:>Installing Jockey(Propietry Driver Installer)
@@ -100,9 +101,9 @@ catagory<:>message<:>Installing archive support for thunar context actions
 catagory<:>package<:>thunar-archive-plugin
 # Add a utility that allows users to upgrade their distro by only updating the package sources
 catagory<:>message<:>Installing distro-upgrade tool
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/distro-upgrade.deb
+catagory<:>localdeb<:>distro-upgrade<:>/usr/bin/distro-upgrade
 catagory<:>message<:>Installing pybitmessage-stable-updater(Encrypted Messaging System)
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/pybitmessage-stable-updater.deb
+catagory<:>localdeb<:>pybitmessage-stable-updater<:>/usr/bin/bitmessage-update
 ##### Additonal Fonts #####
 catagory<:>message<:>Installing fonts(opendyslexic)
 catagory<:>package<:>fonts-opendyslexic
@@ -122,7 +123,7 @@ catagory<:>package<:>espeak
 catagory<:>message<:>Installing woof (CLI lan/internet file transfer)
 catagory<:>package<:>woof
 catagory<:>message<:>Installing geolocate(Figure out the location of pcs)
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/geolocate.deb
+catagory<:>localdeb<:>geolocate<:>/usr/bin/geolocate
 ########################################################################
 # unetbootin has some issues currently as a depend is not included
 # to the below installs it for ya
@@ -175,16 +176,16 @@ catagory<:>package<:>iotop
 catagory<:>message<:>Installing fdupes(Remove duplicate files)
 catagory<:>package<:>fdupes
 catagory<:>message<:>Installing resetsettings(resets settings to defaults)
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/resetsettings.deb
+catagory<:>localdeb<:>resetsettings<:>/usr/bin/resetsettings
 ########################################################################
 # SECTION FOR INTERNET SOFTWARE #
 ########################################################################
 catagory<:>message<:>Installing dns-precache(Caches top 500 sites)
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/dns-precache.deb
+catagory<:>localdeb<:>dns-precache<:>/usr/bin/dns-precache
 catagory<:>message<:>Installing lanscan(scans lan for connected devices)
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/lanscan.deb
+catagory<:>localdeb<:>lanscan<:>/usr/bin/lanscan
 catagory<:>message<:>Installing Open NIC DNS(Open Unchained DNS Project)
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/opennic-dns.deb
+catagory<:>localdeb<:>opennic-dns<:>/usr/bin/opennic-dns-scan
 # install firefox and firefox custom addons systemwide
 catagory<:>message<:>Installing Firefox
 catagory<:>package<:>firefox
@@ -196,7 +197,7 @@ catagory<:>package<:>firefox
 catagory<:>message<:>Installing Transmission (Torrent Client)
 catagory<:>package<:>transmission-gtk
 catagory<:>message<:>Setting up Transmission blocklist updater
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/transmission-blocklist-updater.deb
+catagory<:>localdeb<:>transmission-blocklist-updater<:>/usr/bin/transmission-blocklist-updater
 catagory<:>message<:>Removing RSS reader
 catagory<:>command<:>apt-get purge liferea --assume-yes >> Install_Log.txt
 catagory<:>message<:>Installing Thunderbird (Email/Calendar)
@@ -287,10 +288,10 @@ catagory<:>package<:>xfce4-weather-plugin
 ########################################################################
 # Dothis shortcuts to give the desktop functionality it should have already
 catagory<:>message<:>Installing DoThis Shortcuts
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/doThis.deb
+catagory<:>localdeb<:>doThis<:>/usr/bin/speakthis
 # reboot notifyer
 catagory<:>message<:>Install reboot-required
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/reboot-required.deb
+catagory<:>localdeb<:>reboot-required<:>/usr/bin/reboot-required
 # remove the crappy notifications you cant click away, install xfce ones
 catagory<:>message<:>Remove Junk OSD notification system
 catagory<:>command<:>apt-get purge notify-osd --assume-yes >> Install_Log.txt
@@ -298,7 +299,7 @@ catagory<:>message<:>Installing Nicer OSD notification system
 catagory<:>package<:>xfce4-notifyd
 # sets up the custom mimetype defaults for HackBox
 catagory<:>message<:>Setting up mimetypes for HackBox
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/hackbox-mimetype-defaults.deb
+catagory<:>localdeb<:>hackbox-mimetype-defaults<:>/usr/bin/fehOpen
 # install wally since it supports more desktops and desktop nova development seems stoped
 ##catagory<:>message<:>Installing Wally(wallpaper Switcher)
 #catagory<:>package<:>wally
@@ -341,9 +342,9 @@ catagory<:>message<:>apt-get purge kscreensaver --assume-yes >> Install_Log.txt
 # Basic Security Software
 ########################################################################
 catagory<:>message<:>Install HostfileBlocklist Program
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/hostfileblocklist.deb
+catagory<:>localdeb<:>hostfileblocklist<:>/usr/bin/hostfileblocklist
 catagory<:>message<:>Install HostfileBlocklist GUI
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/hostfileblocklist-gui.deb
+catagory<:>localdeb<:>hostfileblocklist-gui<:>/usr/bin/hostfileblocklist-gui
 catagory<:>message<:>Installing fail2ban
 catagory<:>package<:>fail2ban
 catagory<:>message<:>Installing Virus Scanner
