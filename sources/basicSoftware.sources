@@ -368,3 +368,5 @@ catagory<:>command<:>apt-get purge overlay-scrollbar-gtk3 --assume-yes >> Instal
 catagory<:>command<:>apt-get purge mate-indicator-applet --assume-yes >> Install_Log.txt
 catagory<:>command<:>apt-get purge indicator-applet --assume-yes >> Install_Log.txt
 catagory<:>command<:>apt-get purge xfce4-indicator-plugin --assume-yes >> Install_Log.txt
+# remove mint welcome screen
+catagory<:>command<:>apt-get purge mintwelcome --assume-yes >> Install_Log.txt
