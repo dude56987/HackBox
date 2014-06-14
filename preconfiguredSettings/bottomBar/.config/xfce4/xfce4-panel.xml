@@ -96,7 +96,7 @@
     </property>
     <property name="plugin-7" type="string" value="clock">
       <property name="show-frame" type="bool" value="false"/>
-      <property name="digital-format" type="string" value="%r%n%D"/>
+      <property name="digital-format" type="string" value="<span font="10">%r%n%d/%m/%y</span>"/>
     </property>
     <property name="plugin-5" type="string" value="systray">
       <property name="names-visible" type="array">
