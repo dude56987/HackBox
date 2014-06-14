@@ -812,11 +812,6 @@ if configData['basicSoftwareAndSecurity'] == 'y' :
 	# change the working directory back to the one holding this file
 	#~ os.chdir(currentDirectory())#this is kinda unnessary since it no longer runs the install that way
 	####################################################################
-	# Setup programs to autostart when the user logs into the system
-	# copy the .desktop files for programs into /etc/xdg/autostart
-	# .desktop files are stored in /usr/share/applications
-	COPY('/usr/share/applications/synapse.desktop','/etc/xdg/autostart')
-	####################################################################
 	# Install Icon Themes, and libnotify themes
 	try:
 		print 'Installing Faenza Icon Pack...'
@@ -881,7 +876,6 @@ if configData['basicSoftwareAndSecurity'] == 'y' :
 	#~ os.system('resetsettings -p goldendict')
 	#~ os.system('resetsettings -p qshutdown')
 	#~ os.system('resetsettings -p xarchiver')
-	#~ os.system('resetsettings -p synapse')
 	#~ os.system('resetsettings -p guake')
 	#~ os.system('resetsettings -p radiotray')
 	####################################################################

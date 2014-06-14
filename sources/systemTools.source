@@ -32,8 +32,10 @@ catagory<:>message<:>Installing htop (CLI Task Manager)
 catagory<:>package<:>htop
 catagory<:>message<:>Installing iotop (CLI Disk I/O Manager)
 catagory<:>package<:>iotop
-catagory<:>message<:>Installing psensor (CLI system stress tool)
+# install psensor, remove the autostart file 
+catagory<:>message<:>Installing psensor (Graphing Temp Sensor Tool)
 catagory<:>package<:>psensor
+catagory<:>command<:>rm -f /etc/xdg/autostart/psensor.desktop
 # log file viewer
 catagory<:>message<:>Installing Log File Viewer (GUI Log file viewer)
 catagory<:>package<:>gnome-system-log
