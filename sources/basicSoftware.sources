@@ -110,6 +110,8 @@ catagory<:>package<:>fonts-opendyslexic
 ########################################################################
 # UTILITIES #
 ########################################################################
+catagory<:>message<:>Installing xcalib(calibrate video)
+catagory<:>package<:>xcalib
 catagory<:>message<:>Installing texlive-extra-utils (for pdf croping and compressing commands)
 catagory<:>package<:>texlive-extra-utils
 catagory<:>message<:>Installing byobu (CLI desktop)

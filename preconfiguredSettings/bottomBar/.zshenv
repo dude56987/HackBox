@@ -5,10 +5,13 @@ alias less='less -R' # Show colors when escape sequences for them are used
 alias logview='tail -f /var/log/*' # View system log updates in realtime 
 alias lol="espeak 'ha ha ha ha ha'" # Sometimes its good to have a sense of humor
 alias say="espeak" # Speak the following string of text
+alias invert-color="xcalib -invert -alter" # Invert monitor colors
 # install some helpfull tools for working on a console only system
-alias installConsoleTools='sudo apt-fast install fbgrab elinks links2 pianobar fbi wicd-curses weechat weechat-plugins weechat-scripts finch vlock' 
+alias installConsoleTools='sudo apt-fast install fbgrab elinks links2 pianobar fbi wicd-curses weechat weechat-plugins weechat-scripts finch vlock'
+alias installTerminalTools='installConsoleTools'
 # this will reconfigure the console allowing you to change the size,font and some other stuff
 alias console-setup='sudo dpkg-reconfigure console-setup'
+alias terminal-setup='console-setup'
 # downloads random wallpapers #BEWARE# truly random, stored in /usr/share/pixmaps/wallpapers
 alias download-random-wallpapers="curl http://boards.4chan.org/wg/ | sed 's/\"/\n/g' | grep //i.4cdn.org/wg/ | sort -u | sed 's/\/\/i/http:\/\/i/g' > /tmp/images.list && sudo mkdir -p /usr/share/pixmaps/wallpapers && cd /usr/share/pixmaps/wallpapers && sudo wget -i /tmp/images.list && sudo fdupes -rdN /usr/share/pixmaps/wallpapers && cd"
 # The rest of the commands are for use by the dev of hackbox, remove them if you want
