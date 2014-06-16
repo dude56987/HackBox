@@ -114,6 +114,9 @@ catagory<:>message<:>Installing texlive-extra-utils (for pdf croping and compres
 catagory<:>package<:>texlive-extra-utils
 catagory<:>message<:>Installing byobu (CLI desktop)
 catagory<:>package<:>byobu
+# enable grub terminal to make ttys not act strangely
+catagory<:>message<:>Enable ttys to work correctly
+catagory<:>script<:>enable-grub-terminal
 catagory<:>message<:>Installing screen (splitscreen and multiterminal switching)
 catagory<:>package<:>screen
 catagory<:>message<:>Installing pdmenu(CLI Curses Menu)
