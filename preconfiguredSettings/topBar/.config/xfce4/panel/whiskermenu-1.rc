@@ -1,7 +1,7 @@
 button-icon=/opt/hackbox/media/hackboxLogo.png
 launcher-show-name=true
 launcher-show-description=true
-favorites=firefox.desktop,mintInstall.desktop,xfce-settings-manager.desktop,xchat.desktop,exo-terminal-emulator.desktop,exo-file-manager.desktop
+favorites=firefox.desktop,mintInstall.desktop,xfce-settings-manager.desktop,pidgin.desktop,terminator.desktop,Thunar.desktop
 recent=exo-file-manager.desktop,exo-terminal-emulator.desktop,transmission-gtk.desktop,firefox.desktop,mintInstall.desktop
 menu-width=472
 menu-height=625
