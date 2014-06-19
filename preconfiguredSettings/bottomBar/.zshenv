@@ -22,6 +22,10 @@ if date | grep Apr\ \ 1; then
 	repeat 10 bash -c "echo 'killallhumans';sleep 1"
 	echo 'erm.. uh.. Happy Birthday!'
 fi
+# Show the user thier fortune for this login using cowsay
+#  To change the theme used replace tux with one of the 
+#  cowfiles listed by the command cowsay -l
+more ~/.motd | cowsay -f none
 # check if the user is in a fullscreen terminal
 if tty | grep tty1; then
 	# check where the byobu settings are being stored

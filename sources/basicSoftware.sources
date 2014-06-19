@@ -336,13 +336,19 @@ catagory<:>package<:>xfce4-cpugraph-plugin
 catagory<:>message<:>Installing xscreensaver
 catagory<:>package<:>xscreensaver
 catagory<:>message<:>Removing extra screensavers
-catagory<:>message<:>apt-get purge gnome-screensaver --assume-yes >> Install_Log.txt
+catagory<:>command<:>apt-get purge gnome-screensaver --assume-yes >> Install_Log.txt
 catagory<:>message<:>Removing extra screensavers
-catagory<:>message<:>apt-get purge mate-screensaver --assume-yes >> Install_Log.txt
+catagory<:>command<:>apt-get purge mate-screensaver --assume-yes >> Install_Log.txt
 catagory<:>message<:>Removing extra screensavers
-catagory<:>message<:>apt-get purge cinnamon-screensaver --assume-yes >> Install_Log.txt
+catagory<:>command<:>apt-get purge cinnamon-screensaver --assume-yes >> Install_Log.txt
 catagory<:>message<:>Removing extra screensavers
-catagory<:>message<:>apt-get purge kscreensaver --assume-yes >> Install_Log.txt
+catagory<:>command<:>apt-get purge kscreensaver --assume-yes >> Install_Log.txt
+# Add fortune, cowsay, and create none cow
+catagory<:>message<:>Setup cowsay and fortune
+catagory<:>package<:>cowsay
+catagory<:>package<:>fortune
+catagory<:>command<:>echo "$thoughts" > /usr/share/cowsay/cows/none.cow
+catagory<:>command<:>chmod +r /usr/share/cowsay/cows/none.cow
 ########################################################################
 # Basic Security Software
 ########################################################################

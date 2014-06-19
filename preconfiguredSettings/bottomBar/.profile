@@ -26,6 +26,9 @@ xset s 0 0
 xset s off
 xset -dpms
 
+# Setup the current login fortune for the user
+fortune -a > ~/.motd
+
 # launch .first_start script if it exists
 if [ -f ~/.first_start ]; then
 	bash ~/.first_start

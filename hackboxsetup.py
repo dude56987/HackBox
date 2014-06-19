@@ -1139,11 +1139,6 @@ os.system('sed -i.bak "s/etc-issue = True/etc-issue = False/g" /etc/linuxmint/mi
 # customize the login of tty terminals
 os.system('cp -vf media/ttyTheme/issue /etc/issue')
 os.system('cp -vf media/ttyTheme/issue.net /etc/issue.net')
-# add message of the day
-os.system('sed -i.bak "s/exit 0//g" /etc/rc.local')
-os.system('sed -i.bak "s/fortune > \/etc\/motd\.tail//g" /etc/rc.local')
-os.system('echo "fortune > /etc/motd.tail" >> /etc/rc.local')
-os.system('echo "exit 0" >> /etc/rc.local')
 # copy over motd scripts
 os.system('cp -rvf media/ttyTheme/update-motd.d/ /etc/')
 # fix permissions on motd scripts
