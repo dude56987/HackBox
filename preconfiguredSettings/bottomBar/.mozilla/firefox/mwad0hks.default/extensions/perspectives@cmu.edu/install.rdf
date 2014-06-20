@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+	<Description about="urn:mozilla:install-manifest">
+		<em:id>perspectives@cmu.edu</em:id>
+		<em:name>Perspectives</em:name>
+		<!--
+			Attempt to version meaningfully, following semver.org:
+			Given a version number MAJOR.MINOR.PATCH, increment the:
+			MAJOR version when you make large architectural changes,
+			MINOR version when you add functionality in a backwards-compatible manner
+			PATCH version when you make backwards-compatible bug fixes.
+		-->
+		<em:version>4.5.1</em:version>
+		<em:type>2</em:type>
+		<em:optionsURL>chrome://perspectives/content/preferences_dialog.xul</em:optionsURL>
+
+		<!-- Firefox -->
+		<em:targetApplication>   
+			<Description>
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>3.0</em:minVersion>
+				<em:maxVersion>28.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+		<!-- SeaMonkey -->
+		<em:targetApplication>
+			<Description>
+				<em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+				<em:minVersion>2.0</em:minVersion>
+				<em:maxVersion>2.25.*</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+
+		<!-- Localizations -->
+		<em:localized>
+			<Description>
+			 <em:locale>de</em:locale>
+				<em:name>Perspectives</em:name>
+				<em:description>Umgeht HTTPS Sicherheitswarnungen auf sichere Weise, indem die Zertifikate mit Hilfe einer Liste von Netzwerknotaren überprüft werden. Siehe http://www.perspectives-project.org (englischsprachig)..
+				</em:description>
+				<em:creator>Perspectives Projekt der Carnegie Mellon Computer Science</em:creator>
+				<em:homepageURL>http://www.perspectives-project.org</em:homepageURL>
+				<em:translator>Edward Bassett</em:translator>
+			 </Description>
+		</em:localized>
+		<em:localized>
+			<Description>
+			 <em:locale>en-US</em:locale>
+				<em:name>Perspectives</em:name>
+				<em:description>Connect securely to https websites by checking certificates with network notaries. See http://www.perspectives-project.org
+				</em:description>
+				<em:creator>Perspectives Project at Carnegie Mellon Computer Science </em:creator>
+				<em:homepageURL>http://www.perspectives-project.org</em:homepageURL>
+			 </Description>
+		</em:localized>
+		<em:localized>
+			<Description>
+			 <em:locale>es-MX</em:locale>
+				<em:name>Perspectives</em:name>
+				<em:description>Conéctese de forma segura con los sitios web que utilizan el protocolo HTTPS, validando sus certificados por medio de notarías de red. Vea http://www.perspectives-project.org
+				</em:description>
+				<em:creator>Perspectives Project at Carnegie Mellon Computer Science </em:creator>
+				<em:homepageURL>http://www.perspectives-project.org</em:homepageURL>
+				<em:translator>Dan Torres</em:translator>
+			 </Description>
+		</em:localized>
+		<em:localized>
+			<Description>
+			 <em:locale>fr</em:locale>
+				<em:name>Perspectives</em:name>
+				<em:description>Connectez-vous de façon plus sécurisée sur les sites Internet https en vérifiant leurs certificats avec les notaires de réseau. Consultez http://www.perspectives-project.org (en anglais) pour en savoir plus.</em:description>
+				<em:creator>Perspectives est un projet de la section programmation informatique de l'université Carnegie Mellon</em:creator>
+				<em:homepageURL>http://www.perspectives-project.org</em:homepageURL>
+				<em:translator>Goofy</em:translator>
+			 </Description>
+		</em:localized>
+		<em:localized>
+			<Description>
+				<em:locale>pl</em:locale>
+				<em:name>Perspectives</em:name>
+				<em:description>Łącz się bezpiecznie ze stronami HTTPS, sprawdzając certyfikaty przy użyciu sieciowych notariuszy. Sprawdź http://www.perspectives-project.org</em:description>
+				<em:creator>Projekt Perspectives z wydziału informatycznego Uniwersytetu Carnegie Mellon</em:creator>
+				<em:homepageURL>http://www.perspectives-project.org</em:homepageURL>
+				<em:translator>Jakub Warmuz</em:translator>
+			</Description>
+		</em:localized>
+		<em:localized>
+			<Description>
+				<em:name>Perspectives</em:name>
+				<em:locale>zh-CN</em:locale>
+				<em:description>使用网络认证检查安全证书，从而安全地连接到 https 网站。请查看 http://www.perspectives-project.org</em:description>
+				<em:creator>Perspectives Project at Carnegie Mellon Computer Science </em:creator>
+				<em:homepageURL>http://www.perspectives-project.org</em:homepageURL>
+				<em:translator>Yanlin Li, Wang.H.K</em:translator>
+			 </Description>
+		</em:localized>
+		<em:unpack>true</em:unpack>
+	</Description>
+
+</RDF>
