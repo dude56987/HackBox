@@ -194,6 +194,8 @@ catagory<:>localdeb<:>opennic-dns<:>/usr/bin/opennic-dns-scan
 # install firefox and firefox custom addons systemwide
 catagory<:>message<:>Installing Firefox
 catagory<:>package<:>firefox
+catagory<:>message<:>Installing HTTPS Finder
+catagory<:>package<:>xul-ext-https-finder
 # the systemwide addon installer by default installs some security addons and customization addons
 ## this is disabled currently because it has issues that need fixing
 #catagory<:>message<:>Installing Firefox Customizer(Admin tool for configureing firefox)
