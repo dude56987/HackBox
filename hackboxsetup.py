@@ -256,6 +256,11 @@ def installSourcesFile(fileNameOfFile):
 					# execute command
 					print tempInfo[2]
 					os.system(tempInfo[2])
+				elif tempInfo[1] == 'rm-package':
+					#/usr/share/doc/packagename is checked to see if the package has already been installed
+					# remove package
+					if (os.path.exists('/usr/share/doc/'+tempInfo[2])):
+						os.system((packageManager+' purge '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
 				elif tempInfo[1] == 'package':
 					#/usr/share/doc/packagename is checked to see if the package has already been installed
 					# install package
@@ -862,8 +867,12 @@ if configData['basicSoftwareAndSecurity'] == 'y' :
 	####################################################################
 	# unlock firewall ports for lan share on right click
 	####################################################################
-	prefix = '.'.join(socket.gethostbyname(socket.gethostname()+'.local').split('.')[:3])
-	os.system('sudo ufw allow from '+prefix+'.0/24 to any port 9119')
+	try:
+		prefix = '.'.join(socket.gethostbyname(socket.gethostname()+'.local').split('.')[:3])
+		os.system('sudo ufw allow from '+prefix+'.0/24 to any port 9119')
+	except:
+		print ("Failed to dertermine lan structure!")
+		print ("Share on lan will fail!")
 	####################################################################
 	# copy over the preconfigured settings for new users, extract from correct zipfile
 	print 'Running editing default user settings in /etc/skel...'

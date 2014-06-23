@@ -42,6 +42,7 @@ build-deb:
 	mkdir -p debian/opt/hackbox;
 	mkdir -p debian/opt/hackbox/sources;
 	mkdir -p debian/opt/hackbox/media;
+	mkdir -p debian/opt/hackbox/scripts;
 	mkdir -p debian/opt/hackbox/preconfiguredSettings;
 	mkdir -p debian/usr/share;
 	mkdir -p debian/usr/share/applications;
@@ -75,6 +76,7 @@ build-deb:
 	# add config files n such
 	cp -vfr ./preconfiguredSettings/launchers ./debian/opt/hackbox/preconfiguredSettings/
 	cp -vfr ./media/. ./debian/opt/hackbox/media/
+	cp -vfr ./scripts/. ./debian/opt/hackbox/scripts/
 	cp -vfr ./sources/. ./debian/opt/hackbox/sources/
 	cp -vfr ./unsupportedPackages/. ./debian/opt/hackbox/unsupportedPackages/
 	# Create the md5sums file

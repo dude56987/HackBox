@@ -11,7 +11,7 @@
 #QUESTION:NONEYA
 # here is some logical scripts
 catagory<:>message<:>Checking if this is a laptop
-catagory<:>script<:>laptop-detect
+catagory<:>script<:>laptop-check
 ###################
 catagory<:>message<:>Installing gdebi(Grapical Package Installer)
 catagory<:>package<:>gdebi
@@ -38,9 +38,9 @@ catagory<:>package<:>leafpad
 catagory<:>message<:>Installing gnome-system-tools (Allows editing of users and groups)
 catagory<:>package<:>gnome-system-tools
 catagory<:>message<:>Removing redundant image burners(brasero)
-catagory<:>command<:>apt-get purge brasero --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>brasero
 catagory<:>message<:>Removing redundant image burners(k3b)
-catagory<:>command<:>apt-get purge k3b --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>k3b
 catagory<:>message<:>Installing Image Burner(xfburn)
 catagory<:>package<:>xfburn
 ########################################################################
@@ -66,7 +66,7 @@ catagory<:>package<:>libreoffice
 catagory<:>message<:>Installing Open Clipart resources for LibreOffice
 catagory<:>package<:>openclipart-libreoffice
 catagory<:>message<:>Removing Rhythmbox(Music Player)
-catagory<:>command<:>apt-get purge rhythmbox --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>rhythmbox
 # The Package banshee-community-extensions is pulling for user confirmation to setup the infrared remote, so its been removed
 # latter I will add back the comunity extensions individually excluding the IR remote one
 catagory<:>message<:>Installing Banshee(Music Player)
@@ -93,7 +93,7 @@ catagory<:>message<:>Installing Disk Usage Tool
 catagory<:>package<:>baobab
 # Install archive support
 catagory<:>message<:>Removing fileroller
-catagory<:>command<:>apt-get purge file-roller --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>file-roller
 catagory<:>message<:>Installing Xarchiver (Compressed file manager)
 catagory<:>package<:>xarchiver
 # setup thunar archive intergration
@@ -159,14 +159,14 @@ catagory<:>package<:>feh
 ##################################
 # Remove Redundant Image Viewers #
 catagory<:>message<:>Removing gThumb(Image Viewer)
-catagory<:>command<:>apt-get purge gthumb --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>gthumb
 catagory<:>message<:>Removing EOG(Eye Of Gnome)
-catagory<:>command<:>apt-get purge eog --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>eog
 catagory<:>message<:>Removing Ristretto
-catagory<:>command<:>apt-get purge ristretto --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>ristretto
 # photo orgnizers #
 catagory<:>message<:>Removing Shotwell
-catagory<:>command<:>apt-get purge shotwell --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>shotwell
 ###################################
 catagory<:>message<:>Installing Font Manager
 catagory<:>package<:>font-manager
@@ -206,7 +206,7 @@ catagory<:>package<:>transmission-gtk
 catagory<:>message<:>Setting up Transmission blocklist updater
 catagory<:>localdeb<:>transmission-blocklist-updater<:>/usr/bin/transmission-blocklist-updater
 catagory<:>message<:>Removing RSS reader
-catagory<:>command<:>apt-get purge liferea --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>liferea
 catagory<:>message<:>Installing Thunderbird (Email/Calendar)
 catagory<:>package<:>thunderbird
 catagory<:>message<:>Installing calendar extention to thunderbird
@@ -256,7 +256,7 @@ catagory<:>package<:>pidgin-plugin-pack
 ########################################################################
 # the below is removed because the systray does all this crap already, and it interferes by adding another volume icon
 catagory<:>message<:>Remove Xfce indicator plugin(ubuntu version of systray)
-catagory<:>command<:>apt-get purge xfce4-indicator-plugin --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>xfce4-indicator-plugin
 #### install volumeicon and remove volumed service to remove redundancy, also remove pulseaudio to simplify the volume options for users, install alsa as sound system
 catagory<:>message<:>Install ALSA(Sound System)
 catagory<:>package<:>alsa
@@ -270,13 +270,11 @@ catagory<:>package<:>volumeicon-alsa
 catagory<:>message<:>set volumeicon to autostart
 catagory<:>command<:>cp -vf preconfiguredSettings/launchers/unsorted/volumeIcon.desktop /etc/xdg/autostart/
 catagory<:>message<:>Remove xfce volumed(redundant with above program installed)
-catagory<:>command<:>apt-get purge xfce4-volumed --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>xfce4-volumed
 catagory<:>message<:>Remove pulseaudio
-catagory<:>command<:>apt-get purge pulseaudio --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>pulseaudio
 catagory<:>message<:>Remove pavucontrol(pulseaudio volume control)
-catagory<:>command<:>apt-get purge pavucontrol --assume-yes >> Install_Log.txt
-catagory<:>message<:>(Remove pavucontrol)
-catagory<:>command<:>apt-get purge pavucontrol --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>pavucontrol
 ####
 catagory<:>message<:>Installing countdown timer(xfce4 panel plugin)
 catagory<:>package<:>xfce4-timer-plugin
@@ -301,7 +299,7 @@ catagory<:>message<:>Install reboot-required
 catagory<:>localdeb<:>reboot-required<:>/usr/bin/reboot-required
 # remove the crappy notifications you cant click away, install xfce ones
 catagory<:>message<:>Remove Junk OSD notification system
-catagory<:>command<:>apt-get purge notify-osd --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>notify-osd
 catagory<:>message<:>Installing Nicer OSD notification system
 catagory<:>package<:>xfce4-notifyd
 # sets up the custom mimetype defaults for HackBox
@@ -338,13 +336,13 @@ catagory<:>package<:>xfce4-cpugraph-plugin
 catagory<:>message<:>Installing xscreensaver
 catagory<:>package<:>xscreensaver
 catagory<:>message<:>Removing extra screensavers
-catagory<:>command<:>apt-get purge gnome-screensaver --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>gnome-screensaver
 catagory<:>message<:>Removing extra screensavers
-catagory<:>command<:>apt-get purge mate-screensaver --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>mate-screensaver
 catagory<:>message<:>Removing extra screensavers
-catagory<:>command<:>apt-get purge cinnamon-screensaver --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>cinnamon-screensaver
 catagory<:>message<:>Removing extra screensavers
-catagory<:>command<:>apt-get purge kscreensaver --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>kscreensaver
 # Add fortune, cowsay, and create none cow
 catagory<:>message<:>Setup cowsay and fortune
 catagory<:>package<:>cowsay
@@ -368,19 +366,19 @@ catagory<:>package<:>cryptkeeper
 # catagory<:>message<:>Remove stupid shit from Ubuntu that tracks your activity
 ########################################################################
 catagory<:>message<:>Remove Ubuntu spyware
-catagory<:>command<:>apt-get purge unity-lens-shopping --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>unity-lens-shopping
 catagory<:>message<:>Remove more Ubuntu spyware
-catagory<:>command<:>apt-get purge unity-scope-video-remote --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>unity-scope-video-remote
 catagory<:>message<:>Remove even more Ubuntu spyware
-catagory<:>command<:>apt-get purge unity-scope-musicstores --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>unity-scope-musicstores
 # remove more stupid shit from ubuntu
 catagory<:>message<:>Remove Ubuntu Scrollbar junk
-catagory<:>command<:>apt-get purge overlay-scrollbar --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>overlay-scrollbar
 catagory<:>message<:>Remove Ubuntu Scrollbar junk
-catagory<:>command<:>apt-get purge overlay-scrollbar-gtk3 --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>overlay-scrollbar-gtk3
 # remove the indicator stuff and use systray
-catagory<:>command<:>apt-get purge mate-indicator-applet --assume-yes >> Install_Log.txt
-catagory<:>command<:>apt-get purge indicator-applet --assume-yes >> Install_Log.txt
-catagory<:>command<:>apt-get purge xfce4-indicator-plugin --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>mate-indicator-applet
+catagory<:>rm-package<:>indicator-applet
+catagory<:>rm-package<:>xfce4-indicator-plugin
 # remove mint welcome screen
-catagory<:>command<:>apt-get purge mintwelcome --assume-yes >> Install_Log.txt
+catagory<:>rm-package<:>mintwelcome
