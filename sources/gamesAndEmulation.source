@@ -20,7 +20,7 @@ catagory<:>package<:>ninvaders
 catagory<:>message<:>Installing Bsd Games
 catagory<:>package<:>bsdgames
 catagory<:>message<:>Installing Py-Tac-Toe
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/py-tac-toe_1.0_all.deb >> Install_Log.txt
+catagory<:>localdeb<:>py-tac-toe_1.0_all<:>/usr/bin/py-tac-toe
 catagory<:>message<:>Installing TuxPaint
 catagory<:>package<:>tuxpaint tuxpaint-stamps tuxpaint-plugins
 catagory<:>message<:>Installing qjoypad

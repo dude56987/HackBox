@@ -27,7 +27,7 @@ catagory<:>message<:>Installing GitHub Backup(Backup User Repos on GitHub)
 catagory<:>package<:>github-backup
 # install unsupported packages
 catagory<:>message<:>Installing git-cleanup (CLI util to shrink git repos)
-catagory<:>command<:>gdebi --non-interactive unsupportedPackages/git-cleanup_1.0_all.deb >> Install_Log.txt
+catagory<:>localdeb<:>git-cleanup_1.0_all<:>/usr/bin/git-cleanup
 catagory<:>message<:>Installing pyqt4-dev-tools (Qt for python)
 catagory<:>package<:>pyqt4-dev-tools
 catagory<:>message<:>Installing Alien (Convert between package formats)
