@@ -21,28 +21,26 @@ apt-get install tor --assume-yes
 apt-get install privoxy --assume-yes
 apt-get install macchanger --assume-yes
 # setting up i2p deepweb protocall though ppa ##########################
-if [ -f /usr/bin/i2prouter ];then
-	# set anwsers for setup dialouges
-	echo "i2p	i2p/daemon	boolean	true" > /tmp/i2p.conf
-	echo "i2p	i2p/user	string	i2psvc" >> /tmp/i2p.conf
-	echo "i2p	i2p/memory	string	128" >> /tmp/i2p.conf
-	debconf-set-selections /tmp/i2p.conf
-	# add ppa update and install program
-	apt-add-repository ppa:i2p-maintainers/i2p --yes
-	apt-get update
-	apt-get install i2p --assume-yes
-	dpkg-reconfigure i2p
-fi
+# set anwsers for setup dialouges
+echo "i2p	i2p/user	string	i2psvc" > /tmp/i2p.conf
+echo "i2p	i2p/memory	string	128" >> /tmp/i2p.conf
+echo "i2p	i2p/daemon	boolean	true" >> /tmp/i2p.conf
+debconf-set-selections /tmp/i2p.conf
+# add ppa update and install program
+apt-add-repository ppa:i2p-maintainers/i2p --yes
+apt-get update
+apt-get install i2p --assume-yes
+dpkg-reconfigure i2p
 # build the macchanger boot script #####################################
 #  changing the mac address at boot ensures connections appear from a
 #  diffrent machine each time user reboots, this is not on a timer since
 #  the interface needs brought down each time the mac is changed
 if [ ! -f /usr/bin/macRandomizer ];then
 	echo "#! /usr/bin/python" > /usr/bin/macRandomizer
-	echo "from os import system"  > /usr/bin/macRandomizer
-	echo "for index in range(51):\n" > /usr/bin/macRandomizer
-	echo "\tsystem(('sudo macchanger --another eth'+str(index)))\n" > /usr/bin/macRandomizer
-	echo "\tsystem(('sudo macchanger --another wlan'+str(index)))\n" > /usr/bin/macRandomizer
+	echo "from os import system"  >> /usr/bin/macRandomizer
+	echo "for index in range(51):\n" >> /usr/bin/macRandomizer
+	echo "\tsystem(('sudo macchanger --another eth'+str(index)))\n" >> /usr/bin/macRandomizer
+	echo "\tsystem(('sudo macchanger --another wlan'+str(index)))\n" >> /usr/bin/macRandomizer
 	chmod +x /usr/bin/macRandomizer
 fi
 # set macRandomizer to launch at boot though rc.local file
