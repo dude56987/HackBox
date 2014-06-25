@@ -685,8 +685,7 @@ if configData['basicSoftwareAndSecurity'] == 'y':
 	if os.path.exists('/usr/bin/hackbox-darknet-setup') != True:
 		#install software that sets up darknet access though privoxy  
 		printGreen('Installing Darknet...')
-		os.system('gdebi --non-interactive unsupportedPackages/hackbox-darknet')
-		os.system('hackbox-darknet-setup')
+		os.system('bash scripts/darknet-setup.sh')
 ########################################################################
 print 'Installing updates...';
 # May require user interaction so dont output into logfile
