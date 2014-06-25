@@ -623,6 +623,8 @@ if os.path.exists('/usr/sbin/apt-fast') != True:
 	printGreen('Adding apt-fast PPA...')
 	os.system('add-apt-repository ppa:apt-fast/stable')
 	if os.path.exists('/usr/sbin/apt-fast') != True:
+		# load the preconfigured settings to skip dialouges
+		os.system('debconf-set-selections preconfiguredsettings/debconf/apt-fast.conf')
 		# if apt-fast repos are not up to date then install
 		# the local backup debs, apt-fast is really important
 		# for the performance of this installer

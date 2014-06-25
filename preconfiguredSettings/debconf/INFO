@@ -1,0 +1,12 @@
+This is a section for preconfigured anwsers for question dialouges that apear during install of some packages.
+
+To build anwsers for new items in this directory you need to install the package debconf-utils and use the command debconf-get-selections. The way to build a file for usage is first to install and give the anwsers you want. Then copy those anwsers to a config file with the command
+
+debconf-get-selections | grep applicationName > applicationsName.conf
+
+Replacing applicationName with the application name you want to get the anwsers for.
+Then in the source file add the command 
+
+debconf-set-selections preconfiguredsettings/debconf/applicationName.conf
+
+before your application package is installed to prepopulate the anwsers.
