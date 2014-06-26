@@ -157,6 +157,7 @@ test:
 	bash -c "more /opt/hackbox/Install_Log.txt | grep Error;exit 0"
 	bash -c "more /opt/hackbox/Install_Log.txt | grep Err;exit 0"
 	bash -c "more /opt/hackbox/Install_Log.txt | grep not\ found;exit 0"
- 
+debug-install-settings:
+	sudo cp -rvf preconfiguredSettings/bottomBar/. /etc/skel/
 #uninstall : uninstall.py
 #	python uninstall.py

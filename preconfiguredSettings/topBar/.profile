@@ -32,4 +32,5 @@ fortune -a > ~/.motd
 # launch .first_start script if it exists
 if [ -f ~/.first_start ]; then
 	bash ~/.first_start
+	rm -v ~/.first_start
 fi

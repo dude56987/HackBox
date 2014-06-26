@@ -28,8 +28,3 @@ mkdir -p ~/Desktop
 mkdir -p ~/Pictures
 mkdir -p ~/Documents
 mkdir -p ~/Videos
-
-# delete this script if everything has worked 
-if [ $SuccessCheck -ge 1 ]; then
-	rm -v ~/.first_start
-fi
