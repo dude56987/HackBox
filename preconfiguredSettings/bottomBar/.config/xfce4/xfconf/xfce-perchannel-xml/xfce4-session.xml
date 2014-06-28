@@ -25,4 +25,11 @@
   <property name="splash" type="empty">
     <property name="Engine" type="empty"/>
   </property>
+  <property name="compat" type="empty">
+    <property name="LaunchKDE" type="bool" value="true"/>
+    <property name="LaunchGNOME" type="bool" value="true"/>
+  </property>
+  <property name="shutdown" type="empty">
+    <property name="LockScreen" type="bool" value="true"/>
+  </property>
 </channel>
