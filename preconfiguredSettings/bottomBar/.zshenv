@@ -2,6 +2,9 @@
 alias ls='ls --color=always' # this will color the output of ls
 alias ll='ls -la | more -d' # This is shorthand to show hidden files and permissions
 alias less='less -R' # Show colors when escape sequences for them are used 
+alias grep='grep --color=auto' # colorize the output of grep
+alias fgrep='fgrep --color=auto' # colorize the output of grep
+alias egrep='egrep --color=auto' # colorize the output of grep
 alias logview='tail -f /var/log/*' # View system log updates in realtime 
 alias lol="espeak 'ha ha ha ha ha'" # Sometimes its good to have a sense of humor
 alias say="espeak" # Speak the following string of text
@@ -22,7 +25,7 @@ alias pullhackboxsource="cd && git clone https://github.com/dude56987/HackBox.gi
 # lulz, you need em sometimes
 if date | grep Apr\ \ 1; then
 	repeat 10 bash -c "echo 'killallhumans';sleep 1"
-	echo 'erm.. uh.. Happy Birthday!'
+	echo 'erm.. uh.. Happy Birthday!' | cowsay -f tux
 fi
 # Show the user thier fortune for this login using cowsay
 #  To change the theme used replace tux with one of the 
