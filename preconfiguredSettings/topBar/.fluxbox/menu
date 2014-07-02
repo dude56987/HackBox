@@ -1,21 +1,19 @@
 [begin] (fluxbox)
-	[exec] (Firefox Web Browser) {/usr/bin/firefox} </usr/share/pixmaps/firefox.png>
-	[exec] (Thunar File Browser) {/usr/bin/thunar} </home/dude/.icons/Faenza/apps/32/thunar.png>
-
-	[exec] (Settings Manager) {/usr/bin/xfce4-settings-manager} </home/dude/.icons/Faenza/categories/32/xfce4-settings.png>
-	[separator]
-
-	[submenu] (Backgrounds)
-		[wallpapers] (~/.fluxbox/backgrounds) {feh --bg-scale}
-		[wallpapers] (/usr/share/fluxbox/backgrounds) {feh --bg-scale}
-		[wallpapers] (/usr/share/pixmaps/wallpapers) {feh --bg-scale}
-		[wallpapers] (~/Pictures/Wallpapers/) {feh --bg-scale}
-		[wallpapers] (~/Pictures/Wallpapers/*/) {feh --bg-scale}
-		[wallpapers] (~/Pictures/Wallpapers/*/*/) {feh --bg-scale}
-		[wallpapers] (~/Wallpapers/) {feh --bg-scale}
-		[wallpapers] (~/Wallpapers/*/) {feh --bg-scale}
-		[wallpapers] (~/Pictures/) {feh --bg-scale}
-	[end]
+	[exec] (Midori Web Browser) {/usr/bin/midori} </usr/share/icons/Faenza/apps/64/midori.png>
+	[exec] (Thunar File Browser) {/usr/bin/thunar} </usr/share/icons/Faenza/apps/64/system-file-manager.png>
+	[exec] (Settings Manager) {/usr/bin/xfce4-settings-manager}  </usr/share/icons/Faenza/categories/64/applications-system.png>
+#	[separator]
+#	[submenu] (Backgrounds)
+#		[wallpapers] (~/.fluxbox/backgrounds) {feh --bg-scale}
+#		[wallpapers] (/usr/share/fluxbox/backgrounds) {feh --bg-scale}
+#		[wallpapers] (/usr/share/pixmaps/wallpapers) {feh --bg-scale}
+#		[wallpapers] (~/Pictures/Wallpapers/) {feh --bg-scale}
+#		[wallpapers] (~/Pictures/Wallpapers/*/) {feh --bg-scale}
+#		[wallpapers] (~/Pictures/Wallpapers/*/*/) {feh --bg-scale}
+#		[wallpapers] (~/Wallpapers/) {feh --bg-scale}
+#		[wallpapers] (~/Wallpapers/*/) {feh --bg-scale}
+#		[wallpapers] (~/Pictures/) {feh --bg-scale}
+#	[end]
 	[separator]
 	[submenu] (Accessories) {} </usr/share/icons/Faenza/categories/64/applications-accessories.png>
 		[exec] (Xmag) {xmag} <>
@@ -255,13 +253,13 @@
 			[exec] (Typefortune (short\)) { x-terminal-emulator -T "Typefortune (short)" -e /usr/bin/typefortune -s -n 10} <>
 		[end]
 	[end]
-	[submenu] (Help) {}
+	[submenu] (Help) {} </usr/share/icons/Faenza/actions/64/help-contents.png>
 		[exec] (Info) { x-terminal-emulator -T "Info" -e info} <>
 		[exec] (TeXdoctk) {/usr/bin/texdoctk} <>
 		[exec] (Xman) {xman} <>
 		[exec] (yelp) {/usr/bin/yelp} <>
 	[end]
-	[submenu] (Screen) {}
+	[submenu] (Screen) {} </usr/share/icons/Faenza/devices/64/video-display.png>
 		[submenu] (Locking) {}
 			[exec] (Lock Screen (XScreenSaver\)) {/usr/bin/xscreensaver-command -lock} <>
 			[exec] (Workrave) {/usr/bin/workrave} </usr/share/pixmaps/workrave/workrave.xpm>
@@ -281,9 +279,8 @@
 	[submenu] (Default Menu)
 		[include] (/etc/X11/fluxbox/fluxbox-menu)
 	[end]
-	[restart] (Restart Fluxbox)  {/usr/bin/startfluxbox}
+	[restart] (Restart Fluxbox)  {/usr/bin/startfluxbox} </usr/share/icons/Faenza/actions/64/view-refresh.png>
 	[separator]
-	[exec] (Shutdown) {/usr/bin/qshutdown} </usr/share/icons/Faenza/actions/32/system-shutdown.png>
-	[exit] (Logout)
-
+	[exec] (Shutdown) {/usr/bin/qshutdown} </usr/share/icons/Faenza/actions/64/system-shutdown.png>
+	[exit] (Logout) </usr/share/icons/Faenza/actions/64/system-log-out.png>
 [end]

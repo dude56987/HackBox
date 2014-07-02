@@ -50,7 +50,7 @@ session.screen0.strftimeFormat:	%d %b, %a %02k:%M:%S
 session.screen0.rowPlacementDirection:	LeftToRight
 session.screen0.allowRemoteActions:	false
 session.screen0.windowMenu:	~/.fluxbox/windowmenu
-session.screen0.rootCommand:	~/.fehbg
+session.screen0.rootCommand:	fbsetbg -l
 session.screen0.workspaceNames:	Workspace 1,Workspace 2,Workspace 3,Workspace 4,
 session.screen0.showwindowposition:	false
 session.screen0.menuDelay:	200
