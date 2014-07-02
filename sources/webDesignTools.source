@@ -4,6 +4,8 @@ catagory<:>message<:>Installing FileZilla
 catagory<:>package<:>filezilla
 catagory<:>message<:>Installing Chromium Web Browser
 catagory<:>package<:>chromium-browser
+catagory<:>message<:>Installing Midori Web Browser
+catagory<:>package<:>midori
 catagory<:>message<:>Installing Links Text Web Browser
 catagory<:>package<:>links
 catagory<:>message<:>Installing Bluefish (Web IDE)
