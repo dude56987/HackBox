@@ -12,6 +12,8 @@
 # here is some logical scripts
 catagory<:>message<:>Checking if this is a laptop
 catagory<:>script<:>laptop-check
+catagory<:>message<:>Change the system swappiness(Improve use of system RAM)
+catagory<:>script<:>change-swappiness
 ###################
 catagory<:>message<:>Installing gdebi(Grapical Package Installer)
 catagory<:>package<:>gdebi
