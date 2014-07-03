@@ -50,8 +50,8 @@ session.screen0.strftimeFormat:	%d %b, %a %02k:%M:%S
 session.screen0.rowPlacementDirection:	LeftToRight
 session.screen0.allowRemoteActions:	false
 session.screen0.windowMenu:	~/.fluxbox/windowmenu
-session.screen0.rootCommand:	fbsetbg -l
-session.screen0.workspaceNames:	Workspace 1,Workspace 2,Workspace 3,Workspace 4,
+session.screen0.rootCommand:	fbsetbg $(cat ~/.config/nitrogen/bg-saved.cfg | grep file= | sed "s/file=//g")
+session.screen0.workspaceNames:	Workspace 1,
 session.screen0.showwindowposition:	false
 session.screen0.menuDelay:	200
 session.screen0.focusSameHead:	false
@@ -60,8 +60,8 @@ session.screen0.autoRaise:	true
 session.screen0.windowPlacement:	RowMinOverlapPlacement
 session.cacheLife:	5
 session.styleFile:	/usr/share/fluxbox/styles/green_tea
-session.styleOverlay:	/home/dude/.fluxbox/overlay
-session.slitlistFile:	/home/dude/.fluxbox/slitlist
+session.styleOverlay:	~/.fluxbox/overlay
+session.slitlistFile:	~/.fluxbox/slitlist
 session.ignoreBorder:	false
 session.cacheMax:	200
 session.forcePseudoTransparency:	false
@@ -72,5 +72,5 @@ session.keyFile:	~/.fluxbox/keys
 session.menuFile:	~/.fluxbox/menu
 session.tabPadding:	0
 session.autoRaiseDelay:	250
-session.appsFile:	/home/dude/.fluxbox/apps
+session.appsFile:	~/.fluxbox/apps
 session.tabsAttachArea:	Window
