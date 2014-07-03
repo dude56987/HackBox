@@ -119,6 +119,8 @@ if os.geteuid() != 0:
 	print ('gksu "python '+re.sub(' ','\ ',str(os.path.abspath(__file__)))+' '+(' '.join(sys.argv[1:]))+'"')
 	os.system('gksu "python '+re.sub(' ','\ ',str(os.path.abspath(__file__)))+' '+(' '.join(sys.argv[1:]))+'"')
 	exit()
+# set the background if in fullscreen
+os.system('xterm -e fbsetbg /opt/hackbox/media/wallpapers/hackboxWallpaperBranded.png')
 # set current directory to be same as this file
 os.chdir(currentDirectory())
 # check for config file
@@ -135,8 +137,6 @@ if os.path.exists('hackBox.conf'):
 	else:
 		configData = {}
 if configData == {}:
-	# check if the user wants to upgrade before start
-	configData['updateCheck'] = askQuestion('Upgrade First? 2/20','Do you want to upgrade all current software before install?\n\n(This is highly recommended)');
 	# Section for basic software / security needs
 	configData['basicSoftwareAndSecurity'] = 'y'
 	# system tools section
@@ -232,7 +232,6 @@ settingsScreen += 'Setup DVD/Flash Support = ' + formatAnwser(configData['restri
 settingsScreen += 'Enable Automatic Updates = ' + formatAnwser(configData['autoUpdates']) + '\n'
 settingsScreen += 'Install Redshift =' + formatAnwser(configData['redShiftCheck']) + '\n'
 settingsScreen += 'Reboot after install =' + formatAnwser(configData['rebootCheck']) + '\n'
-settingsScreen += 'Upgrade before install = ' + formatAnwser(configData['updateCheck']) + '\n'
 #~ settingsScreen += 'Passively Donate = ' + formatAnwser(configData['affilateCheck']) + '\n'
 settingsScreen += 'Custom Desktop Config = ' + formatAnwser(configData['customSettingsCheck']) + '\n'
 settingsScreen += 'Netflix Desktop = ' + formatAnwser(configData['netflix']) + '\n\n'

@@ -274,6 +274,7 @@
 			[exec] (Reinitialize XScreenSaver) {/usr/bin/xscreensaver-command -restart} <>
 			[exec] (ScreenSaver Preferences) {/usr/bin/xscreensaver-command -prefs} <>
 		[end]
+		[exec] (Change Wallpaper) {/usr/bin/nitrogen} </usr/share/icons/Faenza/devices/64/video-display.png>
 	[end]
 	[separator]
 	[submenu] (Default Menu)

@@ -384,3 +384,6 @@ catagory<:>rm-package<:>indicator-applet
 catagory<:>rm-package<:>xfce4-indicator-plugin
 # remove mint welcome screen
 catagory<:>rm-package<:>mintwelcome
+# check if its a low ram system
+catagory<:>message<:>Low ram system check
+catagory<:>script<:>low-ram-system
