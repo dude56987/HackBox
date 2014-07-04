@@ -50,8 +50,11 @@ at_strikeoff=$'\e[29m'
 #####################
 autoload -Uz promptinit
 promptinit
-prompt fire blue blue blue white white blue
-
+if whoami | grep root;then
+	prompt fire red red red white white red 
+else
+	prompt fire blue blue blue white white blue
+fi
 setopt histignorealldups sharehistory
 
 # Use emacs keybindings even if our EDITOR is set to vi

@@ -58,6 +58,8 @@ catagory<:>message<:>Installing Goldendict(A dictionary that pulls from Wikipedi
 catagory<:>package<:>goldendict
 catagory<:>message<:>Installing GCP(CP but verbose)
 catagory<:>package<:>gcp
+# below package is required for gcp to work correctly
+catagory<:>package<:>python-progressbar
 catagory<:>message<:>Installing colordiff(colorize diff output)
 catagory<:>package<:>colordiff
 catagory<:>message<:>Installing Zim
