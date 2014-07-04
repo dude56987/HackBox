@@ -1,0 +1,28 @@
+#! /bin/bash
+# launch stuff once fluxbox is open
+if [ $(ps -e | grep -c fluxbox) -eq 0 ];then
+	sleep 15
+	nitrogen --restore &
+fi
+# keep some tray applications alive
+while : ;do
+	if [ $(ps -e | grep -c volumeicon) -eq 0 ];then
+		volumeicon &
+	fi
+	if [ -f /usr/bin/redshift-gtk ];then
+		if [ $(ps -e | grep -c redshift-gtk) -eq 0 ];then
+			redshift-gtk -l $(cat /etc/latlon) &
+		fi
+	fi
+	if [ $(ps -e | grep -c nm-applet) -eq 0 ];then
+		nm-applet &	
+	fi
+	if [ $(ps -e | grep -c kupf) -eq 0 ];then
+		kupfer --no-splash &	
+	fi
+	if [ $(ps -e | grep -c guake) -eq 0 ];then
+		guake &
+	fi
+	# sleep for 30 seconds then check for applets again
+	sleep 30
+done

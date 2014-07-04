@@ -22,19 +22,10 @@ which fbautostart > /dev/null
 if [ $? -eq 0 ]; then
     fbautostart
 fi
-# kill apps that start automaticly to fluxbox restart dont fuck stuff up
-killall nm-applet
-killall volumeicon
-killall xbattbar
 # And last but not least we start fluxbox.
 # Because it is the last app you have to run it with ''exec'' before it.
 pidgin &
-guake &
-kupfer --no-splash &
-nm-applet &
-volumeicon &
-# set the background with nitrogen
-nitrogen --restore &
+bash ~/.fluxbox/activeTray &
 # laptop battery indiaator if its a laptop
 if laptop-detect;then
 	xfce4-power-manager
