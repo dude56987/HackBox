@@ -20,6 +20,8 @@ catagory<:>package<:>frei0r-plugins
 # winff does launch bash scripts it creates but does create them correctly
 catagory<:>message<:>Installing winff (audio/video converter)
 catagory<:>package<:>winff
+catagory<:>message<:>Installing mkvtoolnix
+catagory<:>package<:>mkvtoolnix-gui
 catagory<:>message<:>Installing Sound Converter
 catagory<:>package<:>soundconverter
 # backwards compatiblity handbrake package name changed for gui version
