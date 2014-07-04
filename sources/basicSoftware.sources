@@ -191,6 +191,9 @@ catagory<:>localdeb<:>resetsettings<:>/usr/bin/resetsettings
 ########################################################################
 # SECTION FOR INTERNET SOFTWARE #
 ########################################################################
+catagory<:>message<:>Installing curl and wget (CLI downloaders)
+catagory<:>package<:>wget
+catagory<:>package<:>curl
 catagory<:>message<:>Installing dns-precache(Caches top 500 sites)
 catagory<:>localdeb<:>dns-precache<:>/usr/bin/dns-precache
 catagory<:>message<:>Installing lanscan(scans lan for connected devices)
