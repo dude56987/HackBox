@@ -19,6 +19,14 @@
 		[exec] (Xmag) {xmag} <>
 		[exec] (XTerm) {xterm} </usr/share/pixmaps/xterm-color_32x32.xpm>
 		[exec] (X-Terminal as root (GKsu\)) {/usr/bin/gksu -u root /usr/bin/x-terminal-emulator} </usr/share/pixmaps/gksu-debian.xpm>
+		[exec] (Bc) { x-terminal-emulator -T "Bc" -e /usr/bin/bc} <>
+		[exec] (ConvertAll) {/usr/bin/convertall} </usr/share/pixmaps/convertall.xpm>
+		[exec] (Dc) { x-terminal-emulator -T "Dc" -e /usr/bin/dc} <>
+		[exec] (Gnuplot) { x-terminal-emulator -T "Gnuplot" -e /usr/bin/gnuplot} <>
+		[exec] (LibreOffice Math) {/usr/bin/libreoffice --math} </usr/share/icons/hicolor/32x32/apps/libreoffice-math.xpm>
+		[exec] (SpeedCrunch) {/usr/bin/speedcrunch} <speedcrunch.xpm>
+		[exec] (Stopwatch) {stopwatch} </usr/share/pixmaps/stopwatch.xpm>
+		[exec] (Xcalc) {xcalc} <>
 		[submenu] (Text) {}
 			[exec] (Fortune) {sh -c 'while /usr/games/fortune | col -x | xmessage -center -buttons OK:1,Another:0 -default OK -file - ; do :; done'} <>
 			[exec] (txt2regex) { x-terminal-emulator -T "txt2regex" -e /usr/bin/txt2regex} <>
@@ -124,16 +132,6 @@
 		[exec] (Tclsh8.6) { x-terminal-emulator -T "Tclsh8.6" -e /usr/bin/tclsh8.6} <>
 		[exec] (TkWish8.6) {x-terminal-emulator -e /usr/bin/wish8.6} <>
 		[exec] (Bluefish) {/usr/bin/bluefish} </usr/share/pixmaps/bluefish.xpm>
-	[end]
-	[submenu] (Science) {} </usr/share/icons/Faenza/categories/64/applications-science.png>
-		[exec] (Bc) { x-terminal-emulator -T "Bc" -e /usr/bin/bc} <>
-		[exec] (ConvertAll) {/usr/bin/convertall} </usr/share/pixmaps/convertall.xpm>
-		[exec] (Dc) { x-terminal-emulator -T "Dc" -e /usr/bin/dc} <>
-		[exec] (Gnuplot) { x-terminal-emulator -T "Gnuplot" -e /usr/bin/gnuplot} <>
-		[exec] (LibreOffice Math) {/usr/bin/libreoffice --math} </usr/share/icons/hicolor/32x32/apps/libreoffice-math.xpm>
-		[exec] (SpeedCrunch) {/usr/bin/speedcrunch} <speedcrunch.xpm>
-		[exec] (Stopwatch) {stopwatch} </usr/share/pixmaps/stopwatch.xpm>
-		[exec] (Xcalc) {xcalc} <>
 	[end]
 	[submenu] (System) {} </usr/share/icons/Faenza/categories/64/applications-system.png>
 		[submenu] (Administration) {}
