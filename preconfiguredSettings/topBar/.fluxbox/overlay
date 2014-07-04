@@ -4,8 +4,3 @@ menu.title.font: 	hermit-12
 toolbar.workspace.font:	hermit-12
 toolbar.clock.font:	hermit-12
 *.font:			hermit-12
-
-background: aspect
-background.pixmap: /usr/share/pixmaps/wallpapers/hackboxWallpaperBranded.png
-
-
