@@ -58,6 +58,8 @@ catagory<:>message<:>Installing Goldendict(A dictionary that pulls from Wikipedi
 catagory<:>package<:>goldendict
 catagory<:>message<:>Installing GCP(CP but verbose)
 catagory<:>package<:>gcp
+catagory<:>message<:>Installing colordiff(colorize diff output)
+catagory<:>package<:>colordiff
 catagory<:>message<:>Installing Zim
 catagory<:>package<:>zim
 catagory<:>message<:>Installing xchm (Compiled Help File Viewer) 

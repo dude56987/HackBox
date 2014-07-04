@@ -5,6 +5,7 @@ alias less='less -R' # Show colors when escape sequences for them are used
 alias grep='grep --color=auto' # colorize the output of grep
 alias fgrep='fgrep --color=auto' # colorize the output of grep
 alias egrep='egrep --color=auto' # colorize the output of grep
+alias diff='colordiff' # colorize the output of diff
 alias logview='tail -f /var/log/*' # View system log updates in realtime 
 alias lol="espeak 'ha ha ha ha ha'" # Sometimes its good to have a sense of humor
 alias say="espeak" # Speak the following string of text
