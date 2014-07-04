@@ -1,10 +1,13 @@
 #! /bin/bash
 # launch stuff once fluxbox is open
-if [ $(ps -e | grep -c fluxbox) -eq 0 ];then
-	nitrogen --restore &
-fi
+while [ $(ps -e | grep -c fluxbox) -eq 0 ];do
+	nitrogen --restore
+done
 # keep some tray applications alive
 while : ;do
+	# launch this to keep the desktop background painted	
+	nitrogen --restore
+	# check for icons in tray to keep active
 	if [ $(ps -e | grep -c volumeicon) -eq 0 ];then
 		volumeicon &
 	fi
@@ -23,5 +26,5 @@ while : ;do
 		guake &
 	fi
 	# sleep for 30 seconds then check for applets again
-	sleep 30
+	sleep 60
 done
