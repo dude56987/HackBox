@@ -1,7 +1,6 @@
 #! /bin/bash
 # launch stuff once fluxbox is open
 if [ $(ps -e | grep -c fluxbox) -eq 0 ];then
-	sleep 15
 	nitrogen --restore &
 fi
 # keep some tray applications alive
