@@ -16,8 +16,16 @@ while : ;do
 			redshift-gtk -l $(cat /etc/latlon) &
 		fi
 	fi
-	if [ $(ps -e | grep -c nm-applet) -eq 0 ];then
-		nm-applet &	
+	if [ -f /usr/bin/nm-applet ];then
+		if [ $(ps -e | grep -c nm-applet) -eq 0 ];then
+			nm-applet &	
+		fi
+	else	
+		if [ -f /usr/bin/wicd-gtk ];then
+			if [ $(ps -e | grep -c wicd-client) -eq 0 ];then
+				wicd-gtk --tray &	
+			fi
+		fi
 	fi
 	if [ $(ps -e | grep -c kupf) -eq 0 ];then
 		kupfer --no-splash &	
