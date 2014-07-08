@@ -59,7 +59,7 @@ session.screen0.maxIgnoreIncrement:	true
 session.screen0.autoRaise:	true
 session.screen0.windowPlacement:	RowMinOverlapPlacement
 session.cacheLife:	5
-session.styleFile:	/usr/share/fluxbox/styles/green_tea
+session.styleFile:	/usr/share/fluxbox/styles/HackBox_Fluxbox
 session.styleOverlay:	~/.fluxbox/overlay
 session.slitlistFile:	~/.fluxbox/slitlist
 session.ignoreBorder:	false

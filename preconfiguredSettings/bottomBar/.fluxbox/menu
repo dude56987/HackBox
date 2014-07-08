@@ -1,4 +1,4 @@
-[begin] (fluxbox)
+[begin] (HackBox)
 	[exec] (Midori Web Browser) {/usr/bin/midori} </usr/share/icons/Faenza/apps/64/midori.png>
 	[exec] (Thunar File Browser) {/usr/bin/thunar} </usr/share/icons/Faenza/apps/64/system-file-manager.png>
 	[exec] (Settings Manager) {/usr/bin/xfce4-settings-manager}  </usr/share/icons/Faenza/categories/64/applications-system.png>
