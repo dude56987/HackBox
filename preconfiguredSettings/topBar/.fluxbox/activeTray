@@ -11,9 +11,9 @@ while : ;do
 	if [ $(ps -e | grep -c volumeicon) -eq 0 ];then
 		volumeicon &
 	fi
-	if [ -f /usr/bin/redshift-gtk ];then
-		if [ $(ps -e | grep -c redshift-gtk) -eq 0 ];then
-			redshift-gtk -l $(cat /etc/latlon) &
+	if [ -f /usr/bin/redshift ];then
+		if [ $(ps -e | grep -c redshift) -eq 0 ];then
+			gtk-redshift -l $(cat /etc/latlon) &
 		fi
 	fi
 	if [ -f /usr/bin/nm-applet ];then
