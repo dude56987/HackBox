@@ -8,9 +8,16 @@ if [ "$memory" -lt 1000000 ];then
 	apt-get install fluxbox --assume-yes
 	apt-get install nitrogen --assume-yes
 	apt-get install midori --assume-yes
+	#modify the configs in /etc/skel
 	sed -i "s/Session=*\n/Session=fluxbox\n/g" /etc/skel/.dmrc
+	sed -i "s/DEFAULT_DESKTOP=\".*\"/DEFAULT_DESKTOP=\"fluxbox\"/g" /etc/skel/.xinitrc
+	# modify existing users
 	for dir in /home/*;do
 		echo "Editing $dir/.dmrc ..."
 		sed -i "s/Session=*\n/Session=fluxbox\n/g" $dir/.dmrc
+		chown $(echo \$dir | sed \"s/\/home\///g\") $dir/.dmrc
+		# for antix debian compatibility
+		sed -i "s/DEFAULT_DESKTOP=\".*\"/DEFAULT_DESKTOP=\"fluxbox\"/g" $dir/.xinitrc
+		chown $(echo \$dir | sed \"s/\/home\///g\") $dir/.xinitrc
 	done
 fi
