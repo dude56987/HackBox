@@ -14,6 +14,8 @@ catagory<:>message<:>Checking if this is a laptop
 catagory<:>script<:>laptop-check
 catagory<:>message<:>Change the system swappiness(Improve use of system RAM)
 catagory<:>script<:>change-swappiness
+catagory<:>message<:>Fix Home Permissions(Users can't see other users stuff now)
+catagory<:>script<:>fix-home-permissions
 ###################
 catagory<:>message<:>Installing gdebi(Grapical Package Installer)
 catagory<:>package<:>gdebi
@@ -358,6 +360,8 @@ catagory<:>package<:>cowsay
 catagory<:>package<:>fortune
 catagory<:>command<:>echo "$thoughts" > /usr/share/cowsay/cows/none.cow
 catagory<:>command<:>chmod +r /usr/share/cowsay/cows/none.cow
+# add motd which depends on cowsay and fortune
+catagory<:>script<:>message-of-the-day
 ########################################################################
 # Basic Security Software
 ########################################################################
