@@ -1181,6 +1181,10 @@ os.system('update-initramfs -u')
 ########################################################################
 # Edit the login managers
 ########################################################################
+# modify slim theme backgrounds
+if os.path.exists('/usr/share/slim'):
+	os.system('cp /opt/hackbox/media/wallpapers/hackboxWallpaperBranded.png /usr/share/slim/themes/*/background.jpg')
+	os.system('cp /opt/hackbox/media/wallpapers/hackboxWallpaperBranded.png /usr/share/slim/themes/*/background.png')
 print 'Installing Hackbox MDM Theme...'
 # pull unzip theme into theme folder
 if os.path.exists('/etc/mdm/mdm.conf'):
