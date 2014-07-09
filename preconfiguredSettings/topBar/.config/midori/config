@@ -8,7 +8,8 @@ last-window-state=MIDORI_WINDOW_MAXIMIZED
 last-panel-position=609
 show-menubar=true
 show-statusbar=false
-toolbar-items=Back,Forward,Homepage,ReloadStop,Location,TabNew,BookmarkAdd,
+toolbar-style=MIDORI_TOOLBAR_ICONS
+toolbar-items=Back,Forward,Homepage,ReloadStop,Location,TabNew,BookmarkAdd,Bookmarks,
 homepage=https://duckduckgo.com
 text-editor=leafpad %f
 location-entry-search=https://duckduckgo.com/?q=%s
