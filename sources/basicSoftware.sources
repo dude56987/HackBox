@@ -193,6 +193,10 @@ catagory<:>localdeb<:>resetsettings<:>/usr/bin/resetsettings
 ########################################################################
 # SECTION FOR INTERNET SOFTWARE #
 ########################################################################
+catagory<:>message<:>Installing zeroconf support
+catagory<:>package<:>avahi-daemon
+catagory<:>package<:>avahi-discover
+catagory<:>package<:>libnss-mdns
 catagory<:>message<:>Installing curl and wget (CLI downloaders)
 catagory<:>package<:>wget
 catagory<:>package<:>curl
