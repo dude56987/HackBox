@@ -3,7 +3,7 @@
 # System Tools Source file
 # backup tool #
 # luckybackup is way harder to use than backintime so its getting replaced
-#catagory<:>message<:>Installing LuckyBackup (Backup Utility)
+catagory<:>message<:>Installing LuckyBackup (Backup Utility)
 catagory<:>package<:>luckybackup
 catagory<:>message<:>Installing Back In Time (Backup Utility)
 catagory<:>package<:>backintime-gnome
@@ -32,6 +32,11 @@ catagory<:>message<:>Installing htop (CLI Task Manager)
 catagory<:>package<:>htop
 catagory<:>message<:>Installing iotop (CLI Disk I/O Manager)
 catagory<:>package<:>iotop
+# network monitoring tools
+catagory<:>message<:>Installing iftop (CLI network monitor)
+catagory<:>package<:>iftop
+catagory<:>message<:>Installing etherape (Graphical network monitor)
+catagory<:>package<:>etherape
 # install psensor, remove the autostart file 
 catagory<:>message<:>Installing psensor (Graphing Temp Sensor Tool)
 catagory<:>package<:>psensor
