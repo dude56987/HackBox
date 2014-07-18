@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<todo version="0.1.20">
+    <note priority="high" time="1405647589">
+        Find a way to modify version numbers based on commit number with makefile
+    </note>
+</todo>
