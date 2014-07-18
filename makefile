@@ -56,6 +56,7 @@ build-deb:
 	mkdir -p debian/opt/hackbox/media;
 	mkdir -p debian/opt/hackbox/scripts;
 	mkdir -p debian/opt/hackbox/preconfiguredSettings;
+	mkdir -p debian/opt/hackbox/preconfiguredSettings/userSettings;
 	mkdir -p debian/usr/share;
 	mkdir -p debian/usr/share/applications;
 	mkdir -p debian/usr/share/pixmaps;
@@ -81,13 +82,13 @@ build-deb:
 	# compress the preconfigured settings files
 	# escape the endings to cd works since each line is executed as a separate process
 	cd preconfiguredSettings/userSettings/topBar/;\
-	ls -A | zip -g -9 -r ../../debian/opt/hackbox/preconfiguredSettings/userSettings/topBar.zip -@;
+	ls -A | zip -g -9 -r ../../../debian/opt/hackbox/preconfiguredSettings/userSettings/topBar.zip -@;
 	# each line is executed as a separate process so it pops back to the main directory
 	cd preconfiguredSettings/userSettings/bottomBar/;\
-	ls -A | zip -g -9 -r ../../debian/opt/hackbox/preconfiguredSettings/userSettings/bottomBar.zip -@;
+	ls -A | zip -g -9 -r ../../../debian/opt/hackbox/preconfiguredSettings/userSettings/bottomBar.zip -@;
 	# add core settings
 	cd preconfiguredSettings/userSettings/CORE/;\
-	ls -A | zip -g -9 -r ../../debian/opt/hackbox/preconfiguredSettings/userSettings/CORE.zip -@;
+	ls -A | zip -g -9 -r ../../../debian/opt/hackbox/preconfiguredSettings/userSettings/CORE.zip -@;
 	# add config files n such
 	cp -vfr ./preconfiguredSettings/launchers ./debian/opt/hackbox/preconfiguredSettings/
 	cp -vfr ./media/. ./debian/opt/hackbox/media/
