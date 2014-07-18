@@ -31,7 +31,19 @@ uninstallfromsystem:
 	rm -rv /usr/bin/hackboxsetup
 install-deb: hackbox_UNSTABLE.deb
 	sudo gdebi --no hackbox_UNSTABLE.deb
+update-version-number:
+	#^Version:.\{4\}[0987654321]\{1,20\}
+	#VERSION-NUMBER=${git log --pretty=oneline --all | wc -l};echo $VERSION-NUMBER;
+	#bash -c 'cat .debdata/control | sed "s/Version\: ....[0987654321]\{1,20\}/"$(git log --pretty=oneline --all | wc -l)"/g"'
+	#bash -c 'cat .debdata/control | sed "s/Version\: 0\.5\.[0987654321]\{1,20\}/Version: 0.5."$(git log --pretty=oneline --all | wc -l)"/g"'
+	cat .debdata/control | sed "s/Version\: 0\.5\.[0987654321]\{1,20\}/Version: 0.5."$(git log --pretty=oneline --all | wc -l)"/g"
+	#sed -i -e "s/Version\: ....[0987654321]\{1,20\}/${VERSION-NUMBER}/g" .debdata/control
+	# check changes
+#	less .debdata/control
+	# fix it back
+#	cp .debdata/control.backup .debdata/control
 build: 
+	# build the deb
 	sudo make build-deb;
 build-deb:
 	mkdir -p debian;
@@ -68,11 +80,14 @@ build-deb:
 	chmod -Rv ugo+r ./debian/opt/hackbox/media/.
 	# compress the preconfigured settings files
 	# escape the endings to cd works since each line is executed as a separate process
-	cd preconfiguredSettings/topBar/;\
-	ls -A | zip -g -9 -r ../../debian/opt/hackbox/preconfiguredSettings/preconfiguredSettings.zip -@;
+	cd preconfiguredSettings/userSettings/topBar/;\
+	ls -A | zip -g -9 -r ../../debian/opt/hackbox/preconfiguredSettings/userSettings/topBar.zip -@;
 	# each line is executed as a separate process so it pops back to the main directory
-	cd preconfiguredSettings/bottomBar/;\
-	ls -A | zip -g -9 -r ../../debian/opt/hackbox/preconfiguredSettings/preconfiguredSettings_Bottom.zip -@;
+	cd preconfiguredSettings/userSettings/bottomBar/;\
+	ls -A | zip -g -9 -r ../../debian/opt/hackbox/preconfiguredSettings/userSettings/bottomBar.zip -@;
+	# add core settings
+	cd preconfiguredSettings/userSettings/CORE/;\
+	ls -A | zip -g -9 -r ../../debian/opt/hackbox/preconfiguredSettings/userSettings/CORE.zip -@;
 	# add config files n such
 	cp -vfr ./preconfiguredSettings/launchers ./debian/opt/hackbox/preconfiguredSettings/
 	cp -vfr ./media/. ./debian/opt/hackbox/media/

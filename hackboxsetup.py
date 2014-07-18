@@ -874,14 +874,6 @@ if configData['basicSoftwareAndSecurity'] == 'y' :
 	except:
 		print ("Failed to dertermine lan structure!")
 		print ("Share on lan will fail!")
-	####################################################################
-	# copy over the preconfigured settings for new users, extract from correct zipfile
-	print 'Running editing default user settings in /etc/skel...'
-	if configData['bottomBar'] == 'y':# want a desktop with the bar on the bottom
-		zipfile.ZipFile('preconfiguredSettings/preconfiguredSettings_Bottom.zip','r').extractall('/etc/skel')
-	else:# otherwise place that bar on top
-		zipfile.ZipFile('preconfiguredSettings/preconfiguredSettings.zip','r').extractall('/etc/skel')
-	# os.system('cp -vrf preconfiguredSettings/. /etc/skel') # this is now done though zipfiles above
 	#~ print 'Editing specific aplications for current user...'
 	#~ os.system('resetsettings -p goldendict')
 	#~ os.system('resetsettings -p qshutdown')
@@ -892,9 +884,7 @@ if configData['basicSoftwareAndSecurity'] == 'y' :
 	# set zsh to the default shell for new users
 	os.system('useradd -D -s $(which zsh)')
 	# set zsh to default shell for current users
-	os.system('sed -i.bak "s/bash/zsh/g" /etc/passwd')
-	# remove backup file created by sed above
-	os.system('rm -fv /etc/passwd.bak')
+	os.system('sed -i "s/bash/zsh/g" /etc/passwd')
 	####################################################################
 	# install preload if pc has more than 4 gigs of ram, this will attempt
 	# to preload libs the user usses often to ram reducing startup time of
@@ -1108,14 +1098,16 @@ print '##################################################################'
 ########################################################################
 # section for applying custom desktop config files
 ########################################################################
+if configData['basicSoftwareAndSecurity'] == 'y': # if basic section runs this is in there and dont need to run again
+	print 'Running editing default user settings in /etc/skel...'
+	# custom settings is true so install the core
+	zipfile.ZipFile('preconfiguredSettings/userSettings/CORE.zip','r').extractall('/etc/skel')
+	if configData['bottomBar'] == 'y':# want a desktop with the bar on the bottom
+		zipfile.ZipFile('preconfiguredSettings/userSettings/bottomBar.zip','r').extractall('/etc/skel')
+	else:# otherwise place that bar on top
+		zipfile.ZipFile('preconfiguredSettings/userSettings/topBar.zip','r').extractall('/etc/skel')
+	os.system('chown -R root /etc/skel')
 if configData['customSettingsCheck'] == 'y':
-	if configData['basicSoftwareAndSecurity'] == 'y': # if basic section runs this is in there and dont need to run again
-		print 'Running editing default user settings in /etc/skel...'
-		if configData['bottomBar'] == 'y':# want a desktop with the bar on the bottom
-			zipfile.ZipFile('preconfiguredSettings/preconfiguredSettings_Bottom.zip','r').extractall('/etc/skel')
-		else:# otherwise place that bar on top
-			zipfile.ZipFile('preconfiguredSettings/preconfiguredSettings.zip','r').extractall('/etc/skel')
-		os.system('chown -R root /etc/skel')
 	# run reset settings for all users on the system to apply custom desktop
 	temp = os.listdir('/home')
 	for user in temp:
