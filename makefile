@@ -104,7 +104,9 @@ build-deb:
 	# copy over the debdata files
 	cp -rv .debdata/. debian/DEBIAN/
 	# figure out the size of the installed package and save the size in kb to a file
-	du -sx --exclude DEBIAN ./debian/ | sed "s/[abcdefghijklmnopqrstuvwxyz\ /.]//g" > packageSize.txt
+	du -sx --exclude DEBIAN ./debian/ | sed "s/[abcdefghijklmnopqrstuvwxyz\ /.]//g" | tr -d "\n" | tr -d "\r" | sed "s/ //g" | sed "s/\t//g" > packageSize.txt
+	# run bash script to edit the control file of the package
+	bash .configure.sh
 	# Attempt to auto set the size of the package in the control file ##CURRENTLY BROKEN##
 	#~ bash -c '\
 	#~ VALUE=$(du -s --exclude DEBIAN ./debian/ | sed "s/[abcdefghijklmnopqrstuvwxyz\ /.\\t]\{1,\}//g");\
