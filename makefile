@@ -134,20 +134,20 @@ batman: build install-deb
 	echo 'I am the Night.'
 pullCustomSoftware: 
 	mkdir -p customSoftwarePackages
-	git clone https://github.com/dude56987/Distro-Upgrade.git customSoftwarePackages/distro-upgrade
-	git clone https://github.com/dude56987/Reboot-Required.git customSoftwarePackages/reboot-required
-	git clone https://github.com/dude56987/LanScan.git customSoftwarePackages/lanscan
-	git clone https://github.com/dude56987/DoThis.git customSoftwarePackages/dothis
-	git clone https://github.com/dude56987/Bitmessage-Update.git customSoftwarePackages/bitmessage-update
-	git clone https://github.com/dude56987/HackBox-Update.git customSoftwarePackages/hackbox-update
-	git clone https://github.com/dude56987/ResetSettings.git customSoftwarePackages/resetsettings
-	git clone https://github.com/dude56987/Help-Center.git customSoftwarePackages/help-center
-	git clone https://github.com/dude56987/OpenNIC-DNS.git customSoftwarePackages/opennic-dns
-	git clone https://github.com/dude56987/HostfileBlocklist.git customSoftwarePackages/hostfileblocklist
-	git clone https://github.com/dude56987/DNS-Precache.git customSoftwarePackages/dns-precache
-	git clone https://github.com/dude56987/HackBox-Darknet.git customSoftwarePackages/hackbox-darknet
-	git clone https://github.com/dude56987/HackBox-Mimetype-Defaults.git customSoftwarePackages/hackbox-mimetype-defaults
-	git clone https://github.com/dude56987/Geolocate.git customSoftwarePackages/geolocate
+	git clone https://github.com/dude56987/Distro-Upgrade.git customSoftwarePackages/distro-upgrade || echo "true"
+	git clone https://github.com/dude56987/Reboot-Required.git customSoftwarePackages/reboot-required || echo "true"
+	git clone https://github.com/dude56987/LanScan.git customSoftwarePackages/lanscan || echo "true"
+	git clone https://github.com/dude56987/DoThis.git customSoftwarePackages/dothis || echo "true"
+	git clone https://github.com/dude56987/Bitmessage-Update.git customSoftwarePackages/bitmessage-update || echo "true"
+	git clone https://github.com/dude56987/HackBox-Update.git customSoftwarePackages/hackbox-update || echo "true"
+	git clone https://github.com/dude56987/ResetSettings.git customSoftwarePackages/resetsettings || echo "true"
+	git clone https://github.com/dude56987/Help-Center.git customSoftwarePackages/help-center || echo "true"
+	git clone https://github.com/dude56987/OpenNIC-DNS.git customSoftwarePackages/opennic-dns || echo "true"
+	git clone https://github.com/dude56987/HostfileBlocklist.git customSoftwarePackages/hostfileblocklist || echo "true"
+	git clone https://github.com/dude56987/DNS-Precache.git customSoftwarePackages/dns-precache || echo "true"
+	git clone https://github.com/dude56987/HackBox-Darknet.git customSoftwarePackages/hackbox-darknet || echo "true"
+	git clone https://github.com/dude56987/HackBox-Mimetype-Defaults.git customSoftwarePackages/hackbox-mimetype-defaults || echo "true"
+	git clone https://github.com/dude56987/Geolocate.git customSoftwarePackages/geolocate || echo "true"
 fix-permissions:
 	# run all commands with sudo or it will fail
 	# read allowed for all files and all users
