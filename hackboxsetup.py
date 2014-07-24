@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
-import os, sys, shutil, json, zipfile, socket, urllib2
+import os, sys, shutil, json, zipfile, socket, urllib2, md5
 from time import sleep
 ########################################################################
 Version = '0.5.0'
@@ -268,8 +268,24 @@ def installSourcesFile(fileNameOfFile):
 						os.system((packageManager+' install '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
 				elif tempInfo[1] == 'localdeb':
 					# install package in unsupported packages
-					if (os.path.exists(tempInfo[3]) != True): 
-						os.system(('sudo gdebi --no unsupportedPackages/'+tempInfo[2]+'.deb'))
+					tempInfo[2] = 'unsupportedPackages/'+tempInfo[2]+'.deb'
+					if os.path.exists(tempInfo[2]): 
+						# create a md5 from the file
+						tempMD5 = md5.new(loadFile(tempInfo[2])).digest()
+						print (tempMD5)
+						if os.path.exists(tempInfo[2]+".md5"):
+							if loadFile(tempInfo[2]+".md5") == tempMD5:
+								print "No new file, package not installed."
+							else:
+								# if no parity is found write a new md5 and install the new file	
+								writeFile((tempInfo[2]+'.md5'),tempMD5)
+								os.system(('sudo gdebi --no '+tempInfo[2]+'.deb'))
+						else:
+							# if file does not have a md5 file yet create one and install the program
+							writeFile((tempInfo[2]+'.md5'),tempMD5)
+							os.system(('sudo gdebi --no '+tempInfo[2]+'.deb'))
+					else:
+						print ("ERROR:No "+tempInfo[2]+" exists!")
 	return True
 def createInstallLoad():
 	packageManager=False
@@ -1269,5 +1285,3 @@ if configData['rebootCheck'] == 'y' and configData['customSettingsCheckLogout'] 
 	print 'Rebooting the system NOW...'
 	os.system('reboot')
 # exit the script
-raw_input('Press enter to end the script...')
-exit(); 
