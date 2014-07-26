@@ -134,20 +134,49 @@ batman: build install-deb
 	echo 'I am the Night.'
 pullCustomSoftware: 
 	mkdir -p customSoftwarePackages
-	git clone https://github.com/dude56987/Distro-Upgrade.git customSoftwarePackages/distro-upgrade || echo "true"
-	git clone https://github.com/dude56987/Reboot-Required.git customSoftwarePackages/reboot-required || echo "true"
-	git clone https://github.com/dude56987/LanScan.git customSoftwarePackages/lanscan || echo "true"
-	git clone https://github.com/dude56987/DoThis.git customSoftwarePackages/dothis || echo "true"
-	git clone https://github.com/dude56987/Bitmessage-Update.git customSoftwarePackages/bitmessage-update || echo "true"
-	git clone https://github.com/dude56987/HackBox-Update.git customSoftwarePackages/hackbox-update || echo "true"
-	git clone https://github.com/dude56987/ResetSettings.git customSoftwarePackages/resetsettings || echo "true"
-	git clone https://github.com/dude56987/Help-Center.git customSoftwarePackages/help-center || echo "true"
-	git clone https://github.com/dude56987/OpenNIC-DNS.git customSoftwarePackages/opennic-dns || echo "true"
-	git clone https://github.com/dude56987/HostfileBlocklist.git customSoftwarePackages/hostfileblocklist || echo "true"
-	git clone https://github.com/dude56987/DNS-Precache.git customSoftwarePackages/dns-precache || echo "true"
-	git clone https://github.com/dude56987/HackBox-Darknet.git customSoftwarePackages/hackbox-darknet || echo "true"
-	git clone https://github.com/dude56987/HackBox-Mimetype-Defaults.git customSoftwarePackages/hackbox-mimetype-defaults || echo "true"
-	git clone https://github.com/dude56987/Geolocate.git customSoftwarePackages/geolocate || echo "true"
+	git clone https://github.com/dude56987/Distro-Upgrade.git customSoftwarePackages/distro-upgrade ||\
+	git -C customSoftwarePackages/distro-upgrade pull
+	git clone https://github.com/dude56987/Reboot-Required.git customSoftwarePackages/reboot-required ||\
+	git -C customSoftwarePackages/reboot-required pull
+	git clone https://github.com/dude56987/LanScan.git customSoftwarePackages/lanscan ||\
+	git -C customSoftwarePackages/lanscan pull
+	git clone https://github.com/dude56987/DoThis.git customSoftwarePackages/dothis ||\
+	git -C customSoftwarePackages/dothis pull
+	git clone https://github.com/dude56987/Bitmessage-Update.git customSoftwarePackages/bitmessage-update ||\
+	git -C customSoftwarePackages/bitmessage-update pull
+	git clone https://github.com/dude56987/HackBox-Update.git customSoftwarePackages/hackbox-update ||\
+	git -C customSoftwarePackages/hackbox-update pull
+	git clone https://github.com/dude56987/ResetSettings.git customSoftwarePackages/resetsettings ||\
+	git -C customSoftwarePackages/resetsettings pull
+	git clone https://github.com/dude56987/Help-Center.git customSoftwarePackages/help-center ||\
+	git -C customSoftwarePackages/help-center pull
+	git clone https://github.com/dude56987/OpenNIC-DNS.git customSoftwarePackages/opennic-dns ||\
+	git -C customSoftwarePackages/opennic-dns pull
+	git clone https://github.com/dude56987/HostfileBlocklist.git customSoftwarePackages/hostfileblocklist ||\
+	git -C customSoftwarePackages/hostfileblocklist pull
+	git clone https://github.com/dude56987/DNS-Precache.git customSoftwarePackages/dns-precache ||\
+	git -C customSoftwarePackages/dns-precache pull
+	git clone https://github.com/dude56987/HackBox-Darknet.git customSoftwarePackages/hackbox-darknet ||\
+	git -C customSoftwarePackages/hackbox-darknet pull
+	git clone https://github.com/dude56987/HackBox-Mimetype-Defaults.git customSoftwarePackages/hackbox-mimetype-defaults ||\
+	git -C customSoftwarePackages/hackbox-mimetype-defaults pull
+	git clone https://github.com/dude56987/Geolocate.git customSoftwarePackages/geolocate ||\
+	git -C customSoftwarePackages/geolocate pull
+customSoftwareStatus: 
+	git -C customSoftwarePackages/distro-upgrade status
+	git -C customSoftwarePackages/reboot-required status
+	git -C customSoftwarePackages/lanscan status
+	git -C customSoftwarePackages/dothis status
+	git -C customSoftwarePackages/bitmessage-update status
+	git -C customSoftwarePackages/hackbox-update status
+	git -C customSoftwarePackages/resetsettings status
+	git -C customSoftwarePackages/help-center status
+	git -C customSoftwarePackages/opennic-dns status
+	git -C customSoftwarePackages/hostfileblocklist status
+	git -C customSoftwarePackages/dns-precache status
+	git -C customSoftwarePackages/hackbox-darknet status
+	git -C customSoftwarePackages/hackbox-mimetype-defaults status
+	git -C customSoftwarePackages/geolocate status
 fix-permissions:
 	# run all commands with sudo or it will fail
 	# read allowed for all files and all users
