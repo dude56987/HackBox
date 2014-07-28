@@ -1,0 +1,4 @@
+[Command]
+FileManager=thunar %s
+Terminal=xterm
+Logout=lxde-logout

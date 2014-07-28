@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Xkill
+Comment=Kill a Program
+Exec=xkill
+Terminal=false
+Type=Application
+StartupNotify=false
+Icon=button-cancel
