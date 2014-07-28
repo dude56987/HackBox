@@ -279,11 +279,11 @@ def installSourcesFile(fileNameOfFile):
 							else:
 								# if no parity is found write a new md5 and install the new file	
 								writeFile((tempInfo[2]+'.md5'),tempMD5)
-								os.system(('sudo gdebi --no '+tempInfo[2]+'.deb'))
+								os.system(('sudo gdebi --no '+tempInfo[2]))
 						else:
 							# if file does not have a md5 file yet create one and install the program
 							writeFile((tempInfo[2]+'.md5'),tempMD5)
-							os.system(('sudo gdebi --no '+tempInfo[2]+'.deb'))
+							os.system(('sudo gdebi --no '+tempInfo[2]))
 					else:
 						print ("ERROR:No "+tempInfo[2]+" exists!")
 	return True
