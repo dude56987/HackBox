@@ -180,8 +180,9 @@ catagory<:>message<:>Installing Font Manager
 catagory<:>package<:>font-manager
 catagory<:>message<:>Installing Catfish (File Search)
 catagory<:>package<:>catfish
-catagory<:>message<:>Installing Kupfer
+catagory<:>message<:>Installing Kupfer and setting it up to autostart
 catagory<:>package<:>kupfer
+catagory<:>command<:>cp /usr/share/applications/kupfer.desktop /etc/xdg/autostart/kupfer.desktop
 catagory<:>message<:>Installing iotop(Top for I/O of disk)
 catagory<:>package<:>iotop
 catagory<:>message<:>Installing iftop(Top for Network Usage)
