@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Clipman
+TryExec=xfce4-clipman
+Exec=xfce4-clipman
+Icon=xfce4-clipman-plugin
+Terminal=false
+Hidden=true

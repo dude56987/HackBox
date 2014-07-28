@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Screensaver
+Icon=preferences-desktop-screensaver
+Exec=xscreensaver -no-splash
+TryExec=xscreensaver

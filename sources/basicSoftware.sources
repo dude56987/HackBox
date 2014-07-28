@@ -402,3 +402,5 @@ catagory<:>rm-package<:>mintwelcome
 # check if its a low ram system
 catagory<:>message<:>Low ram system check
 catagory<:>script<:>low-ram-system
+# add custom autostart files to /etc/xdg/autostart to work on all desktops
+catagory<:>command<:>cp -v preconfiguredSettings/launchers/autostart/* /etc/xdg/autostart

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Power Manager
+Icon=xfpm-ac-adapter
+Exec=xfce4-power-manager
+Terminal=false
+Type=Application
+StartupNotify=false

@@ -117,7 +117,6 @@
       <property name="disable-tooltips" type="bool" value="false"/>
       <property name="arrow-position" type="uint" value="5"/>
     </property>
-    <property name="plugin-9" type="string" value="xfce4-clipman-plugin"/>
     <property name="plugin-10" type="string" value="places">
       <property name="mount-open-volumes" type="bool" value="true"/>
       <property name="show-button-type" type="int" value="0"/>
