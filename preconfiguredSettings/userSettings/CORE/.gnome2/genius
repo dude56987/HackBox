@@ -1,0 +1,21 @@
+[properties]
+black_on_white=true
+pango_font=Hermit Medium 10
+scrollback=1000
+error_box=false
+info_box=true
+blinking_cursor=true
+output_remember=true
+max_errors=5
+max_nodes=2000000
+precision_remember=false
+max_digits=12
+results_as_floats=false
+scientific_notation=false
+full_expressions=false
+mixed_fractions=true
+chop=20
+chop_when=5
+
+[plugins]
+plugin_restore_test=NO
