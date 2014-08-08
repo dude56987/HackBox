@@ -28,17 +28,28 @@ alias download-random-quote-wallpapers="wget http://reddit.com/r/QuotesPorn/ -O 
 # The rest of the commands are for use by the dev of hackbox, remove them if you want
 alias gettowork="cd ~/HackBox/"
 alias pullhackboxsource="cd && git clone https://github.com/dude56987/HackBox.git && gettowork"
+# if Xorg is not running then launch a graphical window system
+if ! ps -e | grep Xorg; then
+	if [ -f /usr/bin/startx ]; then
+		# launch startx if it exists
+		startx;
+		exit;
+	fi
+	# if x does not need started or does not exist then launch byobu
+fi
 # lulz, you need em sometimes
 if date | grep Apr\ \ 1; then
 	repeat 10 bash -c "echo 'killallhumans';sleep 1"
 	echo 'erm.. uh.. Happy Birthday!' | cowsay -f tux
 fi
+# clear the screen to show the motd properly
+clear;
 # Show the user thier fortune for this login using cowsay
 #  To change the theme used replace tux with one of the 
 #  cowfiles listed by the command cowsay -l
 more ~/.motd | cowsay -f none
-# check if the user is in a fullscreen terminal
-if tty | grep tty1; then
+# check if the user is in a fullscreen terminal on tty1 or tty2
+if tty | grep tty1 || tty | grep tty2; then
 	# check where the byobu settings are being stored
 	if [ -d .byobu/ ]; then
 		configPath=".byobu/";
