@@ -10,6 +10,8 @@
 #INFO:NONEYA
 #QUESTION:NONEYA
 # here is some logical scripts
+catagory<:>message<:>Setup power control login names for tty logins
+catagory<:>script<:>power-control-logins
 catagory<:>message<:>Checking if this is a laptop
 catagory<:>script<:>laptop-check
 catagory<:>message<:>Change the system swappiness(Improve use of system RAM)
