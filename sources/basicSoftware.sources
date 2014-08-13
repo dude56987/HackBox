@@ -231,6 +231,14 @@ catagory<:>message<:>Installing calendar extention to thunderbird
 catagory<:>package<:>xul-ext-lightning
 catagory<:>message<:>Installing Marble
 catagory<:>package<:>marble
+######################
+# install RetroShare #
+######################
+catagory<:>message<:>Installing RetroShare
+catagory<:>ppa<:>ppa:csoler-users/retroshare
+catagory<:>package<:>retroshare
+catagory<:>package<:>retroshare-linkscloud-plugin
+catagory<:>package<:>retroshare-feedreader-plugin
 ################
 #install pidgin#
 ################

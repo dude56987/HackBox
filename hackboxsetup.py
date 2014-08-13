@@ -256,6 +256,14 @@ def installSourcesFile(fileNameOfFile):
 					# execute command
 					print tempInfo[2]
 					os.system(tempInfo[2])
+				elif tempInfo[1] == 'ppa':
+					# if the package is a ppa source to add, use --yes to suppress confirmation
+					os.system(('apt-add-repository '+tempInfo[2]+' --yes'))
+					os.system('apt-get update') # this is super slow
+					## BELOW IS BROKEN AS FUCK, above is a hackaround ##
+					# update only the added repo using its location in /etc/apt/sources.list.d/
+					# user must currently define this in the last argument in a ppa command
+					#os.system(('apt-get update -o Dir::Etc::sourcelist="sources.list.d/'+tempInfo[3]+'" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"'))
 				elif tempInfo[1] == 'rm-package':
 					#/usr/share/doc/packagename is checked to see if the package has already been installed
 					# remove package

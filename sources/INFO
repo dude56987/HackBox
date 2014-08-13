@@ -18,3 +18,5 @@
 # The below will run a bash command
 #catagory<:>command<:>bash-command --whatever
 ####################
+# The below will add a ppa to the system repos
+#catagory<:>ppa<:>ppa:lolUser/software
