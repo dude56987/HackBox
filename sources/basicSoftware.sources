@@ -21,6 +21,8 @@ catagory<:>script<:>fix-home-permissions
 ###################
 catagory<:>message<:>Installing gdebi(Grapical Package Installer)
 catagory<:>package<:>gdebi
+catagory<:>message<:>Installing debconf-utils(tools for working with deb files)
+catagory<:>package<:>debconf-utils
 ###################
 catagory<:>message<:>Installing broadcast(message all user on the system)
 catagory<:>localdeb<:>broadcast<:>/usr/bin/broadcast
