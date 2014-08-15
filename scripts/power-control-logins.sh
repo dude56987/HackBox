@@ -9,8 +9,8 @@ mkdir -p /etc/power-control-logins
 mkdir -p /etc/power-control-logins/shutdown
 mkdir -p /etc/power-control-logins/reboot
 # create bash rc files to lauch on login for the power-control login accounts
-echo "sudo shutdown -P 'now'" > /etc/power-control-logins/shutdown/.bash_login
-echo "sudo reboot" > /etc/power-control-logins/reboot/.bash_login
+echo "sudo shutdown -P 'now' &while true; do read;done" > /etc/power-control-logins/shutdown/.bash_login
+echo "sudo reboot &while true; do read;done" > /etc/power-control-logins/reboot/.bash_login
 # create a copy of the /etc/sudoers file for editing
 cp /etc/sudoers /tmp/sudoers.tmp
 # edit the sudoers file, if it has not already been edited
