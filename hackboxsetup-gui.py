@@ -246,9 +246,11 @@ if check == 'y' :
 		os.system('gksu "apt-get install xterm --assume-yes"')
 	print 'Starting setup...';
 	if '--no-reset' in sys.argv:
-		os.system('xterm -maximized -T Hackbox\ Setup -e "python hackboxsetup.py --force-use-config --no-reset"')
+		#os.system('xterm -maximized -T Hackbox\ Setup -e "python hackboxsetup.py --force-use-config --no-reset"')
+		os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')
 	else:
-		os.system('xterm -maximized -T Hackbox\ Setup -e "python hackboxsetup.py --force-use-config"')
+		#os.system('xterm -maximized -T Hackbox\ Setup -e "python hackboxsetup.py --force-use-config"')
+		os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')
 
 	if '--runonce' in sys.argv:
 		os.system('rm -v /etc/xdg/autostart/hackboxRunonce.desktop')
