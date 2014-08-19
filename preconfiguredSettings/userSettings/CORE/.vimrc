@@ -14,3 +14,5 @@ set hls
 set lbr
 "Turn on mouse support"
 set mouse=a
+" setup the line wrap to show wrap with indent"
+"set breakindent"
