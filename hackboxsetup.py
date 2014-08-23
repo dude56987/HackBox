@@ -333,7 +333,6 @@ def installSourcesFile(fileNameOfFile):
 							writeFile(('/tmp/'+keyFileName),downloadedKeyFile)
 							os.system('apt-key add /tmp/'+keyFileName)
 							os.system('rm /tmp/'+keyFileName)
-							os.system('apt-get update') # this is slow fix the below
 							#os.system(('apt-get update -o Dir::Etc::sourcelist="sources.list.d/'+fileName+'" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"'))
 						else:
 							# if the key is not downloaded delete the repo
@@ -392,8 +391,8 @@ def createInstallLoad():
 				return True
 	# create a payload variables to orgnize catagories
 	payload = ''
-	# catagory for ppas
-	ppaPayload = ''
+	# catagory for ppas and repos
+	repoPayload = ''
 	# payload for interactive catagory
 	interactivePayload = ''
 	# payload for things to run first that dont require user interaction
@@ -454,8 +453,10 @@ def createInstallLoad():
 			if line[:1] != '#' and line.find('<:>') != -1 and installSection == 'y':
 				# catagories used to orignize the install order of packages
 				tempInfo = line.split('<:>')
+				if tempInfo[1] == 'deb-repo':
+					repoPayload+= line+'\n'
 				if tempInfo[1] == 'ppa':
-					ppaPayload += line+'\n'
+					repoPayload += line+'\n'
 				elif tempInfo[0] == 'interactive':
 					interactivePayload += line+'\n'
 				elif tempInfo[0] == 'pre':
@@ -467,9 +468,9 @@ def createInstallLoad():
 				else:
 					# otherwise add uncatagorized payloads to main payload
 					mainPayload += line+'\n'	
-	ppaPayload += 'null<:>command<:>apt-get update\n'
+	repoPayload += 'null<:>command<:>apt-get update\n'
 	# orginize the payload contents
-	payload = ppaPayload+interactivePayload+prePayload+mainPayload+postPayload
+	payload = repoPayload+interactivePayload+prePayload+mainPayload+postPayload
 	# write the payload to a text file
 	writeFile('/etc/hackbox/payload.source',payload)
 	#os.system('less payload.source')#DEBUG
