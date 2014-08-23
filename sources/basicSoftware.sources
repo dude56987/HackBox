@@ -135,8 +135,6 @@ catagory<:>package<:>thunar-archive-plugin
 # Add a utility that allows users to upgrade their distro by only updating the package sources
 catagory<:>message<:>Installing distro-upgrade tool
 catagory<:>localdeb<:>distro-upgrade<:>/usr/bin/distro-upgrade
-catagory<:>message<:>Installing pybitmessage-stable-updater(Encrypted Messaging System)
-catagory<:>localdeb<:>pybitmessage-stable-updater<:>/usr/bin/bitmessage-update
 ##### Additonal Fonts #####
 catagory<:>message<:>Installing fonts(opendyslexic)
 catagory<:>package<:>fonts-opendyslexic
@@ -254,9 +252,21 @@ catagory<:>message<:>Installing calendar extention to thunderbird
 catagory<:>package<:>xul-ext-lightning
 catagory<:>message<:>Installing Marble
 catagory<:>package<:>marble
+##########################################################
+# encrypted internet communications programs in progress #
+##########################################################
+# bitmessage (something like email replacement with built in encryption and no central authority)
+catagory<:>message<:>Installing pybitmessage-stable-updater(Encrypted Messaging System)
+catagory<:>localdeb<:>pybitmessage-stable-updater<:>/usr/bin/bitmessage-update
+# tox ( encrypted decentralized instant messageing, voice/video, and file transfer)
+catagory<:>deb-repo<:>deb http://repo.tox.im/deb/ testing main<:>https://repo.tox.im/toxbuild.pgp
+# the tox gui package is venom
+catagory<:>message<:>Installing Venom(TOX GUI)
+catagory<:>package<:>venom
 ######################
 # install RetroShare #
 ######################
+# File share / social network replacement
 catagory<:>message<:>Installing RetroShare
 interactive<:>ppa<:>ppa:csoler-users/retroshare
 catagory<:>package<:>retroshare

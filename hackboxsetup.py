@@ -317,6 +317,27 @@ def installSourcesFile(fileNameOfFile):
 					# execute command
 					print tempInfo[2]
 					os.system(tempInfo[2])
+				elif tempInfo[1] == 'deb-repo':
+					# add a debian repo and keyfile for that repo
+					#######################
+					# create a filename from the url given for the repo
+					fileName=(tempInfo[2].replace('.','_').replace('/','').replace(' ','_').replace(':',''))+'.list'
+					# if repo does not already exist
+					if os.path.exists(('/etc/apt/sources.list.d/'+fileName)) != True:
+						# if a deb repo to add, add the repo as its own file in sources.list.d
+						writeFile(('/etc/apt/sources.list.d/'+fileName),tempInfo[2])
+						# then add the key to the repo
+						downloadedKeyFile=downloadFile(tempInfo[3])
+						keyFileName=(tempInfo[3].replace('.','_').replace('/','').replace(' ','_').replace(':',''))+'.pgp'
+						if downloadedKeyFile != False:
+							writeFile(('/tmp/'+keyFileName),downloadedKeyFile)
+							os.system('apt-key add /tmp/'+keyFileName)
+							os.system('rm /tmp/'+keyFileName)
+							os.system('apt-get update') # this is slow fix the below
+							#os.system(('apt-get update -o Dir::Etc::sourcelist="sources.list.d/'+fileName+'" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"'))
+						else:
+							# if the key is not downloaded delete the repo
+							os.system('rm /etc/apt/sources.list.d/'+fileName)
 				elif tempInfo[1] == 'ppa':
 					# if the package is a ppa source to add, use --yes to suppress confirmation
 					os.system(('apt-add-repository '+tempInfo[2]+' --yes'))
