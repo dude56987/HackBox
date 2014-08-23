@@ -832,7 +832,7 @@ if os.path.exists('/etc/mdm/Init/Default'):
 	os.system('sed -i.bak "/^$/d" /etc/mdm/Init/Default')# clear blank lines
 	os.system('rm -fv /etc/mdm/Init/Default.bak')# remove backups from sed
 # check to see if the user set it to logout to set the settings
-if ('--force-logout' in sys.argv) != True:
+if '--force-logout' in sys.argv:
 	os.system('killall lxsession')
 	os.system('killall xfce4-session')
 # reboot check
