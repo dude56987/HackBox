@@ -17,6 +17,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
 import json, os, sys, re
+# make sure the program is being ran as root
+if os.geteuid() != 0:
+	print ('gksu "python '+re.sub(' ','\ ',str(os.path.abspath(__file__)))+' '+(' '.join(sys.argv[1:]))+'"')
+	os.system('gksu "python '+re.sub(' ','\ ',str(os.path.abspath(__file__)))+' '+(' '.join(sys.argv[1:]))+'"')
+	exit()
+# launch the program on xterm , make launch in term if in a tty
+if os.path.exists('/usr/bin/xterm') == False:#REMOVE WHEN NEW GUI IS BUILT
+	os.system('gksu "apt-get install xterm --assume-yes"')#REMOVE WHEN NEW GUI IS BUILT
+os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')#REMOVE WHEN NEW GUI IS BUILT
+exit()#REMOVE WHEN NEW GUI IS BUILT
 try:
 	import Tkinter, tkMessageBox
 except:

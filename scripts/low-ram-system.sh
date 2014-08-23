@@ -10,8 +10,10 @@ if [ "$memory" -lt 1600000 ];then
 	echo 'Setting up system for low ram pc...'
 	apt-get install lxde --assume-yes
 	apt-get install midori --assume-yes
+	apt-get install wicd-gtk --assume-yes
 	# purge login managers	
 	apt-get purge xdm --assume-yes
+	apt-get purge slim --assume-yes
 	apt-get purge mdm --assume-yes
 	apt-get purge gdm --assume-yes
 	apt-get purge lightdm --assume-yes
@@ -21,7 +23,7 @@ if [ "$memory" -lt 1600000 ];then
 	sed -i "s/Session=*\n/Session=LXDE\n/g" /etc/skel/.dmrc
 	echo 'lxsession' > /etc/skel/.xinitrc
 	# edit the default extra groups users are added to when new users are made
-	echo 'EXTRA_GROUPS="audio"' >> /etc/useradd.conf
+	echo 'EXTRA_GROUPS="audio netdev"' >> /etc/useradd.conf
 	echo 'ADD_EXTRA_GROUPS=1' >> /etc/useradd.conf
 	# modify existing users
 	for dir in /home/*;do
@@ -33,5 +35,6 @@ if [ "$memory" -lt 1600000 ];then
 		chown $(echo \$dir | sed \"s/\/home\///g\") $dir/.xinitrc
 		# give all users permissions for the audio group
 		usermod -a -G audio $(echo \$dir | sed \"s/\/home\///g\")
+		usermod -a -G netdev $(echo \$dir | sed \"s/\/home\///g\")
 	done
 fi

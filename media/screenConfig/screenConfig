@@ -8,6 +8,10 @@ split -v
 screen -t INSTALLER bash -c "python /opt/hackbox/hackboxsetup.py --force-use-config --no-reset;killall screen"
 # switch focus to next window for displaying splash
 focus
+split -h
+screen -t PROGRESS bash -c "echo '' > /tmp/INSTALLPROGRESS.txt;tail -f /tmp/INSTALLPROGRESS.txt"
+resize 2
+focus
 # setup a screen to display the splashtext and debug via a right panel
 screen -t ABOUT bash /opt/hackbox/media/screenConfig/splashProgram.sh
 # switch the focus back to first window to allow user input

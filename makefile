@@ -58,8 +58,11 @@ build-deb:
 	mkdir -p debian/opt/hackbox/preconfiguredSettings;
 	mkdir -p debian/opt/hackbox/preconfiguredSettings/userSettings;
 	mkdir -p debian/usr/share;
+	mkdir -p debian/usr/hackbox;
 	mkdir -p debian/usr/share/applications;
 	mkdir -p debian/usr/share/pixmaps;
+	mkdir -p debian/etc;
+	mkdir -p debian/etc/hackbox;
 	# make post and pre install scripts have the correct permissions
 	chmod 775 .debdata/*
 	# copy over the launcher for the program

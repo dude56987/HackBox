@@ -1,9 +1,12 @@
+#BANNER
 #INFO:Would you like to install Sound and Video Software?
 #QUESTION:[y/n]:
 ###########
 # EDITORS #
 ###########
 # NOTE: simple screen recorder replaces gtk-recordmydesktop, its faster, simplier, and produces higher quality video
+interactive<:>ppa<:>ppa:maarten-baert/simplescreenrecorder
+interactive<:>package<:>simplescreenrecorder
 # NOTE:  It is in the script to be installed in the begining as it requires a ppa
 catagory<:>message<:>Installing Audacity
 catagory<:>package<:>audacity

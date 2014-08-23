@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Version=1.0
-Type=Application
-Exec=bash -c "killall volumeicon;volumeicon;volumeicon;volumeicon;volumeicon;volumeicon;volumeicon;volumeicon;volumeicon;volumeicon;volumeicon;"
-Name=VolumeIcon
-Comment=Volumeicon for alsa
-GenericName=VolumeIcon

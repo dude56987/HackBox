@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Exec=bash -c "while true;do killall volumeicon;volumeicon;done"
+Name=VolumeIcon
+Comment=Volumeicon for alsa
+GenericName=VolumeIcon

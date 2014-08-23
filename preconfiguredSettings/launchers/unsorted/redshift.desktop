@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Version=1.0
-Type=Application
-Exec=bash -c "killall redshift;killall gtk-redshift;gtk-redshift -l $(more /etc/latlon);sleep 1;gtk-redshift -l $(more /etc/latlon);sleep 1;gtk-redshift -l $(more /etc/latlon);sleep 1;gtk-redshift -l $(more /etc/latlon);sleep 1;gtk-redshift -l $(more /etc/latlon);sleep 1;gtk-redshift -l $(more /etc/latlon);sleep 1;gtk-redshift -l $(more /etc/latlon);sleep 1;gtk-redshift -l $(more /etc/latlon);sleep 1;gtk-redshift -l $(more /etc/latlon);sleep 1;gtk-redshift -l $(more /etc/latlon);sleep 1;gtk-redshift -l $(more /etc/latlon);"
-Name=Redshift
-Comment=Redshift
-GenericName=Redshift

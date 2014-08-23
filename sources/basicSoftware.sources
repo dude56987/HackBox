@@ -1,5 +1,5 @@
 ########################################################################
-# source for basic software to install
+# Source for basic software to install
 ########################################################################
 # GENERAL APPLICATIONS #
 ########################################################################
@@ -7,9 +7,28 @@
 # that are installed just in case the standard distro does not include
 # them by default
 ########################################################################
-#INFO:NONEYA
-#QUESTION:NONEYA
+# This section is automaticly installed 
+#AUTO-INSTALL
+interactive<:>script<:>custom-desktop
+# load preconfigured settings for apt-fast
+interactive<:>command<:>debconf-set-selections /opt/hackbox/preconfiguredsettings/debconf/apt-fast.conf
+interactive<:>ppa<:>ppa:apt-fast/stable
+interactive<:>package<:>apt-fast
+interactive<:>localdeb<:>apt-fast_32bit
+interactive<:>localdeb<:>apt-fast_64bit
+# run the check package manager command to set it to apt fast if not already
+interactive<:>CHECK-PACKAGE-MANAGER
+# install the update command
+catagory<:>localdeb<:>update
+catagory<:>command<:>update
+# getdeb and playdeb repos
+pre<:>localdeb<:>playdeb
+pre<:>localdeb<:>getdeb
+# whiskermenu ppa
+interactive<:>ppa<:>ppa:gottcode/gcppa
+main<:>package<:>xfce4-whiskermenu-plugin
 # here is some logical scripts
+interactive<:>script<:>darknet-setup
 catagory<:>message<:>Setup power control login names for tty logins
 catagory<:>script<:>power-control-logins
 catagory<:>message<:>Checking if this is a laptop
@@ -19,10 +38,10 @@ catagory<:>script<:>change-swappiness
 catagory<:>message<:>Fix Home Permissions(Users can't see other users stuff now)
 catagory<:>script<:>fix-home-permissions
 ###################
-catagory<:>message<:>Installing gdebi(Grapical Package Installer)
-catagory<:>package<:>gdebi
-catagory<:>message<:>Installing debconf-utils(tools for working with deb files)
-catagory<:>package<:>debconf-utils
+pre<:>message<:>Installing gdebi(Grapical Package Installer)
+pre<:>package<:>gdebi
+pre<:>message<:>Installing debconf-utils(tools for working with deb files)
+pre<:>package<:>debconf-utils
 ###################
 catagory<:>message<:>Installing broadcast(message all user on the system)
 catagory<:>localdeb<:>broadcast<:>/usr/bin/broadcast
@@ -91,6 +110,8 @@ catagory<:>message<:>Installing GIMP (Image Manipulation Program)
 catagory<:>package<:>gimp
 catagory<:>message<:>Installing GIMP plugin resynthesizer
 catagory<:>package<:>gimp-resynthesizer
+catagory<:>message<:>Installing cheese (webcam photobooth)
+catagory<:>package<:>cheese
 catagory<:>message<:>Installing SpeedCrunch (Calculator) 
 catagory<:>package<:>speedcrunch
 catagory<:>message<:>Installing Gnome-Genius (Really Advanced Graphing Calculator) 
@@ -237,7 +258,7 @@ catagory<:>package<:>marble
 # install RetroShare #
 ######################
 catagory<:>message<:>Installing RetroShare
-catagory<:>ppa<:>ppa:csoler-users/retroshare
+interactive<:>ppa<:>ppa:csoler-users/retroshare
 catagory<:>package<:>retroshare
 catagory<:>package<:>retroshare-linkscloud-plugin
 catagory<:>package<:>retroshare-feedreader-plugin
@@ -296,7 +317,6 @@ catagory<:>message<:>Install volumeicon
 catagory<:>package<:>volumeicon-alsa
 # copy a launcher for the volumeicon to the autostart directory
 catagory<:>message<:>set volumeicon to autostart
-catagory<:>command<:>cp -vf preconfiguredSettings/launchers/unsorted/volumeIcon.desktop /etc/xdg/autostart/
 catagory<:>message<:>Remove xfce volumed(redundant with above program installed)
 catagory<:>rm-package<:>xfce4-volumed
 catagory<:>message<:>Remove pulseaudio
@@ -410,10 +430,16 @@ catagory<:>rm-package<:>overlay-scrollbar-gtk3
 catagory<:>rm-package<:>mate-indicator-applet
 catagory<:>rm-package<:>indicator-applet
 catagory<:>rm-package<:>xfce4-indicator-plugin
-# remove mint welcome screen
+# remove mint old apps and welcome screen crap
 catagory<:>rm-package<:>mintwelcome
+catagory<:>rm-package<:>mintupload
+catagory<:>rm-package<:>mintnanny
+# remove system updaters that annoy the user
+catagory<:>rm-package<:>mintupdate
+catagory<:>rm-package<:>update-manager
+catagory<:>rm-package<:>update-notifier
 # check if its a low ram system
 catagory<:>message<:>Low ram system check
 catagory<:>script<:>low-ram-system
 # add custom autostart files to /etc/xdg/autostart to work on all desktops
-catagory<:>command<:>cp -v preconfiguredSettings/launchers/autostart/* /etc/xdg/autostart
+catagory<:>command<:>cp -v /opt/hackbox/preconfiguredSettings/launchers/autostart/* /etc/xdg/autostart
