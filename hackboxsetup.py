@@ -547,11 +547,11 @@ os.system('rm /etc/apt/sources.list.d/*.backup')
 # install window manager/desktop enviorments
 os.system('apt-fast install xfce4 --assume-yes >> Install_Log.txt')
 # below is linux mint version of xfce desktop
-if os.path.exists('/lib/plymouth/themes/mint-logo'):
-	os.system('apt-fast install mint-meta-xfce --assume-yes >> Install_Log.txt')
-else:
+#if os.path.exists('/lib/plymouth/themes/mint-logo'):
+#	os.system('apt-fast install mint-meta-xfce --assume-yes >> Install_Log.txt')
+#else:
 	# below is ubuntu version of xfce desktop
-	os.system('apt-fast install xubuntu-desktop --assume-yes >> Install_Log.txt')
+#	os.system('apt-fast install xubuntu-desktop --assume-yes >> Install_Log.txt')
 # install sources file
 # Set custom grub splash screen
 # move the .jpg file from the local media folder to /boot/grub/
@@ -588,16 +588,12 @@ if os.path.exists('/etc/mdm/PostSession/Default'):
 #~ os.chdir(currentDirectory())#this is kinda unnessary since it no longer runs the install that way
 ####################################################################
 # Install Icon Themes, and libnotify themes
-try:
-	print 'Installing Faenza Icon Pack...'
-	zipfile.ZipFile(os.path.join(currentDirectory(),'media/icons/Faenza.zip')).extractall('/usr/share/icons')
-except:
-	print 'ERROR: Failed to install : Faenza Icons'
-try:
-	print 'Installing Nitrux Icon Pack...'
-	zipfile.ZipFile(os.path.join(currentDirectory(),'media/icons/Nitrux.zip')).extractall('/usr/share/icons')
-except:
-	print 'ERROR: Failed to install : Nitrux Icons'
+iconPacks = os.listdir('/opt/hackbox/media/icons')
+for pack in iconPacks:
+	try:
+		zipfile.ZipFile(os.path.join(currentDirectory(),('/opt/hackbox/media/icons/'+pack))).extractall('/usr/share/icons')
+	except:
+		print 'ERROR: Failed to install icon pack at',('/opt/hackbox/media/icons/'+pack)
 try:
 	print 'Installing Libnotify Theme...'
 	zipfile.ZipFile(os.path.join(currentDirectory(),'media/themes/Smoke.zip')).extractall('/usr/share/themes')
@@ -643,12 +639,6 @@ try:
 except:
 	print ("Failed to dertermine lan structure!")
 	print ("Share on lan will fail!")
-#~ print 'Editing specific aplications for current user...'
-#~ os.system('resetsettings -p goldendict')
-#~ os.system('resetsettings -p qshutdown')
-#~ os.system('resetsettings -p xarchiver')
-#~ os.system('resetsettings -p guake')
-#~ os.system('resetsettings -p radiotray')
 ####################################################################
 # set zsh to the default shell for new users
 os.system('useradd -D -s $(which zsh)')
@@ -663,7 +653,7 @@ try:
 	while memory.find(' '):
 		memory = memory.replace(' ','')
 	memory = int(memory.replace('kB',''))
-	if memory > 4000000:# if memory is greater than 4 gigs
+	if memory > 1600000:# if memory is greater than 4 gigs
 		os.system('apt-fast install preload --assume-yes >> Install_Log.txt')
 except:
 	print ('ERROR: Could not install preload!')
