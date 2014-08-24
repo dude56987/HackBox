@@ -13,6 +13,7 @@ alias logview='tail -f /var/log/*' # View system log updates in realtime
 alias lol="espeak 'ha ha ha ha ha'" # Sometimes its good to have a sense of humor
 alias say="espeak" # Speak the following string of text
 alias ping="ping -c 5" # set default ping count to 5
+alias system-info="inxi -F" # set default ping count to 5
 alias root="sudo -s" # root logs into root mode for user
 alias invert-color="xcalib -invert -alter" # Invert monitor colors
 # install some helpfull tools for working on a console only system
