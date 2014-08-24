@@ -473,10 +473,8 @@ def createInstallLoad():
 	payload = repoPayload+interactivePayload+prePayload+mainPayload+postPayload
 	# write the payload to a text file
 	writeFile('/etc/hackbox/payload.source',payload)
-	#os.system('less payload.source')#DEBUG
-	#exit()#DEBUG
-	# install the payload file created previously
-	installSourcesFile('/etc/hackbox/payload.source')
+	# return the payload file location
+	return '/etc/hackbox/payload.source'
 ########################################################################
 # Pre-run checks
 print 'Preforming startup checks...'
@@ -526,8 +524,19 @@ while connected == False:
 ########################################################################
 clear();
 os.chdir(currentDirectory())
-createInstallLoad()
-########################################################################
+# create the install payload file, it will be installed after this stuff
+payloadFileLocation = createInstallLoad()
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+# TODO: MAKE ALL THE BELOW STUFF INTO SCRIPTS AND SOURCE FILES          #
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
+#########################################################################
 # create the install log
 os.system('echo "Starting Install Process..." >> Install_Log.txt');
 os.system('echo "Started on ${date}" >> Install_Log.txt');
@@ -560,20 +569,6 @@ shutil.copy(os.path.abspath(os.path.join(os.curdir,'media','splash.jpg')),os.pat
 replaceLineInFile('/etc/default/grub','GRUB_TIMEOUT="','GRUB_TIMEOUT="2"')
 # run sudo update-grub to make grub regonize the new splash image
 os.system('sudo update-grub')
-####################################################################
-# adds 'system-info' command to the computer that simply invokes
-# 'inxi -F'. This will display system information in a nice clean 
-# way when you need to know something.
-printGreen('Installing inxi (System Info Display)..');
-os.system('apt-fast install inxi --assume-yes >> Install_Log.txt');
-# make linking script
-print 'Creating symbolic command system-info to axcess inxi...'
-programFile = open('/usr/bin/system-info','w')
-temp = '#! /bin/bash\n'
-temp += 'inxi -F'
-programFile.write(temp)
-programFile.close()
-os.system('chmod +x /usr/bin/system-info')
 ####################################################################
 # install the clear history command on the system and set it to run
 # on every user logout to clear up space
@@ -807,6 +802,8 @@ if os.path.exists('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf'):
 	replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf','icon-theme-name=','icon-theme-name=NITRUX')
 	replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf','user-session=','user-session=xfce')
 	replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf','theme-name=','theme-name=Greybird')
+# install the payload created previously
+installSourcesFile(payloadFileLocation)
 print '##################################################################'
 print '  __  ___   ___    _   __'
 print ' /_ |/ _ \ / _ \  (_) / /'

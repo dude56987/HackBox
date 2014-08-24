@@ -147,6 +147,8 @@ catagory<:>message<:>Installing texlive-extra-utils (for pdf croping and compres
 catagory<:>package<:>texlive-extra-utils
 catagory<:>message<:>Installing byobu (CLI desktop)
 catagory<:>package<:>byobu
+catagory<:>message<:>Installing inxi (system info tool)
+catagory<:>package<:>inxi
 # enable grub terminal to make ttys not act strangely
 catagory<:>message<:>Enable ttys to work correctly
 catagory<:>script<:>enable-grub-terminal
