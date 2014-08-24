@@ -8,7 +8,9 @@ echo "$memory KB of total memory in the system..."
 # memory is showm in kilobytes, current default is below 1.6 gigs
 if [ "$memory" -lt 1600000 ];then
 	echo 'Setting up system for low ram pc...'
+	# add lxde desktop for low ram pcs and other lighter software
 	apt-get install lxde --assume-yes
+	apt-get install lxpanel-indicator-applet-plugin --assume-yes
 	apt-get install midori --assume-yes
 	apt-get install wicd-gtk --assume-yes
 	# purge login managers	

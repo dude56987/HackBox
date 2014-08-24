@@ -313,9 +313,9 @@ catagory<:>package<:>pidgin-plugin-pack
 ########################################################################
 # DESKTOP MODIFICATION UTILITIES : xfce plugins/ tray stuff
 ########################################################################
-# the below is removed because the systray does all this crap already, and it interferes by adding another volume icon
-catagory<:>message<:>Remove Xfce indicator plugin(ubuntu version of systray)
-catagory<:>rm-package<:>xfce4-indicator-plugin
+# Indicator is now nessary to make some applications work as some things no longer support systray
+catagory<:>message<:>Install Xfce indicator plugin(ubuntu version of systray)
+catagory<:>package<:>xfce4-indicator-plugin
 #### install volumeicon and remove volumed service to remove redundancy, also remove pulseaudio to simplify the volume options for users, install alsa as sound system
 catagory<:>message<:>Install ALSA(Sound System)
 catagory<:>package<:>alsa
