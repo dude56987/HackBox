@@ -57,6 +57,7 @@ build-deb:
 	mkdir -p debian/opt/hackbox/scripts;
 	mkdir -p debian/opt/hackbox/preconfiguredSettings;
 	mkdir -p debian/opt/hackbox/preconfiguredSettings/userSettings;
+	mkdir -p debian/opt/hackbox/preconfiguredSettings/debconf;
 	mkdir -p debian/usr/share;
 	mkdir -p debian/usr/hackbox;
 	mkdir -p debian/usr/share/applications;
@@ -94,6 +95,7 @@ build-deb:
 	ls -A | zip -g -9 -r ../../../debian/opt/hackbox/preconfiguredSettings/userSettings/CORE.zip -@;
 	# add config files n such
 	cp -vfr ./preconfiguredSettings/launchers ./debian/opt/hackbox/preconfiguredSettings/
+	cp -vfr ./preconfiguredSettings/debconf ./debian/opt/hackbox/preconfiguredSettings/
 	cp -vfr ./media/. ./debian/opt/hackbox/media/
 	cp -vfr ./scripts/. ./debian/opt/hackbox/scripts/
 	cp -vfr ./sources/. ./debian/opt/hackbox/sources/
