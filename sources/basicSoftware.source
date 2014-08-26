@@ -440,8 +440,6 @@ catagory<:>message<:>Remove Ubuntu Scrollbar junk
 catagory<:>rm-package<:>overlay-scrollbar-gtk3
 # remove the indicator stuff and use systray
 catagory<:>rm-package<:>mate-indicator-applet
-catagory<:>rm-package<:>indicator-applet
-catagory<:>rm-package<:>xfce4-indicator-plugin
 # remove mint old apps and welcome screen crap
 catagory<:>rm-package<:>mintwelcome
 catagory<:>rm-package<:>mintupload
