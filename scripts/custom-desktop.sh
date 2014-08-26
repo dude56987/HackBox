@@ -26,7 +26,7 @@ fi
 # the check on reseting existing users settings to defaults
 if [ "$resetUserSettings" == "y" ];then
 	for dir in /home/*;do
-		userName=$(echo \$dir | sed \"s/\/home\///g\")
-		echo "resetsettings -u $userName"
+		userName=$(echo "$dir" | sed "s/\/home\///g")
+		resetsettings -u $userName
 	done
 fi
