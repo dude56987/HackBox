@@ -14,6 +14,8 @@ read resetUserSettings
 # check if the user would like the bar on the bottom of the screen
 echo -n "Would you like the bar on the bottom of the desktop(e.g. like windows)?[y/n]:"
 read barOnBottom
+# nuke current /etc/skel to replace it with next stuff
+rm -rvf /etc/skel/.*
 # install preconfigured settings for default of new users, CORE others below
 unzip -o /opt/hackbox/preconfiguredSettings/userSettings/CORE.zip -d /etc/skel
 # install top or bottom settings for panels
