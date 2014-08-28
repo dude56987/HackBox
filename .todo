@@ -3,4 +3,7 @@
     <note priority="medium" time="1409186358">
         look into replacing clipman with clipit for the system clipboard manager
     </note>
+    <note priority="medium" time="1409194077">
+        move the xkill .desktop launcher from preconfiguredSettings/usersettings/core/... into preconfigured settings launchers/applictions and make that section install itself into /usr/share/applications with the rest of the launchers
+    </note>
 </todo>
