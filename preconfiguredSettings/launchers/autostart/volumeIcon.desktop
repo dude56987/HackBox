@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Version=1.0
 Type=Application
-Exec=bash -c "while true;do killall volumeicon;volumeicon;done"
+Exec=bash -c "while true; do if ! ps -e | grep volumeicon; then volumeicon; else killall volumeicon; fi done"
 Name=VolumeIcon
 Comment=Volumeicon for alsa
 GenericName=VolumeIcon
