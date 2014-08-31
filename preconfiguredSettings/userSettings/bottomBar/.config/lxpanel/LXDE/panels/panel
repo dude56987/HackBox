@@ -16,7 +16,7 @@ Global {
     setdocktype=1
     setpartialstrut=1
     usefontcolor=1
-    fontsize=16
+    fontsize=14
     fontcolor=#000000
     usefontsize=1
     background=1
@@ -121,7 +121,7 @@ Plugin {
 Plugin {
     type = dclock
     Config {
-        ClockFmt=%r
+        ClockFmt=%r%n%x
         TooltipFmt=%A %x
         BoldFont=1
         IconOnly=0
