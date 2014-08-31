@@ -4,6 +4,8 @@ sed -i "s/exit 0//g" /etc/rc.local
 sed -i "s/message-of-the-day//g" /etc/rc.local
 echo 'message-of-the-day' >> /etc/rc.local
 echo 'exit 0' >> /etc/rc.local
+# clear blank lines from the file
+sed -i '/^$/d' /etc/rc.local
 # write the message of the day script
 echo "#! /bin/bash" > /usr/bin/message-of-the-day
 echo 'for dir in /home/*;do' >> /usr/bin/message-of-the-day

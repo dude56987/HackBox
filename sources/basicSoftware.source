@@ -410,6 +410,9 @@ catagory<:>rm-package<:>kscreensaver
 catagory<:>message<:>Setup cowsay and fortune
 catagory<:>package<:>cowsay
 catagory<:>package<:>fortune
+# allow root to launch fortune
+catagory<:>command<:>link /usr/games/fortune /usr/bin/fortune
+# create the none cow
 catagory<:>command<:>echo "$thoughts" > /usr/share/cowsay/cows/none.cow
 catagory<:>command<:>chmod +r /usr/share/cowsay/cows/none.cow
 # add motd which depends on cowsay and fortune
