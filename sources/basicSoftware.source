@@ -421,9 +421,9 @@ catagory<:>script<:>message-of-the-day
 # Basic Security Software
 ########################################################################
 catagory<:>message<:>Install HostfileBlocklist Program
-catagory<:>localdeb<:>hostfileblocklist<:>/usr/bin/hostfileblocklist
+catagory<:>localdeb<:>hostfileblocklist
 catagory<:>message<:>Install HostfileBlocklist GUI
-catagory<:>localdeb<:>hostfileblocklist-gui<:>/usr/bin/hostfileblocklist-gui
+catagory<:>localdeb<:>hostfileblocklist-gui
 catagory<:>message<:>Installing fail2ban
 catagory<:>package<:>fail2ban
 catagory<:>message<:>Installing Virus Scanner

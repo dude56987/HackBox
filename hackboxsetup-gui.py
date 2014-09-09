@@ -25,13 +25,36 @@ if os.geteuid() != 0:
 # launch the program on xterm , make launch in term if in a tty
 if os.path.exists('/usr/bin/xterm') == False:#REMOVE WHEN NEW GUI IS BUILT
 	os.system('gksu "apt-get install xterm --assume-yes"')#REMOVE WHEN NEW GUI IS BUILT
-os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')#REMOVE WHEN NEW GUI IS BUILT
-exit()#REMOVE WHEN NEW GUI IS BUILT
+#os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')#REMOVE WHEN NEW GUI IS BUILT
+#exit()#REMOVE WHEN NEW GUI IS BUILT
 try:
 	import Tkinter, tkMessageBox
 except:
 	os.system('gksu "apt-get install python-tk --assume-yes"')
 	import Tkinter, tkMessageBox
+########################################################################
+#text formating command globals
+resetTextStyle='\033[0m'
+boldtext='\033[1m'
+blinktext='\033[5m'
+#textcolors
+blacktext = '\033[30m'
+redtext= '\033[31m'
+greentext= '\033[32m'
+yellowtext= '\033[33m'
+bluetext= '\033[34m'
+magentatext= '\033[35m'
+cyantext= '\033[36m'
+whitetext= '\033[37m'
+#background colors
+blackbackground= '\033[40m'
+redbackground= '\033[41m'
+greenbackground= '\033[42m'
+yellowbackground= '\033[43m'
+bluebackground= '\033[44m'
+magentabackground= '\033[45m'
+cyanbackground= '\033[46m'
+whitebackground= '\033[47m'
 ########################################################################
 # below commands initiate the main tk window then hide it
 # this keeps it from popping up behind the pop-ups
@@ -96,28 +119,109 @@ def currentDirectory():
 			currentDirectory += os.path.sep+temp[item]
 	return (currentDirectory+os.path.sep)
 ########################################################################
-#text formating command globals
-resetTextStyle='\033[0m'
-boldtext='\033[1m'
-blinktext='\033[5m'
-#textcolors
-blacktext = '\033[30m'
-redtext= '\033[31m'
-greentext= '\033[32m'
-yellowtext= '\033[33m'
-bluetext= '\033[34m'
-magentatext= '\033[35m'
-cyantext= '\033[36m'
-whitetext= '\033[37m'
-#background colors
-blackbackground= '\033[40m'
-redbackground= '\033[41m'
-greenbackground= '\033[42m'
-yellowbackground= '\033[43m'
-bluebackground= '\033[44m'
-magentabackground= '\033[45m'
-cyanbackground= '\033[46m'
-whitebackground= '\033[47m'
+def createInstallLoad():
+	# check if a payload has already been built
+	if os.path.exists('/etc/hackbox/payload.source'):
+		if ('--force-use-config' in sys.argv):
+			# install the already created config if force config is used
+			installSourcesFile('/etc/hackbox/payload.source')
+			return True
+		else:
+			# otherwise ask the user if they want to use it
+			print 'A config already exists, would you like to use it?'
+			useConfig = askQuestion('Hackbox Setup','A config already exists, would you like to use it?')
+			if useConfig == 'y':
+				installSourcesFile('/etc/hackbox/payload.source')
+				return True
+	# create a payload variables to orgnize catagories
+	payload = ''
+	# catagory for ppas and repos
+	repoPayload = ''
+	# payload for interactive catagory
+	interactivePayload = ''
+	# payload for things to run first that dont require user interaction
+	prePayload = ''
+	# add a message to the begining of the pre section since this is the begining of the automated section
+	prePayload += 'pre<:>message<:>##################################################################\n'
+	prePayload += 'pre<:>message<:>### BEGINNING AUTOMATED SECTION OF INSTALL GO GRAB A COFFEE... ###\n'
+	prePayload += 'pre<:>message<:>##################################################################\n'
+	prePayload += 'pre<:>message<:>### BEGINNING AUTOMATED SECTION OF INSTALL GO GRAB A COFFEE... ###\n'
+	prePayload += 'pre<:>message<:>##################################################################\n'
+	prePayload += 'pre<:>message<:>### BEGINNING AUTOMATED SECTION OF INSTALL GO GRAB A COFFEE... ###\n'
+	prePayload += 'pre<:>message<:>##################################################################\n'
+	prePayload += 'pre<:>message<:>### BEGINNING AUTOMATED SECTION OF INSTALL GO GRAB A COFFEE... ###\n'
+	prePayload += 'pre<:>message<:>##################################################################\n'
+	# main payload where you should put 99% of things
+	mainPayload = ''
+	# post payload for stuff you should do last
+	postPayload = ''
+	# read list of datafiles
+	datafiles = os.listdir('sources/')
+	# sort the files
+	datafiles.sort()
+	for fileName in datafiles:
+		# extract any preconfigured launchers included for this section
+		try:
+			zipfile.ZipFile(os.path.join(currentDirectory(),('/opt/hackbox/preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip'))).extractall('/usr/share/applications')
+		except:
+			print ('ERROR: File extraction failed for preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip')
+		# set the install section here to keep it in the scope of the file	
+		installSection = 'n'
+		# open the .source file
+		fileObject = loadFile(os.path.join('sources',fileName))
+		if fileObject == False:
+			print 'ERROR: Source file',fileName,'does not exist!'
+		else:
+			fileObject = fileObject.split('\n')
+		# clear the screen before loading stuff in this file
+		os.system('clear')
+		# go though each line of the file
+		for line in fileObject:
+			# all lines starting with # are comments
+			if line[:13]=='#AUTO-INSTALL':
+				# skip the question
+				installSection = 'y'
+			elif line[:6]=='#INFO:':
+				# print the info
+				print line[6:]
+			elif line[:10]=='#QUESTION:':
+				# check for install confrimation
+				if installSection != 'y':# if the AUTO-INSTALL is not set
+					installSection = askQuestion('HackBox Setup',line[10:])
+			# run sections if install is set to true for a file
+			if line[:1] != '#' and line.find('<:>') != -1 and installSection == 'y':
+				# catagories used to orignize the install order of packages
+				tempInfo = line.split('<:>')
+				if tempInfo[1] == 'deb-repo':
+					repoPayload+= line+'\n'
+				if tempInfo[1] == 'ppa':
+					repoPayload += line+'\n'
+				elif tempInfo[0] == 'interactive':
+					interactivePayload += line+'\n'
+				elif tempInfo[0] == 'pre':
+					prePayload += line+'\n'
+				elif tempInfo[0] == 'main':
+					mainPayload += line+'\n'
+				elif tempInfo[0] == 'post':
+					postPayload += line+'\n'
+				else:
+					# otherwise add uncatagorized payloads to main payload
+					mainPayload += line+'\n'	
+	repoPayload += 'null<:>command<:>apt-get update\n'
+	# orginize the payload contents
+	payload = repoPayload+interactivePayload+prePayload+mainPayload+postPayload
+	# write the payload to a text file
+	writeFile('/etc/hackbox/payload.source',payload)
+	# return the payload file location
+	return '/etc/hackbox/payload.source'
+########################################################################
+createInstallLoad()
+# run the gui install process
+os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')#REMOVE WHEN NEW GUI IS BUILT
+# exit the program at the end of the install procedure
+exit()
+
+
 ########################################################################
 # more globals, config data is the meat of the program here
 configData = {}

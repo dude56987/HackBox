@@ -1,6 +1,5 @@
 #BANNER
-#INFO:Would you like to install Office Software?
-#QUESTION:[y/n]:
+#QUESTION:Would you like to install Office Software?
 # office software sources file
 catagory<:>message<:>Installing Hamster Time Tracker
 catagory<:>package<:>hamster-applet

@@ -1,6 +1,5 @@
 #BANNER
-#INFO:Would you like to install Restricted Extras (Codecs,DVD Support,Flash)?
-#QUESTION:[y/n]:
+#QUESTION:Would you like to install Restricted Extras (Codecs,DVD Support,Flash)?
 catagory<:>message<:>Installing Steam
 catagory<:>package<:>ubuntu-restricted-extras
 catagory<:>package<:>libdvdread4

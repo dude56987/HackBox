@@ -448,7 +448,8 @@ def createInstallLoad():
 			elif line[:10]=='#QUESTION:':
 				# check for install confrimation
 				if installSection != 'y':# if the AUTO-INSTALL is not set
-					installSection = raw_input(line[10:])
+					print (line[10:])# show question
+					installSection = raw_input('[y/n]:')# display prompt on a newline for y/n
 			# run sections if install is set to true for a file
 			if line[:1] != '#' and line.find('<:>') != -1 and installSection == 'y':
 				# catagories used to orignize the install order of packages

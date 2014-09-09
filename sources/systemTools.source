@@ -1,6 +1,5 @@
 #BANNER
-#INFO:Would you like to install System Administrator Tools?
-#QUESTION:[y/n]:
+#QUESTION:Would you like to install System Administrator Tools?
 # System Tools Source file
 # backup tool #
 # luckybackup is way harder to use than backintime so its getting replaced

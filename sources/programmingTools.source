@@ -1,6 +1,5 @@
 #BANNER
-#INFO:Would you like to install Programming Tools?
-#QUESTION:[y/n]:
+#QUESTION:Would you like to install Programming Tools?
 catagory<:>message<:>Installing Bazaar (Version Control System)
 catagory<:>package<:>bzr-explorer
 catagory<:>message<:>Installing gedit plugins (turn text editor into IDE)

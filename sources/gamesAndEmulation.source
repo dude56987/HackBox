@@ -1,6 +1,5 @@
 #BANNER
-#INFO:Would you like to install Games & Emulation Software?
-#QUESTION:[y/n]:
+#QUESTION:Would you like to install Games & Emulation Software?
 # games and emulation source file
 catagory<:>message<:>Installing PlayOnLinux (Windows Game/Software Emulation)
 catagory<:>package<:>playonlinux

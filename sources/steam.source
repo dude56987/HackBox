@@ -1,6 +1,5 @@
 #BANNER
-#INFO:Would you like to install Steam (Game Store)?
-#QUESTION:[y/n]:
+#QUESTION:Would you like to install Steam (Game Store)?
 # steam installer source file
 catagory<:>message<:>Installing Steam
 catagory<:>command<:>wget http://media.steampowered.com/client/installer/steam.deb -O /opt/hackbox/unsupportedPackages/steam.deb

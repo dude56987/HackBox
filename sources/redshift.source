@@ -1,6 +1,5 @@
 #BANNER
-#INFO:Would you like to install redshift (Color temp adjustment tool)?
-#QUESTION:[y/n]:
+#QUESTION:Would you like to install redshift (Color temp adjustment tool)?
 # redshift installer source file
 catagory<:>message<:>Installing Redshift
 catagory<:>package<:>gtk-redshift
