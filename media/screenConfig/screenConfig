@@ -9,7 +9,7 @@ screen -t INSTALLER bash -c "python /opt/hackbox/hackboxsetup.py --force-use-con
 # switch focus to next window for displaying splash
 focus
 split -h
-screen -t PROGRESS bash -c "echo '' > /tmp/INSTALLPROGRESS.txt;tail -f /tmp/INSTALLPROGRESS.txt"
+screen -t PROGRESS bash -c "echo '' > /tmp/INSTALLPROGRESS.txt;while true;do tail -f /tmp/INSTALLPROGRESS.txt;done"
 resize 2
 focus
 # setup a screen to display the splashtext and debug via a right panel

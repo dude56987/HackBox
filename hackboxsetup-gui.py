@@ -131,7 +131,11 @@ def createInstallLoad():
 			print 'A config already exists, would you like to use it?'
 			useConfig = askQuestion('Hackbox Setup','A config already exists, would you like to use it?')
 			if useConfig == 'y':
-				installSourcesFile('/etc/hackbox/payload.source')
+				# end all tk instances, close the window so it dont hang open while xterm is running
+				rootWindow.destroy()
+				# run the gui install process
+				os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')#REMOVE WHEN NEW GUI IS BUILT
+				exit()
 				return True
 	# create a payload variables to orgnize catagories
 	payload = ''
@@ -215,7 +219,11 @@ def createInstallLoad():
 	# return the payload file location
 	return '/etc/hackbox/payload.source'
 ########################################################################
+os.chdir(currentDirectory())
+# create the install load
 createInstallLoad()
+# end all tk instances, close the window so it dont hang open while xterm is running
+rootWindow.destroy()
 # run the gui install process
 os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')#REMOVE WHEN NEW GUI IS BUILT
 # exit the program at the end of the install procedure

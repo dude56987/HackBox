@@ -52,7 +52,7 @@ magentabackground= '\033[45m'
 cyanbackground= '\033[46m'
 whitebackground= '\033[47m'
 # reset to default style
-resetTextStyle=defaultText+blackbackground+whitetext
+resetTextStyle=defaultText
 # define functions
 ########################################################################
 def deleteFile(filePath):
