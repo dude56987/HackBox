@@ -383,9 +383,12 @@ catagory<:>message<:>Setting up Autostart for Guake
 catagory<:>command<:>cp -v /usr/share/applications/guake.desktop /etc/xdg/autostart/guake.desktop
 catagory<:>message<:>Installing tumblerd-extra-plugins(renders thumbnails of videos)
 catagory<:>package<:>tumbler-plugins-extra
-catagory<:>message<:>Installing Clipman(Clipboard Manager)
-catagory<:>package<:>xfce4-clipman
-catagory<:>package<:>xfce4-clipman-plugin
+# Setup clipboard manager stuff
+catagory<:>message<:>Clearing old clipboard managers
+catagory<:>rm-package<:>clipman
+catagory<:>rm-package<:>klipper
+catagory<:>message<:>Installing Clipit(Clipboard Manager)
+catagory<:>package<:>clipit
 # install desktop nova and the xfce module of the program
 # catagory<:>message<:>Installing Desktop-Nova(Wallpaper Switcher)####catagory<:>package<:>desktopnova
 # Setting up xfce desktop Support####catagory<:>package<:>desktopnova-module-xfce
@@ -410,8 +413,9 @@ catagory<:>rm-package<:>kscreensaver
 catagory<:>message<:>Setup cowsay and fortune
 catagory<:>package<:>cowsay
 catagory<:>package<:>fortune
-# allow root to launch fortune
+# allow root to launch fortune and cowsay
 catagory<:>command<:>link /usr/games/fortune /usr/bin/fortune
+catagory<:>command<:>link /usr/games/cowsay /usr/bin/cowsay
 # create the none cow
 catagory<:>command<:>echo "$thoughts" > /usr/share/cowsay/cows/none.cow
 catagory<:>command<:>chmod +r /usr/share/cowsay/cows/none.cow
