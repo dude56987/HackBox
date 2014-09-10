@@ -1,9 +1,15 @@
 <?xml version="1.0"?>
 <todo version="0.1.20">
-    <note priority="medium" time="1409186358">
-        look into replacing clipman with clipit for the system clipboard manager
+    <note priority="medium" time="1410320180">
+        Create a checkbox based gui for install
     </note>
-    <note priority="medium" time="1409194077">
-        move the xkill .desktop launcher from preconfiguredSettings/usersettings/core/... into preconfigured settings launchers/applictions and make that section install itself into /usr/share/applications with the rest of the launchers
+    <note priority="medium" time="1410320230">
+        Add preset mimetypes into firefox and midori to make them work better with the installed applications
+    </note>
+    <note priority="medium" time="1410320285">
+        Do testing and build cross compatibility with arch linux
+    </note>
+    <note priority="medium" time="1410320320">
+        Do testing and build cross compatibility with centos or suse linux
     </note>
 </todo>
