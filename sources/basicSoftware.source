@@ -212,9 +212,10 @@ catagory<:>package<:>iotop
 catagory<:>message<:>Installing iftop(Top for Network Usage)
 catagory<:>package<:>iftop
 # Uncomment to install monitorix to track system usage over time
-#catagory<:>message<:>Installing monitorix(System Stat Tracker)
-#catagory<:>deb-repo<:>deb http://apt.izzysoft.de/ubuntu generic universe<:>http://apt.izzysoft.de/izzysoft.asc
-#catagory<:>package<:>monitorix
+catagory<:>message<:>Installing monitorix(System Stat Tracker)
+catagory<:>deb-repo<:>deb http://apt.izzysoft.de/ubuntu generic universe<:>http://apt.izzysoft.de/izzysoft.asc
+catagory<:>package<:>monitorix
+###################################
 catagory<:>message<:>Installing fdupes(Remove duplicate files)
 catagory<:>package<:>fdupes
 catagory<:>message<:>Installing resetsettings(resets settings to defaults)

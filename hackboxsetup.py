@@ -416,11 +416,6 @@ def createInstallLoad():
 	# sort the files
 	datafiles.sort()
 	for fileName in datafiles:
-		# extract any preconfigured launchers included for this section
-		try:
-			zipfile.ZipFile(os.path.join(currentDirectory(),('/opt/hackbox/preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip'))).extractall('/usr/share/applications')
-		except:
-			print ('ERROR: File extraction failed for preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip')
 		# set the install section here to keep it in the scope of the file	
 		installSection = 'n'
 		# open the .source file
@@ -469,6 +464,9 @@ def createInstallLoad():
 				else:
 					# otherwise add uncatagorized payloads to main payload
 					mainPayload += line+'\n'	
+		# extract any preconfigured launchers included for this section
+		if os.path.exists(('/opt/hackbox/preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip')):
+			mainPayload += 'null<:>command<:>unzip -o '+'/opt/hackbox/preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip -d /usr/share/applications\n'
 	repoPayload += 'null<:>command<:>apt-get update\n'
 	# orginize the payload contents
 	payload = repoPayload+interactivePayload+prePayload+mainPayload+postPayload
