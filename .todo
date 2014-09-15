@@ -12,4 +12,16 @@
     <note priority="medium" time="1410320320">
         Do testing and build cross compatibility with centos or suse linux
     </note>
+    <note priority="medium" time="1410726662">
+        redo the default colors in firefox for webpages, mainly link colors
+    </note>
+    <note priority="medium" time="1410727183">
+        create gui/cli ramdisk creating program
+    </note>
+    <note priority="medium" time="1410728210">
+        update system mimetypes package
+    </note>
+    <note priority="medium" time="1410728226">
+        fix git commit logs
+    </note>
 </todo>
