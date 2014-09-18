@@ -53,6 +53,10 @@ cyanbackground= '\033[46m'
 whitebackground= '\033[47m'
 # reset to default style
 resetTextStyle=defaultText
+# use the gui if it exists
+if "--gui" in sys.argv:
+	from dialog import Dialog
+	queryboxes = Dialog()
 # define functions
 ########################################################################
 def deleteFile(filePath):
@@ -376,10 +380,6 @@ def installSourcesFile(fileNameOfFile):
 						print ("ERROR:No "+tempInfo[2]+" exists!")
 	return True
 def createInstallLoad():
-	# use the gui if it exists
-	if "--gui" in sys.argv:
-		from dialog import Dialog
-		queryboxes = Dialog()
 	# check if a payload has already been built
 	if os.path.exists('/etc/hackbox/payload.source'):
 		if ('--force-use-config' in sys.argv):
@@ -387,9 +387,16 @@ def createInstallLoad():
 			installSourcesFile('/etc/hackbox/payload.source')
 			return True
 		else:
-			# otherwise ask the user if they want to use it
-			print 'A config already exists, would you like to use it?'
-			useConfig = raw_input('[y/n]:')
+			if "--gui" in sys.argv:
+				# returns 0 for yes and 1 for no
+				if queryboxes.yesno('A config already exists, would you like to use it?')== 0:
+					useConfig = 'y'
+				else:
+					useConfig = 'n'
+			else:
+				# otherwise ask the user if they want to use it
+				print 'A config already exists, would you like to use it?'
+				useConfig = raw_input('[y/n]:')
 			if useConfig == 'y':
 				installSourcesFile('/etc/hackbox/payload.source')
 				return True
@@ -503,17 +510,28 @@ os.chdir('/opt/hackbox')
 clear()
 print colorText(loadFile('media/banner.txt'))
 print 'Designed for:'+greentext+'Ubuntu Desktop Edition/Linux Mint Xfce Edition'+resetTextStyle
+# set the background for the dialouges
+queryboxes.setBackgroundTitle("HackBox Setup")
 # only prompt the user if --force-use-config is not used in the program launch
 if (('--force-use-config' in sys.argv) == False):
-	# prompt user if they want to proceed or not
-	printBlue('This script will install and configure settings for a new \n system automatically.');
-	check = raw_input('Proceed? [y/n]: ');
-	if check == 'y' :
-		print 'Starting setup...';
+	if "--gui" in sys.argv:
+		temp = 'This script will install and configure settings for a new system automatically.\n\n'
+		temp += 'Proceed?'
+		# returns 0 for yes and 1 for no
+		if queryboxes.yesno(temp)== 0:
+			check = 'y'
+		else:
+			check = 'n'
 	else:
-		clear();
-		print 'Ending script...';
-		exit();
+		# prompt user if they want to proceed or not
+		printBlue('This script will install and configure settings for a new \n system automatically.')
+		check = raw_input('Proceed? [y/n]: ');
+		if check == 'y' :
+			print 'Starting setup...';
+		else:
+			clear();
+			print 'Ending script...';
+			exit();
 # Check for network connection, dont proceed unless it is active
 connected = False
 from random import randrange
