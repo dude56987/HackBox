@@ -13,6 +13,8 @@ catagory<:>message<:>Installing HomeBank
 catagory<:>package<:>homebank
 catagory<:>message<:>Installing Calibre(Book Management Software)
 catagory<:>package<:>calibre 
+catagory<:>message<:>Installing FocusWriter(Writing tool)
+catagory<:>package<:>focuswriter
 # Workrave is commented out since it autostarts every login and
 # if you dont like it that is annoying
 #catagory<:>message<:>Installing Workrave(RSI Prevention tool)
