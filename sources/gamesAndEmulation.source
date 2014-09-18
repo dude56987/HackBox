@@ -27,6 +27,9 @@ catagory<:>message<:>Installing TuxPaint
 catagory<:>package<:>tuxpaint tuxpaint-stamps tuxpaint-plugins
 catagory<:>message<:>Installing qjoypad
 catagory<:>package<:>qjoypad
+# ingame chat client
+catagory<:>message<:>Installing mumble(voip for games)
+catagory<:>package<:>mumble
 # add ppa for retroarch
 interactive<:>ppa<:>ppa:hunter-kaller/ppa
 # retro console emulation with retroarch yo
