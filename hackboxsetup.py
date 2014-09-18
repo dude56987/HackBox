@@ -376,6 +376,10 @@ def installSourcesFile(fileNameOfFile):
 						print ("ERROR:No "+tempInfo[2]+" exists!")
 	return True
 def createInstallLoad():
+	# use the gui if it exists
+	if "--gui" in sys.argv:
+		from dialog import Dialog
+		queryboxes = Dialog()
 	# check if a payload has already been built
 	if os.path.exists('/etc/hackbox/payload.source'):
 		if ('--force-use-config' in sys.argv):
@@ -440,11 +444,20 @@ def createInstallLoad():
 				banner = loadFile('media/banner.txt')
 				if banner != False:
 					print (colorText(banner))
+				if "--gui" in sys.argv:
+					queryboxes.setBackgroundTitle("HackBox Setup")
 			elif line[:10]=='#QUESTION:':
 				# check for install confrimation
 				if installSection != 'y':# if the AUTO-INSTALL is not set
-					print (line[10:])# show question
-					installSection = raw_input('[y/n]:')# display prompt on a newline for y/n
+					if "--gui" in sys.argv:
+						# returns 0 for yes and 1 for no
+						if queryboxes.yesno(line[10:]) == 0:
+							installSection = 'y'
+						else:
+							installSection = 'n'
+					else:
+						print (line[10:])# show question
+						installSection = raw_input('[y/n]:')# display prompt on a newline for y/n
 			# run sections if install is set to true for a file
 			if line[:1] != '#' and line.find('<:>') != -1 and installSection == 'y':
 				# catagories used to orignize the install order of packages
@@ -522,7 +535,7 @@ while connected == False:
 			sleep(1)
 ########################################################################
 clear();
-os.chdir(currentDirectory())
+os.chdir('/opt/hackbox')
 # create the install payload file, it will be installed after this stuff
 payloadFileLocation = createInstallLoad()
 #########################################################################

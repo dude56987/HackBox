@@ -1,4 +1,7 @@
 #! /bin/bash
+# link up the installer to a command
+link /opt/hackbox/hackboxsetup.py /usr/bin/hackboxsetup
+sudo chmod +x /usr/bin/hackboxsetup
 # edit mdm if it exists
 if [ -f /etc/mdm/Init/Default ]; then
 	sed -i.bak 's/exit\ 0//g' /etc/mdm/Init/Default

@@ -6,6 +6,6 @@ Installed-Size: 000000
 Homepage: hacker-haven.com
 Priority: optional
 Architecture: all
-Depends: python (>=2.7), debconf-utils
+Depends: python (>=2.7), debconf-utils, python-dialog
 Description: Set of scripts and programs that will setup a freshly installed distro to be more secure and usable.
  Installs a extensive array of software for the user. Going on the idea that default is king this attempts to build a set of defaults for a system that is more taylored for hacking on by giving the user the avaliable tools to do so. For new users who want to setup a system but dont know how this will run them though a CLI wizard which will ask them questions and set up the system according to thier anwsers. The total diskspace used after a full install with this tool is around 8 GIGs last time it was checked. Some examples of things this program will setup for you are... Netflix, Webcam, Multimedia Editing Enviorment, Programming Enviorment, Web Design Tools, etc.  

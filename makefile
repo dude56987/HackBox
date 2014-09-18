@@ -77,8 +77,8 @@ build-deb:
 	# clean up those bytecode files
 	rm -vf *.pyc
 	# build the launchers link
-	echo "#! /bin/bash\npython /opt/hackbox/hackboxsetup.py" > ./debian/usr/bin/hackboxsetup
-	chmod +x ./debian/usr/bin/hackboxsetup
+	#echo "#! /bin/bash\npython /opt/hackbox/hackboxsetup.py" > ./debian/usr/bin/hackboxsetup
+	#chmod +x ./debian/usr/bin/hackboxsetup
 	echo "#! /bin/bash\npython /opt/hackbox/hackboxsetup-gui.py" > ./debian/usr/bin/hackboxsetup-gui
 	chmod +x ./debian/usr/bin/hackboxsetup-gui
 	# give everyone read permissions for the media directory of hackbox
