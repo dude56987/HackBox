@@ -27,6 +27,9 @@ catagory<:>message<:>Installing john (brute force password cracker)
 catagory<:>package<:>john
 catagory<:>message<:>Installing nmap (Port Scanner)
 catagory<:>package<:>nmap
+# root kit detection
+catagory<:>message<:>Installing chkrootkit(checks the sysytem for rootkits)
+catagory<:>package<:>chkrootkit
 # monitoring tools
 catagory<:>message<:>Installing htop (CLI Task Manager)
 catagory<:>package<:>htop
