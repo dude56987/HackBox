@@ -54,7 +54,7 @@ whitebackground= '\033[47m'
 # reset to default style
 resetTextStyle=defaultText
 # use the gui if it exists
-if "--gui" in sys.argv:
+if (("--no-curses" in sys.argv) != True):
 	from dialog import Dialog
 	queryboxes = Dialog()
 # define functions
@@ -387,7 +387,7 @@ def createInstallLoad():
 			installSourcesFile('/etc/hackbox/payload.source')
 			return True
 		else:
-			if "--gui" in sys.argv:
+			if (("--no-curses" in sys.argv) != True):
 				# returns 0 for yes and 1 for no
 				if queryboxes.yesno('A config already exists, would you like to use it?')== 0:
 					useConfig = 'y'
@@ -451,12 +451,12 @@ def createInstallLoad():
 				banner = loadFile('media/banner.txt')
 				if banner != False:
 					print (colorText(banner))
-				if "--gui" in sys.argv:
+				if (("--no-curses" in sys.argv) != True):
 					queryboxes.setBackgroundTitle("HackBox Setup")
 			elif line[:10]=='#QUESTION:':
 				# check for install confrimation
 				if installSection != 'y':# if the AUTO-INSTALL is not set
-					if "--gui" in sys.argv:
+					if (("--no-curses" in sys.argv) != True):
 						# returns 0 for yes and 1 for no
 						if queryboxes.yesno(line[10:]) == 0:
 							installSection = 'y'
@@ -495,6 +495,43 @@ def createInstallLoad():
 	# return the payload file location
 	return '/etc/hackbox/payload.source'
 ########################################################################
+# if the user is running the help command
+if ("--help" in sys.argv) or ("-h" in sys.argv):
+	print "########################################################################"
+	print "# Program Designed to setup a new Linux system automatically via scripts"
+	print "#  Copyright (C) 2014  Carl J Smith"
+	print "#" 
+	print "#  This program is free software: you can redistribute it and/or modify"
+	print "#  it under the terms of the GNU General Public License as published by"
+	print "#  the Free Software Foundation, either version 3 of the License, or"
+	print "#  (at your option) any later version."
+	print "#" 
+	print "#  This program is distributed in the hope that it will be useful,"
+	print "#  but WITHOUT ANY WARRANTY; without even the implied warranty of"
+	print "#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
+	print "#  GNU General Public License for more details."
+	print "#" 
+	print "#  You should have received a copy of the GNU General Public License"
+	print "#  along with this program.  If not, see <http://www.gnu.org/licenses/>."
+	print "########################################################################"
+	print "--help or -h"
+	print "\tDisplay this message."
+	print "--force-use-config"
+	print "\tDo not ask the user questions and just install the currently built"
+	print "\tpayload."
+	print "--no-curses"
+	print "\tDon't use the curses dialogs."
+	print "--force-reboot"
+	print "\tReboot the system after the install process is finished."
+	print "--force-logout"
+	print "\tForce the system to logout of whatever session is active for the"
+	print "\tcurrent user."
+	print "########################################################################"
+	# end the program after displaying the help menu
+	exit()
+########################################################################
+import os, sys, shutil, json, zipfile, socket, urllib2, md5
+from time import sleep
 # Pre-run checks
 print 'Preforming startup checks...'
 # run program as root if it is not being already done
@@ -514,14 +551,16 @@ print 'Designed for:'+greentext+'Ubuntu Desktop Edition/Linux Mint Xfce Edition'
 queryboxes.setBackgroundTitle("HackBox Setup")
 # only prompt the user if --force-use-config is not used in the program launch
 if (('--force-use-config' in sys.argv) == False):
-	if "--gui" in sys.argv:
+	if (("--no-curses" in sys.argv) != True):
 		temp = 'This script will install and configure settings for a new system automatically.\n\n'
 		temp += 'Proceed?'
 		# returns 0 for yes and 1 for no
 		if queryboxes.yesno(temp)== 0:
-			check = 'y'
+			print 'Starting setup...';
 		else:
-			check = 'n'
+			clear();
+			print 'Ending script...';
+			exit();
 	else:
 		# prompt user if they want to proceed or not
 		printBlue('This script will install and configure settings for a new \n system automatically.')

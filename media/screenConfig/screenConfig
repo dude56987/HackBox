@@ -1,11 +1,13 @@
 # disable the startup message here
 startup_message off
 # bind the tab key to switch windows
-bindkey "^I" focus
+bindkey -k k4 focus
+bindkey -k k3 focus
+#bindkey "^I" focus
 # Split the screen verticaly
 split -v
 # setup a screen to display the standard install output
-screen -t INSTALLER bash -c "python /opt/hackbox/hackboxsetup.py --gui --force-use-config --no-reset;killall screen"
+screen -t INSTALLER bash -c "python /opt/hackbox/hackboxsetup.py --force-use-config --no-reset;killall screen"
 # switch focus to next window for displaying splash
 focus
 split -h

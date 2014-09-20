@@ -8,10 +8,13 @@
 
 This is the HackBox Setup Program.
 
-To your left is the installer which will require your attention for the first part of installation.
+To your left is the installer which will require your attention for the first part of installation. The installer will inform you when everything begins being fully automated.
 
-To switch between these two windows use the TAB key.
+To switch between options on the left you can use the tab key or you may be able to just click, depending on your system.
+
+To switch between the window on the left the progress window above and this window use the F3 and F4 keys.
 
 ############################################
 Press q in this window to view debug info...
 To clear the debug info press <CTRL>+C
+############################################

@@ -39,3 +39,5 @@ Would you like to install the preset desktop settings?\n\n" 20 70;then
 		resetsettings -u $userName
 	done
 fi
+# reset the terminal to clean up after the dialog boxes
+reset
