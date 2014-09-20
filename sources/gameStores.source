@@ -1,0 +1,10 @@
+#BANNER
+#QUESTION:Would you like to install Steam & Desura (Game Stores)?
+# Steam, the big daddy of online game stores, DRM included in everything
+catagory<:>message<:>Installing Steam (game store)
+catagory<:>command<:>wget http://media.steampowered.com/client/installer/steam.deb -O /opt/hackbox/unsupportedPackages/steam.deb
+catagory<:>localdeb<:>steam
+# Desura a game store that does not include drm in all games and focuses on indie content
+catagory<:>message<:>Installing Desura (indie game store)
+catagory<:>ppa<:>ppa:makson96/desurium-stable
+catagory<:>package<:>desurium
