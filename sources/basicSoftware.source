@@ -56,6 +56,8 @@ catagory<:>package<:>vlc
 # totem plugin insted of vlc plugin since vlcs plugin kinda sucks compartively
 catagory<:>message<:>Installing Totem Web plugin
 catagory<:>package<:>totem-mozilla
+# add ppa for xbmc but do not install it, this so if the user installs xbmc it will be at the latest version
+catagory<:>ppa<:>ppa:team-xbmc/ppa
 catagory<:>message<:>Installing Evince(Document Viewer/PDF Viewer)
 catagory<:>package<:>evince
 catagory<:>message<:>Installing Jockey(Propietry Driver Installer)
