@@ -20,7 +20,7 @@ interactive<:>localdeb<:>apt-fast_64bit
 interactive<:>CHECK-PACKAGE-MANAGER
 # install the update command
 catagory<:>localdeb<:>update
-catagory<:>command<:>update
+catagory<:>command<:>update --no-log
 # getdeb and playdeb repos
 pre<:>localdeb<:>playdeb
 pre<:>localdeb<:>getdeb
