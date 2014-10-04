@@ -25,3 +25,5 @@ catagory<:>message<:>Installing QtQr(QR code Generator + Reader)
 catagory<:>package<:>qtqr
 catagory<:>message<:>Installing Screen Ruler
 catagory<:>package<:>screenruler
+catagory<:>message<:>Installing Simple Scan(Interface for scanning documents)
+catagory<:>package<:>simple-scan

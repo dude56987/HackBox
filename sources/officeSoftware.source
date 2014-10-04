@@ -15,6 +15,8 @@ catagory<:>message<:>Installing Calibre(Book Management Software)
 catagory<:>package<:>calibre 
 catagory<:>message<:>Installing FocusWriter(Writing tool)
 catagory<:>package<:>focuswriter
+catagory<:>message<:>Installing Simple Scan(Interface for scanning documents)
+catagory<:>package<:>simple-scan
 # Workrave is commented out since it autostarts every login and
 # if you dont like it that is annoying
 #catagory<:>message<:>Installing Workrave(RSI Prevention tool)
