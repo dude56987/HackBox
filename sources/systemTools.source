@@ -30,6 +30,8 @@ catagory<:>package<:>nmap
 # root kit detection
 catagory<:>message<:>Installing chkrootkit(checks the sysytem for rootkits)
 catagory<:>package<:>chkrootkit
+catagory<:>message<:>Installing rkhunter(checks the sysytem for rootkits)
+catagory<:>package<:>rkhunter
 # monitoring tools
 catagory<:>message<:>Installing htop (CLI Task Manager)
 catagory<:>package<:>htop
