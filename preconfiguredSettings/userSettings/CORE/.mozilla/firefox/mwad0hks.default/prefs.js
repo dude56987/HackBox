@@ -13,7 +13,7 @@ user_pref("app.update.lastUpdateTime.addon-background-update-timer", 1402956040)
 user_pref("app.update.lastUpdateTime.blocklist-background-update-timer", 1403212515);
 user_pref("app.update.lastUpdateTime.browser-cleanup-thumbnails", 1403212676);
 user_pref("app.update.lastUpdateTime.search-engine-update-timer", 1403213416);
-user_pref("browser.anchor_color", "#66CCCC");
+user_pref("browser.anchor_color", "#3366FF");
 user_pref("browser.cache.disk.capacity", 81920);
 user_pref("browser.cache.disk.smart_size.enabled", false);
 user_pref("browser.cache.disk.smart_size.first_run", false);
