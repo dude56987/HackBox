@@ -9,4 +9,9 @@ echo "$memory KB of total memory in the system..."
 if [ "$memory" -lt 1600000 ];then
 	bash lxde-desktop.sh
 	bash disable-bootsplash.sh
+	# change the virtual terminal to tty2 on boot
+	sed -i "s/exit 0//g" /etc/rc.local
+	sed -i "s/chvt 2//g" /etc/rc.local
+	echo 'chvt 2' >> /etc/rc.local
+	echo 'exit 0' >> /etc/rc.local
 fi
