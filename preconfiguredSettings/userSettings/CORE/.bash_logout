@@ -13,3 +13,5 @@ rm -vr ~/.local/share/Trash
 if [ "$SHLVL" = 1 ]; then
     [ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
 fi
+echo "Kill all remaining user processes..."
+killall -u $(echo $HOME | sed "s/\/home\///g")
