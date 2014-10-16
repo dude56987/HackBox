@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Version=1.0
 Type=Application
-Exec=bash -c "while true; do gtk-redshift -l $(cat /etc/latlon); done"
+Exec=bash -c "while true; do gtk-redshift -l $(cat /etc/latlon) || gtk-redshift; done"
 Name=Redshift
 Comment=Redshift
 GenericName=Redshift
