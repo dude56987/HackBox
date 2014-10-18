@@ -44,7 +44,7 @@
 	<icon>soundconverter</icon>
 	<name>Convert to audio</name>
 	<unique-id>1388707902607988-5</unique-id>
-	<command>ffmpeg -i %f %f.mp3</command>
+	<command>avconv -i %f %f.mp3</command>
 	<description>Converts selected video to mp3 file</description>
 	<patterns>*</patterns>
 	<video-files/>
