@@ -137,6 +137,8 @@ def createInstallLoad():
 				os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')#REMOVE WHEN NEW GUI IS BUILT
 				exit()
 				return True
+			elif useConfig == 'n':
+				os.system('rm -rvf /etc/hackbox/*')
 	# create a payload variables to orgnize catagories
 	payload = ''
 	# catagory for ppas and repos

@@ -393,6 +393,7 @@ def createInstallLoad():
 					useConfig = 'y'
 				else:
 					useConfig = 'n'
+					os.system('rm -rvf /etc/hackbox/*')
 			else:
 				# otherwise ask the user if they want to use it
 				print 'A config already exists, would you like to use it?'
