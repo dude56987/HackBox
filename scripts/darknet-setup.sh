@@ -20,17 +20,21 @@
 apt-get install tor --assume-yes
 apt-get install privoxy --assume-yes
 apt-get install macchanger --assume-yes
-# setting up i2p deepweb protocall though ppa ##########################
-# set anwsers for setup dialouges
-echo "i2p	i2p/user	string	i2psvc" > /tmp/i2p.conf
-echo "i2p	i2p/memory	string	128" >> /tmp/i2p.conf
-echo "i2p	i2p/daemon	boolean	true" >> /tmp/i2p.conf
-debconf-set-selections /tmp/i2p.conf
-# add ppa update and install program
-apt-add-repository ppa:i2p-maintainers/i2p --yes
-apt-get update
-apt-get install i2p --assume-yes
-dpkg-reconfigure i2p
+if [ -f /etc/hackbox/i2pSetupDone ];then
+	# setting up i2p deepweb protocall though ppa ##########################
+	# set anwsers for setup dialouges
+	echo "i2p	i2p/user	string	i2psvc" > /tmp/i2p.conf
+	echo "i2p	i2p/memory	string	128" >> /tmp/i2p.conf
+	echo "i2p	i2p/daemon	boolean	true" >> /tmp/i2p.conf
+	debconf-set-selections /tmp/i2p.conf
+	# add ppa update and install program
+	apt-add-repository ppa:i2p-maintainers/i2p --yes
+	apt-get update
+	apt-get install i2p --assume-yes
+	dpkg-reconfigure i2p
+	# create lock file so this process is not repeated
+	echo '' > /etc/hackbox/i2pSetupDone
+fi
 # build the macchanger boot script #####################################
 #  changing the mac address at boot ensures connections appear from a
 #  diffrent machine each time user reboots, this is not on a timer since
