@@ -530,6 +530,12 @@ if ("--help" in sys.argv) or ("-h" in sys.argv):
 	print "########################################################################"
 	# end the program after displaying the help menu
 	exit()
+if ("--upgrade" in sys.argv) or ("-u" in sys.argv):
+	# pull the latest version from git and install it
+	os.system('git clone https://github.com/dude56987/HackBox.git /tmp/HackBox/ || git -C /tmp/HackBox/ pull')
+	os.system('cd /tmp/HackBox/;make install')
+	os.system('hackboxsetup --force-use-config')
+	exit()
 ########################################################################
 import os, sys, shutil, json, zipfile, socket, urllib2, md5
 from time import sleep
