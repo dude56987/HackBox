@@ -143,6 +143,9 @@ catagory<:>package<:>fonts-opendyslexic
 ########################################################################
 # UTILITIES #
 ########################################################################
+# for customizing the colors in gtk
+catagory<:>message<:>Installing gtk-theme-config
+catagory<:>package<:>gtk-theme-config
 catagory<:>message<:>Installing xcalib(calibrate video)
 catagory<:>package<:>xcalib
 catagory<:>message<:>Installing texlive-extra-utils (for pdf croping and compressing commands)
