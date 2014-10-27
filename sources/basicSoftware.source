@@ -49,6 +49,8 @@ catagory<:>message<:>Installing ZSH(Shell)
 catagory<:>package<:>zsh
 catagory<:>message<:>Installing SSH(Remote Shell)
 catagory<:>package<:>ssh
+catagory<:>message<:>Installing SSHFS(mount remote filesystems locally via sftp)
+catagory<:>package<:>sshfs
 catagory<:>message<:>Installing MOSH(Improved SSH client)
 catagory<:>package<:>mosh
 catagory<:>message<:>Installing VLC(Video Player)
