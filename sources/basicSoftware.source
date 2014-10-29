@@ -91,7 +91,9 @@ catagory<:>package<:>gcp
 catagory<:>package<:>python-progressbar
 catagory<:>message<:>Installing colordiff(colorize diff output)
 catagory<:>package<:>colordiff
+# install zim and install it from the ppa if possible
 catagory<:>message<:>Installing Zim
+interactive<:>ppa<:>ppa:jaap.karssenberg/zim
 catagory<:>package<:>zim
 catagory<:>message<:>Installing xchm (Compiled Help File Viewer) 
 catagory<:>package<:>xchm
