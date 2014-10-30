@@ -19,3 +19,7 @@ set ic
 set hls
 "Turn on mouse support"
 set mouse=a
+"Change the default color scheme"
+colorscheme ron
+"The following are the color schemes available by default"
+"blue darkblue default delek desert elflord evening koehler morning murphy pablo peachpuff ron shine slate torte zellner"
