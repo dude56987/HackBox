@@ -37,6 +37,8 @@ catagory<:>message<:>Change the system swappiness(Improve use of system RAM)
 catagory<:>script<:>change-swappiness
 catagory<:>message<:>Fix Home Permissions(Users can't see other users stuff now)
 catagory<:>script<:>fix-home-permissions
+catagory<:>message<:>Make sudo have password feedback
+catagory<:>script<:>passwordFeedback
 ###################
 pre<:>message<:>Installing gdebi(Grapical Package Installer)
 pre<:>package<:>gdebi
