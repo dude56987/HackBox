@@ -37,6 +37,8 @@ catagory<:>message<:>Change the system swappiness(Improve use of system RAM)
 catagory<:>script<:>change-swappiness
 catagory<:>message<:>Fix Home Permissions(Users can't see other users stuff now)
 catagory<:>script<:>fix-home-permissions
+catagory<:>message<:>Make sudo have password feedback
+catagory<:>script<:>passwordFeedback
 ###################
 pre<:>message<:>Installing gdebi(Grapical Package Installer)
 pre<:>package<:>gdebi
@@ -91,7 +93,9 @@ catagory<:>package<:>gcp
 catagory<:>package<:>python-progressbar
 catagory<:>message<:>Installing colordiff(colorize diff output)
 catagory<:>package<:>colordiff
+# install zim and install it from the ppa if possible
 catagory<:>message<:>Installing Zim
+interactive<:>ppa<:>ppa:jaap.karssenberg/zim
 catagory<:>package<:>zim
 catagory<:>message<:>Installing xchm (Compiled Help File Viewer) 
 catagory<:>package<:>xchm
