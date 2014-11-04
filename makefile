@@ -30,6 +30,7 @@ uninstallfromsystem:
 	rm -rv -v /opt/hackbox
 	rm -rv /usr/bin/hackboxsetup
 install-deb: hackbox_UNSTABLE.deb
+	sudo apt-get install gdebi --assume-yes
 	sudo gdebi --no hackbox_UNSTABLE.deb
 update-version-number:
 	#^Version:.\{4\}[0987654321]\{1,20\}
