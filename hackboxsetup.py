@@ -18,6 +18,7 @@
 ########################################################################
 import os, sys, shutil, json, zipfile, socket, urllib2, md5
 from time import sleep
+from random import randrange
 ########################################################################
 Version = '0.5.0'
 # For Ubuntu Server Edition/Ubuntu Desktop Edition/Linux Mint
@@ -156,7 +157,6 @@ def currentDirectory():
 	return (currentDirectory+os.path.sep)
 ########################################################################
 def makeDir(remoteDir):
-	import os
 	''' Creates the defined directory, if a list of directories are listed
 	that do not exist then they will be created as well, so beware of 
 	spelling mistakes as this will create the specified directory you 
@@ -537,8 +537,6 @@ if ("--upgrade" in sys.argv) or ("-u" in sys.argv):
 	os.system('hackboxsetup --force-use-config')
 	exit()
 ########################################################################
-import os, sys, shutil, json, zipfile, socket, urllib2, md5
-from time import sleep
 # Pre-run checks
 print 'Preforming startup checks...'
 # run program as root if it is not being already done
@@ -580,7 +578,6 @@ if (('--force-use-config' in sys.argv) == False):
 			exit();
 # Check for network connection, dont proceed unless it is active
 connected = False
-from random import randrange
 while connected == False:
 	print 'Checking Network Connection...'
 	websites = []
@@ -679,9 +676,8 @@ os.system('fc-cache -f -v')
 makeDir('/usr/share/pixmaps/hackbox')
 makeDir('/usr/share/pixmaps/wallpapers')
 os.system('cp -rv media/wallpapers/. /usr/share/pixmaps/wallpapers/')
-COPY(os.path.join(currentDirectory(),'media/hackboxLogo.png'),'/usr/share/pixmaps/hackbox')
-COPY(os.path.join(currentDirectory(),'media/hackboxLogoText.png'),'/usr/share/pixmaps/hackbox')
-
+os.system('cp -rv media/*.png /usr/share/pixmaps/hackbox/')
+os.system('cp -rv media/*.jpg /usr/share/pixmaps/hackbox/')
 ####################################################################
 # Make system links to fix some hardcoded call errors in programs
 # create a system link that sends calls for nautilus/nemo to thunar
@@ -689,10 +685,9 @@ if os.path.exists('/usr/bin/cinnamon') != True:
 	# use a if statement since cinnamon crashes without nemo
 	os.system('sudo apt-fast purge nemo --assume-yes')
 	os.system('link /usr/bin/thunar /usr/bin/nemo')
-# fuck nautilus and gnome 3
+# fuck nautilus and gnome 3, though they are a lot better now
 os.system('sudo apt-fast purge nautilus --assume-yes')
 os.system('link /usr/bin/thunar /usr/bin/nautilus')
-	
 ################################################################
 # Setting Up Network Security
 ####################################################################
