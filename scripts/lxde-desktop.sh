@@ -31,13 +31,19 @@ echo 'EXTRA_GROUPS="audio netdev"' >> /etc/useradd.conf
 echo 'ADD_EXTRA_GROUPS=1' >> /etc/useradd.conf
 # modify existing users
 for dir in /home/*;do
+	USERNAME=$(echo $dir | sed "s/\/home\///g")
+	# give some output to let the user know stuff is working right
+	echo "Username:"
+	echo $USERNAME
 	echo "Editing $dir/.dmrc ..."
 	sed -i "s/Session=*\n/Session=LXDE\n/g" $dir/.dmrc
-	chown $(echo \$dir | sed \"s/\/home\///g\") $dir/.dmrc
-	# for antix debian compatibility
+	chown $USERNAME $dir/.dmrc
+	# for antix/debian compatibility
 	echo 'lxsession' > $dir/.xinitrc
-	chown $(echo \$dir | sed \"s/\/home\///g\") $dir/.xinitrc
+	chown $USERNAME $dir/.xinitrc
 	# give all users permissions for the audio group
-	usermod -a -G audio $(echo \$dir | sed \"s/\/home\///g\")
-	usermod -a -G netdev $(echo \$dir | sed \"s/\/home\///g\")
+	echo "usermod -a audio $USERNAME"
+	usermod -a -G audio $USERNAME
+	echo "usermod -a netdev $USERNAME"
+	usermod -a -G netdev $USERNAME
 done
