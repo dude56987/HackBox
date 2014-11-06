@@ -20,7 +20,7 @@
 apt-get install tor --assume-yes
 apt-get install privoxy --assume-yes
 apt-get install macchanger --assume-yes
-if [ -f /etc/hackbox/i2pSetupDone ];then
+if ! [ -f /etc/hackbox/i2pSetupDone ];then
 	# setting up i2p deepweb protocall though ppa ##########################
 	# set anwsers for setup dialouges
 	echo "i2p	i2p/user	string	i2psvc" > /tmp/i2p.conf
@@ -52,15 +52,28 @@ if more /etc/rc.local | grep macRandomizer;then
 	sed -i "s/exit 0//g" /etc/rc.local
 	echo "macRandomizer" >> /etc/rc.local
 	echo "exit 0" >> /etc/rc.local
+	# remove blank lines
+	sed -i '/^$/d' /etc/rc.local
 fi
 ########################################################################
 # edit privoxy config to forward tor and i2p web links #################
-# remove lines if they exist already
+# remove lines if they exist already and add lines to end of file
+# first forward all traffic though tor
 sed -i "s/forward-socks4a \/ localhost\:9050 .//g" /etc/privoxy/config
-sed -i "s/forward .i2p localhost:4444//g" /etc/privoxy/config
-# add lines to end of file
 echo 'forward-socks4a / localhost:9050 .' >> /etc/privoxy/config
+# forward all i2p requests to the i2p router
+sed -i "s/forward .i2p localhost:4444//g" /etc/privoxy/config
 echo 'forward .i2p localhost:4444' >> /etc/privoxy/config
+# forward all requests to localhost back to localhost
+sed -i "s/forward localhost\/ .//g" /etc/privoxy/config
+echo 'forward localhost/ .' >> /etc/privoxy/config
+sed -i "s/forward 127.0.0.1\/ .//g" /etc/privoxy/config
+echo 'forward 127.0.0.1/ .' >> /etc/privoxy/config
+# send any .local domains to the local lan
+sed -i "s/forward .local .//g" /etc/privoxy/config
+echo 'forward .local .' >> /etc/privoxy/config
+# remove blank lines
+sed -i '/^$/d' /etc/privoxy/config
 # remove logging by privoxy done by default to improve security
 sed -i "s/logfile logfile//g" /etc/privoxy/config
 # restart privoxy for changes to take place
