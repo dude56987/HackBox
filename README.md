@@ -24,6 +24,16 @@ Once you have this repository downloaded and extracted. Open a terminal in the s
 
     make install
 
+###USAGE
+
+You can launch the program from the command line with the following command.
+
+    hackboxsetup
+    
+Or you can launch the graphical version with the command.
+
+    hackboxsetup-gui
+
 ###UPGRADE
 To upgrade the existing version use the folloing command. 
 
