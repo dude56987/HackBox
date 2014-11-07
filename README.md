@@ -16,7 +16,11 @@ Copy and paste the below command into a terminal and hit enter to install the un
 
 ###INSTALL
 
-Open a terminal in the same folder as this README.md. Then enter the command below.
+If you are on the webpage you will first have to download and unzip the repository. You can download this repo at the link below.
+
+https://github.com/dude56987/HackBox/archive/master.zip
+
+Once you have this repository downloaded and extracted. Open a terminal in the same folder as this README.md. Then enter the command below. 
 
     make install
 
