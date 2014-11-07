@@ -21,7 +21,7 @@ Open a terminal in the same folder as this README.md. Then enter the command bel
     make install
 
 ###UPGRADE
-To upgrage the existing version use the folloing command. 
+To upgrade the existing version use the folloing command. 
 
     hackboxsetup --upgrade
 
