@@ -278,8 +278,8 @@ catagory<:>localdeb<:>pybitmessage-stable-updater<:>/usr/bin/bitmessage-update
 # tox ( encrypted decentralized instant messageing, voice/video, and file transfer)
 catagory<:>deb-repo<:>deb http://repo.tox.im/deb/ testing main<:>https://repo.tox.im/toxbuild.pgp
 # the tox gui package is venom
-catagory<:>message<:>Installing Venom(TOX GUI)
-catagory<:>package<:>venom
+catagory<:>message<:>Installing QTox(TOX GUI)
+catagory<:>package<:>qtox
 catagory<:>message<:>Installing toxic(TOX CLI)
 catagory<:>package<:>toxic
 ######################
