@@ -54,7 +54,7 @@ clear;
 #  cowfiles listed by the command cowsay -l
 more ~/.motd | cowsay -f none
 # check if the user is in a fullscreen terminal
-if tty | grep tty1 || tty | grep tty2; then
+if tty | grep tty1 || tty | grep tty2 || tty | grep tty3 || tty | grep tty4; then
 	# if Xorg is not running then launch a graphical window system
 	if ! ps -e | grep Xorg; then
 		if [ -f /usr/bin/startx ]; then
