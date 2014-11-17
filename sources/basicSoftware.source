@@ -263,6 +263,8 @@ catagory<:>message<:>Setting up Transmission blocklist updater
 catagory<:>localdeb<:>transmission-blocklist-updater<:>/usr/bin/transmission-blocklist-updater
 catagory<:>message<:>Removing RSS reader
 catagory<:>rm-package<:>liferea
+catagory<:>message<:>Install QuiteRSS (RSS reader)
+catagory<:>package<:>quiterss
 catagory<:>message<:>Installing Thunderbird (Email/Calendar)
 catagory<:>package<:>thunderbird
 catagory<:>message<:>Installing calendar extention to thunderbird
