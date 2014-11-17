@@ -13,3 +13,16 @@ gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle="hintfull"
 gtk-xft-rgba="rgb"
+
+style "scrollbar"
+{
+    GtkScrollbar::slider-width = 28 
+}
+class "Gtk*Scrollbar" style "scrollbar"
+
+style "resize-grip"
+{
+	GtkWindow::resize-grip-height = 28
+	GtkWindow::resize-grip-width = 28
+}
+class "GtkWindow*" style "resize-grip"
