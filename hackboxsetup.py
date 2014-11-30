@@ -60,6 +60,14 @@ if (("--no-curses" in sys.argv) != True):
 	queryboxes = Dialog()
 # define functions
 ########################################################################
+def progressBar(percentage,messageText):
+	percentage=int(percentage)
+	messageText=str(messageText)
+	progressBar = Dialog()
+	progressBar.gauge_start(percent=percentage,text=messageText)#DEBUG
+	#progressBar.gauge_update(percentage,messageText)#DEBUG
+	progressBar.gauge_stop()#DEBUG
+########################################################################
 def deleteFile(filePath):
 	if os.path.exists(filePath):
 		os.remove(filePath)
@@ -289,11 +297,11 @@ def installSourcesFile(fileNameOfFile):
 	progressPercent = ''
 	progress = 0.0
 	progressTotal = len(fileObject)
+	currentMessage = 'Starting install process...'
 	# go though each line of the file
 	for line in fileObject:
-		# calc progress and display
-		writeFile('/tmp/INSTALLPROGRESS.txt',('%'+str((progress/progressTotal)*100)+' completed...'))
-		progress += 1
+		# set a variable to show update progress
+		showUpdate=True
 		# all lines starting with # are comments	
 		if line[:1] != '#':
 			if line.find('<:>') != -1:
@@ -314,14 +322,26 @@ def installSourcesFile(fileNameOfFile):
 					if packageManager == False:
 						return False
 				if tempInfo[1] == 'message':
-					printGreen(tempInfo[2]+'...')
+					if (("--no-curses" in sys.argv) != True):
+						currentMessage=(tempInfo[2]+'...')
+					else:
+						printGreen(tempInfo[2]+'...')
 				elif tempInfo[1] == 'script':
+					# dont update progress bar this part pumps out a bunch of text
+					showUpdate=False
 					os.system('bash scripts/'+tempInfo[2]+'.sh')
 				elif tempInfo[1] == 'command':
 					# execute command
-					print tempInfo[2]
-					os.system(tempInfo[2])
+					if (("--no-curses" in sys.argv) != True):
+						currentMessage=tempInfo[2]
+					else:
+						print tempInfo[2]
+					# print the command to the install log
+					os.system('echo "'+tempInfo[2]+'" >> Install_Log.txt')
+					os.system(tempInfo[2]+' >> Install_Log.txt')
 				elif tempInfo[1] == 'deb-repo':
+					# dont update progress bar this part pumps out a bunch of text
+					showUpdate=False
 					# add a debian repo and keyfile for that repo
 					#######################
 					# create a filename from the url given for the repo
@@ -342,6 +362,8 @@ def installSourcesFile(fileNameOfFile):
 							# if the key is not downloaded delete the repo
 							os.system('rm /etc/apt/sources.list.d/'+fileName)
 				elif tempInfo[1] == 'ppa':
+					# dont update progress bar this part pumps out a bunch of text
+					showUpdate=False
 					# if the package is a ppa source to add, use --yes to suppress confirmation
 					os.system(('apt-add-repository '+tempInfo[2]+' --yes'))
 					## BELOW IS BROKEN AS FUCK, above is a hackaround ##
@@ -364,10 +386,11 @@ def installSourcesFile(fileNameOfFile):
 					if os.path.exists(tempInfo[2]): 
 						# create a md5 from the file
 						tempMD5 = md5.new(loadFile(tempInfo[2])).digest()
-						print (tempMD5)
+						#print (tempMD5)
 						if os.path.exists(tempInfo[2]+".md5"):
 							if loadFile(tempInfo[2]+".md5") == tempMD5:
-								print "No new file, package not installed."
+								pass
+								#print "No new file, package not installed."
 							else:
 								# if no parity is found write a new md5 and install the new file	
 								writeFile((tempInfo[2]+'.md5'),tempMD5)
@@ -375,9 +398,17 @@ def installSourcesFile(fileNameOfFile):
 						else:
 							# if file does not have a md5 file yet create one and install the program
 							writeFile((tempInfo[2]+'.md5'),tempMD5)
-							os.system(('sudo gdebi --no '+tempInfo[2]))
+							os.system(('sudo gdebi --no '+tempInfo[2])+' >> Install_Log.txt')
 					else:
 						print ("ERROR:No "+tempInfo[2]+" exists!")
+		# this is at bottom of loop outside of if tree	
+		if showUpdate == True:
+			# calc progress and display
+			if (("--no-curses" in sys.argv) != True):
+				progressBar(int((progress/progressTotal)*100),currentMessage)
+			else:
+				writeFile('/tmp/INSTALLPROGRESS.txt',('%'+str((progress/progressTotal)*100)+' completed...'))
+		progress += 1
 	return True
 def createInstallLoad():
 	# check if a payload has already been built
