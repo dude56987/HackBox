@@ -193,8 +193,8 @@ catagory<:>message<:>Installing aptitude (CLI Package Management Tool)
 catagory<:>package<:>aptitude
 catagory<:>message<:>Installing Xfce Task Manager
 catagory<:>package<:>xfce4-taskmanager
-catagory<:>message<:>Installing alacarte (Editor for system menu)
-catagory<:>package<:>alacarte
+catagory<:>message<:>Installing menulibre (Editor for system menu)
+catagory<:>package<:>menulibre
 ########################
 # install image viewer #
 ########################
