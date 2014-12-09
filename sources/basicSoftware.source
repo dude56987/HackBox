@@ -198,16 +198,17 @@ catagory<:>package<:>menulibre
 ########################
 # install image viewer #
 ########################
-catagory<:>message<:>Installing Feh (Image Viewer)
-catagory<:>package<:>feh
+catagory<:>message<:>Installing gpicview (Image Viewer)
+catagory<:>package<:>gpicview
 ##################################
-# Remove Redundant Image Viewers #
-catagory<:>message<:>Removing gThumb(Image Viewer)
+catagory<:>message<:>Remove Redundant Image Viewers
+catagory<:>rm-package<:>feh
 catagory<:>rm-package<:>gthumb
-catagory<:>message<:>Removing EOG(Eye Of Gnome)
 catagory<:>rm-package<:>eog
-catagory<:>message<:>Removing Ristretto
 catagory<:>rm-package<:>ristretto
+catagory<:>rm-package<:>gwenview
+catagory<:>rm-package<:>geeqie
+catagory<:>rm-package<:>xloadimage
 # photo orgnizers #
 catagory<:>message<:>Removing Shotwell
 catagory<:>rm-package<:>shotwell
@@ -261,10 +262,12 @@ catagory<:>message<:>Installing Transmission (Torrent Client)
 catagory<:>package<:>transmission-gtk
 catagory<:>message<:>Setting up Transmission blocklist updater
 catagory<:>localdeb<:>transmission-blocklist-updater<:>/usr/bin/transmission-blocklist-updater
+# RSS client stuff
 catagory<:>message<:>Removing RSS reader
 catagory<:>rm-package<:>liferea
 catagory<:>message<:>Install QuiteRSS (RSS reader)
 catagory<:>package<:>quiterss
+# email contacts and calendar
 catagory<:>message<:>Installing Thunderbird (Email/Calendar)
 catagory<:>package<:>thunderbird
 catagory<:>message<:>Installing calendar extention to thunderbird
