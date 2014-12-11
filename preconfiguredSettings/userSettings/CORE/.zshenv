@@ -39,11 +39,11 @@ fi
 ####################################
 # Auto mount remote locations on a ssh server to local filesystem
 # remember to setup keys for this or you will be prompted for the password to the server on each login
-#sshfs user@hostname.local:/home/user/Music ~/Music
-#sshfs user@hostname.local:/home/user/Documents ~/Documents
-#sshfs user@hostname.local:/home/user/Pictures ~/Pictures
-#sshfs user@hostname.local:/home/user/Videos ~/Videos
-#sshfs user@hostname.local:/home/user/ ~/Share
+#sshfs user@hostname.local:/home/user/Music ~/Music &
+#sshfs user@hostname.local:/home/user/Documents ~/Documents &
+#sshfs user@hostname.local:/home/user/Pictures ~/Pictures &
+#sshfs user@hostname.local:/home/user/Videos ~/Videos &
+#sshfs user@hostname.local:/home/user/Share ~/Share &
 # Or just mount the entire remote home directory, Ive not tested this though it would probably end badly since you need this file in your home to run it on login
 #sshfs user@hostname.local:/home/user/ ~/
 ####################################
