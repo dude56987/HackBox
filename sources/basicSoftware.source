@@ -173,6 +173,10 @@ catagory<:>message<:>Installing woof (CLI lan/internet file transfer)
 catagory<:>package<:>woof
 catagory<:>message<:>Installing geolocate(Figure out the location of pcs)
 catagory<:>localdeb<:>geolocate<:>/usr/bin/geolocate
+# install colortest-python and link it to the colortest command 
+catagory<:>message<:>Installing colortest-python(shows terminal color settings)
+catagory<:>package<:>colortest-python
+catagory<:>command<:>link /usr/bin/colortest-python /usr/bin/colortest
 ########################################################################
 # unetbootin has some issues currently as a depend is not included
 # to the below installs it for ya
