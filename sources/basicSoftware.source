@@ -123,8 +123,13 @@ catagory<:>message<:>Installing GIMP (Image Manipulation Program)
 catagory<:>package<:>gimp
 catagory<:>message<:>Installing GIMP plugin resynthesizer
 catagory<:>package<:>gimp-resynthesizer
+# webcam stuff #
 catagory<:>message<:>Installing cheese (webcam photobooth)
 catagory<:>package<:>cheese
+catagory<:>message<:>Installing CameraMonitor(show when webcam is on)
+catagory<:>package<:>cameramonitor
+catagory<:>command<:>link /usr/share/applications/cameramonitor.desktop /etc/xdg/autostart/cameramonitor.desktop
+################
 catagory<:>message<:>Installing SpeedCrunch (Calculator) 
 catagory<:>package<:>speedcrunch
 catagory<:>message<:>Installing Gnome-Genius (Really Advanced Graphing Calculator) 
