@@ -280,6 +280,10 @@ def installSourcesFile(fileNameOfFile):
 	# first the type of data, second the message to print, third the data
 	# itself, the data would depend on the data type described in the first
 	# space of the line
+	if fileNameOfFile == False:
+		# if the build process fails
+		print "ERROR: payload.source failed to build!"
+		return False
 	packageManager=False
 	if os.path.exists('/usr/bin/apt-get'):
 		packageManager = 'apt-get'
@@ -411,12 +415,12 @@ def installSourcesFile(fileNameOfFile):
 		progress += 1
 	return True
 def createInstallLoad():
+	useConfig = 'n'
 	# check if a payload has already been built
-	if os.path.exists('/etc/hackbox/payload.source'):
+	if os.path.exists('/etc/hackbox/sources/configured'):
 		if ('--force-use-config' in sys.argv):
-			# install the already created config if force config is used
-			installSourcesFile('/etc/hackbox/payload.source')
-			return True
+			# create a config file based on the setup options
+			useConfig = 'y'
 		else:
 			if (("--no-curses" in sys.argv) != True):
 				# returns 0 for yes and 1 for no
@@ -424,14 +428,11 @@ def createInstallLoad():
 					useConfig = 'y'
 				else:
 					useConfig = 'n'
-					os.system('rm -rvf /etc/hackbox/*')
+					os.system('rm -rvf /etc/hackbox/sources/*')
 			else:
 				# otherwise ask the user if they want to use it
 				print 'A config already exists, would you like to use it?'
 				useConfig = raw_input('[y/n]:')
-			if useConfig == 'y':
-				installSourcesFile('/etc/hackbox/payload.source')
-				return True
 	# create a payload variables to orgnize catagories
 	payload = ''
 	# catagory for ppas and repos
@@ -461,6 +462,14 @@ def createInstallLoad():
 	for fileName in datafiles:
 		# set the install section here to keep it in the scope of the file	
 		installSection = 'n'
+		# if the source file has already been configured use previous config
+		if useConfig == 'y':
+			# if use has set to use previous configuration and if file exists
+			if os.path.exists(os.path.join('/etc/hackbox/sources/',fileName)):
+				installSection = 'y'
+			else:
+				#if file does not exist do not install the section
+				installSection = 'n'
 		# open the .source file
 		fileObject = loadFile(os.path.join('sources',fileName))
 		if fileObject == False:
@@ -482,15 +491,18 @@ def createInstallLoad():
 				# print the colorized banner file
 				banner = loadFile('media/banner.txt')
 				if banner != False:
-					print (colorText(banner))
-				if (("--no-curses" in sys.argv) != True):
-					queryboxes.setBackgroundTitle("HackBox Setup")
+					if (("--no-curses" in sys.argv) != True):
+						queryboxes.setBackgroundTitle("HackBox Setup")
+					else:
+						print (colorText(banner))
 			elif line[:10]=='#QUESTION:':
 				# check for install confrimation
-				if installSection != 'y':# if the AUTO-INSTALL is not set
+				if installSection != 'y' and useConfig != 'y':# if the AUTO-INSTALL is not set
 					if (("--no-curses" in sys.argv) != True):
 						# returns 0 for yes and 1 for no
 						if queryboxes.yesno(line[10:]) == 0:
+							# write file for next run
+							writeFile(os.path.join('/etc/hackbox/sources/',fileName),'')
 							installSection = 'y'
 						else:
 							installSection = 'n'
@@ -524,6 +536,8 @@ def createInstallLoad():
 	payload = repoPayload+interactivePayload+prePayload+mainPayload+postPayload
 	# write the payload to a text file
 	writeFile('/etc/hackbox/payload.source',payload)
+	# write configured file to show config has been built before on next run
+	writeFile('/etc/hackbox/sources/configured','')
 	# return the payload file location
 	return '/etc/hackbox/payload.source'
 ########################################################################
@@ -558,13 +572,15 @@ if ("--help" in sys.argv) or ("-h" in sys.argv):
 	print "--force-logout"
 	print "\tForce the system to logout of whatever session is active for the"
 	print "\tcurrent user."
+	print "--upgrade or -u"
+	print "\tUpgrade this software with the latest version from git, then run it."
 	print "########################################################################"
 	# end the program after displaying the help menu
 	exit()
 if ("--upgrade" in sys.argv) or ("-u" in sys.argv):
 	# pull the latest version from git and install it
-	os.system('git clone https://github.com/dude56987/HackBox.git /tmp/HackBox/ || git -C /tmp/HackBox/ pull')
-	os.system('cd /tmp/HackBox/;make install')
+	os.system('git clone https://github.com/dude56987/HackBox.git /opt/hackbox/update/ || git -C /opt/hackbox/update/ pull')
+	os.system('cd /opt/hackbox/update/;make install')
 	os.system('hackboxsetup --force-use-config')
 	exit()
 ########################################################################
@@ -609,14 +625,14 @@ if (('--force-use-config' in sys.argv) == False):
 			exit();
 # Check for network connection, dont proceed unless it is active
 connected = False
+websites = []
+websites.append('http://www.linuxmint.com')
+websites.append('http://www.distrowatch.com')
+websites.append('http://www.duckduckgo.com')
+websites.append('http://www.ubuntu.com')
+websites.append('http://www.wikipedia.org')
 while connected == False:
 	print 'Checking Network Connection...'
-	websites = []
-	websites.append('http://www.linuxmint.com')
-	websites.append('http://www.distrowatch.com')
-	websites.append('http://www.duckduckgo.com')
-	websites.append('http://www.ubuntu.com')
-	websites.append('http://www.wikipedia.org')
 	# pick a random website from the list above
 	website =  websites[(randrange(0,(len(websites)-1)))]
 	connected = bool(downloadFile(website))

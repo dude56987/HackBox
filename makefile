@@ -65,6 +65,7 @@ build-deb:
 	mkdir -p debian/usr/share/pixmaps;
 	mkdir -p debian/etc;
 	mkdir -p debian/etc/hackbox;
+	mkdir -p debian/etc/hackbox/sources;
 	# make post and pre install scripts have the correct permissions
 	chmod 775 .debdata/*
 	# copy over the launcher for the program
