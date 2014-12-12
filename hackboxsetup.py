@@ -61,12 +61,21 @@ if (("--no-curses" in sys.argv) != True):
 # define functions
 ########################################################################
 def progressBar(percentage,messageText):
-	percentage=int(percentage)
-	messageText=str(messageText)
-	progressBar = Dialog()
-	progressBar.gauge_start(percent=percentage,text=messageText)#DEBUG
-	#progressBar.gauge_update(percentage,messageText)#DEBUG
-	progressBar.gauge_stop()#DEBUG
+	if (("--no-curses" in sys.argv) != True):
+		percentage=int(percentage)
+		messageText=str(messageText)
+		progressBar = Dialog()
+		progressBar.gauge_start(percent=percentage,text=messageText)#DEBUG
+		#progressBar.gauge_update(percentage,messageText)#DEBUG
+		progressBar.gauge_stop()#DEBUG
+		return True
+	else:
+		percentage=str(percentage)
+		messageText=str(messageText)
+		print '#'*80
+		print messageText
+		print (percentage+'%')
+		print '#'*80
 ########################################################################
 def deleteFile(filePath):
 	if os.path.exists(filePath):
@@ -600,7 +609,8 @@ clear()
 print colorText(loadFile('media/banner.txt'))
 print 'Designed for:'+greentext+'Ubuntu Desktop Edition/Linux Mint Xfce Edition'+resetTextStyle
 # set the background for the dialouges
-queryboxes.setBackgroundTitle("HackBox Setup")
+if (("--no-curses" in sys.argv) != True):
+	queryboxes.setBackgroundTitle("HackBox Setup")
 # only prompt the user if --force-use-config is not used in the program launch
 if (('--force-use-config' in sys.argv) == False):
 	if (("--no-curses" in sys.argv) != True):
@@ -922,20 +932,12 @@ if os.path.exists('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf'):
 	replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf','theme-name=','theme-name=Greybird')
 # install the payload created previously
 installSourcesFile(payloadFileLocation)
-print '##################################################################'
-print '  __  ___   ___    _   __'
-print ' /_ |/ _ \ / _ \  (_) / /'
-print '  | | | | | | | |    / / '
-print '  | | | | | | | |   / /  '
-print '  | | |_| | |_| |  / / _ '
-print '  |_|\___/ \___/  /_/ (_)'
-print '##################################################################'
-print 'Script finished system setup complete :D';
+# show 100 percent at end
+progressBar(100,'Script finished, System setup complete :D')
 if os.path.exists('/etc/mdm/Init/Default'):
 	# clear the mdm configured startup of hackboxsetup
-	os.system('sed -i.bak "s/hackboxsetup\-gui\ \-\-no\-reset//g" /etc/mdm/Init/Default')
-	os.system('sed -i.bak "/^$/d" /etc/mdm/Init/Default')# clear blank lines
-	os.system('rm -fv /etc/mdm/Init/Default.bak')# remove backups from sed
+	os.system('sed -i "s/hackboxsetup\-gui\ \-\-no\-reset//g" /etc/mdm/Init/Default')
+	os.system('sed -i "/^$/d" /etc/mdm/Init/Default')# clear blank lines
 # check to see if the user set it to logout to set the settings
 if '--force-logout' in sys.argv:
 	os.system('killall lxsession')
