@@ -40,6 +40,11 @@ catagory<:>script<:>fix-home-permissions
 catagory<:>message<:>Make sudo have password feedback
 catagory<:>script<:>passwordFeedback
 ###################
+## Install XFCE4 ##
+###################
+pre<:>message<:>Installing XFCE4(Desktop Enviorment)
+pre<:>package<:>xfce4
+###################
 pre<:>message<:>Installing gdebi(Grapical Package Installer)
 pre<:>package<:>gdebi
 pre<:>message<:>Installing debconf-utils(tools for working with deb files)

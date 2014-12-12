@@ -683,15 +683,6 @@ os.system('rm /etc/apt/sources.list.d/*.bck')
 os.system('rm /etc/apt/sources.list.d/*.bak')
 os.system('rm /etc/apt/sources.list.d/*.backup')
 ########################################################################
-# install window manager/desktop enviorments
-os.system('apt-fast install xfce4 --assume-yes >> Install_Log.txt')
-# below is linux mint version of xfce desktop
-#if os.path.exists('/lib/plymouth/themes/mint-logo'):
-#	os.system('apt-fast install mint-meta-xfce --assume-yes >> Install_Log.txt')
-#else:
-	# below is ubuntu version of xfce desktop
-#	os.system('apt-fast install xubuntu-desktop --assume-yes >> Install_Log.txt')
-# install sources file
 # Set custom grub splash screen
 # move the .jpg file from the local media folder to /boot/grub/
 shutil.copy(os.path.abspath(os.path.join(os.curdir,'media','splash.jpg')),os.path.join('/boot','grub','splash.jpg'))
