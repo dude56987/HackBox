@@ -392,6 +392,16 @@ catagory<:>package<:>xfce4-weather-plugin
 ########################################################################
 # DESKTOP MODIFICATION UTILITIES : other
 ########################################################################
+# file manager stuff
+catagory<:>message<:>Installing Thunar(The Norse God of File Management)
+catagory<:>package<:>thunar
+catagory<:>package<:>thunar-volman
+# remove other file managers
+catagory<:>rm-package<:>nemo
+catagory<:>rm-package<:>nautilus
+# link them to thunar
+catagory<:>command<:>link /usr/bin/thunar /usr/bin/nemo
+catagory<:>command<:>link /usr/bin/thunar /usr/bin/nautilus
 # Dothis shortcuts to give the desktop functionality it should have already
 catagory<:>message<:>Installing DoThis Shortcuts
 catagory<:>localdeb<:>doThis<:>/usr/bin/speakthis
