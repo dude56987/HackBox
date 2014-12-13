@@ -588,9 +588,9 @@ if ("--help" in sys.argv) or ("-h" in sys.argv):
 	exit()
 if ("--upgrade" in sys.argv) or ("-u" in sys.argv):
 	# pull the latest version from git and install it
-	os.system('git clone https://github.com/dude56987/HackBox.git /opt/hackbox/update/ || git -C /opt/hackbox/update/ pull')
-	os.system('cd /opt/hackbox/update/;make install')
-	os.system('hackboxsetup --force-use-config')
+	os.system('sudo git clone https://github.com/dude56987/HackBox.git /opt/hackbox/update/ || sudo git -C /opt/hackbox/update/ pull')
+	os.system('cd /opt/hackbox/update/;sudo make install')
+	os.system('sudo hackboxsetup --force-use-config')
 	exit()
 ########################################################################
 # Pre-run checks
@@ -727,16 +727,6 @@ os.system('cp -rv media/wallpapers/. /usr/share/pixmaps/wallpapers/')
 os.system('cp -rv media/*.png /usr/share/pixmaps/hackbox/')
 os.system('cp -rv media/*.jpg /usr/share/pixmaps/hackbox/')
 ####################################################################
-# Make system links to fix some hardcoded call errors in programs
-# create a system link that sends calls for nautilus/nemo to thunar
-if os.path.exists('/usr/bin/cinnamon') != True:
-	# use a if statement since cinnamon crashes without nemo
-	os.system('sudo apt-fast purge nemo --assume-yes')
-	os.system('link /usr/bin/thunar /usr/bin/nemo')
-# fuck nautilus and gnome 3, though they are a lot better now
-os.system('sudo apt-fast purge nautilus --assume-yes')
-os.system('link /usr/bin/thunar /usr/bin/nautilus')
-################################################################
 # Setting Up Network Security
 ####################################################################
 # install gui for managing the firewall and configure it to be turned on at boot 
