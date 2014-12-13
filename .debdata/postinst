@@ -18,6 +18,6 @@ if (tty | grep tty) || (ps -e | grep byobu); then
 elif (ps -e | grep Xorg) && !(tty | grep tty) && !(ps -e | grep byobu); then
 	#cp -v /opt/hackbox/media/launchers/hackboxRunonce.desktop /etc/xdg/autostart/hackboxRunonce.desktop;
 	#chmod ugo+r /etc/xdg/autostart/hackboxRunonce.desktop;
-	zenity --info --text='Please click ok, then log out to finish the install process.';
+	notify-send -u critical 'Please logout to finish the install process.' || echo 'Please logout to finish the install process.';
 	exit 0;
 fi
