@@ -919,6 +919,8 @@ if os.path.exists('/etc/mdm/Init/Default'):
 	# clear the mdm configured startup of hackboxsetup
 	os.system('sed -i "s/hackboxsetup\-gui\ \-\-no\-reset//g" /etc/mdm/Init/Default')
 	os.system('sed -i "/^$/d" /etc/mdm/Init/Default')# clear blank lines
+# copy over the default .xinitrc file
+os.system('for dir in $(ls /home);do cp -f /etc/skel/.xinitrc /home/$dir/.xinitrc;chown $dir /home/$dir/.xinitrc;done')
 # check to see if the user set it to logout to set the settings
 if '--force-logout' in sys.argv:
 	os.system('killall lxsession')
