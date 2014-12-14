@@ -25,8 +25,10 @@ if os.geteuid() != 0:
 # launch the program on xterm , make launch in term if in a tty
 if os.path.exists('/usr/bin/xterm') == False:#REMOVE WHEN NEW GUI IS BUILT
 	os.system('gksu "apt-get install xterm --assume-yes"')#REMOVE WHEN NEW GUI IS BUILT
-#os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')#REMOVE WHEN NEW GUI IS BUILT
-#exit()#REMOVE WHEN NEW GUI IS BUILT
+
+os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')#REMOVE WHEN NEW GUI IS BUILT
+exit()#REMOVE WHEN NEW GUI IS BUILT
+
 try:
 	import Tkinter, tkMessageBox
 except:

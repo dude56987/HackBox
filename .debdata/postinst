@@ -9,6 +9,11 @@ if [ -f /etc/mdm/Init/Default ]; then
 	echo 'hackboxsetup-gui --no-reset' >> /etc/mdm/Init/Default
 	echo 'exit 0' >> /etc/mdm/Init/Default
 	rm -fv /etc/mdm/Init/Default.bak
+else
+	# if mdm does not exist launch hackboxsetup via the x init config for each user
+	for dir in $(ls /home);do
+		echo 'hackboxsetup-gui' > /home/$dir/.xinitrc
+	done
 fi
 # check if the user is on a tty or in X
 if (tty | grep tty) || (ps -e | grep byobu); then

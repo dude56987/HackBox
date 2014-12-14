@@ -7,12 +7,8 @@ bindkey -k k3 focus
 # Split the screen verticaly
 split -v
 # setup a screen to display the standard install output
-screen -t INSTALLER bash -c "python /opt/hackbox/hackboxsetup.py --force-use-config --no-reset;killall screen"
+screen -t INSTALLER bash -c "python /opt/hackbox/hackboxsetup.py --no-reset;killall screen"
 # switch focus to next window for displaying splash
-focus
-split -h
-screen -t PROGRESS bash -c "echo '' > /tmp/INSTALLPROGRESS.txt;while true;do tail -f /tmp/INSTALLPROGRESS.txt;done"
-resize 2
 focus
 # setup a screen to display the splashtext and debug via a right panel
 screen -t ABOUT bash /opt/hackbox/media/screenConfig/splashProgram.sh
