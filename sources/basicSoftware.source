@@ -28,6 +28,7 @@ pre<:>localdeb<:>getdeb
 interactive<:>ppa<:>ppa:gottcode/gcppa
 main<:>package<:>xfce4-whiskermenu-plugin
 # here is some logical scripts
+interactive<:>message<:>Setting up darknet access
 interactive<:>script<:>darknet-setup
 catagory<:>message<:>Setup power control login names for tty logins
 catagory<:>script<:>power-control-logins
@@ -39,6 +40,8 @@ catagory<:>message<:>Fix Home Permissions(Users can't see other users stuff now)
 catagory<:>script<:>fix-home-permissions
 catagory<:>message<:>Make sudo have password feedback
 catagory<:>script<:>passwordFeedback
+catagory<:>message<:>Disable console screen blanking
+catagory<:>script<:>disable-screenblank
 ###################
 ## Install XFCE4 ##
 ###################
