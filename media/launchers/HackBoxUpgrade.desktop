@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Exec=gksu "terminator -f -x screen -c /opt/hackbox/media/screenConfig/screenConfigUpgrade"
+Name=HackBox Upgrade
+Comment=Runs HackBox Upgrade GUI
+Categories=XFCE;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
+OnlyShowIn=XFCE;
+GenericName=System Configuration Utility
+Icon=hackboxLogo
