@@ -1,0 +1,16 @@
+# disable the startup message here
+startup_message off
+# bind the tab key to switch windows
+bindkey -k k4 focus
+bindkey -k k3 focus
+#bindkey "^I" focus
+# Split the screen verticaly
+split -v
+# setup a screen to display the standard install output
+screen -t INSTALLER bash -c "python /opt/hackbox/hackboxsetup.py --force-use-config --upgrade;killall screen"
+# switch focus to next window for displaying splash
+focus
+# setup a screen to display the splashtext and debug via a right panel
+screen -t DEBUG tail -f /opt/hackbox/Install_Log.txt
+# switch the focus back to first window to allow user input
+focus
