@@ -29,6 +29,13 @@ alias download-random-quote-wallpapers="wget http://reddit.com/r/QuotesPorn/ -O 
 # The rest of the commands are for use by the dev of hackbox, remove them if you want
 alias gettowork="cd ~/HackBox/"
 alias pullhackboxsource="cd && git clone https://github.com/dude56987/HackBox.git && gettowork"
+# run xset commands to keep the screen from blanking
+xset s 0 0
+xset s off
+xset -dpms
+setterm -blank 0
+setterm -powersave off
+setterm -powerdown 0
 # clear the screen
 clear;
 # lulz, you need em sometimes
