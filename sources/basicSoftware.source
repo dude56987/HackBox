@@ -42,6 +42,8 @@ catagory<:>message<:>Make sudo have password feedback
 catagory<:>script<:>passwordFeedback
 catagory<:>message<:>Disable console screen blanking
 catagory<:>script<:>disable-screenblank
+catagory<:>message<:>Changing the grub splashscreen
+catagory<:>script<:>customize-grub
 ###################
 ## Install XFCE4 ##
 ###################
