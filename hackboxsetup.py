@@ -187,14 +187,6 @@ os.system('echo "Started on ${date}" >> Install_Log.txt');
 os.system('xset s 0 0')
 os.system('xset s off')
 os.system('xset -dpms')
-########################################################################
-# Set custom grub splash screen
-# move the .jpg file from the local media folder to /boot/grub/
-shutil.copy(os.path.abspath(os.path.join(os.curdir,'media','splash.jpg')),os.path.join('/boot','grub','splash.jpg'))
-# edit the grub settings to make the timeout 2 seconds insted of 5 for faster boot
-hackboxlib.replaceLineInFile('/etc/default/grub','GRUB_TIMEOUT="','GRUB_TIMEOUT="2"')
-# run sudo update-grub to make grub regonize the new splash image
-os.system('sudo update-grub')
 ####################################################################
 # install the clear history command on the system and set it to run
 # on every user logout to clear up space
