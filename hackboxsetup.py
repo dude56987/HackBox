@@ -188,12 +188,6 @@ os.system('xset s 0 0')
 os.system('xset s off')
 os.system('xset -dpms')
 ########################################################################
-# cleanup sources, above leaves backup files, other stuff may also
-os.system('rm /etc/apt/sources.list.d/*.bck')
-# these are just to clear any other backed up sources
-os.system('rm /etc/apt/sources.list.d/*.bak')
-os.system('rm /etc/apt/sources.list.d/*.backup')
-########################################################################
 # Set custom grub splash screen
 # move the .jpg file from the local media folder to /boot/grub/
 shutil.copy(os.path.abspath(os.path.join(os.curdir,'media','splash.jpg')),os.path.join('/boot','grub','splash.jpg'))
