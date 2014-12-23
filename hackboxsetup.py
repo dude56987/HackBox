@@ -425,7 +425,7 @@ if os.path.exists('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf'):
 # install the payload created previously
 hackboxlib.installSourcesFile(payloadFileLocation)
 # show 100 percent at end
-hackboxlib.progressBar(100,'Script finished, System setup complete :D')
+hackboxlib.progressBar(100,'Script finished, System setup complete :D',"Hackbox Setup")
 if os.path.exists('/etc/mdm/Init/Default'):
 	# clear the mdm configured startup of hackboxsetup
 	os.system('sed -i "s/hackboxsetup\-gui\ \-\-no\-reset//g" /etc/mdm/Init/Default')

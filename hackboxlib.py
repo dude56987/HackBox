@@ -59,11 +59,12 @@ if (("--no-curses" in sys.argv) != True):
 	queryboxes = Dialog()
 # define functions
 ########################################################################
-def progressBar(percentage,messageText):
+def progressBar(percentage,messageText,banner):
 	if (("--no-curses" in sys.argv) != True):
 		percentage=int(percentage)
 		messageText=str(messageText)
 		progressBar = Dialog()
+		progressBar.setBackgroundTitle(banner)
 		progressBar.gauge_start(percent=percentage,text=messageText)#DEBUG
 		#progressBar.gauge_update(percentage,messageText)#DEBUG
 		progressBar.gauge_stop()#DEBUG
@@ -417,7 +418,7 @@ def installSourcesFile(fileNameOfFile):
 		if showUpdate == True:
 			# calc progress and display
 			if (("--no-curses" in sys.argv) != True):
-				progressBar(int((progress/progressTotal)*100),currentMessage)
+				progressBar(int((progress/progressTotal)*100),currentMessage,'Hackbox Setup')
 			else:
 				writeFile('/tmp/INSTALLPROGRESS.txt',('%'+str((progress/progressTotal)*100)+' completed...'))
 		progress += 1
@@ -487,6 +488,7 @@ def createInstallLoad():
 		# clear the screen before loading stuff in this file
 		clear()
 		# go though each line of the file
+		backgroundTitle = ""
 		for line in fileObject:
 			# all lines starting with # are comments
 			if line[:13]=='#AUTO-INSTALL':
@@ -500,7 +502,9 @@ def createInstallLoad():
 				banner = loadFile('media/banner.txt')
 				if banner != False:
 					if (("--no-curses" in sys.argv) != True):
-						queryboxes.setBackgroundTitle("HackBox Setup")
+						backgroundTitle = 'Hackbox Setup'
+						if line[:8]=='#BANNER:':
+							backgroundTitle =  line[8:]
 					else:
 						print (colorText(banner))
 			elif line[:10]=='#QUESTION:':
