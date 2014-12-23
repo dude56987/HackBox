@@ -75,6 +75,7 @@ build-deb:
 	# compile and copy over the binary files
 	pycompile *.py
 	cp -vf hackboxsetup.py ./debian/opt/hackbox/hackboxsetup.py
+	cp -vf hackboxlib.py ./debian/opt/hackbox/hackboxlib.py
 	cp -vf hackboxsetup-gui.py ./debian/opt/hackbox/hackboxsetup-gui.py
 	# clean up those bytecode files
 	rm -vf *.pyc
