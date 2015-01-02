@@ -16,6 +16,7 @@ alias ping="ping -c 5" # set default ping count to 5
 alias system-info="inxi -F" # set default ping count to 5
 alias root="sudo -s" # root logs into root mode for user
 alias invert-color="xcalib -invert -alter" # Invert monitor colors
+alias nightvision="export TERM=xterm-mono;unalias ls;prompt suse;xcalib -clear;xcalib -i -a;xcalib -green .1 0 1 -blue .1 0 1 -red 0.8 0 100 -alter"
 # install some helpfull tools for working on a console only system
 alias installConsoleTools='sudo apt-fast install fbgrab elinks links2 pianobar fbi wicd-curses weechat weechat-plugins weechat-scripts finch vlock'
 alias installTerminalTools='installConsoleTools'
@@ -106,8 +107,7 @@ if tty | grep tty1 || tty | grep tty2 || tty | grep tty3 || tty | grep tty4; the
 		fi
 		# set the caps lock to work as the escape key
 		if more /etc/default/keyboard | grep 'XKBOPTIONS=\"\"'; then
-			sudo sed -i.bak 's/XKBOPTIONS=""/XKBOPTIONS="caps:escape"/g' /etc/default/keyboard
-			sudo rm -v /etc/default/keyboard.bak
+			sudo sed -i 's/XKBOPTIONS=""/XKBOPTIONS="caps:escape"/g' /etc/default/keyboard
 			sudo dpkg-reconfigure keyboard-configuration
 		fi
 
