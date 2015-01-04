@@ -197,32 +197,6 @@ os.system('xset -dpms')
 # the below fixes that in the config of mdm
 if os.path.exists('/etc/mdm/PostSession/Default'):
 	hackboxlib.replaceLineInFileOnce('/etc/mdm/PostSession/Default','exit 0','bash $HOME/.bash_logout\nexit 0')
-# change the working directory back to the one holding this file
-#~ os.chdir(currentDirectory())#this is kinda unnessary since it no longer runs the install that way
-####################################################################
-# Install Icon Themes, and libnotify themes
-iconPacks = os.listdir('/opt/hackbox/media/icons')
-for pack in iconPacks:
-	try:
-		zipfile.ZipFile(os.path.join(currentDirectory(),('/opt/hackbox/media/icons/'+pack))).extractall('/usr/share/icons')
-	except:
-		print 'ERROR: Failed to install icon pack at',('/opt/hackbox/media/icons/'+pack)
-try:
-	print 'Installing Libnotify Theme...'
-	zipfile.ZipFile(os.path.join(currentDirectory(),'media/themes/Smoke.zip')).extractall('/usr/share/themes')
-except:
-	print 'ERROR: Failed to install : Libnotify Theme'
-# install Font Themes
-hackboxlib.makeDir('/usr/share/fonts/truetype/hackbox')# make a custom font directory
-hackboxlib.COPY(os.path.join(hackboxlib.currentDirectory(),'media/fonts/'),'/usr/share/fonts/truetype/hackbox')
-# refresh the font cache to activate new font
-os.system('fc-cache -f -v')
-# Install logos and media
-hackboxlib.makeDir('/usr/share/pixmaps/hackbox')
-hackboxlib.makeDir('/usr/share/pixmaps/wallpapers')
-os.system('cp -rv media/wallpapers/. /usr/share/pixmaps/wallpapers/')
-os.system('cp -rv media/*.png /usr/share/pixmaps/hackbox/')
-os.system('cp -rv media/*.jpg /usr/share/pixmaps/hackbox/')
 ####################################################################
 # Setting Up Network Security
 ####################################################################

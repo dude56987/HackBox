@@ -9,7 +9,10 @@
 ########################################################################
 # This section is automaticly installed 
 #AUTO-INSTALL
+interactive<:>message<:>Installing custom desktop settings
 interactive<:>script<:>custom-desktop
+pre<:>message<:>Installing custom themes
+pre<:>script<:>custom-themes
 # load preconfigured settings for apt-fast
 interactive<:>command<:>debconf-set-selections /opt/hackbox/preconfiguredsettings/debconf/apt-fast.conf
 interactive<:>ppa<:>ppa:apt-fast/stable
