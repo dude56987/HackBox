@@ -82,6 +82,9 @@ if ("--help" in sys.argv) or ("-h" in sys.argv):
 	print "########################################################################"
 	print "--help or -h"
 	print "\tDisplay this message."
+	print "--create-relay"
+	print "\tSets up a torrent relay server."
+	print "\tUse the connect-to-relay command to connect to relay servers."
 	print "--force-use-config"
 	print "\tDo not ask the user questions and just install the currently built"
 	print "\tpayload."
@@ -97,11 +100,22 @@ if ("--help" in sys.argv) or ("-h" in sys.argv):
 	print "########################################################################"
 	# end the program after displaying the help menu
 	exit()
-if ("--upgrade" in sys.argv) or ("-u" in sys.argv):
-	# pull the latest version from git and install it
-	os.system('sudo git clone https://github.com/dude56987/HackBox.git /opt/hackbox/update/ || sudo git -C /opt/hackbox/update/ pull')
-	os.system('cd /opt/hackbox/update/;sudo make install')
-	os.system('sudo hackboxsetup --force-use-config')
+if ("--create-relay" in sys.argv):
+	# run the setup-relay-server script to set the current copy in /opt/hackbox/update to act as a master relay
+	os.system('sudo bash /opt/hackbox/scripts/relayScripts/server-setup-relay.sh')
+	exit()
+if ("--upgrade" in sys.argv) or ("-u" in sys.argv) or ("--update" in sys.argv):
+	if os.path.exists("/etc/hackbox/relayServer"):
+		# copy over the pull relay script to run as a cron job
+		os.system('sudo cp -f /opt/hackbox/scripts/relayScripts/client-pull-from-relay.sh /etc/cron.daily/00-hackbox-client-pull-relay')
+		os.system('sudo chmod +x /etc/cron.daily/00-hackbox-client-pull-relay')
+		# launch the previously created update script if it has not been launched already
+		os.system("sudo bash /etc/cron.daily/00-hackbox-client-pull-relay")
+	else:
+		# pull the latest version from git and install it
+		os.system('sudo git clone https://github.com/dude56987/HackBox.git /opt/hackbox/update/ || sudo git -C /opt/hackbox/update/ pull')
+		os.system('cd /opt/hackbox/update/;sudo make install')
+		os.system('sudo hackboxsetup --force-use-config')
 	exit()
 ########################################################################
 # Pre-run checks
