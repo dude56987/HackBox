@@ -2,27 +2,32 @@
 # link up the installer to a command
 link /opt/hackbox/hackboxsetup.py /usr/bin/hackboxsetup
 sudo chmod +x /usr/bin/hackboxsetup
-# edit mdm if it exists
-if [ -f /etc/mdm/Init/Default ]; then
-	sed -i.bak 's/exit\ 0//g' /etc/mdm/Init/Default
-	sed -i.bak 's/hackboxsetup\-gui\ \-\-no\-reset//g' /etc/mdm/Init/Default
-	echo 'hackboxsetup-gui --no-reset' >> /etc/mdm/Init/Default
-	echo 'exit 0' >> /etc/mdm/Init/Default
-	rm -fv /etc/mdm/Init/Default.bak
+# check if this is set to use a relay
+if [ -f /etc/hackbox/relayServer ];then
+	echo 'This is an update, skipping notifications...'
 else
-	# if mdm does not exist launch hackboxsetup via the x init config for each user
-	for dir in $(ls /home);do
-		echo 'hackboxsetup-gui' > /home/$dir/.xinitrc
-	done
-fi
-# check if the user is on a tty or in X
-if (tty | grep tty) || (ps -e | grep byobu); then
-	echo 'You will need to run hackboxsetup to start the install process.' | wall;
-	exit 0;
-# if the user is running xorg then launch a popup on the desktop using zenity
-elif (ps -e | grep Xorg) && !(tty | grep tty) && !(ps -e | grep byobu); then
-	#cp -v /opt/hackbox/media/launchers/hackboxRunonce.desktop /etc/xdg/autostart/hackboxRunonce.desktop;
-	#chmod ugo+r /etc/xdg/autostart/hackboxRunonce.desktop;
-	notify-send -u critical 'Please logout to finish the install process.' || echo 'Please logout to finish the install process.';
-	exit 0;
+	# edit mdm if it exists
+	if [ -f /etc/mdm/Init/Default ]; then
+		sed -i.bak 's/exit\ 0//g' /etc/mdm/Init/Default
+		sed -i.bak 's/hackboxsetup\-gui\ \-\-no\-reset//g' /etc/mdm/Init/Default
+		echo 'hackboxsetup-gui --no-reset' >> /etc/mdm/Init/Default
+		echo 'exit 0' >> /etc/mdm/Init/Default
+		rm -fv /etc/mdm/Init/Default.bak
+	else
+		# if mdm does not exist launch hackboxsetup via the x init config for each user
+		for dir in $(ls /home);do
+			echo 'hackboxsetup-gui' > /home/$dir/.xinitrc
+		done
+	fi
+	# check if the user is on a tty or in X
+	if (tty | grep tty) || (ps -e | grep byobu); then
+		echo 'You will need to run hackboxsetup to start the install process.' | wall;
+		exit 0;
+	# if the user is running xorg then launch a popup on the desktop using zenity
+	elif (ps -e | grep Xorg) && !(tty | grep tty) && !(ps -e | grep byobu); then
+		#cp -v /opt/hackbox/media/launchers/hackboxRunonce.desktop /etc/xdg/autostart/hackboxRunonce.desktop;
+		#chmod ugo+r /etc/xdg/autostart/hackboxRunonce.desktop;
+		notify-send -u critical 'Please logout to finish the install process.' || echo 'Please logout to finish the install process.';
+		exit 0;
+	fi
 fi
