@@ -43,6 +43,12 @@ update-version-number:
 #	less .debdata/control
 	# fix it back
 #	cp .debdata/control.backup .debdata/control
+update-relay: 
+	# copy current directory to the relay directory
+	# If a relay is setup this will update the package pushed
+	# when the cron job is next run.
+	sudo cp -rv * /opt/hackbox/update
+	sudo bash /etc/cron.daily/00-hackbox-server-update-relay
 build: 
 	# build the deb
 	sudo make build-deb;
@@ -53,6 +59,7 @@ build-deb:
 	mkdir -p debian/usr/bin;
 	mkdir -p debian/opt;
 	mkdir -p debian/opt/hackbox;
+	mkdir -p debian/opt/hackbox/update;
 	mkdir -p debian/opt/hackbox/sources;
 	mkdir -p debian/opt/hackbox/media;
 	mkdir -p debian/opt/hackbox/scripts;
@@ -104,12 +111,14 @@ build-deb:
 	cp -vfr ./scripts/. ./debian/opt/hackbox/scripts/
 	cp -vfr ./sources/. ./debian/opt/hackbox/sources/
 	cp -vfr ./unsupportedPackages/. ./debian/opt/hackbox/unsupportedPackages/
+	# copy over the relay server info if a relay has been setup
+	cp -vf /etc/hackbox/relayServer ./debian/etc/hackbox/relayServer || echo 'WARNING:No relay server setup!'
 	# Create the md5sums file
 	find ./debian/ -type f -print0 | xargs -0 md5sum > ./debian/DEBIAN/md5sums
 	# cut filenames of extra junk
-	sed -i.bak 's/\.\/debian\///g' ./debian/DEBIAN/md5sums
-	sed -i.bak 's/\\n*DEBIAN*\\n//g' ./debian/DEBIAN/md5sums
-	sed -i.bak 's/\\n*DEBIAN*//g' ./debian/DEBIAN/md5sums
+	sed -i 's/\.\/debian\///g' ./debian/DEBIAN/md5sums
+	sed -i 's/\\n*DEBIAN*\\n//g' ./debian/DEBIAN/md5sums
+	sed -i 's/\\n*DEBIAN*//g' ./debian/DEBIAN/md5sums
 	# copy over the debdata files
 	cp -rv .debdata/. debian/DEBIAN/
 	# figure out the size of the installed package and save the size in kb to a file
@@ -122,15 +131,13 @@ build-deb:
 	#~ sed -i.bak "s/Installed-Size: [0123456789]\{2,20\}/Installed-Size: ${VALUE}/g" ./debian/DEBIAN/control;\
 	#~ rm ./debian/DEBIAN/control.bak;\
 	#~ ';
-	# clear up backups from sed operations
-	rm -v ./debian/DEBIAN/md5sums.bak
+	# set permissions correctly on things
 	chmod -R 775 ./debian/DEBIAN
 	chmod -Rv ugo+r ./debian/opt/hackbox/media
 	chmod -Rv ugo+x ./debian/opt/hackbox/media/launchers
 	dpkg-deb --build debian
-	cp -v debian.deb hackbox_UNSTABLE.deb
-	# cleanup of unnamed package and package build folder
-	rm -v debian.deb
+	mv -vf debian.deb hackbox_UNSTABLE.deb
+	# cleanup package build folder
 	rm -rv debian
 distro-build-env-setup:
 	# install uck so distro can be built
