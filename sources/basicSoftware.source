@@ -296,6 +296,9 @@ catagory<:>message<:>Installing calendar extention to thunderbird
 catagory<:>package<:>xul-ext-lightning
 catagory<:>message<:>Installing Marble
 catagory<:>package<:>marble
+# Recipe Manager
+catagory<:>message<:>Installing Gourmet (Recipe Manager)...
+catagory<:>package<:>gourmet
 ##########################################################
 # encrypted internet communications programs in progress #
 ##########################################################
