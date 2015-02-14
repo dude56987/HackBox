@@ -15,7 +15,9 @@ pre<:>message<:>Installing custom themes
 pre<:>script<:>custom-themes
 # load preconfigured settings for apt-fast
 interactive<:>command<:>debconf-set-selections /opt/hackbox/preconfiguredsettings/debconf/apt-fast.conf
+# add 2 ppas one is for older verisons one is for 14.04+ versions
 interactive<:>ppa<:>ppa:apt-fast/stable
+interactive<:>ppa<:>ppa:saiarcot895/myppa
 interactive<:>package<:>apt-fast
 interactive<:>localdeb<:>apt-fast_32bit
 interactive<:>localdeb<:>apt-fast_64bit
