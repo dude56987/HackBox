@@ -455,6 +455,8 @@ catagory<:>package<:>clipit
 # Setting up xfce desktop Support####catagory<:>package<:>desktopnova-module-xfce
 catagory<:>message<:>Installing xfce whiskermenu
 catagory<:>package<:>xfce4-whiskermenu-plugin
+catagory<:>message<:>Installing mugshot(User info management)
+catagory<:>package<:>mugshot
 catagory<:>message<:>Installing xfce power manager
 catagory<:>package<:>xfce4-power-manager
 catagory<:>message<:>Installing xfce cpu graph plugin for panel
