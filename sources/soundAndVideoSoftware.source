@@ -50,5 +50,8 @@ catagory<:>message<:>Installing gPodder Podcast Client
 catagory<:>package<:>gpodder
 catagory<:>message<:>Installing Radio Tray (Radio Stream Player)
 catagory<:>package<:>radiotray
+catagory<:>message<:>Installing Pithos(Desktop Pandora Client)
+catagory<:>ppa<:>ppa:pithos/ppa
+catagory<:>package<:>pithos
 catagory<:>message<:>Installing VLC (Video Player)
 catagory<:>package<:>vlc
