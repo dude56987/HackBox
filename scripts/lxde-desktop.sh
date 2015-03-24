@@ -7,7 +7,9 @@ echo 'Setting up system for low ram pc...'
 apt-get install lxde --assume-yes
 apt-get install lxpanel-indicator-applet-plugin --assume-yes
 apt-get install midori --assume-yes
+# install wicd network manager and remove others
 apt-get install wicd-gtk --assume-yes
+apt-get purge network-manger --assume-yes
 # purge login managers	
 apt-get purge xdm --assume-yes
 apt-get purge slim --assume-yes
