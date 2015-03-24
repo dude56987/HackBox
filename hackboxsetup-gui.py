@@ -19,6 +19,13 @@
 import os, sys
 # launch the program on xterm
 if os.path.exists('/usr/bin/xterm') == False:
+	# if xterm is not installed, then install it
 	os.system('gksu "apt-get install xterm --assume-yes"')
-os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')
+if ("--upgrade" in sys.argv):
+	# if running an upgrade
+	print "Running a system upgrade..."
+	os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfigUpgrade"')
+else:
+	# otherwise do default output
+	os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')
 exit()
