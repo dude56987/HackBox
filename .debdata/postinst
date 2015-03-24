@@ -2,6 +2,8 @@
 # link up the installer to a command
 link /opt/hackbox/hackboxsetup.py /usr/bin/hackboxsetup
 sudo chmod +x /usr/bin/hackboxsetup
+link /opt/hackbox/hackboxsetup-gui.py /usr/bin/hackboxsetup-gui
+sudo chmod +x /usr/bin/hackboxsetup-gui
 # check if this is set to use a relay
 if [ -f /etc/hackbox/relayServer ];then
 	echo 'This is an update, skipping notifications...'
