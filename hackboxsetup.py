@@ -65,7 +65,7 @@ if (("--no-curses" in sys.argv) != True):
 if ("--help" in sys.argv) or ("-h" in sys.argv):
 	print "########################################################################"
 	print "# Program Designed to setup a new Linux system automatically via scripts"
-	print "#  Copyright (C) 2014  Carl J Smith"
+	print "#  Copyright (C) 2015  Carl J Smith"
 	print "#" 
 	print "#  This program is free software: you can redistribute it and/or modify"
 	print "#  it under the terms of the GNU General Public License as published by"
