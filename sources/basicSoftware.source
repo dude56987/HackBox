@@ -309,7 +309,7 @@ catagory<:>message<:>Installing pybitmessage-stable-updater(Encrypted Messaging 
 # this package pulls the stable github repo for bitmessage
 catagory<:>localdeb<:>pybitmessage-stable-updater<:>/usr/bin/bitmessage-update
 # tox ( encrypted decentralized instant messageing, voice/video, and file transfer)
-catagory<:>deb-repo<:>deb http://repo.tox.im/deb/ testing main<:>https://repo.tox.im/toxbuild.pgp
+catagory<:>deb-repo<:>deb https://repo.tox.im/ nightly main<:>https://repo.tox.im/pubkey.gpg
 # the tox gui package is qtox, there are more, I like qtox
 catagory<:>message<:>Installing QTox(TOX GUI)
 catagory<:>package<:>qtox
