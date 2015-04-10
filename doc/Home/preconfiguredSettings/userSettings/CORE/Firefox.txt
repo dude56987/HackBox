@@ -11,7 +11,7 @@ Creation-Date: 2015-03-08T03:01:33-04:00
 	* youtube.com
 	* hacker-haven.com
 	* reddit.com
-	* [[about:mybookmarks]]
+	* about:mybookmarks
 	* 8chan.co
 	* everything2.com
 	* newgrounds.com

@@ -5,9 +5,9 @@ Creation-Date: 2015-03-08T01:59:38-05:00
 ====== userSettings ======
 
 ===== About =====
-This folder holds subfolders containing preconfigured settings. CORE is installed by default, the other folders are used for options the user is given.
+This directory holds subdirectories containing preconfigured settings. CORE is installed by default, the other directories are used for options the user is given.
 
-Each of these folders will be installed into the systems [[/etc/skel]] directory.
+Each of these directories will be installed into the systems [[/etc/skel]] directory.
 
-===== Folders =====
+===== Subdirectories =====
 bottomBar  [[+CORE]]  topBar

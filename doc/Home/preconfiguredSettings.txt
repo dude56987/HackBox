@@ -4,4 +4,8 @@ Creation-Date: 2015-03-08T01:58:58-05:00
 
 ====== preconfiguredSettings ======
 
-debconf  info.txt  launchers  [[+userSettings]] 
+===== About =====
+This directory holds a few subdirectories that hold specific preconfigured settings used by the program.
+
+===== Subdirectories =====
+debconf  info.txt  [[+launchers]]  [[+userSettings]] 
