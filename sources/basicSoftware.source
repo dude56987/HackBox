@@ -372,6 +372,8 @@ catagory<:>package<:>pidgin-plugin-pack
 # Indicator is now nessary to make some applications work as some things no longer support systray
 catagory<:>message<:>Install Xfce indicator plugin(ubuntu version of systray)
 catagory<:>package<:>xfce4-indicator-plugin
+# kdocker (click to make any program a tray icon)
+catagory<:>package<:>kdocker
 #### install volumeicon and remove volumed service to remove redundancy, also remove pulseaudio to simplify the volume options for users, install alsa as sound system
 catagory<:>message<:>Install ALSA(Sound System)
 catagory<:>package<:>alsa
