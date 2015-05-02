@@ -8,4 +8,4 @@ Creation-Date: 2015-04-10T18:06:26-04:00
 Any .desktop file in this directory will be set to startup after the user logs in.
 
 ===== Technical =====
-The files in this directory are moved into [[/etc/xdg/autostart/]] on the system. This is the open desktop standard for autostart items. This method SHOULD work on all desktop enviorments.
+The files in this directory are moved into [[/etc/xdg/autostart/]] on the system. This is the open desktop standard for autostart items. This method SHOULD work on all desktop environments.
