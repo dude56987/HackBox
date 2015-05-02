@@ -34,6 +34,12 @@ done
 for theme in /opt/hackbox/media/themes/libnotify/*;do
 	unzip -o /opt/hackbox/media/themes/libnotify/$theme -d /usr/share/themes;
 done
+#################################
+# install the custom gtk themes #
+#################################
+for theme in /opt/hackbox/media/themes/gtkThemes/*;do
+	unzip -o /opt/hackbox/media/themes/gtkThemes/$theme -d /usr/share/themes;
+done
 ########################
 # Install Custom Fonts #
 ########################
