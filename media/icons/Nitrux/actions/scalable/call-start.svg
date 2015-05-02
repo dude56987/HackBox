@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   id="svg3369"
+   version="1.1"
+   inkscape:version="0.48+devel r12149"
+   sodipodi:docname="call-start.svg">
+  <defs
+     id="defs3371" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="19.217918"
+     inkscape:cy="61.014058"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="716"
+     inkscape:window-x="0"
+     inkscape:window-y="28"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3374">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1004.3622)">
+    <path
+       style="fill:#010101"
+       inkscape:connector-curvature="0"
+       d="m 6.8662057,1032.1234 c 0.073515,0.5396 0.5285666,0.9571 1.0912497,0.9574 0.063406,2e-4 0.1292237,-0.01 0.1911359,-0.02 l 0.00707,0.01 7.8124997,-1.2992 -4.95e-4,-0.014 c 0.528946,-0.079 0.934292,-0.5301 0.934596,-1.0859 -9.12e-4,-0.053 -0.0079,-0.1067 -0.01691,-0.1602 l 0,0 c -0.0033,-0.032 -0.0072,-0.063 -0.01684,-0.096 -0.13106,-0.7423 -0.189524,-0.7951 -0.322756,-1.4231 -0.199552,-0.9015 -0.643746,-2.1557 -1.207649,-3.521 1.477845,-1.0831 4.494547,-1.8772 8.663527,-1.8762 4.169271,-0 7.185923,0.7922 8.659371,1.8759 -0.562612,1.3653 -1.006134,2.6189 -1.209493,3.5209 -0.129463,0.6256 -0.187612,0.6788 -0.323344,1.4232 -0.0037,0.032 -0.01051,0.061 -0.01679,0.094 0,0 -0.0031,0 -0.0031,0 -0.0076,0.05 -0.01715,0.1048 -0.01626,0.1595 -5.3e-5,0.5523 0.40565,1.003 0.934875,1.0869 l 0.0071,0.01 7.810927,1.3021 0.0072,-0.01 c 0.06437,0.011 0.126982,0.019 0.193553,0.02 0.558036,-0 1.01593,-0.4197 1.088759,-0.9586 0.685635,-3.6776 1.01749,-7.2948 -1.186342,-8.98 -2.363618,-1.81 -9.446032,-3.9187 -15.948259,-3.9178 -6.503801,0 -13.590031,2.1124 -15.9486359,3.9224 -2.2050065,1.6841 -1.8750627,5.3006 -1.1891245,8.9798"
+       id="Call__x2014__Used_to_call_a_number_in_your_data_set_using_the_phone_app._1_" />
+  </g>
+</svg>

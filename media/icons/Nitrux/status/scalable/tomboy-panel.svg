@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg3182"
+   height="48"
+   width="48"
+   version="1.0"
+   inkscape:version="0.48+devel r12274"
+   sodipodi:docname="tomboy-panel.svg">
+  <defs
+     id="defs9" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="716"
+     id="namedview7"
+     showgrid="false"
+     inkscape:zoom="9.8333333"
+     inkscape:cx="12"
+     inkscape:cy="28.271186"
+     inkscape:window-x="0"
+     inkscape:window-y="28"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3182" />
+  <metadata
+     id="metadata9">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     inkscape:connector-curvature="0"
+     id="path124"
+     style="fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="m 17.107026,36.911292 -3.366208,0.719515 c -0.327609,-0.603876 -0.718184,-1.207713 -1.43641,-1.927224 -0.714325,-0.719471 -1.324593,-1.117766 -1.933616,-1.438986 l 0.725905,-3.366167 0.975192,-0.976436 c 0,0 1.834664,0.03861 3.90193,2.10707 2.071085,2.068511 2.108357,3.905792 2.108357,3.905792 L 17.107026,36.911292 Z M 37.618849,10.393043 C 34.622712,7.3865708 32.376845,7.8362918 32.376845,7.8362918 L 21.892876,18.32026 9.9095735,30.307421 7.8127552,40.187556 17.696748,38.09331 29.678762,26.118972 40.162773,15.635006 c 0,0 0.453498,-2.2484 -2.543924,-5.241963" />
+</svg>

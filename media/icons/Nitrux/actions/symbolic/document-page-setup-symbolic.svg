@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="document-page-setup-symbolic.svg"
+   height="16.006748"
+   id="svg7384"
+   inkscape:version="0.48+devel r12378"
+   version="1.1"
+   width="16">
+  <sodipodi:namedview
+     inkscape:bbox-nodes="false"
+     inkscape:bbox-paths="true"
+     bordercolor="#666666"
+     borderlayer="true"
+     borderopacity="1"
+     inkscape:current-layer="layer12"
+     inkscape:cx="12.450582"
+     inkscape:cy="7.8987192"
+     gridtolerance="10"
+     inkscape:guide-bbox="true"
+     guidetolerance="10"
+     id="namedview88"
+     inkscape:object-nodes="false"
+     inkscape:object-paths="false"
+     objecttolerance="10"
+     pagecolor="#ffffff"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     showborder="true"
+     showgrid="false"
+     showguides="true"
+     inkscape:showpageshadow="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-midpoints="false"
+     inkscape:snap-global="true"
+     inkscape:snap-grids="true"
+     inkscape:snap-nodes="true"
+     inkscape:snap-others="false"
+     inkscape:snap-to-guides="true"
+     inkscape:window-height="714"
+     inkscape:window-maximized="1"
+     inkscape:window-width="1366"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:zoom="11.313708">
+    <inkscape:grid
+       empspacing="2"
+       enabled="true"
+       id="grid4866"
+       originx="-338.99998px"
+       originy="-200.99998px"
+       snapvisiblegridlinesonly="true"
+       spacingx="1px"
+       spacingy="1px"
+       type="xygrid"
+       visible="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata90">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Moka Symbolic Icon Theme</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title
+     id="title8473">Moka Symbolic Icon Theme</title>
+  <defs
+     id="defs7386" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer9"
+     inkscape:label="status"
+     style="display:inline"
+     transform="translate(-580.00018,-15.993271)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer10"
+     inkscape:label="devices"
+     style="display:inline"
+     transform="translate(-580.00018,-15.993271)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer11"
+     inkscape:label="apps"
+     style="display:inline"
+     transform="translate(-580.00018,-15.993271)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="places"
+     transform="translate(-338.99998,-632.99327)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer14"
+     inkscape:label="mimetypes"
+     style="display:inline"
+     transform="translate(-580.00018,-15.993271)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer15"
+     inkscape:label="emblems"
+     style="display:inline"
+     transform="translate(-580.00018,-15.993271)" />
+  <g
+     inkscape:groupmode="layer"
+     id="g71291"
+     inkscape:label="emotes"
+     style="display:inline"
+     transform="translate(-580.00018,-15.993271)" />
+  <g
+     inkscape:groupmode="layer"
+     id="g4953"
+     inkscape:label="categories"
+     style="display:inline"
+     transform="translate(-580.00018,-15.993271)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer12"
+     inkscape:label="actions"
+     style="display:inline"
+     transform="translate(-580.00018,-15.993271)">
+    <g
+       transform="matrix(0.4,0,0,0.4,357.14303,-223.23394)"
+       id="layer1-7"
+       inkscape:label="Capa 1"
+       style="fill:#bebebe;fill-opacity:1">
+      <g
+         transform="matrix(1.5,0,0,1.5,-288.57145,-309.03825)"
+         style="fill:#bebebe;fill-opacity:1"
+         id="g870">
+        <polygon
+           style="fill:#bebebe;fill-opacity:1"
+           points="363.501,1969.488 357.858,1975.133 354.596,1953.949 375.778,1957.211 370.188,1962.805 381.593,1974.211 374.907,1980.893 "
+           id="polygon635"
+           transform="matrix(0.32423319,0,0,0.32423319,452.17125,-25.458637)" />
+        <polygon
+           style="fill:#bebebe;fill-opacity:1"
+           points="407.374,2000.098 413.018,1994.453 416.279,2015.633 395.099,2012.371 400.688,2006.779 389.284,1995.375 395.967,1988.693 "
+           id="polygon637"
+           transform="matrix(0.32423319,0,0,0.32423319,452.17125,-25.458637)" />
+      </g>
+    </g>
+  </g>
+</svg>

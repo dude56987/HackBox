@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="48"
+   height="48"
+   id="svg4196"
+   version="1.1"
+   inkscape:version="0.48+devel r12149"
+   sodipodi:docname="mail.svg">
+  <defs
+     id="defs4198" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="8.375"
+     inkscape:cx="31.909254"
+     inkscape:cy="19.479652"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="716"
+     inkscape:window-x="0"
+     inkscape:window-y="28"
+     inkscape:window-maximized="1"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="1,0"
+       position="24,34.976562"
+       id="guide812" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="50.320673,30.563899"
+       id="guide814" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata4201">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1004.3622)">
+    <g
+       transform="matrix(0.61098552,0,0,0.61098552,-152.13307,-345.99138)"
+       id="_x35__content_email"
+       style="fill:#1a1a1a">
+      <g
+         id="g944"
+         style="fill:#1a1a1a">
+        <polygon
+           style="fill:#1a1a1a;fill-rule:evenodd;clip-rule:evenodd"
+           points="255.195,2239.345 255.195,2273.955 321.359,2273.955 321.359,2239.345 288.276,2255.793 "
+           id="polygon946" />
+        <polygon
+           style="fill:#1a1a1a;fill-rule:evenodd;clip-rule:evenodd"
+           points="255.195,2224.854 255.195,2234.063 288.276,2250.506 321.359,2234.063 321.359,2224.854 "
+           id="polygon948" />
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="16"
+   height="16"
+   id="svg7384"
+   inkscape:version="0.48+devel r12338"
+   sodipodi:docname="facebook-symbolic.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="714"
+     id="namedview7"
+     showgrid="false"
+     inkscape:zoom="14.75"
+     inkscape:cx="8"
+     inkscape:cy="8"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg7384" />
+  <title
+     id="title9167">Gnome Symbolic Icon Theme</title>
+  <defs
+     id="defs11" />
+  <metadata
+     id="metadata90">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Gnome Symbolic Icon Theme</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     inkscape:connector-curvature="0"
+     id="path524"
+     style="fill:#bebebe;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     d="M 12.500157,2 3.5002751,2 c -0.824969,0 -1.500064,0.673793 -1.500064,1.500054 l 0,8.999892 C 2.0002111,13.32448 2.6753061,14 3.5002751,14 l 4.5515547,0 0,-4.303207 -1.437427,0 0,-1.874096 1.437427,0 0,-0.938991 c 0,-1.448224 1.068568,-2.581146 2.4334232,-2.581146 l 1.324265,0 0,2.115106 -1.184745,0 c -0.309696,0 -0.400393,0.178813 -0.400393,0.424144 l 0,0.980887 1.585138,0 0,1.874096 -1.585138,0 0,4.303207 2.275777,0 c 0.824537,0 1.499632,-0.67552 1.499632,-1.500054 l 0,-8.999892 C 13.999789,2.673793 13.324694,2 12.500157,2" />
+</svg>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24"
+   height="24"
+   id="svg4241"
+   version="1.1"
+   inkscape:version="0.48+devel r12387"
+   sodipodi:docname="twitter-dm.svg">
+  <defs
+     id="defs4243" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9180417"
+     inkscape:cx="1.0549278"
+     inkscape:cy="10.437345"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-bbox="true"
+     inkscape:document-units="px"
+     inkscape:window-width="1366"
+     inkscape:window-height="714"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4246">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(0,-8)">
+    <path
+       inkscape:connector-curvature="0"
+       id="path528"
+       style="fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       d="m 16.589316,17.017479 -2.912066,0 0,-4.517479 -3.352868,0 0,4.517479 -2.9120645,0 4.5884905,4.306068 L 16.589316,17.017479 z m 3.65276,5.666243 -2.809359,-1.889478 -1.732702,0 2.999452,2.301341 -3.126722,0 c -0.09014,0 -0.171528,0.04533 -0.211957,0.115816 l -0.719943,1.973035 -5.2800568,0 -0.721584,-1.973035 c -0.04043,-0.07048 -0.121817,-0.115816 -0.211957,-0.115816 l -3.126723,0 2.999453,-2.301341 -1.7327017,0 -2.8077186,1.889478 C 3.341677,22.932809 3.0909491,23.508011 3.2040132,23.961397 l 0.4960029,2.712671 C 3.810909,27.127454 4.3085361,27.5 4.8028978,27.5 l 14.3941962,0 c 0.496003,0 0.991988,-0.372546 1.104524,-0.825932 l 0.494362,-2.712671 c 0.113063,-0.453386 -0.137665,-1.028588 -0.553904,-1.277675" />
+  </g>
+</svg>

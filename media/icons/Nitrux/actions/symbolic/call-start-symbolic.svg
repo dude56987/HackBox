@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="call-start-symbolic.svg"
+   height="16"
+   id="svg7384"
+   inkscape:version="0.48+devel r12378"
+   version="1.1"
+   width="16">
+  <sodipodi:namedview
+     inkscape:bbox-nodes="false"
+     inkscape:bbox-paths="true"
+     bordercolor="#666666"
+     borderlayer="true"
+     borderopacity="1"
+     inkscape:current-layer="layer12"
+     inkscape:cx="5.5194738"
+     inkscape:cy="17.446294"
+     gridtolerance="10"
+     inkscape:guide-bbox="true"
+     guidetolerance="10"
+     id="namedview88"
+     inkscape:object-nodes="false"
+     inkscape:object-paths="false"
+     objecttolerance="10"
+     pagecolor="#ffffff"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     showborder="true"
+     showgrid="false"
+     showguides="true"
+     inkscape:showpageshadow="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-midpoints="false"
+     inkscape:snap-global="true"
+     inkscape:snap-grids="true"
+     inkscape:snap-nodes="true"
+     inkscape:snap-others="false"
+     inkscape:snap-to-guides="true"
+     inkscape:window-height="714"
+     inkscape:window-maximized="1"
+     inkscape:window-width="1366"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:zoom="11.313708">
+    <inkscape:grid
+       empspacing="2"
+       enabled="true"
+       id="grid4866"
+       originx="-80.0004px"
+       originy="-99.99998px"
+       snapvisiblegridlinesonly="true"
+       spacingx="1px"
+       spacingy="1px"
+       type="xygrid"
+       visible="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata90">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Moka Symbolic Icon Theme</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title
+     id="title8473">Moka Symbolic Icon Theme</title>
+  <defs
+     id="defs7386" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer9"
+     inkscape:label="status"
+     style="display:inline"
+     transform="translate(-321.0006,-117.00002)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer10"
+     inkscape:label="devices"
+     style="display:inline"
+     transform="translate(-321.0006,-117.00002)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer11"
+     inkscape:label="apps"
+     style="display:inline"
+     transform="translate(-321.0006,-117.00002)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="places"
+     transform="translate(-80.0004,-734.00002)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer14"
+     inkscape:label="mimetypes"
+     style="display:inline"
+     transform="translate(-321.0006,-117.00002)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer15"
+     inkscape:label="emblems"
+     style="display:inline"
+     transform="translate(-321.0006,-117.00002)" />
+  <g
+     inkscape:groupmode="layer"
+     id="g71291"
+     inkscape:label="emotes"
+     style="display:inline"
+     transform="translate(-321.0006,-117.00002)" />
+  <g
+     inkscape:groupmode="layer"
+     id="g4953"
+     inkscape:label="categories"
+     style="display:inline"
+     transform="translate(-321.0006,-117.00002)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer12"
+     inkscape:label="actions"
+     style="display:inline"
+     transform="translate(-321.0006,-117.00002)">
+    <g
+       transform="matrix(0.17906451,-0.31014882,-0.31014882,-0.17906451,643.59546,316.60348)"
+       id="layer1-1"
+       inkscape:label="Capa 1"
+       style="fill:#bebebe;fill-opacity:1">
+      <path
+         id="Call__x2014__Used_to_call_a_number_in_your_data_set_using_the_phone_app._1_"
+         d="m 6.8662057,1032.1234 c 0.073515,0.5396 0.5285666,0.9571 1.0912497,0.9574 0.063406,2e-4 0.1292237,-0.01 0.1911359,-0.02 l 0.00707,0.01 7.8124997,-1.2992 -4.95e-4,-0.014 c 0.528946,-0.079 0.934292,-0.5301 0.934596,-1.0859 -9.12e-4,-0.053 -0.0079,-0.1067 -0.01691,-0.1602 l 0,0 c -0.0033,-0.032 -0.0072,-0.063 -0.01684,-0.096 -0.13106,-0.7423 -0.189524,-0.7951 -0.322756,-1.4231 -0.199552,-0.9015 -0.643746,-2.1557 -1.207649,-3.521 1.477845,-1.0831 4.494547,-1.8772 8.663527,-1.8762 4.169271,0 7.185923,0.7922 8.659371,1.8759 -0.562612,1.3653 -1.006134,2.6189 -1.209493,3.5209 -0.129463,0.6256 -0.187612,0.6788 -0.323344,1.4232 -0.0037,0.032 -0.01051,0.061 -0.01679,0.094 0,0 -0.0031,0 -0.0031,0 -0.0076,0.05 -0.01715,0.1048 -0.01626,0.1595 -5.3e-5,0.5523 0.40565,1.003 0.934875,1.0869 l 0.0071,0.01 7.810927,1.3021 0.0072,-0.01 c 0.06437,0.011 0.126982,0.019 0.193553,0.02 0.558036,0 1.01593,-0.4197 1.088759,-0.9586 0.685635,-3.6776 1.01749,-7.2948 -1.186342,-8.98 -2.363618,-1.81 -9.446032,-3.9187 -15.948259,-3.9178 -6.503801,0 -13.590031,2.1124 -15.9486359,3.9224 -2.2050065,1.6841 -1.8750627,5.3006 -1.1891245,8.9798"
+         inkscape:connector-curvature="0"
+         style="fill:#bebebe;fill-opacity:1" />
+    </g>
+  </g>
+</svg>
