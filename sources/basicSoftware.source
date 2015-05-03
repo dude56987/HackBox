@@ -247,6 +247,8 @@ catagory<:>message<:>Installing iotop(Top for I/O of disk)
 catagory<:>package<:>iotop
 catagory<:>message<:>Installing iftop(Top for Network Usage)
 catagory<:>package<:>iftop
+catagory<:>message<:>Installing vnstat(stats on network usage)
+catagory<:>package<:>vnstat
 # Uncomment to install monitorix to track system usage over time
 catagory<:>message<:>Installing monitorix(System Stat Tracker)
 catagory<:>deb-repo<:>deb http://apt.izzysoft.de/ubuntu generic universe<:>http://apt.izzysoft.de/izzysoft.asc
