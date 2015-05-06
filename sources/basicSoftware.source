@@ -428,7 +428,9 @@ catagory<:>localdeb<:>reboot-required<:>/usr/bin/reboot-required
 # remove the crappy notifications you cant click away, install xfce ones
 catagory<:>message<:>Remove Junk OSD notification system
 catagory<:>rm-package<:>notify-osd
-catagory<:>message<:>Installing Nicer OSD notification system
+catagory<:>message<:>Remove mate desktop notification system
+catagory<:>rm-package<:>mate-notification-daemon
+catagory<:>message<:>Installing Xfce OSD notification system
 catagory<:>package<:>xfce4-notifyd
 # sets up the custom mimetype defaults for HackBox
 catagory<:>message<:>Setting up mimetypes for HackBox

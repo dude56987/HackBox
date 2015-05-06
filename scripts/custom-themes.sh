@@ -31,8 +31,8 @@ done
 ################################
 # install the libnotify themes #
 ################################
-for theme in /opt/hackbox/media/themes/libnotify/*;do
-	unzip -o /opt/hackbox/media/themes/libnotify/$theme -d /usr/share/themes;
+for notifyTheme in /opt/hackbox/media/themes/libnotify/*;do
+	cp -v /opt/hackbox/media/themes/libnotify/$notifyTheme /usr/share/themes;
 done
 #################################
 # install the custom gtk themes #
