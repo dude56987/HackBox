@@ -340,9 +340,15 @@ def installSourcesFile(fileNameOfFile):
 					else:
 						printGreen(tempInfo[2]+'...')
 				elif tempInfo[1] == 'script':
-					# dont update progress bar this part pumps out a bunch of text
+					# dont update progress bar 
+					# the scripts pump out a bunch of text
 					showUpdate=False
-					os.system('bash scripts/'+tempInfo[2]+'.sh')
+					if os.path.exists('scripts/'+tempInfo[2]+'.sh'):
+						# launch the script in bash if its a shell script
+						os.system('bash scripts/'+tempInfo[2]+'.sh')
+					elif os.path.exists('scripts/'+tempInfo[2]+'.py'):
+						# launch program in python if its a python script
+						os.system('python scripts/'+tempInfo[2]+'.py')
 				elif tempInfo[1] == 'command':
 					# execute command
 					if (("--no-curses" in sys.argv) != True):
