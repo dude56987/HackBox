@@ -32,7 +32,7 @@ pre<:>localdeb<:>getdeb
 # whiskermenu ppa
 interactive<:>ppa<:>ppa:gottcode/gcppa
 main<:>package<:>xfce4-whiskermenu-plugin
-# here is some logical scripts
+# here are some logical scripts
 interactive<:>message<:>Setting up darknet access
 interactive<:>script<:>darknet-setup
 catagory<:>message<:>Setup power control login names for tty logins
@@ -77,8 +77,15 @@ catagory<:>message<:>Installing Totem Web plugin
 catagory<:>package<:>totem-mozilla
 # add ppa for xbmc but do not install it, this so if the user installs xbmc it will be at the latest version
 catagory<:>ppa<:>ppa:team-xbmc/ppa
-catagory<:>message<:>Installing Evince(Document Viewer/PDF Viewer)
-catagory<:>package<:>evince
+# Remove other document viewers and install atril
+catagory<:>message<:>Removing Evince(Document Viewer)
+# Incompatible with Xfce themes
+catagory<:>rm-package<:>evince
+# The below two are also good pdf viewers, however Atril is more user friendly
+catagory<:>rm-package<:>qpdfview
+catagory<:>rm-package<:>okular
+catagory<:>message<:>Installing Atril(Document Viewer/PDF Viewer)
+catagory<:>package<:>atril
 catagory<:>message<:>Installing Jockey(Propietry Driver Installer)
 catagory<:>package<:>jockey-gtk
 catagory<:>message<:>Installing leafpad(Simple Text Editor)
