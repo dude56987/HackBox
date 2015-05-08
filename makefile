@@ -90,14 +90,7 @@ build-deb:
 	chmod -Rv ugo+r ./debian/opt/hackbox/media/.
 	# compress the preconfigured settings files
 	# escape the endings to cd works since each line is executed as a separate process
-	cd preconfiguredSettings/userSettings/topBar/;\
-	ls -A | zip -g -9 -r ../../../debian/opt/hackbox/preconfiguredSettings/userSettings/topBar.zip -@;
-	# each line is executed as a separate process so it pops back to the main directory
-	cd preconfiguredSettings/userSettings/bottomBar/;\
-	ls -A | zip -g -9 -r ../../../debian/opt/hackbox/preconfiguredSettings/userSettings/bottomBar.zip -@;
-	# add core settings
-	cd preconfiguredSettings/userSettings/CORE/;\
-	ls -A | zip -g -9 -r ../../../debian/opt/hackbox/preconfiguredSettings/userSettings/CORE.zip -@;
+	cp -rvf preconfiguredSettings/userSettings/* debian/opt/hackbox/preconfiguredSettings/userSettings/
 	# add config files n such
 	cp -vfr ./preconfiguredSettings/launchers ./debian/opt/hackbox/preconfiguredSettings/
 	cp -vfr ./preconfiguredSettings/debconf ./debian/opt/hackbox/preconfiguredSettings/
@@ -130,7 +123,8 @@ build-deb:
 	chmod -R 775 ./debian/DEBIAN
 	chmod -Rv ugo+r ./debian/opt/hackbox/media
 	chmod -Rv ugo+x ./debian/opt/hackbox/media/launchers
-	dpkg-deb --build debian
+	# max compression on package
+	dpkg-deb -z 9 --build debian
 	mv -vf debian.deb hackbox_UNSTABLE.deb
 	# cleanup package build folder
 	rm -rv debian
