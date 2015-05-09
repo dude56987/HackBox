@@ -58,7 +58,8 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 	# install default core into /etc/skel 
 	os.system("cp -rvf /opt/hackbox/preconfiguredSettings/userSettings/CORE/. /etc/skel")
 	# install user picked settings package into the /etc/skel
-	os.system("cp -rvf "+desktopLine+" /etc/skel")
+	if len(desktopLine) > 1:
+		os.system("cp -rvf "+desktopLine+" /etc/skel")
 	if overwriteUsers==True:
 		# overwrite the users default settings
 		for user in os.listdir('/home/'):
@@ -85,11 +86,12 @@ for item in os.listdir("/opt/hackbox/preconfiguredSettings/userSettings/"):
 			choices.append((item,'',1))
 		else:
 			choices.append((item,'',0))
-userChoice=root.radiolist('Which desktop enviorment layout would you like to be the default?',0,0,0,choices)
-# returns a 2 value tuple, grab value # 1
-userChoice="/opt/hackbox/preconfiguredSettings/userSettings/"+userChoice[1]
-# add to the config file
-config+=('desktopLayout='+userChoice+'\n')
+if len(choices)>1:
+	userChoice=root.radiolist('Which desktop enviorment layout would you like to be the default?',0,0,0,choices)
+	# returns a 2 value tuple, grab value # 1
+	userChoice="/opt/hackbox/preconfiguredSettings/userSettings/"+userChoice[1]
+	# add to the config file
+	config+=('desktopLayout='+userChoice+'\n')
 ########################################################################
 # in the yesno dialog 0 = yes, 1 = no
 if 0 == root.yesno("Would you like to overwrite all users current settings with the new default settings?\n\nWARNING:This will delete any settings you have changed in your applications.However your documents will remain untouched."):
