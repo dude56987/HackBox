@@ -13,6 +13,8 @@ interactive<:>message<:>Installing custom desktop settings
 interactive<:>script<:>custom-desktop
 pre<:>message<:>Installing custom themes
 pre<:>script<:>custom-themes
+main<:>message<:>Installing custom login theme
+main<:>script<:>login-theme
 # load preconfigured settings for apt-fast
 interactive<:>command<:>debconf-set-selections /opt/hackbox/preconfiguredsettings/debconf/apt-fast.conf
 # add 2 ppas one is for older verisons one is for 14.04+ versions
