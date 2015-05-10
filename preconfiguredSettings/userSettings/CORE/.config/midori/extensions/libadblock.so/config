@@ -1,2 +1,2 @@
 [settings]
-filters=http://www.hostsfile.mine.nu/downloads/adblock.txt;https://easylist-downloads.adblockplus.org/fanboy-annoyance.txt&title=Fanboy's%20Annoyance%20List;http://adblockplus.mozdev.org/easylist/easylist.txt;https://easylist-downloads.adblockplus.org/easyprivacy.txt;
+filters=https://easylist-downloads.adblockplus.org/fanboy-annoyance.txt&title=Fanboy's%20Annoyance%20List;http://adblockplus.mozdev.org/easylist/easylist.txt;https://easylist-downloads.adblockplus.org/easyprivacy.txt;
