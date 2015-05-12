@@ -87,19 +87,19 @@ for item in os.listdir("/opt/hackbox/preconfiguredSettings/userSettings/"):
 		else:
 			choices.append((item,'',0))
 if len(choices)>1:
-	userChoice=root.radiolist('Which desktop enviorment layout would you like to be the default?',0,0,0,choices)
+	userChoice=root.radiolist('Which desktop enviorment layout would you like to be the default?',20,60,15,choices)
 	# returns a 2 value tuple, grab value # 1
 	userChoice="/opt/hackbox/preconfiguredSettings/userSettings/"+userChoice[1]
 	# add to the config file
 	config+=('desktopLayout='+userChoice+'\n')
 ########################################################################
 # in the yesno dialog 0 = yes, 1 = no
-if 0 == root.yesno("Would you like to overwrite all users current settings with the new default settings?\n\nWARNING:This will delete any settings you have changed in your applications.However your documents will remain untouched."):
+if 0 == root.yesno("Would you like to overwrite all users current settings with the new default settings?\n\nWARNING:This will delete any settings you have changed in your applications.However your documents will remain untouched.",20,60):
 	config+='overwriteUsers=true\n'
 else:
 	config+='overwriteUsers=false\n'
 ########################################################################
-if 0 == root.yesno("Would you like to save these choices for next time you run the installer?"):
+if 0 == root.yesno("Would you like to save these choices for next time you run the installer?",20,60):
 	# set the flag to not delete the config file
 	config+='deleteMe=false\n'
 else:
