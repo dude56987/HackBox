@@ -124,7 +124,7 @@ build-deb:
 	chmod -Rv ugo+r ./debian/opt/hackbox/media
 	chmod -Rv ugo+x ./debian/opt/hackbox/media/launchers
 	# max compression on package
-	dpkg-deb -z 9 --build debian
+	dpkg-deb -Z xz -z 9 --build debian
 	mv -vf debian.deb hackbox_UNSTABLE.deb
 	# cleanup package build folder
 	rm -rv debian
@@ -212,5 +212,17 @@ test:
 debug-install-settings:
 	sudo cp -rvf preconfiguredSettings/userSettings/CORE/. /etc/skel/
 	sudo cp -rvf preconfiguredSettings/userSettings/bottomBar/. /etc/skel/
-#uninstall : uninstall.py
-#	python uninstall.py
+project-report:
+	sudo apt-get install gitstats gource --assume-yes
+	rm -vr report/ || echo "No existing report..."
+	mkdir -p report
+	mkdir -p report/webstats
+	cp -v media/hackboxLogoText.png report/logo.png
+	echo "<html style='margin:auto;width:800px;text-align:center;'><body>" > report/index.html
+	echo "<a href='webstats/'><h1>WebStats</h1></a>" >> report/index.html
+	echo "<video src='video.mp4' poster='logo.png' width='800' controls>" >> report/index.html
+	echo "<a href='video.mp4'><h1>Gource Video Rendering</h1></a>" >> report/index.html
+	echo "</video>" >> report/index.html
+	echo "</body></html>" >> report/index.html
+	gitstats . report/webstats
+	gource -s 1 -c 4 -1280x720 -o - | avconv -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 report/video.mp4
