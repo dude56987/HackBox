@@ -234,19 +234,6 @@ os.system('useradd -D -s $(which zsh)')
 # set zsh to default shell for current users
 os.system('sed -i "s/bash/zsh/g" /etc/passwd')
 ####################################################################
-# install preload if pc has more than 4 gigs of ram, this will attempt
-# to preload libs the user usses often to ram reducing startup time of
-# commonly used programs
-try:
-	memory  = hackboxlib.loadFile('/proc/meminfo').split('\n')[0].split(':')[1]
-	while memory.find(' '):
-		memory = memory.replace(' ','')
-	memory = int(memory.replace('kB',''))
-	if memory > 1600000:# if memory is greater than 4 gigs
-		os.system('apt-fast install preload --assume-yes >> Install_Log.txt')
-except:
-	print ('ERROR: Could not install preload!')
-####################################################################
 # Games & Emulation 
 # NOTE playonlinux requires user interaction and is installed first
 ####################################################################

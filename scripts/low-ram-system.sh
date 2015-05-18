@@ -10,4 +10,10 @@ if [ "$memory" -lt 1600000 ];then
 	echo "Setting low ram settings..."
 	bash lxde-desktop.sh
 	bash disable-bootsplash.sh
+else
+	echo "Installing preload..."
+	# If more memory exists install the preload package to
+	# speed up application startup by preloading applications
+	# into ram
+	sudo apt-get install preload --assume-yes >> /opt/hackbox/Install_Log.txt
 fi
