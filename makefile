@@ -219,7 +219,7 @@ project-report:
 	mkdir -p report/webstats
 	cp -v media/hackboxLogoText.png report/logo.png
 	echo "<html style='margin:auto;width:800px;text-align:center;'><body>" > report/index.html
-	echo "<a href='webstats/'><h1>WebStats</h1></a>" >> report/index.html
+	echo "<a href='webstats/index.html'><h1>WebStats</h1></a>" >> report/index.html
 	echo "<video src='video.mp4' poster='logo.png' width='800' controls>" >> report/index.html
 	echo "<a href='video.mp4'><h1>Gource Video Rendering</h1></a>" >> report/index.html
 	echo "</video>" >> report/index.html
