@@ -1,5 +1,5 @@
 gtk-color-scheme =
-"bg_color:#FFFFFF\nfg_color:#000\nbase_color:#fff\ntext_color:#000\nselected_fg_color:#fff\nselected_bg_color:#729fcf"
+"bg_color:#FFFFFF\nfg_color:#000\nbase_color:#FFFFFF\ntext_color:#000\nselected_fg_color:#FFFFFF\nselected_bg_color:#555753"
 
 style "default"
 {
@@ -139,3 +139,19 @@ style "resize-grip"
 }
 class "GtkWindow*" style "resize-grip"
 
+style "xfdesktop-icon-view" {
+
+    XfdesktopIconView::label-alpha = 0
+
+    fg[NORMAL] = "#efefef"
+    fg[SELECTED] = "#efefef"
+    fg[ACTIVE] = "#efefef"
+
+    XfdesktopIconView::shadow-x-offset = 1
+    XfdesktopIconView::shadow-y-offset = 1
+    XfdesktopIconView::shadow-color = "#3c3c3c"
+    XfdesktopIconView::selected-shadow-x-offset = 1
+    XfdesktopIconView::selected-shadow-y-offset = 1
+    XfdesktopIconView::selected-shadow-color = "#3c3c3c"
+
+}
