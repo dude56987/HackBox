@@ -23,10 +23,8 @@ alias installTerminalTools='installConsoleTools'
 # this will reconfigure the console allowing you to change the size,font and some other stuff
 alias console-setup='sudo dpkg-reconfigure console-setup'
 alias terminal-setup='console-setup'
-# downloads random wallpapers #BEWARE# truly random, stored in /usr/share/pixmaps/wallpapers
-alias download-random-wallpapers="curl http://boards.4chan.org/wg/ | sed 's/\"/\n/g' | grep //i.4cdn.org/wg/ | sort -u | sed 's/\/\/i/http:\/\/i/g' > /tmp/images.list && sudo mkdir -p /usr/share/pixmaps/wallpapers && cd /usr/share/pixmaps/wallpapers && sudo wget -i /tmp/images.list && sudo fdupes -rdN /usr/share/pixmaps/wallpapers && sudo find /usr/share/pixmaps/wallpapers/ -type f -size -15k -exec mv -v {} ~/.local/share/Trash/files \;&& cd"
-alias download-random-anime-wallpapers="curl http://boards.4chan.org/w/ | sed 's/\"/\n/g' | grep //i.4cdn.org/w/ | sort -u | sed 's/\/\/i/http:\/\/i/g' > /tmp/images.list && sudo mkdir -p /usr/share/pixmaps/wallpapers && cd /usr/share/pixmaps/wallpapers && sudo wget -i /tmp/images.list && sudo fdupes -rdN /usr/share/pixmaps/wallpapers && sudo find /usr/share/pixmaps/wallpapers/ -type f -size -15k -exec mv -v {} ~/.local/share/Trash/files \;&& cd"
-alias download-random-quote-wallpapers="wget http://reddit.com/r/QuotesPorn/ -O /tmp/images.list && sed -i 's/\"/\n/g' /tmp/images.list && more /tmp/images.list | grep http://i.imgur.com/ > /tmp/images.final && sudo mkdir -p /usr/share/pixmaps/wallpapers && cd /usr/share/pixmaps/wallpapers && sudo wget -i /tmp/images.final && sudo fdupes -rdN /usr/share/pixmaps/wallpapers && sudo find /usr/share/pixmaps/wallpapers/ -type f -size -15k -exec mv -v {} ~/.local/share/Trash/files \;&& cd"
+# import functions file with larger more complex functions(stuff to big for aliases)
+. ~/.bashFunctions
 # The rest of the commands are for use by the dev of hackbox, remove them if you want
 alias gettowork="cd ~/Programming/HackBox/"
 alias pullhackboxsource="mkdir -p ~/Programming/ && cd ~/Programming/ && git clone https://github.com/dude56987/HackBox.git && gettowork"
