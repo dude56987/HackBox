@@ -1,0 +1,6 @@
+layout=1
+date_font=Hermit Medium 13
+time_font=Hermit Medium 14
+date_format=%m/%d/%Y
+time_format=%l:%M:%S %P
+

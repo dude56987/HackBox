@@ -1,0 +1,16 @@
+[G0]
+timername=Pomodoro
+time=1500
+timercommand=
+timerinfo=25m 0s
+is_countdown=true
+
+[others]
+nowin_if_alarm=false
+selecting_starts=false
+use_global_command=true
+global_command=notify-send "Time is up\\!" && espeak "take a break"
+repeat_alarm=false
+repetitions=1
+repeat_interval=10
+
