@@ -230,14 +230,11 @@ project-report:
 	echo "<html><body>" > report/log.html
 	echo "<h1><a href='index.html'>Back</a></h1>" >> report/log.html
 	# generate the log into a variable
-	#log = $(shell git log --stat | sed "s/ /\ /g")
 	git log --stat > report/logInfo
 	echo "<code><pre>" >> report/log.html
 	cat report/logInfo >> report/log.html
 	echo "</pre></code>" >> report/log.html
 	rm report/logInfo
-	#echo "<pre>$(log)</pre>" >> report/log.html
-	#bash -c "echo '<pre>$(git log --stat)</pre>' >> report/log.html"
 	echo "</body></html>" >> report/log.html
 	# generate git statistics
 	gitstats -c processes='8' . report/webstats
