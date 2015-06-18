@@ -23,7 +23,7 @@ install : batman
 installtosystem:
 	mkdir /opt/hackbox
 	cp -vr * /opt/hackbox
-	echo "#! /bin/bash\npython /opt/hackbox/hackboxsetup.py" > /usr/bin/hackboxsetup
+	echo "#! /bin/bash\npython3 /opt/hackbox/hackboxsetup.py" > /usr/bin/hackboxsetup
 	sudo chmod +x /usr/bin/hackboxsetup
 	sudo chmod -Rv ugo+r /opt/hackbox/media/
 uninstallfromsystem:

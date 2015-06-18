@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 ########################################################################
 # Program Designed to setup a new Linux system automatically via scripts
 # Copyright (C) 2014  Carl J Smith
@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
-import os, sys, shutil, json, zipfile, socket, urllib2, md5
+import os, sys, shutil, json, zipfile, socket
 from time import sleep
 from random import randrange
 sys.path.append('/opt/hackbox/')
@@ -58,46 +58,47 @@ whitebackground= '\033[47m'
 resetTextStyle=defaultText
 # use the gui if it exists
 if (("--no-curses" in sys.argv) != True):
-	from dialog import Dialog
-	queryboxes = Dialog()
+	#from dialog import Dialog
+	import dialog
+	queryboxes = dialog.Dialog()
 ########################################################################
 # if the user is running the help command
 if ("--help" in sys.argv) or ("-h" in sys.argv):
-	print "########################################################################"
-	print "# Program Designed to setup a new Linux system automatically via scripts"
-	print "#  Copyright (C) 2015  Carl J Smith"
-	print "#" 
-	print "#  This program is free software: you can redistribute it and/or modify"
-	print "#  it under the terms of the GNU General Public License as published by"
-	print "#  the Free Software Foundation, either version 3 of the License, or"
-	print "#  (at your option) any later version."
-	print "#" 
-	print "#  This program is distributed in the hope that it will be useful,"
-	print "#  but WITHOUT ANY WARRANTY; without even the implied warranty of"
-	print "#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the"
-	print "#  GNU General Public License for more details."
-	print "#" 
-	print "#  You should have received a copy of the GNU General Public License"
-	print "#  along with this program.  If not, see <http://www.gnu.org/licenses/>."
-	print "########################################################################"
-	print "--help or -h"
-	print "\tDisplay this message."
-	print "--create-relay"
-	print "\tSets up a torrent relay server."
-	print "\tUse the connect-to-relay command to connect to relay servers."
-	print "--force-use-config"
-	print "\tDo not ask the user questions and just install the currently built"
-	print "\tpayload."
-	print "--no-curses"
-	print "\tDon't use the curses dialogs."
-	print "--force-reboot"
-	print "\tReboot the system after the install process is finished."
-	print "--force-logout"
-	print "\tForce the system to logout of whatever session is active for the"
-	print "\tcurrent user."
-	print "--upgrade or -u"
-	print "\tUpgrade this software with the latest version from git, then run it."
-	print "########################################################################"
+	print("########################################################################")
+	print("# Program Designed to setup a new Linux system automatically via scripts")
+	print("#  Copyright (C) 2015  Carl J Smith")
+	print("#")
+	print("#  This program is free software: you can redistribute it and/or modify")
+	print("#  it under the terms of the GNU General Public License as published by")
+	print("#  the Free Software Foundation, either version 3 of the License, or")
+	print("#  (at your option) any later version.")
+	print("#")
+	print("#  This program is distributed in the hope that it will be useful,")
+	print("#  but WITHOUT ANY WARRANTY; without even the implied warranty of")
+	print("#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the")
+	print("#  GNU General Public License for more details.")
+	print("#")
+	print("#  You should have received a copy of the GNU General Public License")
+	print("#  along with this program.  If not, see <http://www.gnu.org/licenses/>.")
+	print("########################################################################")
+	print("--help or -h")
+	print("\tDisplay this message.")
+	print("--create-relay")
+	print("\tSets up a torrent relay server.")
+	print("\tUse the connect-to-relay command to connect to relay servers.")
+	print("--force-use-config")
+	print("\tDo not ask the user questions and just install the currently built")
+	print("\tpayload.")
+	print("--no-curses")
+	print("\tDon't use the curses dialogs.")
+	print("--force-reboot")
+	print("\tReboot the system after the install process is finished.")
+	print("--force-logout")
+	print("\tForce the system to logout of whatever session is active for the")
+	print("\tcurrent user.")
+	print("--upgrade or -u")
+	print("\tUpgrade this software with the latest version from git, then run it.")
+	print("########################################################################")
 	# end the program after displaying the help menu
 	exit()
 if ("--create-relay" in sys.argv):
@@ -119,20 +120,20 @@ if ("--upgrade" in sys.argv) or ("-u" in sys.argv) or ("--update" in sys.argv):
 	exit()
 ########################################################################
 # Pre-run checks
-print 'Preforming startup checks...'
+print('Preforming startup checks...')
 # run program as root if it is not being already done
 if os.geteuid() != 0:
 	if len(sys.argv) > 1:
-		os.system('sudo python '+(os.path.abspath(__file__))+' '+sys.argv[1])
+		os.system('sudo python3'+(os.path.abspath(__file__))+' '+sys.argv[1])
 	else:
-		os.system('sudo python '+(os.path.abspath(__file__)))
+		os.system('sudo python3 '+(os.path.abspath(__file__)))
 	exit()
 # set current directory to be same as this file
 os.chdir('/opt/hackbox')
 # banner to show the program
 hackboxlib.clear()
-print hackboxlib.colorText(hackboxlib.loadFile('media/banner.txt'))
-print 'Designed for:'+greentext+'Ubuntu Desktop Edition/Linux Mint Xfce Edition'+resetTextStyle
+print(hackboxlib.colorText(hackboxlib.loadFile('media/banner.txt')))
+print('Designed for:'+greentext+' Ubuntu Desktop Edition/Linux Mint Xfce Edition '+resetTextStyle)
 # set the background for the dialouges
 if (("--no-curses" in sys.argv) != True):
 	queryboxes.setBackgroundTitle("HackBox Setup")
@@ -142,21 +143,21 @@ if (('--force-use-config' in sys.argv) == False):
 		temp = 'This script will install and configure settings for a new system automatically.\n\n'
 		temp += 'Proceed?'
 		# returns 0 for yes and 1 for no
-		if queryboxes.yesno(temp)== 0:
-			print 'Starting setup...';
+		if (queryboxes.yesno(temp)=='ok'):
+			print('Starting setup...')
 		else:
 			hackboxlib.clear();
-			print 'Ending script...';
+			print('Ending script...')
 			exit();
 	else:
 		# prompt user if they want to proceed or not
 		printBlue('This script will install and configure settings for a new \n system automatically.')
-		check = raw_input('Proceed? [y/n]: ');
+		check = raw_input('Proceed? [y/n]: ')
 		if check == 'y' :
-			print 'Starting setup...';
+			print('Starting setup...')
 		else:
 			hackboxlib.clear();
-			print 'Ending script...';
+			print('Ending script...')
 			exit();
 # Check for network connection, dont proceed unless it is active
 connected = False
@@ -167,14 +168,14 @@ websites.append('http://www.duckduckgo.com')
 websites.append('http://www.ubuntu.com')
 websites.append('http://www.wikipedia.org')
 while connected == False:
-	print 'Checking Network Connection...'
+	print('Checking Network Connection...')
 	# pick a random website from the list above
 	website =  websites[(randrange(0,(len(websites)-1)))]
 	connected = bool(hackboxlib.downloadFile(website))
 	if connected == False:
-		print 'Connection failed, please connect to the network!'
+		print('Connection failed, please connect to the network!')
 		for i in range(20):
-			print ('Will retry again in '+str(20-int(i))+' seconds...')
+			print('Will retry again in '+str(20-int(i))+' seconds...')
 			sleep(1)
 ########################################################################
 hackboxlib.clear();
@@ -215,10 +216,10 @@ if os.path.exists('/etc/mdm/PostSession/Default'):
 # Setting Up Network Security
 ####################################################################
 # install gui for managing the firewall and configure it to be turned on at boot 
-hackboxlib.printGreen('Installing Gufw Firewall GUI...');
-os.system('apt-fast install gufw --assume-yes >> Install_Log.txt');
-print 'Configuring firewall to launch at boot...';
-os.system('ufw enable');
+hackboxlib.printGreen('Installing Gufw Firewall GUI...')
+os.system('apt-fast install gufw --assume-yes >> Install_Log.txt')
+print('Configuring firewall to launch at boot...')
+os.system('ufw enable')
 ####################################################################
 # unlock firewall ports for lan share on right click
 ####################################################################
@@ -226,8 +227,8 @@ try:
 	prefix = '.'.join(socket.gethostbyname(socket.gethostname()+'.local').split('.')[:3])
 	os.system('sudo ufw allow from '+prefix+'.0/24 to any port 9119')
 except:
-	print ("Failed to dertermine lan structure!")
-	print ("Share on lan will fail!")
+	print("Failed to dertermine lan structure!")
+	print("Share on lan will fail!")
 ####################################################################
 # set zsh to the default shell for new users
 os.system('useradd -D -s $(which zsh)')
@@ -336,7 +337,7 @@ os.system('update-initramfs -u')
 # Edit the login managers
 ########################################################################
 # modify slim theme backgrounds
-print 'Installing Hackbox MDM Theme...'
+print('Installing Hackbox MDM Theme...')
 # pull unzip theme into theme folder
 if os.path.exists('/etc/mdm/mdm.conf'):
 	zipfile.ZipFile(os.path.join('media','mdmTheme','HackBoxMdmTheme.zip'),'r').extractall('/usr/share/mdm/themes')
@@ -401,9 +402,9 @@ if '--force-logout' in sys.argv:
 if '--force-reboot' in sys.argv:
 	countdown = 10
 	while countdown > 0:
-		print 'System will REBOOT in',countdown,'seconds!'
-		print 'Press Ctrl-C to Cancel Reboot!'
+		print('System will REBOOT in '+countdown+' seconds!')
+		print('Press Ctrl-C to Cancel Reboot!')
 		countdown -= 1;
-	print 'Rebooting the system NOW...'
+	print('Rebooting the system NOW...')
 	os.system('reboot')
 # exit the script
