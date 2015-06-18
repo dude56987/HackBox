@@ -26,19 +26,19 @@
 # inctall custom icon themes in hackbox #
 #########################################
 for iconPack in /opt/hackbox/media/icons/*;do
-	cp -v /opt/hackbox/media/icons/$iconPack /usr/share/icons;
+	cp -vr $iconPack /usr/share/icons;
 done
 ################################
 # install the libnotify themes #
 ################################
 for notifyTheme in /opt/hackbox/media/themes/libnotify/*;do
-	cp -v /opt/hackbox/media/themes/libnotify/$notifyTheme /usr/share/themes;
+	cp -vr $notifyTheme /usr/share/themes;
 done
 #################################
 # install the custom gtk themes #
 #################################
 for theme in /opt/hackbox/media/themes/gtkThemes/*;do
-	cp -v /opt/hackbox/media/themes/gtkThemes/$theme /usr/share/themes;
+	cp -vr $theme /usr/share/themes;
 done
 ########################
 # Install Custom Fonts #
