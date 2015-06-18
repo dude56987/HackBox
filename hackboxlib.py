@@ -16,7 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
-import os, sys, shutil, json, zipfile, socket, urllib2, md5
+import os, sys, shutil, json, zipfile, socket, hashlib
+from urllib.request import urlopen
 from time import sleep
 from random import randrange
 ########################################################################
@@ -55,15 +56,16 @@ whitebackground= '\033[47m'
 resetTextStyle=defaultText
 # use the gui if it exists
 if (("--no-curses" in sys.argv) != True):
-	from dialog import Dialog
-	queryboxes = Dialog()
+	#from dialog import Dialog
+	import dialog
+	queryboxes = dialog.Dialog()
 # define functions
 ########################################################################
 def progressBar(percentage,messageText,banner):
 	if (("--no-curses" in sys.argv) != True):
 		percentage=int(percentage)
 		messageText=str(messageText)
-		progressBar = Dialog()
+		progressBar = dialog.Dialog()
 		progressBar.setBackgroundTitle(banner)
 		progressBar.gauge_start(percent=percentage,text=messageText)#DEBUG
 		#progressBar.gauge_update(percentage,messageText)#DEBUG
@@ -72,17 +74,17 @@ def progressBar(percentage,messageText,banner):
 	else:
 		percentage=str(percentage)
 		messageText=str(messageText)
-		print '#'*80
-		print messageText
-		print (percentage+'%')
-		print '#'*80
+		print('#'*80)
+		print(messageText)
+		print(percentage+'%')
+		print('#'*80)
 ########################################################################
 def deleteFile(filePath):
 	if os.path.exists(filePath):
 		os.remove(filePath)
 		return True
 	else:
-		print "ERROR: file does not exist, so can not remove it."
+		print("ERROR: file does not exist, so can not remove it.")
 		return False
 ########################################################################
 def loadFile(fileName):
@@ -90,7 +92,7 @@ def loadFile(fileName):
 		#print "Loading :",fileName
 		fileObject=open(fileName,'r');
 	except:
-		print "Failed to load :",fileName
+		print("Failed to load : "+fileName)
 		return False
 	fileText=''
 	lineCount = 0
@@ -120,27 +122,25 @@ def writeFile(fileName,contentToWrite):
 			fileObject.close()
 			#print 'Wrote file:',fileName
 		except:
-			print 'Failed to write file:',fileName
+			print('Failed to write file:'+fileName)
 			return False
 	else:
-		print 'Failed to write file, path:',filepath,'does not exist!'
+		print('Failed to write file, path:'+filepath+'does not exist!')
 		return False
 ########################################################################
 def downloadFile(fileAddress):
+	#convert address to text string
+	fileAddress=str(fileAddress)
+	print("Downloading :"+fileAddress)
 	try:
-		print "Downloading :",fileAddress
-		downloadedFileObject = urllib2.urlopen(str(fileAddress))
+		downloadedFileObject = urlopen(fileAddress)
+		# convert to text string
+		downloadedFileObject = downloadedFileObject.readall()
+		fileText = downloadedFileObject 
 	except:
-		print "Failed to download :",fileAddress
+		print("Failed to download :"+fileAddress)
 		return False
-	lineCount = 0
-	fileText = ''
-	for line in downloadedFileObject:
-		fileText += line
-		sys.stdout.write('Loading line '+str(lineCount)+'...\r')
-		lineCount+=1
-	downloadedFileObject.close()
-	print "Finished Loading :",fileAddress
+	print("Finished Loading :"+fileAddress)
 	return fileText
 ########################################################################
 def replaceLineInFile(fileName,stringToSearchForInLine,replacementText):
@@ -155,11 +155,11 @@ def replaceLineInFile(fileName,stringToSearchForInLine,replacementText):
 				newFileText += line+'\n'
 			else:
 				if replacementText != '':
-					print 'Replacing line:',line
-					print 'With:',replacementText
+					print('Replacing line:'+line)
+					print('With:'+replacementText)
 					newFileText += replacementText+'\n'
 				else:
-					print 'Deleting line:',line
+					print('Deleting line:'+line)
 	else:
 		return False
 	writeFile(fileName,newFileText)
@@ -183,7 +183,7 @@ def makeDir(remoteDir):
 	for i in temp:
 		remoteDir += (i + '/')
 		if os.path.exists(remoteDir):
-			print remoteDir , ': Already exists!, Moving on...'
+			print(remoteDir+' : Already exists!, Moving on...')
 		else:
 				os.mkdir(remoteDir)
 ########################################################################
@@ -201,11 +201,11 @@ def clear():
 ########################################################################
 def printBlue(text):
 	temp = bluetext+boldtext+text+resetTextStyle
-	print temp
+	print(temp)
 ########################################################################
 def printGreen(text):
 	temp = greentext+boldtext+text+resetTextStyle
-	print temp
+	print(temp)
 def colorText(text):
 	defaultText='\033[0m'
 	text= text.replace('<defaultText>',defaultText)
@@ -270,17 +270,17 @@ def COPY(src,dest):
 			if os.path.exists(src):
 				if os.path.exists(dest):
 					# if dest path already exists throw a error and do not overwrite
-					print 'ERROR:',dest,'Already Exists, Will not Overwrite!'
+					print('ERROR: '+dest+' Already Exists, Will not Overwrite!')
 					return False
 				else:
 					shutil.copytree(src,dest)
 					return True
 			else:
 				#if src path does not exist throw a error and do not overwrite
-				print 'ERROR:',src,'Does Not Exist!'
+				print('ERROR:'+src+'Does Not Exist!')
 				return False
 		except:
-			print 'ERROR: a unknown error occurred when copying',src,'to',dest
+			print('ERROR: a unknown error occurred when copying'+src+'to'+dest)
 			return False
 ########################################################################
 def installSourcesFile(fileNameOfFile):
@@ -291,7 +291,7 @@ def installSourcesFile(fileNameOfFile):
 	# space of the line
 	if fileNameOfFile == False:
 		# if the build process fails
-		print "ERROR: payload.source failed to build!"
+		print("ERROR: payload.source failed to build!")
 		return False
 	packageManager=False
 	if os.path.exists('/usr/bin/apt-get'):
@@ -302,7 +302,7 @@ def installSourcesFile(fileNameOfFile):
 		return False
 	fileObject = loadFile(fileNameOfFile)
 	if fileObject == False:
-		print 'ERROR: Source file',fileNameOfFile,'does not exist!'
+		print('ERROR: Source file'+fileNameOfFile+'does not exist!')
 		return False
 	else:
 		fileObject = fileObject.split('\n')
@@ -354,7 +354,7 @@ def installSourcesFile(fileNameOfFile):
 					if (("--no-curses" in sys.argv) != True):
 						currentMessage=tempInfo[2]
 					else:
-						print tempInfo[2]
+						print(tempInfo[2])
 					# print the command to the install log
 					os.system('echo "'+tempInfo[2]+'" >> Install_Log.txt')
 					os.system(tempInfo[2]+' >> Install_Log.txt')
@@ -403,8 +403,21 @@ def installSourcesFile(fileNameOfFile):
 					# install package in unsupported packages
 					tempInfo[2] = 'unsupportedPackages/'+tempInfo[2]+'.deb'
 					if os.path.exists(tempInfo[2]): 
-						# create a md5 from the file
-						tempMD5 = md5.new(loadFile(tempInfo[2])).digest()
+						hashObject=hashlib.md5()
+						#fileObject=open(tempInfo[2],'rb')
+						with open(tempInfo[2], "rb") as fileObject:
+							temp = fileObject.read(128)
+							hashObject.update(temp)
+						# load the file to be converted to md5
+						#tempMD5 = loadFile(tempInfo[2])
+						#tempMD5 = str(tempMD5)
+						# encode file content string into bytes
+						#tempMD5 = tempMD5.encode('utf-8')
+						#tempMD5 = tempMD5.encode('utf-8')
+						# feed the bytes into a md5 hash object
+						#tempMD5 = hashlib.md5(tempMD5)
+						# convert the hash into a readable string
+						tempMD5 = hashObject.digest()
 						#print (tempMD5)
 						if os.path.exists(tempInfo[2]+".md5"):
 							if loadFile(tempInfo[2]+".md5") == tempMD5:
@@ -419,7 +432,7 @@ def installSourcesFile(fileNameOfFile):
 							writeFile((tempInfo[2]+'.md5'),tempMD5)
 							os.system(('sudo gdebi --no '+tempInfo[2])+' >> Install_Log.txt')
 					else:
-						print ("ERROR:No "+tempInfo[2]+" exists!")
+						print("ERROR:No "+tempInfo[2]+" exists!")
 		# this is at bottom of loop outside of if tree	
 		if showUpdate == True:
 			# calc progress and display
@@ -439,14 +452,14 @@ def createInstallLoad():
 		else:
 			if (("--no-curses" in sys.argv) != True):
 				# returns 0 for yes and 1 for no
-				if queryboxes.yesno('A config already exists, would you like to use it?')== 0:
+				if queryboxes.yesno('A config already exists, would you like to use it?')=='ok':
 					useConfig = 'y'
 				else:
 					useConfig = 'n'
 					os.system('rm -rvf /etc/hackbox/sources/*')
 			else:
 				# otherwise ask the user if they want to use it
-				print 'A config already exists, would you like to use it?'
+				print('A config already exists, would you like to use it?')
 				useConfig = raw_input('[y/n]:')
 	# create a payload variables to orgnize catagories
 	payload = ''
@@ -488,7 +501,7 @@ def createInstallLoad():
 		# open the .source file
 		fileObject = loadFile(os.path.join('sources',fileName))
 		if fileObject == False:
-			print 'ERROR: Source file',fileName,'does not exist!'
+			print('ERROR: Source file'+fileName+'does not exist!')
 		else:
 			fileObject = fileObject.split('\n')
 		# clear the screen before loading stuff in this file
@@ -502,7 +515,7 @@ def createInstallLoad():
 				installSection = 'y'
 			elif line[:6]=='#INFO:':
 				# print the info
-				print line[6:]
+				print(line[6:])
 			elif line[:7]=='#BANNER':
 				# print the colorized banner file
 				banner = loadFile('media/banner.txt')
@@ -512,20 +525,20 @@ def createInstallLoad():
 						if line[:8]=='#BANNER:':
 							backgroundTitle =  line[8:]
 					else:
-						print (colorText(banner))
+						print(colorText(banner))
 			elif line[:10]=='#QUESTION:':
 				# check for install confrimation
 				if installSection != 'y' and useConfig != 'y':# if the AUTO-INSTALL is not set
 					if (("--no-curses" in sys.argv) != True):
 						# returns 0 for yes and 1 for no
-						if queryboxes.yesno(line[10:]) == 0:
+						if queryboxes.yesno(line[10:]) == 'ok':
 							# write file for next run
 							writeFile(os.path.join('/etc/hackbox/sources/',fileName),'')
 							installSection = 'y'
 						else:
 							installSection = 'n'
 					else:
-						print (line[10:])# show question
+						print(line[10:])# show question
 						installSection = raw_input('[y/n]:')# display prompt on a newline for y/n
 			# run sections if install is set to true for a file
 			if line[:1] != '#' and line.find('<:>') != -1 and installSection == 'y':
