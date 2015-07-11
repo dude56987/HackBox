@@ -15,6 +15,7 @@ alias say="espeak" # Speak the following string of text
 alias ping="ping -c 5" # set default ping count to 5
 alias system-info="inxi -F" # set default ping count to 5
 alias root="sudo -s" # root logs into root mode for user
+alias pm="sudo aptitude" # shorthand to run a package manager command 
 alias invert-color="xcalib -invert -alter" # Invert monitor colors
 alias nightvision="export TERM=xterm-mono;unalias ls;prompt suse;xcalib -clear;xcalib -i -a;xcalib -green .1 0 1 -blue .1 0 1 -red 0.8 0 100 -alter"
 # install some helpfull tools for working on a console only system
