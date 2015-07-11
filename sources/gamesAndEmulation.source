@@ -31,11 +31,14 @@ catagory<:>package<:>qjoypad
 catagory<:>message<:>Installing mumble(voip for games)
 catagory<:>package<:>mumble
 # add ppa for retroarch
-interactive<:>ppa<:>ppa:hunter-kaller/ppa
+interactive<:>ppa<:>ppa:libretro/ppa
 # retro console emulation with retroarch yo
 # hackbox.py installs the ppa at the begining
 catagory<:>message<:>Installing Retroarch(Retro Console Emulator)
 catagory<:>package<:>retroarch
+# attempt to install all libretro cores
+catagory<:>package<:>libretro*
+# below lines are in case the above dont work
 # Super Nintendo Core for retroarch
 catagory<:>message<:>Installing Super Nintendo Core for retroarch 
 catagory<:>package<:>libretro-snes9x-next
