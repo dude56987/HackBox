@@ -222,12 +222,15 @@ catagory<:>message<:>Installing Midnight Commander
 catagory<:>package<:>mc
 catagory<:>message<:>Installing wmctrl command line app for window management
 catagory<:>package<:>wmctrl
-catagory<:>message<:>Installing aptitude (CLI Package Management Tool)
-catagory<:>package<:>aptitude
 catagory<:>message<:>Installing Xfce Task Manager
 catagory<:>package<:>xfce4-taskmanager
 catagory<:>message<:>Installing menulibre (Editor for system menu)
 catagory<:>package<:>menulibre
+# package manager improvements
+catagory<:>message<:>Installing aptitude (CLI Package Management Tool)
+catagory<:>package<:>aptitude
+pre<:>message<:>Installing apt https support(repos can use https)
+pre<:>package<:>apt-transport-https
 ########################
 # install image viewer #
 ########################
@@ -258,7 +261,9 @@ catagory<:>message<:>Installing iftop(Top for Network Usage)
 catagory<:>package<:>iftop
 catagory<:>message<:>Installing vnstat(stats on network usage)
 catagory<:>package<:>vnstat
-# Uncomment to install monitorix to track system usage over time
+catagory<:>message<:>Installing prettyping(Generate a ping graph with ASCII art)
+catagory<:>command<:>curl https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping >> /usr/bin/prettyping && chmod +x /usr/bin/prettyping
+# monitorix to track system usage over time
 catagory<:>message<:>Installing monitorix(System Stat Tracker)
 catagory<:>deb-repo<:>deb http://apt.izzysoft.de/ubuntu generic universe<:>http://apt.izzysoft.de/izzysoft.asc
 catagory<:>package<:>monitorix
