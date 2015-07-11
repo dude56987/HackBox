@@ -134,12 +134,12 @@ def downloadFile(fileAddress):
 	print("Downloading :"+fileAddress)
 	try:
 		downloadedFileObject = urlopen(fileAddress)
-		# convert to text string
-		downloadedFileObject = downloadedFileObject.readall()
-		fileText = downloadedFileObject 
 	except:
 		print("Failed to download :"+fileAddress)
 		return False
+	# convert to text string
+	downloadedFileObject = downloadedFileObject.readall()
+	fileText = downloadedFileObject 
 	print("Finished Loading :"+fileAddress)
 	return fileText
 ########################################################################
@@ -373,6 +373,9 @@ def installSourcesFile(fileNameOfFile):
 						downloadedKeyFile=downloadFile(tempInfo[3])
 						keyFileName=(tempInfo[3].replace('.','_').replace('/','').replace(' ','_').replace(':',''))+'.pgp'
 						if downloadedKeyFile != False:
+							# one way to add the apt key with curl
+							#os.system('curl "'+tempInfo[3]+'" | apt-key add - ')
+							# one way to add the apt key with python alone
 							writeFile(('/tmp/'+keyFileName),downloadedKeyFile)
 							os.system('apt-key add /tmp/'+keyFileName)
 							os.system('rm /tmp/'+keyFileName)
