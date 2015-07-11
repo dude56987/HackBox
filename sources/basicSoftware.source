@@ -245,7 +245,12 @@ catagory<:>rm-package<:>ristretto
 catagory<:>rm-package<:>gwenview
 catagory<:>rm-package<:>geeqie
 catagory<:>rm-package<:>xloadimage
-# photo orgnizers #
+####################
+# photo organizers #
+####################
+catagory<:>message<:>Installing digikam(Photo Organizer)
+catagory<:>package<:>digikam
+###################################
 catagory<:>message<:>Removing Shotwell
 catagory<:>rm-package<:>shotwell
 ###################################
