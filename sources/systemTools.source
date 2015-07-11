@@ -9,13 +9,16 @@ catagory<:>message<:>Installing Back In Time (Backup Utility)
 catagory<:>package<:>backintime-gnome
 # the below is dead, keeping for a bit in case it is revived, it eases managing grub
 #catagory<:>message<:>Installing Startup Manager
-catagory<:>package<:>startupmanager
+#catagory<:>package<:>startupmanager
 # below tool is for cleanup of crap on the pc over time
 catagory<:>message<:>Installing Bleachbit (Clean up disk and write over old data)
 catagory<:>package<:>bleachbit
 # below is disk recovery tool
 catagory<:>message<:>Installing Testdisk(Disk Recovery Tool)
 catagory<:>package<:>testdisk
+# partition management
+catagory<:>message<:>Installing Gparted(Disk Partition Tool)
+catagory<:>package<:>gparted
 # remote desktop tool
 catagory<:>message<:>Installing Vinagre (Remote Desktop Viewer)
 catagory<:>package<:>vinagre
