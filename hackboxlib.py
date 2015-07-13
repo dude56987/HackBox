@@ -404,7 +404,7 @@ def installSourcesFile(fileNameOfFile):
 						os.system((packageManager+' install '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
 				elif tempInfo[1] == 'localdeb':
 					# install package in unsupported packages
-					tempInfo[2] = 'unsupportedPackages/'+tempInfo[2]+'.deb'
+					tempInfo[2] = '/opt/hackbox/unsupportedPackages/'+tempInfo[2]+'.deb'
 					if os.path.exists(tempInfo[2]): 
 						hashObject=hashlib.md5()
 						#fileObject=open(tempInfo[2],'rb')
@@ -420,7 +420,7 @@ def installSourcesFile(fileNameOfFile):
 						# feed the bytes into a md5 hash object
 						#tempMD5 = hashlib.md5(tempMD5)
 						# convert the hash into a readable string
-						tempMD5 = hashObject.digest()
+						tempMD5 = hashObject.hexdigest()
 						#print (tempMD5)
 						if os.path.exists(tempInfo[2]+".md5"):
 							if loadFile(tempInfo[2]+".md5") == tempMD5:
