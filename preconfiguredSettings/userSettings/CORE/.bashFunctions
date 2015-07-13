@@ -32,3 +32,10 @@ download-random-quote-wallpapers(){
 	sudo find /usr/share/pixmaps/wallpapers/ -type f -size -15k -exec mv -v {} ~/.local/share/Trash/files \;
 	cd
 }
+git(){
+	if [[ $1 = commit ]];then
+		command git commit --verbose "${@:2}"
+	else
+		command git "$@"
+	fi
+}
