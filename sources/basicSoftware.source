@@ -162,10 +162,11 @@ catagory<:>package<:>mcomix
 catagory<:>message<:>Installing Disk Usage Tool
 catagory<:>package<:>baobab
 # Install archive support
-catagory<:>message<:>Removing fileroller
-catagory<:>rm-package<:>file-roller
-catagory<:>message<:>Installing Xarchiver (Compressed file manager)
-catagory<:>package<:>xarchiver
+catagory<:>message<:>Installing File-Roller (Compressed file manager)
+catagory<:>package<:>file-roller
+################
+catagory<:>message<:>Removing Xarchiver (Compressed file manager)
+catagory<:>rm-package<:>xarchiver
 # setup thunar archive intergration
 catagory<:>message<:>Installing archive support for thunar context actions
 catagory<:>package<:>thunar-archive-plugin
