@@ -111,6 +111,8 @@ catagory<:>message<:>Installing xterm
 catagory<:>package<:>xterm
 catagory<:>message<:>Installing Goldendict(A dictionary that pulls from Wikipedia and Wiktionary)
 catagory<:>package<:>goldendict
+catagory<:>message<:>Installing Goldendict Wordnet(A locally stored dictionary)
+catagory<:>package<:>goldendict-wordnet
 catagory<:>message<:>Installing GCP(CP but verbose)
 catagory<:>package<:>gcp
 # below package is required for gcp to work correctly
