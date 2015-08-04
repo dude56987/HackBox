@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 ########################################################################
 # Program Designed to setup a new Linux system automatically via scripts
 # Copyright (C) 2014  Carl J Smith
@@ -343,12 +343,12 @@ def installSourcesFile(fileNameOfFile):
 					# dont update progress bar 
 					# the scripts pump out a bunch of text
 					showUpdate=False
-					if os.path.exists('scripts/'+tempInfo[2]+'.sh'):
+					if os.path.exists('/opt/hackbox/scripts/'+tempInfo[2]+'.sh'):
 						# launch the script in bash if its a shell script
-						os.system('bash scripts/'+tempInfo[2]+'.sh')
-					elif os.path.exists('scripts/'+tempInfo[2]+'.py'):
+						os.system('bash /opt/hackbox/scripts/'+tempInfo[2]+'.sh')
+					elif os.path.exists('/opt/hackbox/scripts/'+tempInfo[2]+'.py'):
 						# launch program in python if its a python script
-						os.system('python scripts/'+tempInfo[2]+'.py')
+						os.system('python3 /opt/hackbox/scripts/'+tempInfo[2]+'.py')
 				elif tempInfo[1] == 'command':
 					# execute command
 					if (("--no-curses" in sys.argv) != True):
@@ -459,7 +459,7 @@ def createInstallLoad():
 					useConfig = 'y'
 				else:
 					useConfig = 'n'
-					os.system('rm -rvf /etc/hackbox/sources/*')
+					os.system('rm -rvf /etc/hackbox/*')
 			else:
 				# otherwise ask the user if they want to use it
 				print('A config already exists, would you like to use it?')
