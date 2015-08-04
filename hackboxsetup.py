@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 ########################################################################
 # Program Designed to setup a new Linux system automatically via scripts
-# Copyright (C) 2014  Carl J Smith
+# Copyright (C) 2015  Carl J Smith
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,10 +26,6 @@ Version = '0.5.0'
 # For Ubuntu Server Edition/Ubuntu Desktop Edition/Linux Mint
 ########################################################################
 #TODO:
-# ~ add some sort of progress indication ~ (Needs Improvement)
-# ~ optimize each section into a single os.system call???
-# ~ Make entire thing into one payload based on choices
-#   variable for each item to install add 1 then / to get percent done
 # ~ custom distro???
 ########################################################################
 #text formating command globals

@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 ########################################################################
 # Program Designed to setup a new Linux system automatically via scripts
-# Copyright (C) 2014  Carl J Smith
+# Copyright (C) 2015  Carl J Smith
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -206,6 +206,7 @@ def printBlue(text):
 def printGreen(text):
 	temp = greentext+boldtext+text+resetTextStyle
 	print(temp)
+########################################################################
 def colorText(text):
 	defaultText='\033[0m'
 	text= text.replace('<defaultText>',defaultText)
@@ -445,6 +446,7 @@ def installSourcesFile(fileNameOfFile):
 				writeFile('/tmp/INSTALLPROGRESS.txt',('%'+str((progress/progressTotal)*100)+' completed...'))
 		progress += 1
 	return True
+########################################################################
 def createInstallLoad():
 	useConfig = 'n'
 	# check if a payload has already been built
