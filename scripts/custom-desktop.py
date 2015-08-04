@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/python3
 ########################################################################
 # Script to install custom desktop settings
 # Copyright (C) 2015  Carl J Smith
@@ -65,7 +65,7 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 		for user in os.listdir('/home/'):
 			if ("." in user) != True:
 				#os.system('resetsettings -u '+user)
-				print ('resetsettings -u '+user)
+				print('resetsettings -u '+user)
 	if deleteMe==True:
 		# remove the config file if usersettings are not saved
 		os.system('rm /etc/hackbox/customDesktop.conf')
@@ -113,4 +113,4 @@ fileObject.close()
 ########################################################################
 # Recursively call the script itself to read the configfile and apply
 # the correct actions.
-os.system('python /opt/hackbox/scripts/custom-desktop.py');
+os.system('python3 /opt/hackbox/scripts/custom-desktop.py');
