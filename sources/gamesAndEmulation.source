@@ -21,6 +21,8 @@ catagory<:>message<:>Installing nInvaders
 catagory<:>package<:>ninvaders
 catagory<:>message<:>Installing Bsd Games
 catagory<:>package<:>bsdgames
+catagory<:>message<:>Installing Bsd Games (list command)
+catagory<:>script<:>bsdgames
 catagory<:>message<:>Installing Py-Tac-Toe
 catagory<:>localdeb<:>py-tac-toe_1.0_all<:>/usr/bin/py-tac-toe
 catagory<:>message<:>Installing TuxPaint

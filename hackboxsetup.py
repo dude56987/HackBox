@@ -214,62 +214,6 @@ os.system('useradd -D -s $(which zsh)')
 # set zsh to default shell for current users
 os.system('sed -i "s/bash/zsh/g" /etc/passwd')
 ####################################################################
-# Games & Emulation 
-# NOTE playonlinux requires user interaction and is installed first
-####################################################################
-# install useability command for listing all bsd games
-hackboxlib.printGreen('Installing Bsd Games (usability commands)...');
-programFile = open('/usr/bin/bsdgames','w')
-temp = '#! /bin/bash\n'
-temp += 'echo "Use the below commands to access the individual games"\n'
-temp += 'echo "-----------------------------------------------------"\n'
-temp += 'echo "ninvaders - a ascii clone of Invaders"\n'
-temp += 'echo "adventure - an exploration game"\n'
-temp += 'echo "arithmetic - quiz on simple arithmetic"\n'
-temp += 'echo "atc - air traffic controller game"\n'
-temp += 'echo "backgammon - the game of backgammon"\n'
-temp += 'echo "banner - print large banner on printer"\n'
-temp += 'echo "battlestar - a tropical adventure game"\n'
-temp += 'echo "bcd - reformat input as punch cards, paper tape or morse code"\n'
-temp += 'echo "boggle - word search game"\n'
-temp += 'echo "caesar - decrypt caesar cyphers"\n'
-temp += 'echo "canfield - the solitaire card game canfield"\n'
-temp += 'echo "cfscores - show scores for canfield"\n'
-temp += 'echo "cribbage - the card game cribbage"\n'
-temp += 'echo "fish - play Go Fish"\n'
-temp += 'echo "gomoku - game of 5 in a row"\n'
-temp += 'echo "hangman - Computer version of the game hangman"\n'
-temp += 'echo "hunt - a multi-player multi-terminal game"\n'
-temp += 'echo "huntd - hunt daemon, back-end for hunt game"\n'
-temp += 'echo "mille - play Mille Bornes"\n'
-temp += 'echo "monop - Monopoly game"\n'
-temp += 'echo "morse - reformat input as punch cards, paper tape or morse code"\n'
-temp += 'echo "number - convert Arabic numerals to English"\n'
-temp += 'echo "phantasia - an interterminal fantasy game"\n'
-temp += 'echo "pom - display the phase of the moon"\n'
-temp += 'echo "ppt - reformat input as punch cards, paper tape or morse code"\n'
-temp += 'echo "primes - generate primes"\n'
-temp += 'echo "quiz - random knowledge tests"\n'
-temp += 'echo "rain - animated raindrops display"\n'
-temp += 'echo "random - random lines from a file or random numbers"\n'
-temp += 'echo "robots - fight off villainous robots"\n'
-temp += 'echo "rot13 - rot13 encrypt/decrypt"\n'
-temp += 'echo "sail - multi-user wooden ships and iron men"\n'
-temp += 'echo "snake - display chase game"\n'
-temp += 'echo "teachgammon - learn to play backgammon"\n'
-temp += 'echo "tetris-bsd - the game of tetris"\n'
-temp += 'echo "trek - trekkie game"\n'
-temp += 'echo "wargames - shall we play a game?"\n'
-temp += 'echo "worm - Play the growing worm game"\n'
-temp += 'echo "worms - animate worms on a display terminal"\n'
-temp += 'echo "wtf - translates acronyms for you"\n'
-temp += 'echo "wump - hunt the wumpus in an underground cave "\n'
-programFile.write(temp)
-programFile.close()
-os.system('sudo chmod +x /usr/bin/bsdgames')
-# install secondary command to list bsdgames using a system link
-os.system('link /usr/bin/bsdgames /usr/bin/bsd-games')
-########################################################################
 # install custom fonts for all users on system
 ########################################################################
 os.system('cp -v media/fonts/* /usr/share/fonts/truetype/')
