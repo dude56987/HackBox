@@ -384,6 +384,18 @@ def installSourcesFile(fileNameOfFile):
 						else:
 							# if the key is not downloaded delete the repo
 							os.system('rm /etc/apt/sources.list.d/'+fileName)
+				elif tempInfo[1] == 'open-port':
+					# allow traffic from inside the given port
+					os.system('sudo ufw allow proto tcp from any to any port '+tempInfo[2])
+				elif tempInfo[1] == 'open-lan-port':
+					try:
+						# dertermine the lan prefix we are on
+						prefix = '.'.join(socket.gethostbyname(socket.gethostname()+'.local').split('.')[:3])
+						# allow traffic from inside the given port
+						os.system('sudo ufw allow proto tcp from '+prefix+'.0/24 to any port '+tempInfo[2])
+					except:
+						print("ERROR: Failed to dertermine lan structure!")
+						print("ERROR: Cannot open port "+tempInfo[2]+" on lan!")
 				elif tempInfo[1] == 'ppa':
 					# dont update progress bar this part pumps out a bunch of text
 					showUpdate=False

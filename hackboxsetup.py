@@ -209,23 +209,6 @@ os.system('xset -dpms')
 if os.path.exists('/etc/mdm/PostSession/Default'):
 	hackboxlib.replaceLineInFileOnce('/etc/mdm/PostSession/Default','exit 0','bash $HOME/.bash_logout\nexit 0')
 ####################################################################
-# Setting Up Network Security
-####################################################################
-# install gui for managing the firewall and configure it to be turned on at boot 
-hackboxlib.printGreen('Installing Gufw Firewall GUI...')
-os.system('apt-fast install gufw --assume-yes >> Install_Log.txt')
-print('Configuring firewall to launch at boot...')
-os.system('ufw enable')
-####################################################################
-# unlock firewall ports for lan share on right click
-####################################################################
-try:
-	prefix = '.'.join(socket.gethostbyname(socket.gethostname()+'.local').split('.')[:3])
-	os.system('sudo ufw allow from '+prefix+'.0/24 to any port 9119')
-except:
-	print("Failed to dertermine lan structure!")
-	print("Share on lan will fail!")
-####################################################################
 # set zsh to the default shell for new users
 os.system('useradd -D -s $(which zsh)')
 # set zsh to default shell for current users

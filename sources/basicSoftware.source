@@ -201,8 +201,6 @@ catagory<:>message<:>Installing pdmenu(CLI Curses Menu)
 catagory<:>package<:>pdmenu
 catagory<:>message<:>Installing espeak (CLI electronic voice synth)
 catagory<:>package<:>espeak
-catagory<:>message<:>Installing woof (CLI lan/internet file transfer)
-catagory<:>package<:>woof
 catagory<:>message<:>Installing geolocate(Figure out the location of pcs)
 catagory<:>localdeb<:>geolocate<:>/usr/bin/geolocate
 # install colortest-python and link it to the colortest command 
@@ -283,6 +281,17 @@ catagory<:>localdeb<:>resetsettings<:>/usr/bin/resetsettings
 ########################################################################
 # SECTION FOR INTERNET SOFTWARE #
 ########################################################################
+# firewall
+catagory<:>message<:>Installing ufw (Firewall)
+catagory<:>package<:>gufw
+catagory<:>message<:>Installing gufw (ufw GUI)
+catagory<:>package<:>ufw
+catagory<:>command<:>ufw enable
+###################################
+catagory<:>message<:>Installing woof (CLI lan/internet file transfer)
+catagory<:>package<:>woof
+catagory<:>message<:>Open lan ports for woof right click functionality
+catagory<:>open-lan-port<:>9119
 catagory<:>message<:>Installing zeroconf support
 catagory<:>package<:>avahi-daemon
 catagory<:>package<:>avahi-discover
@@ -359,7 +368,7 @@ catagory<:>message<:>Installing Pidgin(Instant Messenger)
 catagory<:>package<:>pidgin
 # allow the firewall to passthrough for pidgin
 catagory<:>message<:>Configuring firewall for bonjour chat on lan
-catagory<:>command<:>ufw allow proto tcp from 192.168.2.0/24 to any port 5298
+catagory<:>open-lan-port<:>5298
 ##########################
 # install pidgin plugins #
 ##########################
