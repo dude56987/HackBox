@@ -59,7 +59,7 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 	os.system("cp -rvf /opt/hackbox/preconfiguredSettings/userSettings/CORE/. /etc/skel")
 	# install user picked settings package into the /etc/skel
 	if len(desktopLine) > 1:
-		os.system("cp -rvf "+desktopLine+" /etc/skel")
+		os.system("cp -rvf "+desktopLine+"/. /etc/skel")
 	if overwriteUsers==True:
 		# overwrite the users default settings
 		for user in os.listdir('/home/'):
@@ -89,7 +89,7 @@ for item in os.listdir("/opt/hackbox/preconfiguredSettings/userSettings/"):
 if len(choices)>1:
 	userChoice=root.radiolist('Which desktop enviorment layout would you like to be the default?',20,60,15,choices)
 	# returns a 2 value tuple, grab value # 1
-	userChoice="/opt/hackbox/preconfiguredSettings/userSettings/"+userChoice[1]
+	userChoice=("/opt/hackbox/preconfiguredSettings/userSettings/"+userChoice[1])
 	# add to the config file
 	config+=('desktopLayout='+userChoice+'\n')
 ########################################################################
