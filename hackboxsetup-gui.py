@@ -17,16 +17,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
 import os, sys
-# launch the program on xterm
-if os.path.exists('/usr/bin/xterm') == False:
-	# if xterm is not installed, then install it
-	os.system('gksu "apt-get install xterm --assume-yes"')
-	os.system('gksu "apt-get install screen --assume-yes"')
 if ("--upgrade" in sys.argv):
 	# if running an upgrade
 	print("Running a system upgrade...")
 	os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfigUpgrade"')
 else:
-	# otherwise do default output
-	os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')
+	# openvt launches a tty on terminal 12 and waits till setup script has finished
+	os.system('gksu "openvt -c 12 -s -w -l hackboxlauncher"')
 exit()
