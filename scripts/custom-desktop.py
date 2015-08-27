@@ -54,18 +54,19 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 	# begin applying config file set flags
 	#######################################
 	# clean up the old default configs
-	os.system("rm -rvf /etc/skel/.*")
+	os.system("rm -rvf /etc/skel/.")
 	# install default core into /etc/skel 
 	os.system("cp -rvf /opt/hackbox/preconfiguredSettings/userSettings/CORE/. /etc/skel")
 	# install user picked settings package into the /etc/skel
 	if len(desktopLine) > 1:
+		print("cp -rvf "+desktopLine+"/. /etc/skel")
 		os.system("cp -rvf "+desktopLine+"/. /etc/skel")
 	if overwriteUsers==True:
 		# overwrite the users default settings
 		for user in os.listdir('/home/'):
-			if ("." in user) != True:
-				#os.system('resetsettings -u '+user)
+			if (("." in user) or ("+" in user)) != True:
 				print('resetsettings -u '+user)
+				os.system('resetsettings -u '+user)
 	if deleteMe==True:
 		# remove the config file if usersettings are not saved
 		os.system('rm /etc/hackbox/customDesktop.conf')
@@ -93,13 +94,13 @@ if len(choices)>1:
 	# add to the config file
 	config+=('desktopLayout='+userChoice+'\n')
 ########################################################################
-# in the yesno dialog 0 = yes, 1 = no
-if 0 == root.yesno("Would you like to overwrite all users current settings with the new default settings?\n\nWARNING:This will delete any settings you have changed in your applications.However your documents will remain untouched.",20,60):
+# in the yesno dialog ok = yes, cancel = no 
+if "ok" == root.yesno("Would you like to overwrite all users current settings with the new default settings?\n\nWARNING:This will delete any settings you have changed in your applications.However your documents will remain untouched.",20,60):
 	config+='overwriteUsers=true\n'
 else:
 	config+='overwriteUsers=false\n'
 ########################################################################
-if 0 == root.yesno("Would you like to save these choices for next time you run the installer?",20,60):
+if "ok" == root.yesno("Would you like to save these choices for next time you run the installer?",20,60):
 	# set the flag to not delete the config file
 	config+='deleteMe=false\n'
 else:
