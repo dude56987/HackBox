@@ -130,14 +130,23 @@ build-deb:
 	rm -rv debian
 distro-build-env-setup:
 	# install uck so distro can be built
-	sudo apt-get install uck libfribidi-bin
+	#sudo apt-get install uck libfribidi-bin
+	# live-build works uck is broken
+	sudo apt-get install live-build
 	# second package is required in uck but not set as a dependency in uck package
 	echo 'Done!'
 distro-build:
-	uck-gui
+	mkdir distroBuild -p
+	#uck-gui
+	cd distroBuild && sudo lb config
+	cd distroBuild && sudo lb build
+	cd distroBuild && sudo lb config --mode ubuntu --distribution vivid --archive-areas "main multiverse vivid-backports universe contrib" --binary-images iso-hybrid --architecture i386 --debian-installer live 
+	cd distroBuild && sudo lb build
+	#cd distroBuild && lb config --mode ubuntu --distribution vivid --hostname livecd --username livecduser --archive-areas "main multiverse vivid-backports universe contrib" --binary-images iso-hybrid --architecture i386 --debian-installer livetman: build install-deb
+	##############
 batman: build install-deb
-	echo 'I am the Night.'
-pullCustomSoftware: 
+	# I am the Night
+pullCustomSoftware:
 	mkdir -p customSoftwarePackages
 	git clone https://github.com/dude56987/Distro-Upgrade.git customSoftwarePackages/distro-upgrade ||\
 	git -C customSoftwarePackages/distro-upgrade pull
