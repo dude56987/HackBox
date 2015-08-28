@@ -35,7 +35,7 @@
       <property name="length-adjust" type="bool" value="true"/>
       <property name="background-image" type="string" value="/opt/hackbox/media/panel.png"/>
       <property name="span-monitors" type="bool" value="false"/>
-      <property name="output-name" type="string" value="LVDS"/>
+      <property name="output-name" type="string" value=""/>
       <property name="autohide-behavior" type="uint" value="0"/>
     </property>
     <property name="panel-2" type="empty">
@@ -65,7 +65,7 @@
       <property name="length" type="uint" value="100"/>
       <property name="enter-opacity" type="uint" value="100"/>
       <property name="leave-opacity" type="uint" value="85"/>
-      <property name="output-name" type="string" value="LVDS"/>
+      <property name="output-name" type="string" value=""/>
       <property name="autohide-behavior" type="uint" value="0"/>
     </property>
   </property>
