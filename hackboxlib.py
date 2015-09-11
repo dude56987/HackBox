@@ -314,141 +314,7 @@ def installSourcesFile(fileNameOfFile):
 	currentMessage = 'Starting install process...'
 	# go though each line of the file
 	for line in fileObject:
-		# set a variable to show update progress
-		showUpdate=True
-		# all lines starting with # are comments	
-		if line[:1] != '#':
-			if line.find('<:>') != -1:
-				# example format of file
-				# subcatagory<:>type<:>data
-				# types are command, package, and message
-				# command will execute a bash command
-				# package requireds a extra component
-				# subcatagory<:>package<:>packageName
-				tempInfo = line.split('<:>')
-				if tempInfo[1]=='CHECK-PACKAGE-MANAGER':
-					# reset the package manager, perfer apt-fast
-					packageManager=False
-					if os.path.exists('/usr/bin/apt-get'):
-						packageManager = 'apt-get'
-					if os.path.exists('/usr/sbin/apt-fast'):
-						packageManager = 'apt-fast'
-					if packageManager == False:
-						return False
-				if tempInfo[1] == 'message':
-					if (("--no-curses" in sys.argv) != True):
-						currentMessage=(tempInfo[2]+'...')
-					else:
-						printGreen(tempInfo[2]+'...')
-				elif tempInfo[1] == 'script':
-					# dont update progress bar 
-					# the scripts pump out a bunch of text
-					showUpdate=False
-					if os.path.exists('/opt/hackbox/scripts/'+tempInfo[2]+'.sh'):
-						# launch the script in bash if its a shell script
-						os.system('bash /opt/hackbox/scripts/'+tempInfo[2]+'.sh')
-					elif os.path.exists('/opt/hackbox/scripts/'+tempInfo[2]+'.py'):
-						# launch program in python if its a python script
-						os.system('python3 /opt/hackbox/scripts/'+tempInfo[2]+'.py')
-				elif tempInfo[1] == 'command':
-					# execute command
-					if (("--no-curses" in sys.argv) != True):
-						currentMessage=tempInfo[2]
-					else:
-						print(tempInfo[2])
-					# print the command to the install log
-					os.system('echo "'+tempInfo[2]+'" >> Install_Log.txt')
-					os.system(tempInfo[2]+' >> Install_Log.txt')
-				elif tempInfo[1] == 'deb-repo':
-					# dont update progress bar this part pumps out a bunch of text
-					showUpdate=False
-					# add a debian repo and keyfile for that repo
-					#######################
-					# create a filename from the url given for the repo
-					fileName=(tempInfo[2].replace('.','_').replace('/','').replace(' ','_').replace(':',''))+'.list'
-					# if repo does not already exist
-					if os.path.exists(('/etc/apt/sources.list.d/'+fileName)) != True:
-						# if a deb repo to add, add the repo as its own file in sources.list.d
-						writeFile(('/etc/apt/sources.list.d/'+fileName),tempInfo[2])
-						# then add the key to the repo
-						downloadedKeyFile=downloadFile(tempInfo[3])
-						keyFileName=(tempInfo[3].replace('.','_').replace('/','').replace(' ','_').replace(':',''))+'.pgp'
-						if downloadedKeyFile != False:
-							# one way to add the apt key with curl
-							#os.system('curl "'+tempInfo[3]+'" | apt-key add - ')
-							# one way to add the apt key with python alone
-							writeFile(('/tmp/'+keyFileName),downloadedKeyFile)
-							os.system('apt-key add /tmp/'+keyFileName)
-							os.system('rm /tmp/'+keyFileName)
-							#os.system(('apt-get update -o Dir::Etc::sourcelist="sources.list.d/'+fileName+'" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"'))
-						else:
-							# if the key is not downloaded delete the repo
-							os.system('rm /etc/apt/sources.list.d/'+fileName)
-				elif tempInfo[1] == 'open-port':
-					# allow traffic from inside the given port
-					os.system('sudo ufw allow proto tcp from any to any port '+tempInfo[2])
-				elif tempInfo[1] == 'open-lan-port':
-					try:
-						# dertermine the lan prefix we are on
-						prefix = '.'.join(socket.gethostbyname(socket.gethostname()+'.local').split('.')[:3])
-						# allow traffic from inside the given port
-						os.system('sudo ufw allow proto tcp from '+prefix+'.0/24 to any port '+tempInfo[2])
-					except:
-						print("ERROR: Failed to dertermine lan structure!")
-						print("ERROR: Cannot open port "+tempInfo[2]+" on lan!")
-				elif tempInfo[1] == 'ppa':
-					# dont update progress bar this part pumps out a bunch of text
-					showUpdate=False
-					# if the package is a ppa source to add, use --yes to suppress confirmation
-					os.system(('apt-add-repository '+tempInfo[2]+' --yes'))
-					## BELOW IS BROKEN AS FUCK, above is a hackaround ##
-					# update only the added repo using its location in /etc/apt/sources.list.d/
-					# user must currently define this in the last argument in a ppa command
-					#os.system(('apt-get update -o Dir::Etc::sourcelist="sources.list.d/'+tempInfo[3]+'" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"'))
-				elif tempInfo[1] == 'rm-package':
-					#/usr/share/doc/packagename is checked to see if the package has already been installed
-					# remove package
-					if (os.path.exists('/usr/share/doc/'+tempInfo[2])):
-						os.system((packageManager+' purge '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
-				elif tempInfo[1] == 'package':
-					#/usr/share/doc/packagename is checked to see if the package has already been installed
-					# install package
-					if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
-						os.system((packageManager+' install '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
-				elif tempInfo[1] == 'localdeb':
-					# install package in unsupported packages
-					tempInfo[2] = '/opt/hackbox/unsupportedPackages/'+tempInfo[2]+'.deb'
-					if os.path.exists(tempInfo[2]): 
-						hashObject=hashlib.md5()
-						#fileObject=open(tempInfo[2],'rb')
-						with open(tempInfo[2], "rb") as fileObject:
-							temp = fileObject.read(128)
-							hashObject.update(temp)
-						# load the file to be converted to md5
-						#tempMD5 = loadFile(tempInfo[2])
-						#tempMD5 = str(tempMD5)
-						# encode file content string into bytes
-						#tempMD5 = tempMD5.encode('utf-8')
-						#tempMD5 = tempMD5.encode('utf-8')
-						# feed the bytes into a md5 hash object
-						#tempMD5 = hashlib.md5(tempMD5)
-						# convert the hash into a readable string
-						tempMD5 = hashObject.hexdigest()
-						#print (tempMD5)
-						if os.path.exists(tempInfo[2]+".md5"):
-							if loadFile(tempInfo[2]+".md5") == tempMD5:
-								pass
-								#print "No new file, package not installed."
-							else:
-								# if no parity is found write a new md5 and install the new file	
-								writeFile((tempInfo[2]+'.md5'),tempMD5)
-								os.system(('sudo gdebi --no '+tempInfo[2]))
-						else:
-							# if file does not have a md5 file yet create one and install the program
-							writeFile((tempInfo[2]+'.md5'),tempMD5)
-							os.system(('sudo gdebi --no '+tempInfo[2])+' >> Install_Log.txt')
-					else:
-						print("ERROR:No "+tempInfo[2]+" exists!")
+		readSourcesFileLine(line)	
 		# this is at bottom of loop outside of if tree	
 		if showUpdate == True:
 			# calc progress and display
@@ -458,6 +324,164 @@ def installSourcesFile(fileNameOfFile):
 				writeFile('/tmp/INSTALLPROGRESS.txt',('%'+str((progress/progressTotal)*100)+' completed...'))
 		progress += 1
 	return True
+########################################################################
+def readSourceFileLine(line):
+	''' Reads a single line from a source file. Then takes aproprate 
+	action based on what the configuration option is. For more info
+	on configuration options you can read the INFO file in the 
+	/opt/hackbox/sources/ directory.'''
+	# set a variable to show update progress
+	showUpdate=True
+	# all lines starting with # are comments	
+	if line[:1] != '#':
+		if line.find('<:>') != -1:
+			# example format of file
+			# subcatagory<:>type<:>data
+			# types are command, package, and message
+			# command will execute a bash command
+			# package requireds a extra component
+			# subcatagory<:>package<:>packageName
+			tempInfo = line.split('<:>')
+			if tempInfo[1]=='CHECK-PACKAGE-MANAGER':
+				# reset the package manager, perfer apt-fast
+				packageManager=False
+				if os.path.exists('/usr/bin/apt-get'):
+					packageManager = 'apt-get'
+				if os.path.exists('/usr/sbin/apt-fast'):
+					packageManager = 'apt-fast'
+				if packageManager == False:
+					return False
+			if tempInfo[1] == 'message':
+				if (("--no-curses" in sys.argv) != True):
+					currentMessage=(tempInfo[2]+'...')
+				else:
+					printGreen(tempInfo[2]+'...')
+			elif tempInfo[1] == 'script':
+				# dont update progress bar 
+				# the scripts pump out a bunch of text
+				showUpdate=False
+				if os.path.exists('/opt/hackbox/scripts/'+tempInfo[2]+'.sh'):
+					# launch the script in bash if its a shell script
+					os.system('bash /opt/hackbox/scripts/'+tempInfo[2]+'.sh')
+				elif os.path.exists('/opt/hackbox/scripts/'+tempInfo[2]+'.py'):
+					# launch program in python if its a python script
+					os.system('python3 /opt/hackbox/scripts/'+tempInfo[2]+'.py')
+			elif tempInfo[1] == 'command':
+				# execute command
+				if (("--no-curses" in sys.argv) != True):
+					currentMessage=tempInfo[2]
+				else:
+					print(tempInfo[2])
+				# print the command to the install log
+				os.system('echo "'+tempInfo[2]+'" >> Install_Log.txt')
+				os.system(tempInfo[2]+' >> Install_Log.txt')
+			elif tempInfo[1] == 'deb-repo':
+				# dont update progress bar this part pumps out a bunch of text
+				showUpdate=False
+				# add a debian repo and keyfile for that repo
+				#######################
+				# create a clean filename from the url given for the repo
+				fileName=(tempInfo[2].strip())
+				fileName=(fileName.replace('.','_'))
+				fileName=(fileName.replace('/',''))
+				fileName=(fileName.replace(' ','_'))
+				fileName=(fileName.replace(':',''))
+				fileName=(fileName.replace('https',''))
+				fileName=(fileName.replace('http',''))
+				fileName=(fileName.replace('deb_',''))
+				fileName=(fileName.replace('__','_'))
+				fileName=(fileName.replace('___','_'))
+				# remove _ at the start of filename
+				fileName=(fileName.replace('^_',''))
+				# The repo info will be overwritten if it already exists
+				# if a deb repo to add, add the repo as its own file in sources.list.d
+				writeFile(('/etc/apt/sources.list.d/'+fileName+'.list'),tempInfo[2])
+				# then add the key to the repo
+				downloadedKeyFile=downloadFile(tempInfo[3])
+				if downloadedKeyFile != False:
+					''' This section contains some commented out code. The reason for this
+					Is that I think there is a better way to add keyfiles by directly
+					writing them into the keyfile directly. You may have to write them as
+					binary files. This is untested though and the current implementation
+					works now. In the future I would like to do this without apt-key but
+					right now it still works with apt-key '''
+					# write file to temp and add keyfile with apt-key
+					writeFile(('/tmp/'+str(fileName)+'.gpg'),downloadedKeyFile.decode('utf8'))
+					os.system('apt-key add /tmp/'+str(fileName)+'.gpg')
+					# clear the key from temp
+					os.system('rm /tmp/'+str(fileName)+'.gpg')
+					# write keyfile directly to trusted keyfile directory
+					#writeFile(('/etc/apt/trusted.gpg.d/'+str(fileName)+'.gpg'),downloadedKeyFile.decode('utf8'))
+					# update this newly added repo
+					#os.system(('apt-get update -o Dir::Etc::sourcelist="sources.list.d/'+fileName+'" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"'))
+				else:
+					# if the key is not downloaded delete the repo
+					os.system('rm /etc/apt/sources.list.d/'+str(fileName)+'.list')
+			elif tempInfo[1] == 'open-port':
+				# allow traffic from inside the given port
+				os.system('sudo ufw allow proto tcp from any to any port '+tempInfo[2])
+			elif tempInfo[1] == 'open-lan-port':
+				try:
+					# dertermine the lan prefix we are on
+					prefix = '.'.join(socket.gethostbyname(socket.gethostname()+'.local').split('.')[:3])
+					# allow traffic from inside the given port
+					os.system('sudo ufw allow proto tcp from '+prefix+'.0/24 to any port '+tempInfo[2])
+				except:
+					print("ERROR: Failed to dertermine lan structure!")
+					print("ERROR: Cannot open port "+tempInfo[2]+" on lan!")
+			elif tempInfo[1] == 'ppa':
+				# dont update progress bar this part pumps out a bunch of text
+				showUpdate=False
+				# if the package is a ppa source to add, use --yes to suppress confirmation
+				os.system(('apt-add-repository '+tempInfo[2]+' --yes'))
+				## BELOW IS BROKEN AS FUCK, above is a hackaround ##
+				# update only the added repo using its location in /etc/apt/sources.list.d/
+				# user must currently define this in the last argument in a ppa command
+				#os.system(('apt-get update -o Dir::Etc::sourcelist="sources.list.d/'+tempInfo[3]+'" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"'))
+			elif tempInfo[1] == 'rm-package':
+				#/usr/share/doc/packagename is checked to see if the package has already been installed
+				# remove package
+				if (os.path.exists('/usr/share/doc/'+tempInfo[2])):
+					os.system((packageManager+' purge '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
+			elif tempInfo[1] == 'package':
+				#/usr/share/doc/packagename is checked to see if the package has already been installed
+				# install package
+				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
+					os.system((packageManager+' install '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
+			elif tempInfo[1] == 'localdeb':
+				# install package in unsupported packages
+				tempInfo[2] = '/opt/hackbox/unsupportedPackages/'+tempInfo[2]+'.deb'
+				if os.path.exists(tempInfo[2]): 
+					hashObject=hashlib.md5()
+					#fileObject=open(tempInfo[2],'rb')
+					with open(tempInfo[2], "rb") as fileObject:
+						temp = fileObject.read(128)
+						hashObject.update(temp)
+					# load the file to be converted to md5
+					#tempMD5 = loadFile(tempInfo[2])
+					#tempMD5 = str(tempMD5)
+					# encode file content string into bytes
+					#tempMD5 = tempMD5.encode('utf-8')
+					#tempMD5 = tempMD5.encode('utf-8')
+					# feed the bytes into a md5 hash object
+					#tempMD5 = hashlib.md5(tempMD5)
+					# convert the hash into a readable string
+					tempMD5 = hashObject.hexdigest()
+					#print (tempMD5)
+					if os.path.exists(tempInfo[2]+".md5"):
+						if loadFile(tempInfo[2]+".md5") == tempMD5:
+							pass
+							#print "No new file, package not installed."
+						else:
+							# if no parity is found write a new md5 and install the new file	
+							writeFile((tempInfo[2]+'.md5'),tempMD5)
+							os.system(('sudo gdebi --no '+tempInfo[2]))
+					else:
+						# if file does not have a md5 file yet create one and install the program
+						writeFile((tempInfo[2]+'.md5'),tempMD5)
+						os.system(('sudo gdebi --no '+tempInfo[2])+' >> Install_Log.txt')
+				else:
+					print("ERROR:No "+tempInfo[2]+" exists!")
 ########################################################################
 def createInstallLoad():
 	useConfig = 'n'
