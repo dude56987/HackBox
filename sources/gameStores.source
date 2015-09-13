@@ -6,5 +6,5 @@ catagory<:>command<:>wget http://media.steampowered.com/client/installer/steam.d
 catagory<:>localdeb<:>steam
 # Desura a game store that does not include drm in all games and focuses on indie content
 catagory<:>message<:>Installing Desura (indie game store)
-catagory<:>ppa<:>ppa:makson96/desurium-stable
+catagory<:>ppa<:>ppa:makson96/desurium
 catagory<:>package<:>desurium
