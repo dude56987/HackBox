@@ -284,7 +284,7 @@ def COPY(src,dest):
 			print('ERROR: a unknown error occurred when copying'+src+'to'+dest)
 			return False
 ########################################################################
-def readSourceFileLine(line,packageManager):
+def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage):
 	''' Reads a single line from a source file. Then takes aproprate 
 	action based on what the configuration option is. For more info
 	on configuration options you can read the INFO file in the 
@@ -441,6 +441,13 @@ def readSourceFileLine(line,packageManager):
 						os.system(('sudo gdebi --no '+tempInfo[2])+' >> Install_Log.txt')
 				else:
 					print("ERROR:No "+tempInfo[2]+" exists!")
+	# this is at bottom of loop outside of if tree	
+	if showUpdate == True:
+		# calc progress and display
+		if (("--no-curses" in sys.argv) != True):
+			progressBar(int((progress/progressTotal)*100),currentMessage,'Hackbox Setup')
+		else:
+			writeFile('/tmp/INSTALLPROGRESS.txt',('%'+str((progress/progressTotal)*100)+' completed...'))
 	return showUpdate
 ########################################################################
 def installSourcesFile(fileNameOfFile):
@@ -473,14 +480,7 @@ def installSourcesFile(fileNameOfFile):
 	currentMessage = 'Starting install process...'
 	# go though each line of the file
 	for line in fileObject:
-		showUpdate=readSourceFileLine(line,packageManager)
-		# this is at bottom of loop outside of if tree	
-		if showUpdate == True:
-			# calc progress and display
-			if (("--no-curses" in sys.argv) != True):
-				progressBar(int((progress/progressTotal)*100),currentMessage,'Hackbox Setup')
-			else:
-				writeFile('/tmp/INSTALLPROGRESS.txt',('%'+str((progress/progressTotal)*100)+' completed...'))
+		showUpdate=readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage)
 		progress += 1
 	return True
 ########################################################################
