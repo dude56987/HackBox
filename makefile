@@ -148,6 +148,8 @@ batman: build install-deb
 	# I am the Night
 pullCustomSoftware:
 	mkdir -p customSoftwarePackages
+	git clone https://github.com/dude56987/Desktop-Layout-Picker.git customSoftwarePackages/desktop-layout-picker ||\
+	git -C customSoftwarePackages/desktop-layout-picker pull
 	git clone https://github.com/dude56987/Distro-Upgrade.git customSoftwarePackages/distro-upgrade ||\
 	git -C customSoftwarePackages/distro-upgrade pull
 	git clone https://github.com/dude56987/Reboot-Required.git customSoftwarePackages/reboot-required ||\

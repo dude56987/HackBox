@@ -499,6 +499,8 @@ catagory<:>package<:>clipit
 # install desktop nova and the xfce module of the program
 # catagory<:>message<:>Installing Desktop-Nova(Wallpaper Switcher)####catagory<:>package<:>desktopnova
 # Setting up xfce desktop Support####catagory<:>package<:>desktopnova-module-xfce
+catagory<:>message<:>Installing Desktop Layout Picker(Change desktop layout)
+catagory<:>localdeb<:>desktop-layout-picker<:>/usr/bin/desktop-layout-picker
 catagory<:>message<:>Installing xfce whiskermenu
 catagory<:>package<:>xfce4-whiskermenu-plugin
 catagory<:>message<:>Installing mugshot(User info management)
