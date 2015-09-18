@@ -20,5 +20,11 @@
 apt-get install lightdm-gtk-greeter --assume-yes
 # install the gui to edit the login settings
 apt-get install lightdm-gtk-greeter-settings --assume-yes
-# copy over the login theme
+# copy over the login theme for the lightdm gtk greeter
 cp -fv /opt/hackbox/media/loginThemes/lightdmGtkTheme/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
+# Set the lightdm-gtk-greeter to be the default lightdm greeter
+echo '[SeatDefaults]' > /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
+echo 'greeter-session=lightdm-gtk-greeter'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
+echo 'user-session=xfce'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
+echo 'allow-guest=false'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
+echo 'greeter-hide-users=false'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf

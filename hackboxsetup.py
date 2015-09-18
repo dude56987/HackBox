@@ -247,56 +247,6 @@ if os.path.exists('/lib/plymouth/ubuntu_logo.png'):# edit main ubuntu boot logos
 # rebuild config for plymouth
 os.system('update-initramfs -u')
 ########################################################################
-# Edit the login managers
-########################################################################
-# modify slim theme backgrounds
-print('Installing Hackbox MDM Theme...')
-# pull unzip theme into theme folder
-if os.path.exists('/etc/mdm/mdm.conf'):
-	zipfile.ZipFile(os.path.join('media','mdmTheme','HackBoxMdmTheme.zip'),'r').extractall('/usr/share/mdm/themes')
-	# edit the default config to set the mdm theme
-	hackboxlib.replaceLineInFile('/etc/mdm/mdm.conf','Greeter=','\n\n')
-	hackboxlib.replaceLineInFile('/etc/mdm/mdm.conf','[security]','\nGreeter=/usr/lib/mdm/mdmgreeter\n\n[security]\n')
-	hackboxlib.replaceLineInFile('/etc/mdm/mdm.conf','GraphicalTheme=','\n\n')
-	hackboxlib.replaceLineInFile('/etc/mdm/mdm.conf','[greeter]','\n[greeter]\nGraphicalTheme=HackBox\n')
-	hackboxlib.replaceLineInFile('/etc/mdm/mdm.conf','DefaultSession=','DefaultSession=xfce.desktop')
-	temp = hackboxlib.loadFile('/etc/mdm/mdm.conf')
-	# make shure nothing is more than double returned
-	while (temp.find('\n\n\n') != -1):
-		temp = temp.replace('\n\n\n','\n\n')
-	hackboxlib.writeFile('/etc/mdm/mdm.conf',temp)
-	temp = None
-if os.path.exists('/etc/lightdm/lightdm.conf'): # edit lightdm theme
-	# disable guest session
-	#~ os.chdir('/usr/lib/lightdm')
-	#~ os.system('./lightdm-set-defaults --allow-guest=false')
-	#~ os.chdir(currentDirectory())# reset back to current directory
-	# edit the default settings
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm.conf','greeter-session=','greeter-session=lightdm-gtk-greeter')
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm.conf','user-session=','user-session=xubuntu')
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm.conf','allow-guest=','allow-guest=false')
-if os.path.exists('/etc/lightdm/unity-greeter.conf'):
-	# edit the theme
-	hackboxlib.replaceLineInFile('/etc/lightdm/unity-greeter.conf','background=','background=/usr/share/pixmaps/hackbox/wallpaperBranded.png')
-	hackboxlib.replaceLineInFile('/etc/lightdm/unity-greeter.conf','logo=','logo=/usr/share/pixmaps/hackbox/media/hackboxLogo.png')
-	hackboxlib.replaceLineInFile('/etc/lightdm/unity-greeter.conf','font-name=','font-name=Hermit 11')
-	hackboxlib.replaceLineInFile('/etc/lightdm/unity-greeter.conf','icon-theme-name=','icon-theme-name=NITRUX')
-	hackboxlib.replaceLineInFile('/etc/lightdm/unity-greeter.conf','user-session=','user-session=xfce')
-	hackboxlib.replaceLineInFile('/etc/lightdm/unity-greeter.conf','theme-name=','theme-name=Greybird')
-if os.path.exists('/etc/lightdm/lightdm-gtk-greeter.conf'):
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter.conf','background=','background=/usr/share/pixmaps/hackbox/wallpaperBranded.png')
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter.conf','logo=','logo=/usr/share/pixmaps/hackbox/media/hackboxLogo.png')
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter.conf','font-name=','font-name=Hermit 11')
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter.conf','icon-theme-name=','icon-theme-name=NITRUX')
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter.conf','user-session=','user-session=xfce')
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter.conf','theme-name=','theme-name=Greybird')
-if os.path.exists('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf'):
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf','background=','background=/usr/share/pixmaps/hackbox/wallpaperBranded.png')
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf','logo=','logo=/usr/share/pixmaps/hackbox/hackboxLogo.png')
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf','font-name=','font-name=Hermit 11')
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf','icon-theme-name=','icon-theme-name=NITRUX')
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf','user-session=','user-session=xfce')
-	hackboxlib.replaceLineInFile('/etc/lightdm/lightdm-gtk-greeter-ubuntu.conf','theme-name=','theme-name=Greybird')
 # install the payload created previously
 hackboxlib.installSourcesFile(payloadFileLocation)
 # show 100 percent at end
