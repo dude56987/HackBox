@@ -213,11 +213,6 @@ if os.path.exists('/etc/mdm/PostSession/Default'):
 os.system('useradd -D -s $(which zsh)')
 # set zsh to default shell for current users
 os.system('sed -i "s/bash/zsh/g" /etc/passwd')
-####################################################################
-# install custom fonts for all users on system
-########################################################################
-os.system('cp -v media/fonts/* /usr/share/fonts/truetype/')
-os.system('fc-cache -f -v')
 #########################################################################
 # Customize login to ttys and fix issues with bootlogo
 ########################################################################

@@ -178,6 +178,8 @@ catagory<:>localdeb<:>distro-upgrade<:>/usr/bin/distro-upgrade
 ##### Additonal Fonts #####
 catagory<:>message<:>Installing fonts(opendyslexic)
 catagory<:>package<:>fonts-opendyslexic
+catagory<:>message<:>Installing other custom fonts
+catagory<:>script<:>install-custom-fonts
 ########################################################################
 # UTILITIES #
 ########################################################################
