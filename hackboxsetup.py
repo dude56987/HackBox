@@ -208,11 +208,6 @@ os.system('xset -dpms')
 # the below fixes that in the config of mdm
 if os.path.exists('/etc/mdm/PostSession/Default'):
 	hackboxlib.replaceLineInFileOnce('/etc/mdm/PostSession/Default','exit 0','bash $HOME/.bash_logout\nexit 0')
-####################################################################
-# set zsh to the default shell for new users
-os.system('useradd -D -s $(which zsh)')
-# set zsh to default shell for current users
-os.system('sed -i "s/bash/zsh/g" /etc/passwd')
 #########################################################################
 # Customize login to ttys and fix issues with bootlogo
 ########################################################################

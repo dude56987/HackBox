@@ -62,10 +62,15 @@ pre<:>package<:>gdebi
 pre<:>message<:>Installing debconf-utils(tools for working with deb files)
 pre<:>package<:>debconf-utils
 ###################
-catagory<:>message<:>Installing broadcast(message all user on the system)
-catagory<:>localdeb<:>broadcast<:>/usr/bin/broadcast
+# setup the shell #
+###################
 catagory<:>message<:>Installing ZSH(Shell)
 catagory<:>package<:>zsh
+# set default shell
+catagory<:>script<:>set-default-shell
+###################
+catagory<:>message<:>Installing broadcast(message all user on the system)
+catagory<:>localdeb<:>broadcast<:>/usr/bin/broadcast
 catagory<:>message<:>Installing SSH(Remote Shell)
 catagory<:>package<:>ssh
 catagory<:>message<:>Installing SSHFS(mount remote filesystems locally via sftp)
