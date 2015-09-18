@@ -45,8 +45,6 @@ catagory<:>message<:>Change the system swappiness(Improve use of system RAM)
 catagory<:>script<:>change-swappiness
 catagory<:>message<:>Fix Home Permissions(Users can't see other users stuff now)
 catagory<:>script<:>fix-home-permissions
-catagory<:>message<:>Make sudo have password feedback
-catagory<:>script<:>passwordFeedback
 catagory<:>message<:>Disable console screen blanking
 catagory<:>script<:>disable-screenblank
 catagory<:>message<:>Changing the grub splashscreen
@@ -56,6 +54,14 @@ catagory<:>script<:>customize-grub
 ###################
 pre<:>message<:>Installing XFCE4(Desktop Enviorment)
 pre<:>package<:>xfce4
+###################
+# Password interface changes
+catagory<:>message<:>Make sudo have password feedback
+catagory<:>script<:>passwordFeedback
+catagory<:>message<:>Install gksu(graphical password input)
+catagory<:>package<:>gksu
+catagory<:>message<:>Make gksu launch automaticly for admin tools
+catagory<:>package<:>policykit-1-gnome
 ###################
 pre<:>message<:>Installing gdebi(Grapical Package Installer)
 pre<:>package<:>gdebi
