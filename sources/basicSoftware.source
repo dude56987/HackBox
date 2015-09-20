@@ -47,8 +47,10 @@ catagory<:>message<:>Fix Home Permissions(Users can't see other users stuff now)
 catagory<:>script<:>fix-home-permissions
 catagory<:>message<:>Disable console screen blanking
 catagory<:>script<:>disable-screenblank
-catagory<:>message<:>Changing the grub splashscreen
+catagory<:>message<:>Changing the grub boot menu
 catagory<:>script<:>customize-grub
+catagory<:>message<:>Disable graphical bootsplash
+catagory<:>script<:>disable-bootsplash
 ###################
 ## Install XFCE4 ##
 ###################

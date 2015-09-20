@@ -225,28 +225,6 @@ os.system('chmod o-r /etc/update-motd.d/*')
 os.system('chmod ug+r /etc/update-motd.d/*')
 os.system('chmod u+w /etc/update-motd.d/*')
 ########################################################################
-# apply branding to boot sequence for linux mint
-# this will always be done regardless of user settings
-########################################################################
-if os.path.exists('/lib/plymouth/themes/mint-logo/'): #edit linux mint boot themes
-	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/mint-logo/bootlogo.png')
-	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/mint-logo/logo.png')
-	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/mint-logo/shutlogo.png')
-	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/mint-logo/text.png')
-	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/no-logo/no_logo.png')
-if os.path.exists('/lib/plymouth/themes/xubuntu-logo/'):# edit xubuntu boot themes
-	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/xubuntu-logo/logo.png')
-	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/xubuntu-logo/logo_16bit.png')
-	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/xubuntu-logo/text.png')
-if os.path.exists('/lib/plymouth/themes/ubuntu/'): # edit ubuntu boot themes
-	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/ubuntu/logo.png')
-	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/ubuntu/logo_16bit.png')
-	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/themes/ubuntu/text.png')
-if os.path.exists('/lib/plymouth/ubuntu_logo.png'):# edit main ubuntu boot logos
-	os.system('cp -v media/hackboxLogoText.png /lib/plymouth/ubuntu_logo.png')
-# rebuild config for plymouth
-os.system('update-initramfs -u')
-########################################################################
 # install the payload created previously
 hackboxlib.installSourcesFile(payloadFileLocation)
 # show 100 percent at end
