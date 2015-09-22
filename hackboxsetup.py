@@ -217,13 +217,6 @@ os.system('sed -i "s/etc-issue = True/etc-issue = False/g" /etc/linuxmint/mintSy
 # customize the login of tty terminals
 os.system('cp -vf media/ttyTheme/issue /etc/issue')
 os.system('cp -vf media/ttyTheme/issue.net /etc/issue.net')
-# copy over motd scripts
-os.system('cp -rvf media/ttyTheme/update-motd.d/ /etc/')
-# fix permissions on motd scripts
-os.system('chmod +x /etc/update-motd.d/*')
-os.system('chmod o-r /etc/update-motd.d/*')
-os.system('chmod ug+r /etc/update-motd.d/*')
-os.system('chmod u+w /etc/update-motd.d/*')
 ########################################################################
 # install the payload created previously
 hackboxlib.installSourcesFile(payloadFileLocation)
