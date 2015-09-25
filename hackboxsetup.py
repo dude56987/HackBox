@@ -28,30 +28,6 @@ Version = '0.5.0'
 #TODO:
 # ~ custom distro???
 ########################################################################
-#text formating command globals
-defaultText='\033[0m'
-boldtext='\033[1m'
-blinktext='\033[5m'
-#textcolors
-blacktext = '\033[30m'
-redtext= '\033[31m'
-greentext= '\033[32m'
-yellowtext= '\033[33m'
-bluetext= '\033[34m'
-magentatext= '\033[35m'
-cyantext= '\033[36m'
-whitetext= '\033[37m'
-#background colors
-blackbackground= '\033[40m'
-redbackground= '\033[41m'
-greenbackground= '\033[42m'
-yellowbackground= '\033[43m'
-bluebackground= '\033[44m'
-magentabackground= '\033[45m'
-cyanbackground= '\033[46m'
-whitebackground= '\033[47m'
-# reset to default style
-resetTextStyle=defaultText
 # use the gui if it exists
 if (("--no-curses" in sys.argv) != True):
 	#from dialog import Dialog
@@ -129,10 +105,6 @@ os.chdir('/opt/hackbox')
 # create the install log
 os.system('echo "Starting Install Process..." >> Install_Log.txt');
 os.system('echo "Started on ${date}" >> Install_Log.txt');
-# banner to show the program
-hackboxlib.clear()
-print(hackboxlib.colorText(hackboxlib.loadFile('media/banner.txt')))
-print('Designed for:'+greentext+' Ubuntu Desktop Edition/Linux Mint Xfce Edition '+resetTextStyle)
 # set the background for the dialouges
 if (("--no-curses" in sys.argv) != True):
 	queryboxes.setBackgroundTitle("HackBox Setup")
@@ -192,6 +164,7 @@ os.system('xset -dpms')
 hackboxlib.installSourcesFile(payloadFileLocation)
 # show 100 percent at end
 hackboxlib.progressBar(100,'Script finished, System setup complete :D',"Hackbox Setup")
+os.system('nohup broadcast 100% System setup complete :D> /dev/null')
 if os.path.exists('/etc/mdm/Init/Default'):
 	# clear the mdm configured startup of hackboxsetup
 	os.system('sed -i "s/hackboxsetup\-gui\ \-\-no\-reset//g" /etc/mdm/Init/Default')

@@ -23,5 +23,5 @@ if ("--upgrade" in sys.argv):
 	os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfigUpgrade"')
 else:
 	# openvt launches a tty on terminal 12 and waits till setup script has finished
-	os.system('gksu "openvt -c 12 -s -w -l hackboxlauncher"')
+	os.system('pkexec openvt -c 12 -s -w -l hackboxlauncher')
 exit()
