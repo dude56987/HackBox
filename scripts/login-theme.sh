@@ -16,6 +16,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
+# Graphical Login Manager
+########################################################################
 # install the lightdm gtk login manager
 apt-get install lightdm-gtk-greeter --assume-yes
 # install the gui to edit the login settings
@@ -28,3 +30,13 @@ echo 'greeter-session=lightdm-gtk-greeter'>> /usr/share/lightdm/lightdm.conf.d/9
 echo 'user-session=xfce'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
 echo 'allow-guest=false'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
 echo 'greeter-hide-users=false'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
+########################################################################
+# TTY Login Manager
+########################################################################
+# Customize login to ttys and fix issues with bootlogo
+# customize the login of tty terminals
+cp -vf /opt/hackbox/media/ttyTheme/issue /etc/issue
+cp -vf /opt/hackbox/media/ttyTheme/issue.net /etc/issue.net
+# fix mintsystem reseting the above variables by turning off that crap
+sed -i "s/lsb-release = True/lsb-release = False/g" /etc/linuxmint/mintSystem.conf
+sed -i "s/etc-issue = True/etc-issue = False/g" /etc/linuxmint/mintSystem.conf

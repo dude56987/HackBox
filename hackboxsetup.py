@@ -126,6 +126,9 @@ if os.geteuid() != 0:
 	exit()
 # set current directory to be same as this file
 os.chdir('/opt/hackbox')
+# create the install log
+os.system('echo "Starting Install Process..." >> Install_Log.txt');
+os.system('echo "Started on ${date}" >> Install_Log.txt');
 # banner to show the program
 hackboxlib.clear()
 print(hackboxlib.colorText(hackboxlib.loadFile('media/banner.txt')))
@@ -178,45 +181,12 @@ hackboxlib.clear();
 os.chdir('/opt/hackbox')
 # create the install payload file, it will be installed after this stuff
 payloadFileLocation = hackboxlib.createInstallLoad()
-#########################################################################
-#########################################################################
-#########################################################################
-#########################################################################
-#########################################################################
-# TODO: MAKE ALL THE BELOW STUFF INTO SCRIPTS AND SOURCE FILES          #
-#########################################################################
-#########################################################################
-#########################################################################
-#########################################################################
-#########################################################################
-# create the install log
-os.system('echo "Starting Install Process..." >> Install_Log.txt');
-os.system('echo "Started on ${date}" >> Install_Log.txt');
 ########################################################################
 # run some commands that will keeps the screen from blanking during install
 # these will fail in the terminal but that wont stop the program
 os.system('xset s 0 0')
 os.system('xset s off')
 os.system('xset -dpms')
-####################################################################
-# install the clear history command on the system and set it to run
-# on every user logout to clear up space
-#~ os.system('python '+os.path.join(currentDirectory(),'clearHistory','setup.py'))
-# the replacing system for clearhistory uses the .bash_logout scripts. although
-# they do not work on lightdm, only under mdm
-# In the current mdm implementation these dont work on logout so
-# the below fixes that in the config of mdm
-if os.path.exists('/etc/mdm/PostSession/Default'):
-	hackboxlib.replaceLineInFileOnce('/etc/mdm/PostSession/Default','exit 0','bash $HOME/.bash_logout\nexit 0')
-#########################################################################
-# Customize login to ttys and fix issues with bootlogo
-########################################################################
-# fix mintsystem reseting the below variables by turning off that crap
-os.system('sed -i "s/lsb-release = True/lsb-release = False/g" /etc/linuxmint/mintSystem.conf')
-os.system('sed -i "s/etc-issue = True/etc-issue = False/g" /etc/linuxmint/mintSystem.conf')
-# customize the login of tty terminals
-os.system('cp -vf media/ttyTheme/issue /etc/issue')
-os.system('cp -vf media/ttyTheme/issue.net /etc/issue.net')
 ########################################################################
 # install the payload created previously
 hackboxlib.installSourcesFile(payloadFileLocation)
