@@ -38,6 +38,7 @@ interactive<:>ppa<:>ppa:libretro/stable
 # hackbox.py installs the ppa at the begining
 catagory<:>message<:>Installing Retroarch(Retro Console Emulator)
 catagory<:>package<:>retroarch
+catagory<:>package<:>retroarch-joypad-autoconfig
 # attempt to install all libretro cores
 catagory<:>package<:>libretro*
 # below lines are in case the above dont work
