@@ -1,12 +1,13 @@
 #BANNER
 #QUESTION:Would you like to install System Administrator Tools?
 # System Tools Source file
-# backup tool #
-# luckybackup is way harder to use than backintime so its getting replaced
-catagory<:>message<:>Installing LuckyBackup (Backup Utility)
+# backup tools #
+catagory<:>message<:>Installing LuckyBackup (Backup Utility)(GUI for rsync)
 catagory<:>package<:>luckybackup
 catagory<:>message<:>Installing Back In Time (Backup Utility)
 catagory<:>package<:>backintime-gnome
+# remove other backup programs to avoid confusion
+catagory<:>rm-package<:>deja-dup
 # the below is dead, keeping for a bit in case it is revived, it eases managing grub
 #catagory<:>message<:>Installing Startup Manager
 #catagory<:>package<:>startupmanager
