@@ -5,21 +5,68 @@ Version:0.17:$
 Arch:x86-gcc3:$
 
 [PLUGINS]
-libflashplayer.so:$
-/usr/lib/adobe-flashplugin/libflashplayer.so:$
-11.2.202.378:$
-1401235126000:0:0:0:$
-Shockwave Flash 11.2 r202:$
-Shockwave Flash:$
-2
-0:application/x-shockwave-flash:Shockwave Flash:swf:$
-1:application/futuresplash:FutureSplash Player:spl:$
+libvlcplugin.so:$
+/usr/lib/mozilla/plugins/libvlcplugin.so:$
+:$
+1406697397000:0:0:0:$
+Version 2.2.0 Weatherwax, copyright 1996-2012 VideoLAN and Authors<br /><a href="http://www.videolan.org/vlc/">http://www.videolan.org/vlc/</a>:$
+VLC Web Plugin:$
+49
+0:audio/mpeg:MPEG audio:mp2,mp3,mpga,mpega:$
+1:audio/x-mpeg:MPEG audio:mp2,mp3,mpga,mpega:$
+2:video/mpeg:MPEG video:mpg,mpeg,mpe:$
+3:video/x-mpeg:MPEG video:mpg,mpeg,mpe:$
+4:video/mpeg-system:MPEG video:mpg,mpeg,mpe,vob:$
+5:video/x-mpeg-system:MPEG video:mpg,mpeg,mpe,vob:$
+6:audio/mp4:MPEG-4 audio:aac,mp4,mpg4:$
+7:audio/x-m4a:MPEG-4 audio:m4a:$
+8:audio/m4a:MPEG-4 audio:m4a:$
+9:video/mp4:MPEG-4 video:mp4,mpg4:$
+10:application/mpeg4-iod:MPEG-4 video:mp4,mpg4:$
+11:application/mpeg4-muxcodetable:MPEG-4 video:mp4,mpg4:$
+12:video/x-m4v:MPEG-4 video:m4v:$
+13:video/x-msvideo:AVI video:avi:$
+14:video/quicktime:QuickTime video:mov,qt:$
+15:application/ogg:Ogg stream:ogg:$
+16:video/ogg:Ogg video:ogv:$
+17:audio/ogg:Ogg audio:oga:$
+18:application/x-ogg:Ogg stream:ogg:$
+19:audio/ogg;codecs=opus:Opus audio:opus:$
+20:application/x-vlc-plugin:VLC plug-in::$
+21:video/x-ms-asf-plugin:Windows Media Video:asf,asx:$
+22:video/x-ms-asf:Windows Media Video:asf,asx:$
+23:application/x-mplayer2:Windows Media::$
+24:video/x-ms-wmv:Windows Media:wmv:$
+25:video/x-ms-wvx:Windows Media Video:wvx:$
+26:audio/x-ms-wma:Windows Media Audio:wma:$
+27:application/x-google-vlc-plugin:Google VLC plug-in::$
+28:audio/wav:WAV audio:wav:$
+29:audio/x-wav:WAV audio:wav:$
+30:audio/3gpp:3GPP audio:3gp,3gpp:$
+31:video/3gpp:3GPP video:3gp,3gpp:$
+32:audio/3gpp2:3GPP2 audio:3g2,3gpp2:$
+33:video/3gpp2:3GPP2 video:3g2,3gpp2:$
+34:video/divx:DivX video:divx:$
+35:video/flv:FLV video:flv:$
+36:video/x-flv:FLV video:flv:$
+37:application/x-matroska:Matroska video:mkv:$
+38:video/x-matroska:Matroska video:mkv:$
+39:audio/x-matroska:Matroska audio:mka:$
+40:application/xspf+xml:Playlist xspf:xspf:$
+41:audio/x-mpegurl:MPEG audio:m3u:$
+42:video/webm:WebM video:webm:$
+43:audio/webm:WebM audio:webm:$
+44:application/vnd.rn-realmedia:Real Media File:rm:$
+45:audio/x-realaudio:Real Media Audio:ra:$
+46:audio/amr:AMR audio:amr:$
+47:audio/x-flac:FLAC audio:flac:$
+48:audio/flac:FLAC audio:flac:$
 IcedTeaPlugin.so:$
 /usr/lib/jvm/java-7-openjdk-i386/jre/lib/i386/IcedTeaPlugin.so:$
 :$
-1397491758000:0:0:0:$
+1417177135000:0:0:0:$
 The <a href="http://icedtea.classpath.org/wiki/IcedTea-Web">IcedTea-Web Plugin</a> executes Java applets.:$
-IcedTea-Web Plugin (using IcedTea-Web 1.5 (1.5-1ubuntu1)):$
+IcedTea-Web Plugin (using IcedTea-Web 1.5.2 (1.5.2-1ubuntu2)):$
 36
 0:application/x-java-vm:IcedTea:class,jar:$
 1:application/x-java-applet:IcedTea:class,jar:$
@@ -57,76 +104,22 @@ IcedTea-Web Plugin (using IcedTea-Web 1.5 (1.5-1ubuntu1)):$
 33:application/x-java-bean;version=1.7:IcedTea:class,jar:$
 34:application/x-java-bean;jpi-version=1.7.0_50:IcedTea:class,jar:$
 35:application/x-java-vm-npruntime:IcedTea::$
-libtotem-mully-plugin.so:$
-/usr/lib/mozilla/plugins/libtotem-mully-plugin.so:$
+packagekit-plugin.so:$
+/usr/lib/mozilla/plugins/packagekit-plugin.so:$
 :$
-1396360036000:0:0:0:$
-DivX Web Player version 1.4.0.233:$
-DivX® Web Player:$
+1422282771000:0:0:0:$
+Plugin for Installing Applications (new):$
+PackageKit:$
 1
-0:video/divx:AVI video:divx:$
-libtotem-narrowspace-plugin.so:$
-/usr/lib/mozilla/plugins/libtotem-narrowspace-plugin.so:$
-:$
-1396360036000:0:0:0:$
-The <a href="http://www.gnome.org/">Videos</a> 3.10.1 plugin handles video and audio streams.:$
-QuickTime Plug-in 7.6.6:$
-6
-0:video/quicktime:QuickTime video:mov:$
-1:video/mp4:MPEG-4 video:mp4:$
-2:image/x-macpaint:MacPaint Bitmap image:pntg:$
-3:image/x-quicktime:Macintosh Quickdraw/PICT drawing:pict, pict1, pict2:$
-4:video/x-m4v:MPEG-4 video:m4v:$
-5:application/vnd.apple.mpegurl:HTTP Live Streaming playlist:m3u8:$
-libtotem-cone-plugin.so:$
-/usr/lib/mozilla/plugins/libtotem-cone-plugin.so:$
-:$
-1396360036000:0:0:0:$
-The <a href="http://www.gnome.org/">Videos</a> 3.10.1 plugin handles video and audio streams.:$
-VLC Multimedia Plugin (compatible Videos 3.10.1):$
-23
-0:application/x-vlc-plugin:VLC Multimedia Plugin::$
-1:application/vlc:VLC Multimedia Plugin::$
-2:video/x-google-vlc-plugin:VLC Multimedia Plugin::$
-3:application/x-ogg:Ogg multimedia file:ogg:$
-4:application/ogg:Ogg multimedia file:ogg:$
-5:audio/ogg:Ogg Audio:oga:$
-6:audio/x-ogg:Ogg Audio:ogg:$
-7:audio/x-vorbis+ogg:Ogg Vorbis audio:ogg:$
-8:video/ogg:Ogg Video:ogv:$
-9:video/x-ogg:Ogg Video:ogg:$
-10:video/x-theora+ogg:Ogg Theora video:ogg:$
-11:application/annodex:Annodex exchange format:anx:$
-12:audio/annodex:Annodex Audio:axa:$
-13:video/annodex:Annodex Video:axv:$
-14:video/mpeg:MPEG video:mpg, mpeg, mpe:$
-15:audio/wav:WAV audio:wav:$
-16:audio/x-wav:WAV audio:wav:$
-17:audio/mpeg:MP3 audio:mp3:$
-18:application/x-nsv-vp3-mp3:NullSoft video:nsv:$
-19:video/flv:Flash video:flv:$
-20:video/webm:WebM video:webm:$
-21:application/x-totem-plugin:Videos multimedia plugin::$
-22:audio/midi:MIDI audio:mid, midi:$
-libtotem-gmp-plugin.so:$
-/usr/lib/mozilla/plugins/libtotem-gmp-plugin.so:$
-:$
-1396360036000:0:0:0:$
-The <a href="http://www.gnome.org/">Videos</a> 3.10.1 plugin handles video and audio streams.:$
-Windows Media Player Plug-in 10 (compatible; Videos):$
-13
-0:application/x-mplayer2:AVI video:avi, wma, wmv:$
-1:video/x-ms-asf-plugin:ASF video:asf, wmv:$
-2:video/x-msvideo:AVI video:asf, wmv:$
-3:video/x-ms-asf:ASF video:asf:$
-4:video/x-ms-wmv:Windows Media video:wmv:$
-5:video/x-wmv:Windows Media video:wmv:$
-6:video/x-ms-wvx:Windows Media video:wmv:$
-7:video/x-ms-wm:Windows Media video:wmv:$
-8:video/x-ms-wmp:Windows Media video:wmv:$
-9:application/x-ms-wms:Windows Media video:wms:$
-10:application/x-ms-wmp:Windows Media video:wmp:$
-11:application/asx:Microsoft ASX playlist:asx:$
-12:audio/x-ms-wma:Windows Media audio:wma:$
+0:application/x-packagekit-plugin:PackageKit Plugin:bsc:$
+libflashplayer.so:$
+/usr/lib/flashplugin-installer/libflashplayer.so:$
+11.2.202.521:$
+1442893659000:0:0:0:$
+Shockwave Flash 11.2 r202:$
+Shockwave Flash:$
+2
+0:application/x-shockwave-flash:Shockwave Flash:swf:$
+1:application/futuresplash:FutureSplash Player:spl:$
 
 [INVALID]
