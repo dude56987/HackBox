@@ -54,7 +54,8 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 	# begin applying config file set flags
 	#######################################
 	# clean up the old default configs
-	os.system("rm -rvf /etc/skel/.")
+	os.system("rm -rvf /etc/skel/.*")
+	os.system("rm -rvf /etc/skel/*")
 	# install default core into /etc/skel 
 	os.system("cp -rvf /opt/hackbox/preconfiguredSettings/userSettings/CORE/. /etc/skel")
 	# install user picked settings package into the /etc/skel
