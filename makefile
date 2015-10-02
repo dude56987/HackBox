@@ -91,6 +91,10 @@ build-deb:
 	# compress the preconfigured settings files
 	# escape the endings to cd works since each line is executed as a separate process
 	cp -rvf preconfiguredSettings/userSettings/* debian/opt/hackbox/preconfiguredSettings/userSettings/
+	# fix permissions on usersettings
+	chmod -R -xw debian/opt/hackbox/preconfiguredSettings/userSettings/
+	chmod -R ugo+rX debian/opt/hackbox/preconfiguredSettings/userSettings/
+	chmod -R u+w debian/opt/hackbox/preconfiguredSettings/userSettings/
 	# add config files n such
 	cp -vfr ./preconfiguredSettings/launchers ./debian/opt/hackbox/preconfiguredSettings/
 	cp -vfr ./preconfiguredSettings/debconf ./debian/opt/hackbox/preconfiguredSettings/
@@ -202,7 +206,7 @@ fix-permissions:
 	# user has write permissions on all files
 	sudo chmod -R u+w *
 	# execute and read directories allowed for everyone
-	sudo find . -type d -exec chmod +rx {} \;
+	sudo chmod -R ugo+X *
 clean-logs:
 	sudo rm -vf /opt/hackbox/Install_Log.txt
 	sudo rm -vf Install_Log.txt
