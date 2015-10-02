@@ -62,6 +62,14 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 	if len(desktopLine) > 1:
 		print("cp -rvf "+desktopLine+"/. /etc/skel")
 		os.system("cp -rvf "+desktopLine+"/. /etc/skel")
+	# fixed /etc/skel file permissions
+	# remove executable and write access for everyone
+	os.system("chmod -R -xw /etc/skel")
+	# capital X in chmod makes only directories executable(they have to be)
+	# also give everyone read access
+	os.system("chmod -R +rX /etc/skel")
+	# users have read and write
+	os.system("chmod -R u+rw /etc/skel")
 	if overwriteUsers==True:
 		# overwrite the users default settings
 		for user in os.listdir('/home/'):
