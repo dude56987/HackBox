@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Exec=bash -c "if [ -f /usr/bin/fdpowermon ]; then while ! pgrep -xc fdpowermon;do fdpowermon;done; fi;"
+Name=PowerIcon
+Comment=Power Icon using fdpowermon
+GenericName=PowerIcon
