@@ -4,5 +4,5 @@
 catagory<:>message<:>Installing Redshift
 catagory<:>package<:>gtk-redshift
 catagory<:>package<:>redshift
-# Geolocate is currently broken and locks up the script for a while
-#catagory<:>command<:>geolocate --latlon > /etc/latlon
+# figure out latitude and longitude based on ip address
+post<:>command<:>geolocate --latlon > /etc/latlon
