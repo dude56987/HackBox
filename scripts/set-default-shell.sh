@@ -16,7 +16,20 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
+#set the new shell to...
+newShell=zsh
+# find shell path
+shellPath=$(which $newShell)
 # set zsh to the default shell for new users
-os.system('useradd -D -s $(which zsh)')
+useradd -D -s $shellPath
 # set zsh to default shell for current users
-os.system('sed -i "s/bash/zsh/g" /etc/passwd')
+sed -i "s/sh/$newShell/g" /etc/passwd
+sed -i "s/bash/$newShell/g" /etc/passwd
+sed -i "s/zsh/$newShell/g" /etc/passwd
+sed -i "s/fish/$newShell/g" /etc/passwd
+sed -i "s/dash/$newShell/g" /etc/passwd
+# use chsh for each user on the system 
+for user in /home/*;do
+	# change the shell path to the new shell
+	chsh $user -s $shellPath
+done
