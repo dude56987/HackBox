@@ -23,13 +23,13 @@ shellPath=$(which $newShell)
 # set zsh to the default shell for new users
 useradd -D -s $shellPath
 # set zsh to default shell for current users
-sed -i "s/sh/$newShell/g" /etc/passwd
-sed -i "s/bash/$newShell/g" /etc/passwd
-sed -i "s/zsh/$newShell/g" /etc/passwd
-sed -i "s/fish/$newShell/g" /etc/passwd
-sed -i "s/dash/$newShell/g" /etc/passwd
+sed -i "s/\/bash/\/$newShell/g" /etc/passwd
+sed -i "s/\/zsh/\/$newShell/g" /etc/passwd
+sed -i "s/\/fish/\/$newShell/g" /etc/passwd
+sed -i "s/\/dash/\/$newShell/g" /etc/passwd
 # use chsh for each user on the system 
-for user in /home/*;do
+for userPath in /home/*;do
+	USERNAME=$(echo $userPath | sed "s/\/home\///g")
 	# change the shell path to the new shell
-	chsh $user -s $shellPath
+	chsh $USERNAME -s $shellPath
 done
