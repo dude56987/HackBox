@@ -2,7 +2,4 @@
 #QUESTION:Would you like to install redshift (Color temp adjustment tool)?
 # redshift installer source file
 catagory<:>message<:>Installing Redshift
-catagory<:>package<:>gtk-redshift
-catagory<:>package<:>redshift
-# figure out latitude and longitude based on ip address
-post<:>command<:>geolocate --latlon > /etc/latlon
+catagory<:>localdeb<:>redshiftrunner

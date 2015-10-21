@@ -152,6 +152,10 @@ batman: build install-deb
 	# I am the Night
 pullCustomSoftware:
 	mkdir -p customSoftwarePackages
+	# redshiftRunner
+	git clone https://github.com/dude56987/redshiftRunner.git customSoftwarePackages/redshiftrunner ||\
+	git -C customSoftwarePackages/redshiftRunner pull
+	# desktop layout picker
 	git clone https://github.com/dude56987/Desktop-Layout-Picker.git customSoftwarePackages/desktop-layout-picker ||\
 	git -C customSoftwarePackages/desktop-layout-picker pull
 	git clone https://github.com/dude56987/Distro-Upgrade.git customSoftwarePackages/distro-upgrade ||\
