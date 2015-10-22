@@ -158,34 +158,42 @@ pullCustomSoftware:
 	# desktop layout picker
 	git clone https://github.com/dude56987/Desktop-Layout-Picker.git customSoftwarePackages/desktop-layout-picker ||\
 	git -C customSoftwarePackages/desktop-layout-picker pull
+	# distro upgrade
 	git clone https://github.com/dude56987/Distro-Upgrade.git customSoftwarePackages/distro-upgrade ||\
 	git -C customSoftwarePackages/distro-upgrade pull
+	# reboot-required
 	git clone https://github.com/dude56987/Reboot-Required.git customSoftwarePackages/reboot-required ||\
 	git -C customSoftwarePackages/reboot-required pull
+	# lanscan
 	git clone https://github.com/dude56987/LanScan.git customSoftwarePackages/lanscan ||\
 	git -C customSoftwarePackages/lanscan pull
+	# dothis
 	git clone https://github.com/dude56987/DoThis.git customSoftwarePackages/dothis ||\
 	git -C customSoftwarePackages/dothis pull
+	# bitmessage update
 	git clone https://github.com/dude56987/Bitmessage-Update.git customSoftwarePackages/bitmessage-update ||\
 	git -C customSoftwarePackages/bitmessage-update pull
+	# hackbox-update
 	git clone https://github.com/dude56987/HackBox-Update.git customSoftwarePackages/hackbox-update ||\
 	git -C customSoftwarePackages/hackbox-update pull
+	# resetsettings
 	git clone https://github.com/dude56987/ResetSettings.git customSoftwarePackages/resetsettings ||\
 	git -C customSoftwarePackages/resetsettings pull
+	# help-center
 	git clone https://github.com/dude56987/Help-Center.git customSoftwarePackages/help-center ||\
 	git -C customSoftwarePackages/help-center pull
+	# opennic-dns
 	git clone https://github.com/dude56987/OpenNIC-DNS.git customSoftwarePackages/opennic-dns ||\
 	git -C customSoftwarePackages/opennic-dns pull
+	# hostfileblocklist
 	git clone https://github.com/dude56987/HostfileBlocklist.git customSoftwarePackages/hostfileblocklist ||\
 	git -C customSoftwarePackages/hostfileblocklist pull
+	# dns-precache
 	git clone https://github.com/dude56987/DNS-Precache.git customSoftwarePackages/dns-precache ||\
 	git -C customSoftwarePackages/dns-precache pull
-	git clone https://github.com/dude56987/HackBox-Darknet.git customSoftwarePackages/hackbox-darknet ||\
-	git -C customSoftwarePackages/hackbox-darknet pull
+	# hackbox-mimetypes
 	git clone https://github.com/dude56987/HackBox-Mimetype-Defaults.git customSoftwarePackages/hackbox-mimetype-defaults ||\
 	git -C customSoftwarePackages/hackbox-mimetype-defaults pull
-	git clone https://github.com/dude56987/Geolocate.git customSoftwarePackages/geolocate ||\
-	git -C customSoftwarePackages/geolocate pull
 customSoftwareStatus: 
 	git -C customSoftwarePackages/distro-upgrade status
 	git -C customSoftwarePackages/reboot-required status
