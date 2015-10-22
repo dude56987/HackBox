@@ -2,4 +2,5 @@
 #QUESTION:Would you like to install redshift (Color temp adjustment tool)?
 # redshift installer source file
 catagory<:>message<:>Installing Redshift
+catagory<:>rm-package<:>redshift-gtk
 catagory<:>localdeb<:>redshiftrunner

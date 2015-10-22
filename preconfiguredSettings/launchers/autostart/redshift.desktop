@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Version=1.0
-Type=Application
-Exec=bash -c "if [ -f /usr/bin/redshift ]; then while ! pgrep -xc redshift;do gtk-redshift -l $(cat /etc/latlon) || gtk-redshift; done; fi;"
-Name=Redshift
-Comment=Redshift
-GenericName=Redshift
