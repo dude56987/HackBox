@@ -383,9 +383,9 @@ catagory<:>package<:>qtox
 catagory<:>message<:>Installing toxic(TOX CLI)
 catagory<:>package<:>toxic
 # Syncthing, its getting there
-interactive<:>ppa<:>ppa:nilarimogard/webupd8
+interactive<:>deb-repo<:>deb http://apt.syncthing.net/ syncthing release<:>https://syncthing.net/release-key.txt
 catagory<:>message<:>Installing Syncthing-GTK(Sync directories)
-catagory<:>package<:>syncthing-gtk
+catagory<:>package<:>syncthing
 ######################
 # install RetroShare #
 ######################
