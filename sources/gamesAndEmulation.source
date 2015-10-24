@@ -1,8 +1,8 @@
 #BANNER
 #QUESTION:Would you like to install Games & Emulation Software?
 # games and emulation source file
-catagory<:>message<:>Installing PlayOnLinux (Windows Game/Software Emulation)
-catagory<:>package<:>playonlinux
+interactive<:>message<:>Installing PlayOnLinux (Windows Game/Software Emulation)
+interactive<:>package<:>playonlinux
 catagory<:>message<:>Installing VirtualBox
 catagory<:>package<:>virtualbox-qt
 catagory<:>message<:>Installing VirtualBox(kernel support)
