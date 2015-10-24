@@ -55,6 +55,20 @@ catagory<:>message<:>Changing the grub boot menu
 catagory<:>script<:>customize-grub
 catagory<:>message<:>Disable graphical bootsplash
 catagory<:>script<:>disable-bootsplash
+# ADD COWSAY and use it to display message that user interaction is no longer required
+# Add fortune, cowsay, and create none cow
+catagory<:>message<:>Setup cowsay and fortune
+catagory<:>package<:>cowsay
+catagory<:>package<:>fortune
+# allow root to launch fortune and cowsay
+catagory<:>command<:>link /usr/games/fortune /usr/bin/fortune
+catagory<:>command<:>link /usr/games/cowsay /usr/bin/cowsay
+# create the none cow
+catagory<:>command<:>echo "$thoughts" > /usr/share/cowsay/cows/none.cow
+catagory<:>command<:>chmod +r /usr/share/cowsay/cows/none.cow
+# add motd which depends on cowsay and fortune
+catagory<:>script<:>message-of-the-day
+catagory<:>command<:>cowsay -f tux "User Interaction is no longer required. You can let the installer work without your attention for a while."
 ###################
 ## Install XFCE4 ##
 ###################
@@ -561,18 +575,6 @@ catagory<:>message<:>Removing extra screensavers
 catagory<:>rm-package<:>cinnamon-screensaver
 catagory<:>message<:>Removing extra screensavers
 catagory<:>rm-package<:>kscreensaver
-# Add fortune, cowsay, and create none cow
-catagory<:>message<:>Setup cowsay and fortune
-catagory<:>package<:>cowsay
-catagory<:>package<:>fortune
-# allow root to launch fortune and cowsay
-catagory<:>command<:>link /usr/games/fortune /usr/bin/fortune
-catagory<:>command<:>link /usr/games/cowsay /usr/bin/cowsay
-# create the none cow
-catagory<:>command<:>echo "$thoughts" > /usr/share/cowsay/cows/none.cow
-catagory<:>command<:>chmod +r /usr/share/cowsay/cows/none.cow
-# add motd which depends on cowsay and fortune
-catagory<:>script<:>message-of-the-day
 ########################################################################
 # Basic Security Software
 ########################################################################
