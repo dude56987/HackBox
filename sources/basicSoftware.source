@@ -60,6 +60,16 @@ catagory<:>script<:>disable-bootsplash
 ###################
 pre<:>message<:>Installing XFCE4(Desktop Enviorment)
 pre<:>package<:>xfce4
+# removing other desktop enviorments
+pre<:>rm-package<:>ubuntu-mate-desktop
+pre<:>rm-package<:>mate-session-manager
+pre<:>rm-package<:>lubuntu-desktop
+pre<:>rm-package<:>lxde
+pre<:>rm-package<:>xubuntu-desktop
+pre<:>rm-package<:>kubuntu-desktop
+pre<:>rm-package<:>kde
+pre<:>rm-package<:>ubuntu-desktop
+pre<:>rm-package<:>unity
 ###################
 # Password interface changes
 catagory<:>message<:>Make sudo have password feedback
