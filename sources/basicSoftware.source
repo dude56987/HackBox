@@ -23,6 +23,8 @@ interactive<:>ppa<:>ppa:saiarcot895/myppa
 interactive<:>package<:>apt-fast
 interactive<:>localdeb<:>apt-fast_32bit
 interactive<:>localdeb<:>apt-fast_64bit
+# turn on progress bar in apt
+interactive<:>command<:>echo 'Dpkg::Progress-Fancy "1";' > /etc/apt/apt.conf.d/99progressbar
 # run the check package manager command to set it to apt fast if not already
 interactive<:>CHECK-PACKAGE-MANAGER
 # install the update command
