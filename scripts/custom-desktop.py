@@ -74,8 +74,15 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 		# overwrite the users default settings
 		for user in os.listdir('/home/'):
 			if (("." in user) or ("+" in user)) != True:
-				print('resetsettings -u '+user)
-				os.system('resetsettings -u '+user)
+				# build the themes/icons/fonts folder
+				os.system('mkdir -p '+os.path.join('/home',user,'.icons'))
+				os.system('mkdir -p '+os.path.join('/home',user,'.themes'))
+				os.system('mkdir -p '+os.path.join('/home',user,'.fonts'))
+				# copy over /etc/skel recursively
+				os.system(('cp -rvf /etc/skel/. '+os.path.join('/home',user)))
+				# set user ownership for local files
+				print ('chown --recursive '+user+' '+os.path.join('/home',user))
+				os.system('chown --recursive '+user+' '+os.path.join('/home',user))
 	if deleteMe==True:
 		# remove the config file if usersettings are not saved
 		os.system('rm /etc/hackbox/customDesktop.conf')
