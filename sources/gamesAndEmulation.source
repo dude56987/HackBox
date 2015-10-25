@@ -3,10 +3,9 @@
 # games and emulation source file
 interactive<:>message<:>Installing PlayOnLinux (Windows Game/Software Emulation)
 interactive<:>package<:>playonlinux
-catagory<:>message<:>Installing VirtualBox
-catagory<:>package<:>virtualbox-qt
-catagory<:>message<:>Installing VirtualBox(kernel support)
-catagory<:>package<:>virtualbox-dkms
+catagory<:>message<:>Installing Virt Manager (GUI Virtual Machine Interface)
+catagory<:>package<:>virt-manager
+catagory<:>package<:>qemu-kvm
 catagory<:>message<:>Installing TuxMath and Tux Typing
 catagory<:>package<:>tuxmath tuxtype
 catagory<:>message<:>Installing gtypist
