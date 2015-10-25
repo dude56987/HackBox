@@ -197,7 +197,6 @@ catagory<:>message<:>Installing cheese (webcam photobooth)
 catagory<:>package<:>cheese
 catagory<:>message<:>Installing CameraMonitor(show when webcam is on)
 catagory<:>package<:>cameramonitor
-catagory<:>command<:>link /usr/share/applications/cameramonitor.desktop /etc/xdg/autostart/cameramonitor.desktop
 ################
 catagory<:>message<:>Installing SpeedCrunch (Calculator) 
 catagory<:>package<:>speedcrunch
