@@ -1,0 +1,82 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-03-08T03:31:23-04:00
+
+====== custom stylesheet ======
+body {
+  background: #FFFFFF;
+  margin: 0px;
+  padding: 5px 10px;
+  font-size: medium;
+}
+table {
+  margin: 0px;
+  padding: 5px;
+}
+td {
+  vertical-align: top;
+}
+.folder {
+  -moz-border-radius-topleft: 8px;
+  -moz-border-radius-topright: 8px;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid navy;
+  margin-bottom: 5px;
+  padding: 0px;
+  width: 100%;
+  background-color: #FEFEFE;
+}
+.folder h2 {
+  -moz-border-radius-topleft:8px;
+  -moz-border-radius-topright:8px;
+  border-radius: 8px 8px 0 0;
+  margin:0px;
+  padding: 2px;
+  font-size: medium;
+  background: #CCCCCC;
+  color: white;
+  text-align: center;
+}
+ul {
+  margin: 6px;
+  padding: 0;
+  padding-left: 18px;
+  list-style-type: square;
+  line-height: 125%;
+}
+li {
+  margin-bottom: 5px;
+}
+li.defnode {
+  margin-left: 3px;
+}
+li.favnode {
+  list-style-type: none;
+  text-indent:-16px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  font-weight: bold;
+  border-radius: 3px;
+  background-color: #EEEEEE;
+  color: black;
+  text-decoration: underline;
+}
+.folder h2 a {
+  color:white;
+}
+.folder h2 a:hover {
+  text-decoration: none;
+  color: #ff8;
+  font-weight: bold;
+}
+img.favicon {
+  border:0pt none;
+  margin-right:3px;
+  max-height:16px;
+  max-width:16px;
+  vertical-align:middle;
+}

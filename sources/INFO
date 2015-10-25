@@ -21,6 +21,12 @@
 # The below will add a ppa to the system repos
 #catagory<:>ppa<:>ppa:lolUser/software
 ####################
+# The below will open port 9119 on the firewall to any computer without restriction, tcp only
+#catagory<:>open-port<:>9119
+####################
+# The below will open port 9119 on the firewall to other computers on the lan, tcp only
+#catagory<:>open-lan-port<:>9119
+####################
 # The below will add a repo to the system. It consists of a repo line and the location of the keyfile for the repo
 #catagory<:>deb-repo<:>deb https://myrepo.com/repos saucy main<:>https://myrepo.com/keys/myrepokey.pgp
 ####################

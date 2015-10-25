@@ -2,6 +2,7 @@
 	helper = cache --timeout=3600
 [core]
 	editor = vim
+	pager = less -+S
 [color]
 	branch = auto
 	diff = auto

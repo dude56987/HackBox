@@ -1,12 +1,11 @@
 #BANNER
 #QUESTION:Would you like to install Games & Emulation Software?
 # games and emulation source file
-catagory<:>message<:>Installing PlayOnLinux (Windows Game/Software Emulation)
-catagory<:>package<:>playonlinux
-catagory<:>message<:>Installing VirtualBox
-catagory<:>package<:>virtualbox-qt
-catagory<:>message<:>Installing VirtualBox(kernel support)
-catagory<:>package<:>virtualbox-dkms
+interactive<:>message<:>Installing PlayOnLinux (Windows Game/Software Emulation)
+interactive<:>package<:>playonlinux
+catagory<:>message<:>Installing Virt Manager (GUI Virtual Machine Interface)
+catagory<:>package<:>virt-manager
+catagory<:>package<:>qemu-kvm
 catagory<:>message<:>Installing TuxMath and Tux Typing
 catagory<:>package<:>tuxmath tuxtype
 catagory<:>message<:>Installing gtypist
@@ -21,6 +20,8 @@ catagory<:>message<:>Installing nInvaders
 catagory<:>package<:>ninvaders
 catagory<:>message<:>Installing Bsd Games
 catagory<:>package<:>bsdgames
+catagory<:>message<:>Installing Bsd Games (list command)
+catagory<:>script<:>bsdgames
 catagory<:>message<:>Installing Py-Tac-Toe
 catagory<:>localdeb<:>py-tac-toe_1.0_all<:>/usr/bin/py-tac-toe
 catagory<:>message<:>Installing TuxPaint
@@ -31,11 +32,15 @@ catagory<:>package<:>qjoypad
 catagory<:>message<:>Installing mumble(voip for games)
 catagory<:>package<:>mumble
 # add ppa for retroarch
-interactive<:>ppa<:>ppa:hunter-kaller/ppa
+interactive<:>ppa<:>ppa:libretro/stable
 # retro console emulation with retroarch yo
 # hackbox.py installs the ppa at the begining
 catagory<:>message<:>Installing Retroarch(Retro Console Emulator)
 catagory<:>package<:>retroarch
+catagory<:>package<:>retroarch-joypad-autoconfig
+# attempt to install all libretro cores
+catagory<:>package<:>libretro*
+# below lines are in case the above dont work
 # Super Nintendo Core for retroarch
 catagory<:>message<:>Installing Super Nintendo Core for retroarch 
 catagory<:>package<:>libretro-snes9x-next

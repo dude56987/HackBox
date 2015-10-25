@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-04-10T18:03:16-04:00
+
+====== launchers ======
+
+===== About =====
+This contains zipfiles associated with the source files. Any .zip files with the same name as a .source file located here will be installed also.
+
+===== Subdirectories =====
+[[+applications]]  [[+autostart]]

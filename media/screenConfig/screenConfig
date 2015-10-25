@@ -4,10 +4,12 @@ startup_message off
 bindkey -k k4 focus
 bindkey -k k3 focus
 #bindkey "^I" focus
+# set screen to full refresh every time
+allpartial off
 # Split the screen verticaly
 split -v
 # setup a screen to display the standard install output
-screen -t INSTALLER bash -c "python /opt/hackbox/hackboxsetup.py --no-reset;killall screen"
+screen -t INSTALLER bash -c "python3 /opt/hackbox/hackboxsetup.py;killall screen"
 # switch focus to next window for displaying splash
 focus
 # setup a screen to display the splashtext and debug via a right panel

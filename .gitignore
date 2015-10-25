@@ -5,3 +5,6 @@ packageSize.txt
 debian.deb
 Install_Log.txt
 unsupportedPackages/*.md5
+report/
+*.pyc
+__pycache__/

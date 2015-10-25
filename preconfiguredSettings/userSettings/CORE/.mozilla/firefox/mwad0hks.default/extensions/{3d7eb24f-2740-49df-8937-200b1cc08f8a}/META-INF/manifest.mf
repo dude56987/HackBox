@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+
+Name: install.rdf
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: bLCg9QxNUPeL+eUexNTOWQ==
+SHA1-Digest: 7Dg75J4R/nPxzInbx6UOsZAQUHs=
+
+Name: chrome.manifest
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: TRgeceR8HrlKGzuwtY7IOg==
+SHA1-Digest: zihs7MiCVNu7BGw+FNn8CSrZhis=
+
+Name: chrome/flashblock.jar
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: vKdmzn35GQt5aD76UKXXUQ==
+SHA1-Digest: xgBW3CuqPmjFSlL5mah5GFA7roI=
+
+Name: defaults/preferences/flashblock.js
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 40+Kib1pc8d19cH+rxvsWw==
+SHA1-Digest: gwPY4opv89GwWVhwd6coe2ACVbg=
+

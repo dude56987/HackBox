@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-03-08T03:00:23-04:00
+
+====== CORE ======
+
+===== About =====
+Contains Preconfigured settings not specific to destop view. This section is installed by default.
+
+===== Applications =====
+Includes preconfigured settings for the following applications
+* [[+Firefox]]

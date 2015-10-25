@@ -15,20 +15,20 @@ alias say="espeak" # Speak the following string of text
 alias ping="ping -c 5" # set default ping count to 5
 alias system-info="inxi -F" # set default ping count to 5
 alias root="sudo -s" # root logs into root mode for user
+alias pm="sudo aptitude" # shorthand to run a package manager command 
 alias invert-color="xcalib -invert -alter" # Invert monitor colors
+alias nightvision="export TERM=xterm-mono;unalias ls;prompt suse;xcalib -clear;xcalib -i -a;xcalib -green .1 0 1 -blue .1 0 1 -red 0.8 0 100 -alter"
 # install some helpfull tools for working on a console only system
 alias installConsoleTools='sudo apt-fast install fbgrab elinks links2 pianobar fbi wicd-curses weechat weechat-plugins weechat-scripts finch vlock'
 alias installTerminalTools='installConsoleTools'
 # this will reconfigure the console allowing you to change the size,font and some other stuff
 alias console-setup='sudo dpkg-reconfigure console-setup'
 alias terminal-setup='console-setup'
-# downloads random wallpapers #BEWARE# truly random, stored in /usr/share/pixmaps/wallpapers
-alias download-random-wallpapers="curl http://boards.4chan.org/wg/ | sed 's/\"/\n/g' | grep //i.4cdn.org/wg/ | sort -u | sed 's/\/\/i/http:\/\/i/g' > /tmp/images.list && sudo mkdir -p /usr/share/pixmaps/wallpapers && cd /usr/share/pixmaps/wallpapers && sudo wget -i /tmp/images.list && sudo fdupes -rdN /usr/share/pixmaps/wallpapers && cd"
-alias download-random-anime-wallpapers="curl http://boards.4chan.org/w/ | sed 's/\"/\n/g' | grep //i.4cdn.org/w/ | sort -u | sed 's/\/\/i/http:\/\/i/g' > /tmp/images.list && sudo mkdir -p /usr/share/pixmaps/wallpapers && cd /usr/share/pixmaps/wallpapers && sudo wget -i /tmp/images.list && sudo fdupes -rdN /usr/share/pixmaps/wallpapers && cd"
-alias download-random-quote-wallpapers="wget http://reddit.com/r/QuotesPorn/ -O /tmp/images.list && sed -i 's/\"/\n/g' /tmp/images.list && more /tmp/images.list | grep http://i.imgur.com/ > /tmp/images.final && sudo mkdir -p /usr/share/pixmaps/wallpapers && cd /usr/share/pixmaps/wallpapers && sudo wget -i /tmp/images.final && sudo fdupes -rdN /usr/share/pixmaps/wallpapers && cd"
+# import functions file with larger more complex functions(stuff to big for aliases)
+. ~/.bashFunctions
 # The rest of the commands are for use by the dev of hackbox, remove them if you want
-alias gettowork="cd ~/HackBox/"
-alias pullhackboxsource="cd && git clone https://github.com/dude56987/HackBox.git && gettowork"
+alias gettowork="cd ~/Programming/HackBox/"
+alias pullhackboxsource="mkdir -p ~/Programming/ && cd ~/Programming/ && git clone https://github.com/dude56987/HackBox.git && gettowork"
 # run xset commands to keep the screen from blanking
 xset s 0 0
 xset s off
@@ -106,8 +106,7 @@ if tty | grep tty1 || tty | grep tty2 || tty | grep tty3 || tty | grep tty4; the
 		fi
 		# set the caps lock to work as the escape key
 		if more /etc/default/keyboard | grep 'XKBOPTIONS=\"\"'; then
-			sudo sed -i.bak 's/XKBOPTIONS=""/XKBOPTIONS="caps:escape"/g' /etc/default/keyboard
-			sudo rm -v /etc/default/keyboard.bak
+			sudo sed -i 's/XKBOPTIONS=""/XKBOPTIONS="caps:escape"/g' /etc/default/keyboard
 			sudo dpkg-reconfigure keyboard-configuration
 		fi
 

@@ -1,0 +1,57 @@
+:::::::::::::::::::::::::::::: Vibrantly Simple Colors Icon Theme 1 :::::::::::::::::::::::::::::::::::
+
+Vibrantly Simple Colors By RAVEfinity is a NEW icon theme that attempts to be a modern continuation of the humanity icon theme, While still keeping humanitys simplicty and good points. It's released in 14 Colors! Despite this, the team has done this very efficently and the extra colors don't take up much more space at all.
+
+Think of it as humanity with new folders and some updates and icons from elementary.
+
+Brought to by the RAVEfinity Project, You can visit us At: http://www.ravefinity.com/
+
+
+:::::::::::::::::::::::: The Official Credit, Copyright & Licenses  :::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::: Version 1.1 (March 2015+) :::::::::::::::::::::::::::::::::::
+
+This work is based on and Licensed under 2 open source licenses.
+
+License 1, Creative Commons SA, https://creativecommons.org/licenses/by-sa/3.0/us/
+License 2, GPL v2 & v3 , http://www.gnu.org/copyleft/gpl.html
+
+:::::::::::::::::::::Copyright & Credits:::::::::::::::::::::
+
+
+Humanity Theme/Ubuntu Mono Theme. Themes designed and developed by Daniel Foré <Daniel.p.Fore@gmail.com>, Jonian Guveli <jonian.guveli@gmail.com>, and K.Vishnoo Charan Reddy<foo.mac.v@gmail.com>.
+
+KDE 5 Breeze Icons (Folder Icons (Modified Color And Symbols , Ported to GTK by RAVEfinity)
+ 
+elementary folder Symbols (Symbols used on folders eg music downloads etc.) 
+
+RAVEfinity Design (http://www.ravefinity.com/) (Icons Mixed together,crafted,tested and tweaked by RAVEfinity)
+
+
+Folder Icons.
+Are Based on The KDE Breeze Folder Icons.
+
+(C)2014 KDE Visual Group (KDE Open Source Project)
+Main Design by: Uri Herrera. (http://nitrux.in/)
+(License, Creative Commons SA, https://creativecommons.org/licenses/by-sa/3.0/us/ )
+Please support kde at kde.org and Uri at http://nitrux.in/
+
+
+Some Action Icons & Symbols Used On Folders
+Are From the elementary icon theme.
+
+elementary Icons & Theme.
+Daniel Foré <Daniel.p.Fore@gmail.com>
+
+Please support elementary at:
+http://elementaryos.org/ 
+
+
+Overall Design for this icon theme Vibrantly Simple Colors
+by the RAVEfinity Project, 
+
+You can visit us At: http://www.ravefinity.com/
+
+(C) 2014 , Jared Sot. <ravefinity@gmail.com>
+(License, Creative Commons SA, https://creativecommons.org/licenses/by-sa/3.0/us/)
+

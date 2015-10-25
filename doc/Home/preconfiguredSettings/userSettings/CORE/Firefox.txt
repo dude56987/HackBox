@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-03-08T03:01:33-04:00
+
+====== Firefox ======
+
+===== Preconfigured Settings =====
+* Search is set to DuckDuckGo
+* Homepage is set to about:newtab
+* Newtab has several websites pinned by default
+	* youtube.com
+	* hacker-haven.com
+	* reddit.com
+	* about:mybookmarks
+	* 8chan.co
+	* everything2.com
+	* newgrounds.com
+* A set of [[+default_bookmarks]]
+* Do not track is turned on
+
+===== Included Addons =====
+* Adblock Edge
+	* Including the following lists
+		* Easylist
+		* EasyPrivacy
+		* Fanboy's Annoyance List
+* Expire history by days
+	* Set to 90 days
+* Flashblock
+	* Set to ignore HTML5 video
+	* Block silverlight and flash
+	* Enable whitelist
+* Adblock plus pop-up addon
+* Classic Theme Restorer
+* HTTPS Finder
+	* Set to not prompt
+	* Auto enforce HTTPS when available
+* Proxy Selector
+	* Includes darknet labled proxy
+		* Linked to localhost:8118 preconfigured privoxy linked to tor and i2p services
+* Restartless Restart 9
+* Rightbar
+* VimFx
+* User-Agent Switcher
+* RSS Icon In Awesomebar]
+* Greasemonkey
+* Stylish
+* MyBookmarks
+	* Including a [[+custom_stylesheet]]

@@ -1,6 +1,9 @@
+"############################################################"
 "This is a example vim config file with some basic stuff set."
 "############################################################"
-"Wrap text insted of being on one line"
+" Create alias for spell-checker, use :Spellcheck to turn it on"
+command Spellcheck setlocal spell spelllang=en_us
+"Wrap text instead of being on one line"
 set lbr
 "Turn on smart indenting in line wrap mode"
 if has('breakindent')
@@ -10,7 +13,7 @@ endif
 set nu
 "Set syntax Highlighting on"
 syntax on
-"Indent automaticly"
+"Indent automatically"
 filetype indent on
 set autoindent
 "Case insensitive search"

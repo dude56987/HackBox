@@ -9,13 +9,22 @@
 ########################################################################
 # This section is automaticly installed 
 #AUTO-INSTALL
+interactive<:>message<:>Installing custom desktop settings
 interactive<:>script<:>custom-desktop
+pre<:>message<:>Installing custom themes
+pre<:>script<:>custom-themes
+main<:>message<:>Installing custom login theme
+main<:>script<:>login-theme
 # load preconfigured settings for apt-fast
 interactive<:>command<:>debconf-set-selections /opt/hackbox/preconfiguredsettings/debconf/apt-fast.conf
+# add 2 ppas one is for older verisons one is for 14.04+ versions
 interactive<:>ppa<:>ppa:apt-fast/stable
+interactive<:>ppa<:>ppa:saiarcot895/myppa
 interactive<:>package<:>apt-fast
 interactive<:>localdeb<:>apt-fast_32bit
 interactive<:>localdeb<:>apt-fast_64bit
+# turn on progress bar in apt
+interactive<:>command<:>echo 'Dpkg::Progress-Fancy "1";' > /etc/apt/apt.conf.d/99progressbar
 # run the check package manager command to set it to apt fast if not already
 interactive<:>CHECK-PACKAGE-MANAGER
 # install the update command
@@ -27,7 +36,7 @@ pre<:>localdeb<:>getdeb
 # whiskermenu ppa
 interactive<:>ppa<:>ppa:gottcode/gcppa
 main<:>package<:>xfce4-whiskermenu-plugin
-# here is some logical scripts
+# here are some logical scripts
 interactive<:>message<:>Setting up darknet access
 interactive<:>script<:>darknet-setup
 catagory<:>message<:>Setup power control login names for tty logins
@@ -36,42 +45,97 @@ catagory<:>message<:>Checking if this is a laptop
 catagory<:>script<:>laptop-check
 catagory<:>message<:>Change the system swappiness(Improve use of system RAM)
 catagory<:>script<:>change-swappiness
+catagory<:>message<:>Encrypting the swap partition
+catagory<:>script<:>encrypt-swap
 catagory<:>message<:>Fix Home Permissions(Users can't see other users stuff now)
 catagory<:>script<:>fix-home-permissions
-catagory<:>message<:>Make sudo have password feedback
-catagory<:>script<:>passwordFeedback
 catagory<:>message<:>Disable console screen blanking
 catagory<:>script<:>disable-screenblank
+catagory<:>message<:>Changing the grub boot menu
+catagory<:>script<:>customize-grub
+catagory<:>message<:>Disable graphical bootsplash
+catagory<:>script<:>disable-bootsplash
+# ADD COWSAY and use it to display message that user interaction is no longer required
+# Add fortune, cowsay, and create none cow
+catagory<:>message<:>Setup cowsay and fortune
+catagory<:>package<:>cowsay
+catagory<:>package<:>fortune
+# allow root to launch fortune and cowsay
+catagory<:>command<:>link /usr/games/fortune /usr/bin/fortune
+catagory<:>command<:>link /usr/games/cowsay /usr/bin/cowsay
+# create the none cow
+catagory<:>command<:>echo "$thoughts" > /usr/share/cowsay/cows/none.cow
+catagory<:>command<:>chmod +r /usr/share/cowsay/cows/none.cow
+# add motd which depends on cowsay and fortune
+catagory<:>script<:>message-of-the-day
+catagory<:>command<:>cowsay -f tux "User Interaction is no longer required. You can let the installer work without your attention for a while."
 ###################
 ## Install XFCE4 ##
 ###################
 pre<:>message<:>Installing XFCE4(Desktop Enviorment)
 pre<:>package<:>xfce4
+# removing other desktop enviorments
+pre<:>rm-package<:>ubuntu-mate-desktop
+pre<:>rm-package<:>mate-session-manager
+pre<:>rm-package<:>lubuntu-desktop
+pre<:>rm-package<:>lxde
+pre<:>rm-package<:>xubuntu-desktop
+pre<:>rm-package<:>kubuntu-desktop
+pre<:>rm-package<:>kde
+pre<:>rm-package<:>ubuntu-desktop
+pre<:>rm-package<:>unity
+###################
+# Password interface changes
+catagory<:>message<:>Make sudo have password feedback
+catagory<:>script<:>passwordFeedback
+catagory<:>message<:>Install gksu(graphical password input)
+catagory<:>package<:>gksu
+catagory<:>message<:>Make gksu launch automaticly for admin tools
+catagory<:>package<:>policykit-1-gnome
 ###################
 pre<:>message<:>Installing gdebi(Grapical Package Installer)
 pre<:>package<:>gdebi
 pre<:>message<:>Installing debconf-utils(tools for working with deb files)
 pre<:>package<:>debconf-utils
 ###################
-catagory<:>message<:>Installing broadcast(message all user on the system)
-catagory<:>localdeb<:>broadcast<:>/usr/bin/broadcast
+# setup the shell #
+###################
 catagory<:>message<:>Installing ZSH(Shell)
 catagory<:>package<:>zsh
+# set default shell
+catagory<:>script<:>set-default-shell
+###################
+catagory<:>message<:>Installing broadcast(message all user on the system)
+catagory<:>localdeb<:>broadcast<:>/usr/bin/broadcast
 catagory<:>message<:>Installing SSH(Remote Shell)
 catagory<:>package<:>ssh
 catagory<:>message<:>Installing SSHFS(mount remote filesystems locally via sftp)
 catagory<:>package<:>sshfs
 catagory<:>message<:>Installing MOSH(Improved SSH client)
 catagory<:>package<:>mosh
+###################
+# video player
+###################
 catagory<:>message<:>Installing VLC(Video Player)
 catagory<:>package<:>vlc
-# totem plugin insted of vlc plugin since vlcs plugin kinda sucks compartively
-catagory<:>message<:>Installing Totem Web plugin
-catagory<:>package<:>totem-mozilla
+catagory<:>package<:>vlc-nox
+catagory<:>package<:>vlc-plugin-vlsub
+catagory<:>message<:>Installing MPV(Simple Powerfull Video Player)
+catagory<:>package<:>mpv
+# remove other video players
+catagory<:>rm-package<:>totem
+###################
 # add ppa for xbmc but do not install it, this so if the user installs xbmc it will be at the latest version
 catagory<:>ppa<:>ppa:team-xbmc/ppa
-catagory<:>message<:>Installing Evince(Document Viewer/PDF Viewer)
-catagory<:>package<:>evince
+# Remove other document viewers and install atril
+catagory<:>message<:>Removing Evince(Document Viewer)
+# Incompatible with Xfce themes
+catagory<:>rm-package<:>evince
+# The below two are also good pdf viewers, however Atril is more user friendly
+catagory<:>rm-package<:>qpdfview
+catagory<:>rm-package<:>okular
+catagory<:>message<:>Installing Atril(Document Viewer/PDF Viewer)
+catagory<:>package<:>atril
 catagory<:>message<:>Installing Jockey(Propietry Driver Installer)
 catagory<:>package<:>jockey-gtk
 catagory<:>message<:>Installing leafpad(Simple Text Editor)
@@ -95,6 +159,8 @@ catagory<:>message<:>Installing xterm
 catagory<:>package<:>xterm
 catagory<:>message<:>Installing Goldendict(A dictionary that pulls from Wikipedia and Wiktionary)
 catagory<:>package<:>goldendict
+catagory<:>message<:>Installing Goldendict Wordnet(A locally stored dictionary)
+catagory<:>package<:>goldendict-wordnet
 catagory<:>message<:>Installing GCP(CP but verbose)
 catagory<:>package<:>gcp
 # below package is required for gcp to work correctly
@@ -131,7 +197,6 @@ catagory<:>message<:>Installing cheese (webcam photobooth)
 catagory<:>package<:>cheese
 catagory<:>message<:>Installing CameraMonitor(show when webcam is on)
 catagory<:>package<:>cameramonitor
-catagory<:>command<:>link /usr/share/applications/cameramonitor.desktop /etc/xdg/autostart/cameramonitor.desktop
 ################
 catagory<:>message<:>Installing SpeedCrunch (Calculator) 
 catagory<:>package<:>speedcrunch
@@ -146,10 +211,11 @@ catagory<:>package<:>mcomix
 catagory<:>message<:>Installing Disk Usage Tool
 catagory<:>package<:>baobab
 # Install archive support
-catagory<:>message<:>Removing fileroller
-catagory<:>rm-package<:>file-roller
-catagory<:>message<:>Installing Xarchiver (Compressed file manager)
-catagory<:>package<:>xarchiver
+catagory<:>message<:>Installing File-Roller (Compressed file manager)
+catagory<:>package<:>file-roller
+################
+catagory<:>message<:>Removing Xarchiver (Compressed file manager)
+catagory<:>rm-package<:>xarchiver
 # setup thunar archive intergration
 catagory<:>message<:>Installing archive support for thunar context actions
 catagory<:>package<:>thunar-archive-plugin
@@ -159,6 +225,8 @@ catagory<:>localdeb<:>distro-upgrade<:>/usr/bin/distro-upgrade
 ##### Additonal Fonts #####
 catagory<:>message<:>Installing fonts(opendyslexic)
 catagory<:>package<:>fonts-opendyslexic
+catagory<:>message<:>Installing other custom fonts
+catagory<:>script<:>install-custom-fonts
 ########################################################################
 # UTILITIES #
 ########################################################################
@@ -182,8 +250,8 @@ catagory<:>message<:>Installing pdmenu(CLI Curses Menu)
 catagory<:>package<:>pdmenu
 catagory<:>message<:>Installing espeak (CLI electronic voice synth)
 catagory<:>package<:>espeak
-catagory<:>message<:>Installing woof (CLI lan/internet file transfer)
-catagory<:>package<:>woof
+catagory<:>message<:>Installing espeak-gui (GUI for espeak)
+catagory<:>package<:>espeak-gui
 catagory<:>message<:>Installing geolocate(Figure out the location of pcs)
 catagory<:>localdeb<:>geolocate<:>/usr/bin/geolocate
 # install colortest-python and link it to the colortest command 
@@ -206,12 +274,15 @@ catagory<:>message<:>Installing Midnight Commander
 catagory<:>package<:>mc
 catagory<:>message<:>Installing wmctrl command line app for window management
 catagory<:>package<:>wmctrl
-catagory<:>message<:>Installing aptitude (CLI Package Management Tool)
-catagory<:>package<:>aptitude
 catagory<:>message<:>Installing Xfce Task Manager
 catagory<:>package<:>xfce4-taskmanager
 catagory<:>message<:>Installing menulibre (Editor for system menu)
 catagory<:>package<:>menulibre
+# package manager improvements
+catagory<:>message<:>Installing aptitude (CLI Package Management Tool)
+catagory<:>package<:>aptitude
+pre<:>message<:>Installing apt https support(repos can use https)
+pre<:>package<:>apt-transport-https
 ########################
 # install image viewer #
 ########################
@@ -226,7 +297,12 @@ catagory<:>rm-package<:>ristretto
 catagory<:>rm-package<:>gwenview
 catagory<:>rm-package<:>geeqie
 catagory<:>rm-package<:>xloadimage
-# photo orgnizers #
+####################
+# photo organizers #
+####################
+catagory<:>message<:>Installing digikam(Photo Organizer)
+catagory<:>package<:>digikam
+###################################
 catagory<:>message<:>Removing Shotwell
 catagory<:>rm-package<:>shotwell
 ###################################
@@ -240,7 +316,11 @@ catagory<:>message<:>Installing iotop(Top for I/O of disk)
 catagory<:>package<:>iotop
 catagory<:>message<:>Installing iftop(Top for Network Usage)
 catagory<:>package<:>iftop
-# Uncomment to install monitorix to track system usage over time
+catagory<:>message<:>Installing vnstat(stats on network usage)
+catagory<:>package<:>vnstat
+catagory<:>message<:>Installing prettyping(Generate a ping graph with ASCII art)
+catagory<:>command<:>curl https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping >> /usr/bin/prettyping && chmod +x /usr/bin/prettyping
+# monitorix to track system usage over time
 catagory<:>message<:>Installing monitorix(System Stat Tracker)
 catagory<:>deb-repo<:>deb http://apt.izzysoft.de/ubuntu generic universe<:>http://apt.izzysoft.de/izzysoft.asc
 catagory<:>package<:>monitorix
@@ -252,6 +332,17 @@ catagory<:>localdeb<:>resetsettings<:>/usr/bin/resetsettings
 ########################################################################
 # SECTION FOR INTERNET SOFTWARE #
 ########################################################################
+# firewall
+catagory<:>message<:>Installing ufw (Firewall)
+catagory<:>package<:>gufw
+catagory<:>message<:>Installing gufw (ufw GUI)
+catagory<:>package<:>ufw
+catagory<:>command<:>ufw enable
+###################################
+catagory<:>message<:>Installing woof (CLI lan/internet file transfer)
+catagory<:>package<:>woof
+catagory<:>message<:>Open lan ports for woof right click functionality
+catagory<:>open-lan-port<:>9119
 catagory<:>message<:>Installing zeroconf support
 catagory<:>package<:>avahi-daemon
 catagory<:>package<:>avahi-discover
@@ -259,6 +350,8 @@ catagory<:>package<:>libnss-mdns
 catagory<:>message<:>Installing curl and wget (CLI downloaders)
 catagory<:>package<:>wget
 catagory<:>package<:>curl
+catagory<:>message<:>Installing dnsmasq(Cache local DNS queries)
+catagory<:>package<:>dnsmasq
 catagory<:>message<:>Installing dns-precache(Caches top 500 sites)
 catagory<:>localdeb<:>dns-precache<:>/usr/bin/dns-precache
 catagory<:>message<:>Installing lanscan(scans lan for connected devices)
@@ -268,12 +361,8 @@ catagory<:>localdeb<:>opennic-dns<:>/usr/bin/opennic-dns-scan
 # install firefox and firefox custom addons systemwide
 catagory<:>message<:>Installing Firefox
 catagory<:>package<:>firefox
-catagory<:>message<:>Installing HTTPS Finder
-catagory<:>package<:>xul-ext-https-finder
-# the systemwide addon installer by default installs some security addons and customization addons
-## this is disabled currently because it has issues that need fixing
-#catagory<:>message<:>Installing Firefox Customizer(Admin tool for configureing firefox)
-#gdebi --non-interactive unsupportedPackages/firefox-customizer.deb
+# remove ubuntu firefox modifications
+catagory<:>rm-package<:>xul-ext-ubufox
 # setup transmission and setup the transmission blocklist updater for security purposes
 catagory<:>message<:>Installing Transmission (Torrent Client)
 catagory<:>package<:>transmission-gtk
@@ -291,6 +380,9 @@ catagory<:>message<:>Installing calendar extention to thunderbird
 catagory<:>package<:>xul-ext-lightning
 catagory<:>message<:>Installing Marble
 catagory<:>package<:>marble
+# Recipe Manager
+catagory<:>message<:>Installing Gourmet (Recipe Manager)...
+catagory<:>package<:>gourmet
 ##########################################################
 # encrypted internet communications programs in progress #
 ##########################################################
@@ -299,16 +391,16 @@ catagory<:>message<:>Installing pybitmessage-stable-updater(Encrypted Messaging 
 # this package pulls the stable github repo for bitmessage
 catagory<:>localdeb<:>pybitmessage-stable-updater<:>/usr/bin/bitmessage-update
 # tox ( encrypted decentralized instant messageing, voice/video, and file transfer)
-catagory<:>deb-repo<:>deb http://repo.tox.im/deb/ testing main<:>https://repo.tox.im/toxbuild.pgp
+catagory<:>deb-repo<:>deb https://pkg.tox.chat/debian nightly release<:>https://pkg.tox.chat/debian/pkg.gpg.key
 # the tox gui package is qtox, there are more, I like qtox
 catagory<:>message<:>Installing QTox(TOX GUI)
 catagory<:>package<:>qtox
 catagory<:>message<:>Installing toxic(TOX CLI)
 catagory<:>package<:>toxic
 # Syncthing, its getting there
-interactive<:>ppa<:>ppa:nilarimogard/webupd8
+interactive<:>deb-repo<:>deb http://apt.syncthing.net/ syncthing release<:>https://syncthing.net/release-key.txt
 catagory<:>message<:>Installing Syncthing-GTK(Sync directories)
-catagory<:>package<:>syncthing-gtk
+catagory<:>package<:>syncthing
 ######################
 # install RetroShare #
 ######################
@@ -325,7 +417,7 @@ catagory<:>message<:>Installing Pidgin(Instant Messenger)
 catagory<:>package<:>pidgin
 # allow the firewall to passthrough for pidgin
 catagory<:>message<:>Configuring firewall for bonjour chat on lan
-catagory<:>command<:>ufw allow proto tcp from 192.168.2.0/24 to any port 5298
+catagory<:>open-lan-port<:>5298
 ##########################
 # install pidgin plugins #
 ##########################
@@ -336,8 +428,11 @@ catagory<:>message<:>Installing Pidgin Plugin(Encryption)
 catagory<:>package<:>pidgin-encryption
 catagory<:>message<:>Installing Pidgin Plugin(Prefs)
 catagory<:>package<:>pidgin-extprefs
+catagory<:>message<:>Installing Pidgin Plugin(Telegram)
+catagory<:>package<:>telegram-purple
 catagory<:>message<:>Installing Pidgin Plugin(Facebook)
 catagory<:>package<:>pidgin-facebookchat
+catagory<:>package<:>purple-facebook
 catagory<:>message<:>Installing Pidgin Plugin(Hotkeys)
 catagory<:>package<:>pidgin-hotkeys
 catagory<:>message<:>Installing Pidgin Plugin(Notify)
@@ -362,6 +457,8 @@ catagory<:>package<:>pidgin-plugin-pack
 # Indicator is now nessary to make some applications work as some things no longer support systray
 catagory<:>message<:>Install Xfce indicator plugin(ubuntu version of systray)
 catagory<:>package<:>xfce4-indicator-plugin
+# kdocker (click to make any program a tray icon)
+catagory<:>package<:>kdocker
 #### install volumeicon and remove volumed service to remove redundancy, also remove pulseaudio to simplify the volume options for users, install alsa as sound system
 catagory<:>message<:>Install ALSA(Sound System)
 catagory<:>package<:>alsa
@@ -414,7 +511,9 @@ catagory<:>localdeb<:>reboot-required<:>/usr/bin/reboot-required
 # remove the crappy notifications you cant click away, install xfce ones
 catagory<:>message<:>Remove Junk OSD notification system
 catagory<:>rm-package<:>notify-osd
-catagory<:>message<:>Installing Nicer OSD notification system
+catagory<:>message<:>Remove mate desktop notification system
+catagory<:>rm-package<:>mate-notification-daemon
+catagory<:>message<:>Installing Xfce OSD notification system
 catagory<:>package<:>xfce4-notifyd
 # sets up the custom mimetype defaults for HackBox
 catagory<:>message<:>Setting up mimetypes for HackBox
@@ -428,10 +527,16 @@ catagory<:>localdeb<:>hackbox-mimetype-defaults<:>/usr/bin/fehOpen
 #cp /usr/share/applications/wally.desktop/wally.desktop /etc/xdg/autostart/wally.desktop
 catagory<:>message<:>Installing Conky(desktop widget program)
 catagory<:>package<:>conky-all
-catagory<:>message<:>Installing Guake(drop down terminal)
-catagory<:>package<:>guake
-catagory<:>message<:>Setting up Autostart for Guake
-catagory<:>command<:>cp -v /usr/share/applications/guake.desktop /etc/xdg/autostart/guake.desktop
+# Install tilda and removing other drop down terminals
+catagory<:>message<:>Installing Tilda(drop down terminal)
+catagory<:>package<:>tilda
+catagory<:>message<:>Setting up Autostart for Tilda 
+catagory<:>command<:>cp -v /usr/share/applications/tilda.desktop /etc/xdg/autostart/tilda.desktop
+catagory<:>message<:>Removing other drop down terminals
+catagory<:>rm-package<:>guake
+catagory<:>rm-package<:>yeahconsole
+catagory<:>rm-package<:>yakuake
+#######
 catagory<:>message<:>Installing tumblerd-extra-plugins(renders thumbnails of videos)
 catagory<:>package<:>tumbler-plugins-extra
 # Setup clipboard manager stuff
@@ -443,8 +548,12 @@ catagory<:>package<:>clipit
 # install desktop nova and the xfce module of the program
 # catagory<:>message<:>Installing Desktop-Nova(Wallpaper Switcher)####catagory<:>package<:>desktopnova
 # Setting up xfce desktop Support####catagory<:>package<:>desktopnova-module-xfce
+catagory<:>message<:>Installing Desktop Layout Picker(Change desktop layout)
+catagory<:>localdeb<:>desktop-layout-picker<:>/usr/bin/desktop-layout-picker
 catagory<:>message<:>Installing xfce whiskermenu
 catagory<:>package<:>xfce4-whiskermenu-plugin
+catagory<:>message<:>Installing mugshot(User info management)
+catagory<:>package<:>mugshot
 catagory<:>message<:>Installing xfce power manager
 catagory<:>package<:>xfce4-power-manager
 catagory<:>message<:>Installing xfce cpu graph plugin for panel
@@ -467,18 +576,6 @@ catagory<:>message<:>Removing extra screensavers
 catagory<:>rm-package<:>cinnamon-screensaver
 catagory<:>message<:>Removing extra screensavers
 catagory<:>rm-package<:>kscreensaver
-# Add fortune, cowsay, and create none cow
-catagory<:>message<:>Setup cowsay and fortune
-catagory<:>package<:>cowsay
-catagory<:>package<:>fortune
-# allow root to launch fortune and cowsay
-catagory<:>command<:>link /usr/games/fortune /usr/bin/fortune
-catagory<:>command<:>link /usr/games/cowsay /usr/bin/cowsay
-# create the none cow
-catagory<:>command<:>echo "$thoughts" > /usr/share/cowsay/cows/none.cow
-catagory<:>command<:>chmod +r /usr/share/cowsay/cows/none.cow
-# add motd which depends on cowsay and fortune
-catagory<:>script<:>message-of-the-day
 ########################################################################
 # Basic Security Software
 ########################################################################

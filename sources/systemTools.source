@@ -1,21 +1,25 @@
 #BANNER
 #QUESTION:Would you like to install System Administrator Tools?
 # System Tools Source file
-# backup tool #
-# luckybackup is way harder to use than backintime so its getting replaced
-catagory<:>message<:>Installing LuckyBackup (Backup Utility)
+# backup tools #
+catagory<:>message<:>Installing LuckyBackup (Backup Utility)(GUI for rsync)
 catagory<:>package<:>luckybackup
 catagory<:>message<:>Installing Back In Time (Backup Utility)
 catagory<:>package<:>backintime-gnome
+# remove other backup programs to avoid confusion
+catagory<:>rm-package<:>deja-dup
 # the below is dead, keeping for a bit in case it is revived, it eases managing grub
 #catagory<:>message<:>Installing Startup Manager
-catagory<:>package<:>startupmanager
+#catagory<:>package<:>startupmanager
 # below tool is for cleanup of crap on the pc over time
 catagory<:>message<:>Installing Bleachbit (Clean up disk and write over old data)
 catagory<:>package<:>bleachbit
 # below is disk recovery tool
 catagory<:>message<:>Installing Testdisk(Disk Recovery Tool)
 catagory<:>package<:>testdisk
+# partition management
+catagory<:>message<:>Installing Gparted(Disk Partition Tool)
+catagory<:>package<:>gparted
 # remote desktop tool
 catagory<:>message<:>Installing Vinagre (Remote Desktop Viewer)
 catagory<:>package<:>vinagre
@@ -30,8 +34,8 @@ catagory<:>package<:>nmap
 # root kit detection
 catagory<:>message<:>Installing chkrootkit(checks the sysytem for rootkits)
 catagory<:>package<:>chkrootkit
-catagory<:>message<:>Installing rkhunter(checks the sysytem for rootkits)
-catagory<:>package<:>rkhunter
+interactive<:>message<:>Installing rkhunter(checks the sysytem for rootkits)
+interactive<:>package<:>rkhunter
 # monitoring tools
 catagory<:>message<:>Installing htop (CLI Task Manager)
 catagory<:>package<:>htop

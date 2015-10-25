@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 ########################################################################
 # GUI for Hackbox Setup
 # Copyright (C) 2014  Carl J Smith
@@ -17,8 +17,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
 import os, sys
-# launch the program on xterm
-if os.path.exists('/usr/bin/xterm') == False:
-	os.system('gksu "apt-get install xterm --assume-yes"')
-os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfig"')
+if ("--upgrade" in sys.argv):
+	# if running an upgrade
+	print("Running a system upgrade...")
+	os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfigUpgrade"')
+else:
+	# openvt launches a tty on terminal 12 and waits till setup script has finished
+	os.system('pkexec openvt -c 12 -s -w -l hackboxlauncher')
 exit()

@@ -7,8 +7,10 @@ catagory<:>message<:>Installing Scribus
 catagory<:>package<:>scribus
 catagory<:>message<:>Installing FreeMind
 catagory<:>package<:>freemind
-catagory<:>message<:>Installing Planner
+catagory<:>message<:>Installing Planner(Project Management)
 catagory<:>package<:>planner
+catagory<:>message<:>Installing DIA(Flowchart Tool)
+catagory<:>package<:>dia
 catagory<:>message<:>Installing HomeBank
 catagory<:>package<:>homebank
 catagory<:>message<:>Installing Calibre(Book Management Software)

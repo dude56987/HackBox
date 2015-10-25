@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2015-04-10T16:10:22-04:00
+
+====== media ======
+
+===== About =====
+This contains media assets installed into the system.
+
+===== Subdirectories =====
+banner.txt       hackboxLogoText.png  mdmTheme      screenConfig  themes
+fonts            icons                panel.png     SourceFiles   ttyTheme
+hackboxLogo.png  launchers            releaseFiles  splash.jpg    wallpapers

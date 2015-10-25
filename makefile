@@ -23,7 +23,7 @@ install : batman
 installtosystem:
 	mkdir /opt/hackbox
 	cp -vr * /opt/hackbox
-	echo "#! /bin/bash\npython /opt/hackbox/hackboxsetup.py" > /usr/bin/hackboxsetup
+	echo "#! /bin/bash\npython3 /opt/hackbox/hackboxsetup.py" > /usr/bin/hackboxsetup
 	sudo chmod +x /usr/bin/hackboxsetup
 	sudo chmod -Rv ugo+r /opt/hackbox/media/
 uninstallfromsystem:
@@ -43,6 +43,12 @@ update-version-number:
 #	less .debdata/control
 	# fix it back
 #	cp .debdata/control.backup .debdata/control
+update-relay: 
+	# copy current directory to the relay directory
+	# If a relay is setup this will update the package pushed
+	# when the cron job is next run.
+	sudo cp -rv * /opt/hackbox/update
+	sudo bash /etc/cron.daily/00-hackbox-server-update-relay
 build: 
 	# build the deb
 	sudo make build-deb;
@@ -53,6 +59,7 @@ build-deb:
 	mkdir -p debian/usr/bin;
 	mkdir -p debian/opt;
 	mkdir -p debian/opt/hackbox;
+	mkdir -p debian/opt/hackbox/update;
 	mkdir -p debian/opt/hackbox/sources;
 	mkdir -p debian/opt/hackbox/media;
 	mkdir -p debian/opt/hackbox/scripts;
@@ -75,26 +82,19 @@ build-deb:
 	# compile and copy over the binary files
 	pycompile *.py
 	cp -vf hackboxsetup.py ./debian/opt/hackbox/hackboxsetup.py
+	cp -vf hackboxlib.py ./debian/opt/hackbox/hackboxlib.py
 	cp -vf hackboxsetup-gui.py ./debian/opt/hackbox/hackboxsetup-gui.py
 	# clean up those bytecode files
 	rm -vf *.pyc
-	# build the launchers link
-	#echo "#! /bin/bash\npython /opt/hackbox/hackboxsetup.py" > ./debian/usr/bin/hackboxsetup
-	#chmod +x ./debian/usr/bin/hackboxsetup
-	echo "#! /bin/bash\npython /opt/hackbox/hackboxsetup-gui.py" > ./debian/usr/bin/hackboxsetup-gui
-	chmod +x ./debian/usr/bin/hackboxsetup-gui
 	# give everyone read permissions for the media directory of hackbox
 	chmod -Rv ugo+r ./debian/opt/hackbox/media/.
 	# compress the preconfigured settings files
 	# escape the endings to cd works since each line is executed as a separate process
-	cd preconfiguredSettings/userSettings/topBar/;\
-	ls -A | zip -g -9 -r ../../../debian/opt/hackbox/preconfiguredSettings/userSettings/topBar.zip -@;
-	# each line is executed as a separate process so it pops back to the main directory
-	cd preconfiguredSettings/userSettings/bottomBar/;\
-	ls -A | zip -g -9 -r ../../../debian/opt/hackbox/preconfiguredSettings/userSettings/bottomBar.zip -@;
-	# add core settings
-	cd preconfiguredSettings/userSettings/CORE/;\
-	ls -A | zip -g -9 -r ../../../debian/opt/hackbox/preconfiguredSettings/userSettings/CORE.zip -@;
+	cp -rvf preconfiguredSettings/userSettings/* debian/opt/hackbox/preconfiguredSettings/userSettings/
+	# fix permissions on usersettings
+	chmod -R -xw debian/opt/hackbox/preconfiguredSettings/userSettings/
+	chmod -R ugo+rX debian/opt/hackbox/preconfiguredSettings/userSettings/
+	chmod -R u+w debian/opt/hackbox/preconfiguredSettings/userSettings/
 	# add config files n such
 	cp -vfr ./preconfiguredSettings/launchers ./debian/opt/hackbox/preconfiguredSettings/
 	cp -vfr ./preconfiguredSettings/debconf ./debian/opt/hackbox/preconfiguredSettings/
@@ -103,12 +103,14 @@ build-deb:
 	cp -vfr ./scripts/. ./debian/opt/hackbox/scripts/
 	cp -vfr ./sources/. ./debian/opt/hackbox/sources/
 	cp -vfr ./unsupportedPackages/. ./debian/opt/hackbox/unsupportedPackages/
+	# copy over the relay server info if a relay has been setup
+	cp -vf /etc/hackbox/relayServer ./debian/etc/hackbox/relayServer || echo 'WARNING:No relay server setup!'
 	# Create the md5sums file
 	find ./debian/ -type f -print0 | xargs -0 md5sum > ./debian/DEBIAN/md5sums
 	# cut filenames of extra junk
-	sed -i.bak 's/\.\/debian\///g' ./debian/DEBIAN/md5sums
-	sed -i.bak 's/\\n*DEBIAN*\\n//g' ./debian/DEBIAN/md5sums
-	sed -i.bak 's/\\n*DEBIAN*//g' ./debian/DEBIAN/md5sums
+	sed -i 's/\.\/debian\///g' ./debian/DEBIAN/md5sums
+	sed -i 's/\\n*DEBIAN*\\n//g' ./debian/DEBIAN/md5sums
+	sed -i 's/\\n*DEBIAN*//g' ./debian/DEBIAN/md5sums
 	# copy over the debdata files
 	cp -rv .debdata/. debian/DEBIAN/
 	# figure out the size of the installed package and save the size in kb to a file
@@ -121,55 +123,77 @@ build-deb:
 	#~ sed -i.bak "s/Installed-Size: [0123456789]\{2,20\}/Installed-Size: ${VALUE}/g" ./debian/DEBIAN/control;\
 	#~ rm ./debian/DEBIAN/control.bak;\
 	#~ ';
-	# clear up backups from sed operations
-	rm -v ./debian/DEBIAN/md5sums.bak
+	# set permissions correctly on things
 	chmod -R 775 ./debian/DEBIAN
 	chmod -Rv ugo+r ./debian/opt/hackbox/media
 	chmod -Rv ugo+x ./debian/opt/hackbox/media/launchers
-	dpkg-deb --build debian
-	cp -v debian.deb hackbox_UNSTABLE.deb
-	# cleanup of unnamed package and package build folder
-	rm -v debian.deb
+	# max compression on package
+	dpkg-deb -Z xz -z 9 --build debian
+	mv -vf debian.deb hackbox_UNSTABLE.deb
+	# cleanup package build folder
 	rm -rv debian
 distro-build-env-setup:
 	# install uck so distro can be built
-	sudo apt-get install uck libfribidi-bin
+	#sudo apt-get install uck libfribidi-bin
+	# live-build works uck is broken
+	sudo apt-get install live-build
 	# second package is required in uck but not set as a dependency in uck package
 	echo 'Done!'
 distro-build:
-	uck-gui
+	mkdir distroBuild -p
+	#uck-gui
+	cd distroBuild && sudo lb config
+	cd distroBuild && sudo lb build
+	cd distroBuild && sudo lb config --mode ubuntu --distribution vivid --archive-areas "main multiverse vivid-backports universe contrib" --binary-images iso-hybrid --architecture i386 --debian-installer live 
+	cd distroBuild && sudo lb build
+	#cd distroBuild && lb config --mode ubuntu --distribution vivid --hostname livecd --username livecduser --archive-areas "main multiverse vivid-backports universe contrib" --binary-images iso-hybrid --architecture i386 --debian-installer livetman: build install-deb
+	##############
 batman: build install-deb
-	echo 'I am the Night.'
-pullCustomSoftware: 
+	# I am the Night
+pullCustomSoftware:
 	mkdir -p customSoftwarePackages
+	# redshiftRunner
+	git clone https://github.com/dude56987/redshiftRunner.git customSoftwarePackages/redshiftrunner ||\
+	git -C customSoftwarePackages/redshiftRunner pull
+	# desktop layout picker
+	git clone https://github.com/dude56987/Desktop-Layout-Picker.git customSoftwarePackages/desktop-layout-picker ||\
+	git -C customSoftwarePackages/desktop-layout-picker pull
+	# distro upgrade
 	git clone https://github.com/dude56987/Distro-Upgrade.git customSoftwarePackages/distro-upgrade ||\
 	git -C customSoftwarePackages/distro-upgrade pull
+	# reboot-required
 	git clone https://github.com/dude56987/Reboot-Required.git customSoftwarePackages/reboot-required ||\
 	git -C customSoftwarePackages/reboot-required pull
+	# lanscan
 	git clone https://github.com/dude56987/LanScan.git customSoftwarePackages/lanscan ||\
 	git -C customSoftwarePackages/lanscan pull
+	# dothis
 	git clone https://github.com/dude56987/DoThis.git customSoftwarePackages/dothis ||\
 	git -C customSoftwarePackages/dothis pull
+	# bitmessage update
 	git clone https://github.com/dude56987/Bitmessage-Update.git customSoftwarePackages/bitmessage-update ||\
 	git -C customSoftwarePackages/bitmessage-update pull
+	# hackbox-update
 	git clone https://github.com/dude56987/HackBox-Update.git customSoftwarePackages/hackbox-update ||\
 	git -C customSoftwarePackages/hackbox-update pull
+	# resetsettings
 	git clone https://github.com/dude56987/ResetSettings.git customSoftwarePackages/resetsettings ||\
 	git -C customSoftwarePackages/resetsettings pull
+	# help-center
 	git clone https://github.com/dude56987/Help-Center.git customSoftwarePackages/help-center ||\
 	git -C customSoftwarePackages/help-center pull
+	# opennic-dns
 	git clone https://github.com/dude56987/OpenNIC-DNS.git customSoftwarePackages/opennic-dns ||\
 	git -C customSoftwarePackages/opennic-dns pull
+	# hostfileblocklist
 	git clone https://github.com/dude56987/HostfileBlocklist.git customSoftwarePackages/hostfileblocklist ||\
 	git -C customSoftwarePackages/hostfileblocklist pull
+	# dns-precache
 	git clone https://github.com/dude56987/DNS-Precache.git customSoftwarePackages/dns-precache ||\
 	git -C customSoftwarePackages/dns-precache pull
-	git clone https://github.com/dude56987/HackBox-Darknet.git customSoftwarePackages/hackbox-darknet ||\
-	git -C customSoftwarePackages/hackbox-darknet pull
+	# hackbox-mimetypes
 	git clone https://github.com/dude56987/HackBox-Mimetype-Defaults.git customSoftwarePackages/hackbox-mimetype-defaults ||\
 	git -C customSoftwarePackages/hackbox-mimetype-defaults pull
-	git clone https://github.com/dude56987/Geolocate.git customSoftwarePackages/geolocate ||\
-	git -C customSoftwarePackages/geolocate pull
 customSoftwareStatus: 
 	git -C customSoftwarePackages/distro-upgrade status
 	git -C customSoftwarePackages/reboot-required status
@@ -194,7 +218,7 @@ fix-permissions:
 	# user has write permissions on all files
 	sudo chmod -R u+w *
 	# execute and read directories allowed for everyone
-	sudo find . -type d -exec chmod +rx {} \;
+	sudo chmod -R ugo+X *
 clean-logs:
 	sudo rm -vf /opt/hackbox/Install_Log.txt
 	sudo rm -vf Install_Log.txt
@@ -215,5 +239,31 @@ test:
 debug-install-settings:
 	sudo cp -rvf preconfiguredSettings/userSettings/CORE/. /etc/skel/
 	sudo cp -rvf preconfiguredSettings/userSettings/bottomBar/. /etc/skel/
-#uninstall : uninstall.py
-#	python uninstall.py
+project-report:
+	sudo apt-get install gitstats gource --assume-yes
+	rm -vr report/ || echo "No existing report..."
+	mkdir -p report
+	mkdir -p report/webstats
+	cp -v media/hackboxLogoText.png report/logo.png
+	# write the index page
+	echo "<html style='margin:auto;width:800px;text-align:center;'><body>" > report/index.html
+	echo "<a href='webstats/index.html'><h1>WebStats</h1></a>" >> report/index.html
+	echo "<a href='log.html'><h1>Log</h1></a>" >> report/index.html
+	echo "<video src='video.mp4' poster='logo.png' width='800' controls>" >> report/index.html
+	echo "<a href='video.mp4'><h1>Gource Video Rendering</h1></a>" >> report/index.html
+	echo "</video>" >> report/index.html
+	echo "</body></html>" >> report/index.html
+	# write the log to a webpage
+	echo "<html><body>" > report/log.html
+	echo "<h1><a href='index.html'>Back</a></h1>" >> report/log.html
+	# generate the log into a variable
+	git log --stat > report/logInfo
+	echo "<code><pre>" >> report/log.html
+	cat report/logInfo >> report/log.html
+	echo "</pre></code>" >> report/log.html
+	rm report/logInfo
+	echo "</body></html>" >> report/log.html
+	# generate git statistics
+	gitstats -c processes='8' . report/webstats
+	# generate a video with gource
+	gource --max-files 0 -s 1 -c 4 -1280x720 -o - | avconv -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 8 -bf 0 report/video.mp4

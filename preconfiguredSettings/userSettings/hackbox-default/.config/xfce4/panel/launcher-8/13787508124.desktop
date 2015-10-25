@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Xkill
+Comment=Click to kill a frozen program
+Exec=xkill
+Icon=stock_close
+Path=
+Terminal=false
+StartupNotify=false

@@ -23,6 +23,10 @@ catagory<:>message<:>Installing devtodo (CLI todo list manager)
 catagory<:>package<:>devtodo
 catagory<:>message<:>Installing GIT (Version Control System)
 catagory<:>package<:>git
+catagory<:>message<:>Installing Gource (GIT visualization generator)
+catagory<:>package<:>gource
+catagory<:>message<:>Installing gitstats (GIT statistics generator)
+catagory<:>package<:>gitstats
 catagory<:>message<:>Installing GitHub Backup(Backup User Repos on GitHub)
 catagory<:>package<:>github-backup
 # install unsupported packages
