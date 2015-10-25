@@ -4,6 +4,8 @@ startup_message off
 bindkey -k k4 focus
 bindkey -k k3 focus
 #bindkey "^I" focus
+# set screen to full refresh every time
+allpartial off
 # Split the screen verticaly
 split -v
 # setup a screen to display the standard install output
