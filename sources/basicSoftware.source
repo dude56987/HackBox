@@ -250,6 +250,8 @@ catagory<:>message<:>Installing pdmenu(CLI Curses Menu)
 catagory<:>package<:>pdmenu
 catagory<:>message<:>Installing espeak (CLI electronic voice synth)
 catagory<:>package<:>espeak
+catagory<:>message<:>Installing espeak-gui (GUI for espeak)
+catagory<:>package<:>espeak-gui
 catagory<:>message<:>Installing geolocate(Figure out the location of pcs)
 catagory<:>localdeb<:>geolocate<:>/usr/bin/geolocate
 # install colortest-python and link it to the colortest command 
