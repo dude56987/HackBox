@@ -1,18 +1,24 @@
 <?xml version="1.0"?>
 <todo version="0.1.20">
-    <note priority="medium" time="1410320180">
-        Create a checkbox based gui for install
-    </note>
     <note priority="medium" time="1410320230">
         Add preset mimetypes into firefox and midori to make them work better with the installed applications
     </note>
-    <note priority="medium" time="1410320285">
-        Do testing and build cross compatibility with arch linux
-    </note>
-    <note priority="medium" time="1410320320">
-        Do testing and build cross compatibility with centos or suse linux
-    </note>
     <note priority="medium" time="1410727183">
         create gui/cli ramdisk creating program
+    </note>
+    <note priority="medium" time="1446174769">
+        create a launcher for qtox so it will show up in the start menu
+    </note>
+    <note priority="medium" time="1446174851">
+        fix cameramonitor behavour of launching a this program is already running dialog on every second login
+    </note>
+    <note priority="medium" time="1446174939">
+        figure out a way to make a cleanup script launch on graphical logout, have it run .bash_logout also
+    </note>
+    <note priority="medium" time="1446174975">
+        look into ways to make a livecd for hackbox
+    </note>
+    <note priority="medium" time="1446232539">
+        add local bitcoin wallet ppa and add bitcoin wallet software to hackbox
     </note>
 </todo>
