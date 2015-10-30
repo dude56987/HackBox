@@ -152,9 +152,12 @@ batman: build install-deb
 	# I am the Night
 pullCustomSoftware:
 	mkdir -p customSoftwarePackages
+	# mkrd (GUI Ram Disk Tool)
+	git clone https://github.com/dude56987/mkrd.git customSoftwarePackages/mkrd ||\
+	git -C customSoftwarePackages/mkrd pull
 	# redshiftRunner
 	git clone https://github.com/dude56987/redshiftRunner.git customSoftwarePackages/redshiftrunner ||\
-	git -C customSoftwarePackages/redshiftRunner pull
+	git -C customSoftwarePackages/redshiftrunner pull
 	# desktop layout picker
 	git clone https://github.com/dude56987/Desktop-Layout-Picker.git customSoftwarePackages/desktop-layout-picker ||\
 	git -C customSoftwarePackages/desktop-layout-picker pull
