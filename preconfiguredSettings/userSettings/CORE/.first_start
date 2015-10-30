@@ -20,6 +20,8 @@ if [ $temp -ge 1 ]; then
 		SuccessCheck=0
 	fi
 fi
+# generate the users icon based on their username and hostname converted into a md5sum
+identicon -s 256 -t -H $(echo "$(whoami)@$(hostname)"| md5sum | sed "s/[\ ,-]//g") -o ~/.face
 # Add the default empty directories
 mkdir -p ~/Downloads
 mkdir -p ~/Music

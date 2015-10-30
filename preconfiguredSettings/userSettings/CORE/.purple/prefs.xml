@@ -485,7 +485,7 @@
 		<pref name='browsers'>
 			<pref name='browser' type='string' value='custom'/>
 			<pref name='place' type='int' value='0'/>
-			<pref name='manual_command' type='string' value='sensible-browser'/>
+			<pref name='manual_command' type='string' value='firefox'/>
 		</pref>
 		<pref name='plugins'>
 			<pref name='loaded' type='pathlist'>
@@ -501,7 +501,7 @@
 		<pref name='filelocations'>
 			<pref name='last_save_folder' type='path' value=''/>
 			<pref name='last_open_folder' type='path' value=''/>
-			<pref name='last_icon_folder' type='path' value='/home/dude/Pictures/Wallpapers'/>
+			<pref name='last_icon_folder' type='path' value=''/>
 		</pref>
 		<pref name='smileys'>
 			<pref name='theme' type='string' value='Default'/>
@@ -574,7 +574,7 @@
 				<pref name='width' type='int' value='520'/>
 				<pref name='height' type='int' value='321'/>
 			</pref>
-			<pref name='buddyicon' type='path' value=''/>
+			<pref name='buddyicon' type='path' value='.face'/>
 		</pref>
 		<pref name='blist'>
 			<pref name='show_buddy_icons' type='bool' value='1'/>

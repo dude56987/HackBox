@@ -554,6 +554,8 @@ catagory<:>message<:>Installing xfce whiskermenu
 catagory<:>package<:>xfce4-whiskermenu-plugin
 catagory<:>message<:>Installing mugshot(User info management)
 catagory<:>package<:>mugshot
+catagory<:>message<:>Installing identicon(Generate unique images from MD5 Hashes)
+catagory<:>localdeb<:>identicon-bash
 catagory<:>message<:>Installing xfce power manager
 catagory<:>package<:>xfce4-power-manager
 catagory<:>message<:>Installing xfce cpu graph plugin for panel
