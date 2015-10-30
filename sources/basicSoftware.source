@@ -589,8 +589,8 @@ catagory<:>message<:>Installing fail2ban
 catagory<:>package<:>fail2ban
 catagory<:>message<:>Installing Virus Scanner
 catagory<:>package<:>clamtk
-catagory<:>message<:>Installing CryptKeeper(Create encrypted folders)
-catagory<:>package<:>cryptkeeper
+interactive<:>message<:>Installing CryptKeeper(Create encrypted folders)
+interactive<:>package<:>cryptkeeper
 ########################################################################
 # catagory<:>message<:>Remove stupid shit from Ubuntu that tracks your activity
 ########################################################################
