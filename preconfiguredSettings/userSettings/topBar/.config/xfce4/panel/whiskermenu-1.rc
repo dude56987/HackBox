@@ -1,5 +1,5 @@
-favorites=firefox.desktop,Thunar.desktop,libreoffice-startcenter.desktop,pidgin.desktop,mintInstall.desktop,xfce-settings-manager.desktop,terminator.desktop
-recent=exo-file-manager.desktop,exo-terminal-emulator.desktop,transmission-gtk.desktop,firefox.desktop,mintInstall.desktop
+favorites=firefox.desktop,Thunar.desktop,libreoffice-startcenter.desktop,pidgin.desktop,xfce-settings-manager.desktop,terminator.desktop
+recent=exo-file-manager.desktop,exo-terminal-emulator.desktop,transmission-gtk.desktop,firefox.desktop
 button-title=Menu
 button-icon=/opt/hackbox/media/hackboxLogo.png
 button-single-row=false
@@ -11,6 +11,7 @@ item-icon-size=2
 hover-switch-category=true
 category-icon-size=1
 load-hierarchy=false
+recent-items-max=10
 favorites-in-recent=true
 display-recent-default=false
 position-search-alternate=false
@@ -22,12 +23,14 @@ command-settings=xfce4-settings-manager
 show-command-settings=true
 command-lockscreen=xflock4
 show-command-lockscreen=true
-command-switchuser=gdmflexiserver
+command-switchuser=dm-tool switch-to-greeter
 show-command-switchuser=true
 command-logout=xfce4-session-logout
 show-command-logout=true
 command-menueditor=menulibre
 show-command-menueditor=true
+command-profile=mugshot
+show-command-profile=true
 search-actions=4
 
 [action0]

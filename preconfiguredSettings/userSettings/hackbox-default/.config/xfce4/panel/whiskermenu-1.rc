@@ -1,5 +1,5 @@
 favorites=firefox.desktop,Thunar.desktop,libreoffice-startcenter.desktop,pidgin.desktop,xfce-settings-manager.desktop,terminator.desktop
-recent=
+recent=exo-file-manager.desktop,exo-terminal-emulator.desktop,transmission-gtk.desktop,firefox.desktop
 button-title=Menu
 button-icon=/opt/hackbox/media/hackboxLogo.png
 button-single-row=false
@@ -24,7 +24,7 @@ command-settings=xfce4-settings-manager
 show-command-settings=true
 command-lockscreen=xflock4
 show-command-lockscreen=true
-command-switchuser=gdmflexiserver
+command-switchuser=dm-tool switch-to-greeter
 show-command-switchuser=true
 command-logout=xfce4-session-logout
 show-command-logout=true
