@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Version=1.0
-Type=Application
-Exec=bash -c "if [ -f /usr/bin/cameramonitor ]; then while ! pgrep -xc cameramonitor;do cameramonitor;done; fi;"
-Name=Camera Monitor
-Comment=Camera monitor tray program
-GenericName=Camera Monitor
