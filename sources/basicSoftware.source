@@ -202,6 +202,12 @@ catagory<:>message<:>Installing SpeedCrunch (Calculator)
 catagory<:>package<:>speedcrunch
 catagory<:>message<:>Installing Gnome-Genius (Really Advanced Graphing Calculator) 
 catagory<:>package<:>gnome-genius
+# removing junk calculators
+catagory<:>message<:>Removing conflicting calculators
+catagory<:>rm-package<:>galculator 
+catagory<:>rm-package<:>gcalctool
+catagory<:>rm-package<:>kcalc
+################
 catagory<:>message<:>Installing convertall (Unit Converter GUI) 
 catagory<:>package<:>convertall
 catagory<:>message<:>Installing terminator (terminal with lots of nice features)
