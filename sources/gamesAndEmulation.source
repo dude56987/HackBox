@@ -5,7 +5,9 @@ interactive<:>message<:>Installing PlayOnLinux (Windows Game/Software Emulation)
 interactive<:>package<:>playonlinux
 catagory<:>message<:>Installing Virt Manager (GUI Virtual Machine Interface)
 catagory<:>package<:>virt-manager
+catagory<:>package<:>kvm
 catagory<:>package<:>qemu-kvm
+catagory<:>package<:>qemu-kvm-spice
 catagory<:>message<:>Installing TuxMath and Tux Typing
 catagory<:>package<:>tuxmath tuxtype
 catagory<:>message<:>Installing gtypist
