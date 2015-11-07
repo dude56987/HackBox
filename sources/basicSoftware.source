@@ -389,6 +389,10 @@ catagory<:>package<:>marble
 # Recipe Manager
 catagory<:>message<:>Installing Gourmet (Recipe Manager)...
 catagory<:>package<:>gourmet
+# Bitcoin wallet
+interactive<:>ppa<:>ppa:bitcoin/bitcoin
+catagory<:>message<:>Installing Bitcoin Core(e-Currency wallet)
+catagory<:>package<:>bitcoin-qt
 ##########################################################
 # encrypted internet communications programs in progress #
 ##########################################################
