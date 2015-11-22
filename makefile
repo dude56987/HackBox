@@ -75,6 +75,8 @@ build-deb:
 	mkdir -p debian/etc/hackbox/sources;
 	# make post and pre install scripts have the correct permissions
 	chmod 775 .debdata/*
+	# copy over the launcher for the program
+	cp -vf media/launchers/*.desktop debian/usr/share/applications/
 	# copy over HackBox icons for the launchers
 	cp -vf media/hackboxLogo.png debian/usr/share/pixmaps/
 	# compile and copy over the binary files
