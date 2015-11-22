@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Hardware Lister
+Comment=Provides information on hardware
+Icon=lshw-gtk
+Exec=su-to-root -X -c lshw-gtk
+Terminal=false
+Categories=XFCE;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-HardwareSettings;

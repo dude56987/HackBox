@@ -1,8 +1,8 @@
 #! /bin/bash
 # link up the installer to a command
-ln -s /opt/hackbox/hackboxsetup.py /usr/bin/hackboxsetup
+ln -s -f /opt/hackbox/hackboxsetup.py /usr/bin/hackboxsetup
 sudo chmod +x /usr/bin/hackboxsetup
-ln -s /opt/hackbox/hackboxsetup-gui.py /usr/bin/hackboxsetup-gui
+ln -s -f /opt/hackbox/hackboxsetup-gui.py /usr/bin/hackboxsetup-gui
 sudo chmod +x /usr/bin/hackboxsetup-gui
 # create generic launcher script
 echo "#! /bin/bash" > /usr/bin/hackboxlauncher

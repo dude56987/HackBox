@@ -60,5 +60,9 @@ cp -vf /opt/hackbox/media/wallpapers/* /usr/share/pixmaps/wallpapers/
 mkdir -p /usr/share/pixmaps/hackbox
 cp -vf /opt/hackbox/media/*.jpg /usr/share/pixmaps/hackbox/
 cp -vf /opt/hackbox/media/*.png /usr/share/pixmaps/hackbox/
+##############################
+# Copy over custom launchers #
+##############################
+cp -vf /opt/hackbox/preconfiguredSettings/launchers/applications/*.desktop /usr/share/applications/
 # exit the script if everything worked out
 exit 0
