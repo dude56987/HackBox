@@ -1,8 +1,11 @@
-! This file holds settings for xterm 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! This section holds settings for xterm 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! These basicly just make it look a bit nicer
 ! Comments begin with a "!" character.
 ! Config addapted from info at below address
 ! https://wiki.archlinux.org/index.php/X_resources#Xterm_resources
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 XTerm*background:       black
 XTerm*foreground:       white
 XTerm*cursorColor:      white
@@ -13,3 +16,38 @@ XTerm*scrollTtyOutput:  false
 xterm*faceName:         Hermit:style=bold:size=12
 xterm*rightScrollBar:   true
 xterm*dynamicColors:    true
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! The below section is to improve the look of Xscreensaver
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Config addapted from info at below address
+! http://www.ubuntubuzz.com/2013/02/how-to-change-xscreensaver-lock-screen.html
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+xscreensaver.splash: false
+!!!! font settings !!!!
+xscreensaver.Dialog.headingFont: -*-Hermit-bold-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont: -*-Hermit-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont: -*-Hermit-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont: -*-Hermit-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont: -*-Hermit-bold-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont: -*-Hermit-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont: -*-Hermit-bold-r-*-*-12-*-*-*-*-*-*-*
+!!!! general dialog box (affects main hostname, username, password text) !!!!
+xscreensaver.Dialog.foreground: #ffffff
+xscreensaver.Dialog.background: #666666
+xscreensaver.Dialog.topShadowColor: #3e3e3e
+xscreensaver.Dialog.bottomShadowColor: #3e3e3e
+xscreensaver.Dialog.Button.foreground: #ffffff
+xscreensaver.Dialog.Button.background: #666666
+!!!! username/password input box and date text colour !!!!
+xscreensaver.Dialog.text.foreground: #ffffff
+xscreensaver.Dialog.text.background: #666666
+xscreensaver.Dialog.internalBorderWidth:28
+xscreensaver.Dialog.borderWidth: 0
+xscreensaver.Dialog.shadowThickness: 4
+!!!! timeout bar (background is actually determined by Dialog.text.background) !!!!
+xscreensaver.passwd.thermometer.foreground: #ffffff
+xscreensaver.passwd.thermometer.background: #000000
+xscreensaver.passwd.thermometer.width: 15
+!!!! datestamp format--see the strftime(3) manual page for details !!!!
+xscreensaver.dateFormat: %I:%M%P %b %d
+
