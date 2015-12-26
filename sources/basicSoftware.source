@@ -225,9 +225,6 @@ catagory<:>rm-package<:>xarchiver
 # setup thunar archive intergration
 catagory<:>message<:>Installing archive support for thunar context actions
 catagory<:>package<:>thunar-archive-plugin
-# Add a utility that allows users to upgrade their distro by only updating the package sources
-catagory<:>message<:>Installing distro-upgrade tool
-catagory<:>localdeb<:>distro-upgrade<:>/usr/bin/distro-upgrade
 ##### Additonal Fonts #####
 catagory<:>message<:>Installing fonts(opendyslexic)
 catagory<:>package<:>fonts-opendyslexic

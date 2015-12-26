@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Distro Upgrade
+Comment=Do full release upgrade of distro
+GenericName=Distro Upgrade
+Exec=pkexec bash -c "do-release-upgrade || bash -c \"echo 'Press enter to end program...';read\""
+Icon=system-upgrade
+Terminal=true
+StartupNotify=true
+Type=Application
+Categories=System;Utility;X-XFCE-SystemSettings;X-XFCE-SettingsDialog;
