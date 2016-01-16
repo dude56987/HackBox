@@ -1,6 +1,5 @@
 /**********************************************/
-*
-{
+*{
     /*-GtkWidget-focus-line-pattern: "\0"; use CSS outline-style*/
 
     -GtkCheckButton-indicator-size: 12;
@@ -188,7 +187,15 @@ row:nth-child(odd)
 {
     border-width: 1px;
 }
-
+.scrollbar,
+.scrollbar.vertical {
+    -GtkScrollbar-has-backward-stepper: 1;
+    -GtkScrollbar-has-forward-stepper: 1;
+    -GtkRange-stepper-size: 15;
+    -GtkRange-slider-width: 28;
+    border-radius: 0px;
+    border-image: none;
+}
 GtkProgressBar.trough
 {
     background-color: @bg_color;
