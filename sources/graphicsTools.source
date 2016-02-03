@@ -11,12 +11,12 @@ catagory<:>package<:>gimp-plugin-registry
 ###################################
 catagory<:>message<:>Installing Blender (3D Design Tool)
 catagory<:>package<:>blender
-catagory<:>message<:>Installing Inkscape
+catagory<:>message<:>Installing Inkscape(Vector graphics tool)
 catagory<:>package<:>inkscape
+catagory<:>message<:>Installing Birdfont(Font design tool)
+catagory<:>package<:>birdfont
 catagory<:>message<:>Installing MyPaint
 catagory<:>package<:>mypaint
-catagory<:>message<:>Installing Alchemy
-catagory<:>package<:>alchemy
 catagory<:>message<:>Installing Gpick(A color picker that also figures out color schemes)
 catagory<:>package<:>gpick
 catagory<:>message<:>Installing gcolor2(A simple color picker)
