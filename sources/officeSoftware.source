@@ -5,6 +5,8 @@ catagory<:>message<:>Installing Hamster Time Tracker
 catagory<:>package<:>hamster-applet
 catagory<:>message<:>Installing Scribus
 catagory<:>package<:>scribus
+catagory<:>message<:>Installing Booklet Imposer(Create printable booklets)
+catagory<:>package<:>bookletimposer
 catagory<:>message<:>Installing FreeMind
 catagory<:>package<:>freemind
 catagory<:>message<:>Installing Planner(Project Management)
