@@ -15,10 +15,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
-all: batman
-	echo 'This is the default run that builds and installs the program as a package. Everything should be installed if your seeing this.'
-	echo 'When you log out and back in the installer will run automaticly in graphics mode.'
-install : batman
+all:
+	sudo make install 
+	# This is the default run that builds and installs the program as a package. Everything should be installed if your seeing this.
+	# When you log out and back in the installer will run automaticly in graphics mode.
+install: build-deb install-deb
 	echo 'END OF LINE'
 installtosystem:
 	mkdir /opt/hackbox
@@ -49,9 +50,8 @@ update-relay:
 	# when the cron job is next run.
 	sudo cp -rv * /opt/hackbox/update
 	sudo bash /etc/cron.daily/00-hackbox-server-update-relay
-build: 
+build: build-deb 
 	# build the deb
-	sudo make build-deb;
 build-deb:
 	mkdir -p debian;
 	mkdir -p debian/DEBIAN;
@@ -146,8 +146,6 @@ distro-build:
 	cd distroBuild && sudo lb build
 	#cd distroBuild && lb config --mode ubuntu --distribution vivid --hostname livecd --username livecduser --archive-areas "main multiverse vivid-backports universe contrib" --binary-images iso-hybrid --architecture i386 --debian-installer livetman: build install-deb
 	##############
-batman: build install-deb
-	# I am the Night
 pullCustomSoftware:
 	mkdir -p customSoftwarePackages
 	# mkrd (GUI Ram Disk Tool)
