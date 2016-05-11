@@ -16,12 +16,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
-# check if its a laptop
+# check if the system running this script is a laptop
 if laptop-detect;then
-	# install laptop-mode-tools package
-	sudo apt-get install laptop-mode-tools --assume-yes
+	# install tlp (improves battery life in laptops)
+	sudo apt-get install tlp --assume-yes
+	# start tlp
+	sudo tlp start
 	# install fdpowermon battery indicator
 	sudo apt-get install fdpowermon --assume-yes
-	# enable laptop-mode-tools
-	sudo laptop-mode
+	# install powertop top but for power management
+	sudo apt-get install powertop --assume-yes
 fi
