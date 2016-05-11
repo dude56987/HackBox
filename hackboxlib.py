@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
-import os, sys, shutil, json, zipfile, socket, hashlib
+import os, sys, shutil, json, zipfile, socket, hashlib 
 from urllib.request import urlopen
 from time import sleep
 from random import randrange
@@ -138,10 +138,9 @@ def downloadFile(fileAddress):
 		print("Failed to download :"+fileAddress)
 		return False
 	# convert to text string
-	downloadedFileObject = downloadedFileObject.readall()
-	fileText = downloadedFileObject 
 	print("Finished Loading :"+fileAddress)
-	return fileText
+	# convert downloaded object into a string and return
+	return downloadedFileObject.read()
 ########################################################################
 def replaceLineInFile(fileName,stringToSearchForInLine,replacementText):
 	# open file
@@ -365,7 +364,7 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 					works now. In the future I would like to do this without apt-key but
 					right now it still works with apt-key '''
 					# write file to temp and add keyfile with apt-key
-					writeFile(('/tmp/'+str(fileName)+'.gpg'),downloadedKeyFile.decode('utf8'))
+					writeFile(('/tmp/'+str(fileName)+'.gpg'),downloadedKeyFile)
 					os.system('apt-key add /tmp/'+str(fileName)+'.gpg')
 					# clear the key from temp
 					os.system('rm /tmp/'+str(fileName)+'.gpg')
@@ -407,6 +406,10 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 				# install package
 				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
 					os.system((packageManager+' install '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
+			elif tempInfo[1] == 'cache-package':
+				# download the package to disk for caching this is used by the 
+				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
+					os.system((packageManager+' install --download-only '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
 			elif tempInfo[1] == 'localdeb':
 				# install package in unsupported packages
 				tempInfo[2] = '/opt/hackbox/unsupportedPackages/'+tempInfo[2]+'.deb'
@@ -521,6 +524,9 @@ def createInstallLoad():
 	prePayload += 'pre<:>message<:>##################################################################\n'
 	prePayload += 'pre<:>message<:>### BEGINNING AUTOMATED SECTION OF INSTALL GO GRAB A COFFEE... ###\n'
 	prePayload += 'pre<:>message<:>##################################################################\n'
+	# download payload is where commands to pre download all packages in main
+	# are generated
+	downloadPayload=''
 	# main payload where you should put 99% of things
 	mainPayload = ''
 	# post payload for stuff you should do last
@@ -596,6 +602,11 @@ def createInstallLoad():
 					prePayload += line+'\n'
 				elif tempInfo[0] == 'main':
 					mainPayload += line+'\n'
+					# if the line is a package command create a download entry to 
+					# download the package before installing it
+					if tempInfo[1]=='package':
+						downloadPayload+='null<:>message<:>Downloading package : '+tempInfo[2]+'\n'
+						downloadPayload+='null<:>cache-package<:>'+tempInfo[2]+'\n'
 				elif tempInfo[0] == 'post':
 					postPayload += line+'\n'
 				else:
@@ -606,7 +617,7 @@ def createInstallLoad():
 			mainPayload += 'null<:>command<:>unzip -o '+'/opt/hackbox/preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip -d /usr/share/applications\n'
 	repoPayload += 'null<:>command<:>apt-get update\n'
 	# orginize the payload contents
-	payload = repoPayload+interactivePayload+prePayload+mainPayload+postPayload
+	payload = repoPayload+interactivePayload+prePayload+downloadPayload+mainPayload+postPayload
 	# write the payload to a text file
 	writeFile('/etc/hackbox/payload.source',payload)
 	# write configured file to show config has been built before on next run
