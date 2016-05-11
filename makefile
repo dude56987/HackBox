@@ -50,9 +50,7 @@ update-relay:
 	# when the cron job is next run.
 	sudo cp -rv * /opt/hackbox/update
 	sudo bash /etc/cron.daily/00-hackbox-server-update-relay
-build: build-deb 
-	# build the deb
-build-deb:
+build: 
 	mkdir -p debian;
 	mkdir -p debian/DEBIAN;
 	mkdir -p debian/usr;
@@ -92,7 +90,7 @@ build-deb:
 	# escape the endings to cd works since each line is executed as a separate process
 	cp -rvf preconfiguredSettings/userSettings/* debian/opt/hackbox/preconfiguredSettings/userSettings/
 	# fix permissions on usersettings
-	chmod -R -xw debian/opt/hackbox/preconfiguredSettings/userSettings/
+	chmod -R ugo-xw debian/opt/hackbox/preconfiguredSettings/userSettings/
 	chmod -R ugo+rX debian/opt/hackbox/preconfiguredSettings/userSettings/
 	chmod -R u+w debian/opt/hackbox/preconfiguredSettings/userSettings/
 	# add config files n such
@@ -125,11 +123,22 @@ build-deb:
 	chmod -R 775 ./debian/DEBIAN
 	chmod -Rv ugo+r ./debian/opt/hackbox/media
 	chmod -Rv ugo+x ./debian/opt/hackbox/media/launchers
+build-deb: build
 	# max compression on package
-	dpkg-deb -Z xz -z 9 --build debian
+	dpkg-deb -Z xz -z 9 -S extreme --build debian
 	mv -vf debian.deb hackbox_UNSTABLE.deb
 	# cleanup package build folder
 	rm -rv debian
+test-builds: build
+	# run compression strategys all at once to maximize core usage
+	# max compression on package with xz compression
+	dpkg-deb -Z xz -z 9 -S extreme --build debian && mv -vf debian.deb hackbox_UNSTABLE_xz.deb
+	# max compression on package with lzma compression
+	dpkg-deb -Z lzma -z 9 --build debian && mv -vf debian.deb hackbox_UNSTABLE_lzma.deb
+	# max compression on package with bzip compression
+	dpkg-deb -Z bzip2 -z 9 --build debian && mv -vf debian.deb hackbox_UNSTABLE_bzip.deb
+	# max compression on package with gzip compression
+	dpkg-deb -Z gzip -z 9 --build debian && mv -vf debian.deb hackbox_UNSTABLE_gzip.deb
 distro-build-env-setup:
 	# install uck so distro can be built
 	#sudo apt-get install uck libfribidi-bin
@@ -238,8 +247,9 @@ test:
 debug-install-settings:
 	sudo cp -rvf preconfiguredSettings/userSettings/CORE/. /etc/skel/
 	sudo cp -rvf preconfiguredSettings/userSettings/bottomBar/. /etc/skel/
-project-report:
-	sudo apt-get install gitstats gource --assume-yes
+project-report: .git/*
+	which gitstats || sudo apt-get install gitstats --assume-yes
+	which gource || sudo apt-get install gource --assume-yes
 	rm -vr report/ || echo "No existing report..."
 	mkdir -p report
 	mkdir -p report/webstats
@@ -248,10 +258,15 @@ project-report:
 	echo "<html style='margin:auto;width:800px;text-align:center;'><body>" > report/index.html
 	echo "<a href='webstats/index.html'><h1>WebStats</h1></a>" >> report/index.html
 	echo "<a href='log.html'><h1>Log</h1></a>" >> report/index.html
+	echo "<a href='docs/'><h1>Docs</h1></a>" >> report/index.html
 	echo "<video src='video.mp4' poster='logo.png' width='800' controls>" >> report/index.html
 	echo "<a href='video.mp4'><h1>Gource Video Rendering</h1></a>" >> report/index.html
 	echo "</video>" >> report/index.html
 	echo "</body></html>" >> report/index.html
+	# generate python documentation
+	mkdir -p report/docs/
+	pydoc3 -w hackboxlib
+	mv *.html report/docs/
 	# write the log to a webpage
 	echo "<html><body>" > report/log.html
 	echo "<h1><a href='index.html'>Back</a></h1>" >> report/log.html
@@ -265,4 +280,5 @@ project-report:
 	# generate git statistics
 	gitstats -c processes='8' . report/webstats
 	# generate a video with gource
+	gource --max-files 0 -s 1 -c 4 -1280x720 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 8 -bf 0 report/video.mp4 ||\
 	gource --max-files 0 -s 1 -c 4 -1280x720 -o - | avconv -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 8 -bf 0 report/video.mp4
