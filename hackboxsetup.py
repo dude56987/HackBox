@@ -122,7 +122,7 @@ if (('--force-use-config' in sys.argv) == False):
 			exit();
 	else:
 		# prompt user if they want to proceed or not
-		printBlue('This script will install and configure settings for a new \n system automatically.')
+		hackboxlib.colorText('<bluetext>This script will install and configure settings for a new \n system automatically.</>')
 		check = raw_input('Proceed? [y/n]: ')
 		if check == 'y' :
 			print('Starting setup...')

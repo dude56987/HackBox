@@ -16,6 +16,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
+# Index
+# - clear()
+# - colorText()
+# - COPY()
+# - createInstallLoad()
+# - currentDirectory()
+# - deleteFile()
+# - downloadFile()
+# - installSourcesFile()
+# - loadFile()
+# - makeDir()
+# - progressBar()
+# - readSourceFileLine()
+# - replaceLineInFile()
+# - replaceLineInFileOnce()
+# - writeFile()
+########################################################################
 import os, sys, shutil, json, zipfile, socket, hashlib 
 from urllib.request import urlopen
 from time import sleep
@@ -62,6 +79,13 @@ if (("--no-curses" in sys.argv) != True):
 # define functions
 ########################################################################
 def progressBar(percentage,messageText,banner):
+	'''
+	Draw a curses based progressbar with the current precentage, 
+	displaying the messageText below the bar, and the banner text
+	being displayed in the top left.
+
+	:return None
+	'''
 	if (("--no-curses" in sys.argv) != True):
 		percentage=int(percentage)
 		messageText=str(messageText)
@@ -80,6 +104,11 @@ def progressBar(percentage,messageText,banner):
 		print('#'*80)
 ########################################################################
 def deleteFile(filePath):
+	'''
+	Delete the file located at filePath.
+
+	:return bool
+	'''
 	if os.path.exists(filePath):
 		os.remove(filePath)
 		return True
@@ -88,6 +117,13 @@ def deleteFile(filePath):
 		return False
 ########################################################################
 def loadFile(fileName):
+	'''
+	Read the file located at fileName. Return the contents of that 
+	file as a string if the file can be read. If the file can not
+	be read then return False.
+
+	:return string/bool
+	'''
 	try:
 		#print "Loading :",fileName
 		fileObject=open(fileName,'r');
@@ -110,6 +146,12 @@ def loadFile(fileName):
 	return False
 ########################################################################
 def writeFile(fileName,contentToWrite):
+	'''
+	Write the fileName path as a file containing the contentToWrite
+	string value.
+
+	:return bool
+	'''
 	# figure out the file path
 	filepath = fileName.split(os.sep)
 	filepath.pop()
@@ -120,7 +162,7 @@ def writeFile(fileName,contentToWrite):
 			fileObject = open(fileName,'w')
 			fileObject.write(contentToWrite)
 			fileObject.close()
-			#print 'Wrote file:',fileName
+			return True
 		except:
 			print('Failed to write file:'+fileName)
 			return False
@@ -129,6 +171,13 @@ def writeFile(fileName,contentToWrite):
 		return False
 ########################################################################
 def downloadFile(fileAddress):
+	'''
+	Attempt to download the file from fileAddress. Return the
+	downloaded file as a string. If the download fails, return
+	False.
+
+	:return bool/string
+	'''
 	#convert address to text string
 	fileAddress=str(fileAddress)
 	print("Downloading :"+fileAddress)
@@ -143,6 +192,16 @@ def downloadFile(fileAddress):
 	return downloadedFileObject.read()
 ########################################################################
 def replaceLineInFile(fileName,stringToSearchForInLine,replacementText):
+	'''
+	Takes fileName as a path and reads the file. Reads line by line.
+	If a line contains stringToSearchForInLine then replace that 
+	entire line with replacementText.
+
+	This command replaces ALL instances of found 
+	stringToSearchForInLine in the file.
+
+	:return bool
+	'''
 	# open file
 	temp = loadFile(fileName)
 	# if file exists append, if not write
@@ -162,8 +221,14 @@ def replaceLineInFile(fileName,stringToSearchForInLine,replacementText):
 	else:
 		return False
 	writeFile(fileName,newFileText)
+	return True
 ########################################################################
 def currentDirectory():
+	'''
+	Returns the path of the currently running script.
+
+	:return string
+	'''
 	currentDirectory = os.path.abspath(__file__)
 	temp = currentDirectory.split(os.path.sep)
 	currentDirectory = ''
@@ -173,10 +238,15 @@ def currentDirectory():
 	return (currentDirectory+os.path.sep)
 ########################################################################
 def makeDir(remoteDir):
-	''' Creates the defined directory, if a list of directories are listed
+	'''
+	Creates the remoteDir path, if a list of directories are listed
 	that do not exist then they will be created as well, so beware of 
 	spelling mistakes as this will create the specified directory you 
-	type mindlessly.'''
+	type mindlessly. Works like "mkdir -p"
+
+	:return bool
+	'''
+	checkDir=remoteDir
 	temp = remoteDir.split('/')
 	remoteDir= ''
 	for i in temp:
@@ -184,29 +254,87 @@ def makeDir(remoteDir):
 		if os.path.exists(remoteDir):
 			print(remoteDir+' : Already exists!, Moving on...')
 		else:
-				os.mkdir(remoteDir)
+			os.mkdir(remoteDir)
+	# check that the path was correctly created
+	if os.path.exists(checkDir):
+		return True
+	else:
+		return False
 ########################################################################
 def replaceLineInFileOnce(fileName,StringToSearchFor,StringToReplaceWith):
-	'''Takes a file and replaces a string in it with a new one, the 
-	function checks to that it wont dupe the replacements'''
+	'''
+	Takes a file and replaces a string in it with a new one, the 
+	function checks to that it wont dupe the replacements.
+
+	:return bool
+	'''
 	# run a replace in case the string already exists
 	text = loadFile(fileName).replace(StringToReplaceWith,StringToSearchFor)
 	# then replace the string so there are no dupes
 	text = text.replace(StringToSearchFor,StringToReplaceWith)
+	checkWrite=writeFile(fileName,text)
 	return writeFile(fileName,text)
 ########################################################################
 def clear():
-	os.system('clear');
-########################################################################
-def printBlue(text):
-	temp = bluetext+boldtext+text+resetTextStyle
-	print(temp)
-########################################################################
-def printGreen(text):
-	temp = greentext+boldtext+text+resetTextStyle
-	print(temp)
+	'''
+	Clears the screen.
+
+	:return None
+	'''
+	os.system('clear')
+	return None
 ########################################################################
 def colorText(text):
+	'''
+	Replaces tags in input text with color codes.
+	<defaultText>
+	  This would be the manual tag to use to clear 
+	  all previously set colors.
+	<boldtext>
+	  Makes a block of text bold.
+	<blinktext>
+	  Makes a block of text blink. This may not 
+	  always work as some terminals disable this.
+	<blacktext>
+	  Set the text color to black.
+	<redtext>
+	  Set the text color to red.
+	<greentext>
+	  Set the text color to green.
+	<yellowtext>
+	  Set the text color to yellow.
+	<bluetext>
+	  Set the text color to blue.
+	<magentatext>
+	  Set the text color to magenta.
+	<cyantext>
+	  Set the text color to cyan.
+	<whitetext>
+	  Set the text color to white.
+	<blackbackground>
+	  Set the background color of the text to black.
+	<redbackground>
+	  Set the background color of the text to red.
+	<greenbackground>
+	  Set the background color of the text to green.
+	<yellowbackground>
+	  Set the background color of the text to yellow.
+	<bluebackground>
+	  Set the background color of the text to blue.
+	<magentabackground>
+	  Set the background color of the text to magenta.
+	<cyanbackground>
+	  Set the background color of the text to cyan.
+	<whitebackground>
+	  Set the background color of the text to white.
+
+	Blocks can be ended with </> which simply closes 
+	all previous tags.
+
+	So example syntax would be <boldtext><bluetext>this</>.
+	
+	:return string
+	'''
 	defaultText='\033[0m'
 	text= text.replace('<defaultText>',defaultText)
 	boldtext='\033[1m'
@@ -253,7 +381,11 @@ def colorText(text):
 	return text
 ########################################################################
 def COPY(src,dest):
-	'''Copies a directory recursively from the "src" to the "dest"'''
+	'''
+	Copies a directory recursively from the "src" to the "dest"
+	
+	:return bool
+	'''
 	if src.split('/')[len(src.split('/'))-1].find('.') > -1:
 		# this is a single file being copied to a directory so use shutil.copy
 		if os.path.exists(src):
@@ -284,10 +416,14 @@ def COPY(src,dest):
 			return False
 ########################################################################
 def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage):
-	''' Reads a single line from a source file. Then takes aproprate 
+	'''
+	Reads a single line from a source file. Then takes aproprate 
 	action based on what the configuration option is. For more info
 	on configuration options you can read the INFO file in the 
-	/opt/hackbox/sources/ directory.'''
+	/opt/hackbox/sources/ directory.
+
+	:return bool
+	'''
 	# set a variable to show update progress
 	showUpdate=True
 	# all lines starting with # are comments	
@@ -313,7 +449,7 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 				if (("--no-curses" in sys.argv) != True):
 					currentMessage=(tempInfo[2]+'...')
 				else:
-					printGreen(tempInfo[2]+'...')
+					colorText('<greentext>'+tempInfo[2]+'</>...')
 			elif tempInfo[1] == 'script':
 				# dont update progress bar 
 				# the scripts pump out a bunch of text
@@ -454,7 +590,15 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 	return showUpdate
 ########################################################################
 def installSourcesFile(fileNameOfFile):
-	'''Reads a source file of programs to install and installs them.'''
+	'''
+	Finds the installed package manager to use. Then
+	reads payload file stored at path fileNameOfFile. 
+	Performs error checking on the file and feeds each
+	line into readSourceFileLine() for correct actions
+	to be performed.
+	
+	:return bool
+	'''
 	# change this so that source files are split into 3 pieces of data
 	# first the type of data, second the message to print, third the data
 	# itself, the data would depend on the data type described in the first
@@ -488,6 +632,14 @@ def installSourcesFile(fileNameOfFile):
 	return True
 ########################################################################
 def createInstallLoad():
+	'''
+	Create the payload file used by installSourcesFile() by reading
+	all of the source files stored in /opt/hackbox/sources/
+
+	Returns the location of the created payload.
+
+	:return string
+	'''
 	useConfig = 'n'
 	# check if a payload has already been built
 	if os.path.exists('/etc/hackbox/sources/configured'):
