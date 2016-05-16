@@ -94,7 +94,7 @@ build:
 	chmod -R ugo+rX debian/opt/hackbox/preconfiguredSettings/userSettings/
 	chmod -R u+w debian/opt/hackbox/preconfiguredSettings/userSettings/
 	# add config files n such
-	cp -vfr ./preconfiguredSettings ./debian/opt/hackbox/preconfiguredSettings
+	cp -vfr ./preconfiguredSettings ./debian/opt/hackbox/
 	cp -vfr ./media/. ./debian/opt/hackbox/media/
 	cp -vfr ./scripts/. ./debian/opt/hackbox/scripts/
 	cp -vfr ./sources/. ./debian/opt/hackbox/sources/

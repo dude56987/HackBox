@@ -37,6 +37,8 @@ pre<:>localdeb<:>getdeb
 interactive<:>ppa<:>ppa:gottcode/gcppa
 main<:>package<:>xfce4-whiskermenu-plugin
 # here are some logical scripts
+interactive<:>message<:>Adding custom systemd services
+interactive<:>script<:>custom-services
 interactive<:>message<:>Setting up darknet access
 interactive<:>script<:>darknet-setup
 catagory<:>message<:>Setup power control login names for tty logins
