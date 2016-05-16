@@ -35,26 +35,6 @@ if ! [ -f /etc/hackbox/i2pSetupDone ];then
 	# create lock file so this process is not repeated
 	echo '' > /etc/hackbox/i2pSetupDone
 fi
-# build the macchanger boot script #####################################
-#  changing the mac address at boot ensures connections appear from a
-#  diffrent machine each time user reboots, this is not on a timer since
-#  the interface needs brought down each time the mac is changed
-if [ ! -f /usr/bin/macRandomizer ];then
-	echo "#! /usr/bin/python" > /usr/bin/macRandomizer
-	echo "from os import system"  >> /usr/bin/macRandomizer
-	echo "for index in range(51):\n" >> /usr/bin/macRandomizer
-	echo "\tsystem(('sudo macchanger --another eth'+str(index)))\n" >> /usr/bin/macRandomizer
-	echo "\tsystem(('sudo macchanger --another wlan'+str(index)))\n" >> /usr/bin/macRandomizer
-	chmod +x /usr/bin/macRandomizer
-fi
-# set macRandomizer to launch at boot though rc.local file
-if more /etc/rc.local | grep macRandomizer;then
-	sed -i "s/exit 0//g" /etc/rc.local
-	echo "macRandomizer" >> /etc/rc.local
-	echo "exit 0" >> /etc/rc.local
-	# remove blank lines
-	sed -i '/^$/d' /etc/rc.local
-fi
 ########################################################################
 # edit privoxy config to forward tor and i2p web links #################
 # remove lines if they exist already and add lines to end of file
