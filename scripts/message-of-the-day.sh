@@ -1,7 +1,7 @@
 #! /bin/bash
 ########################################################################
 # Script to create the message of the day
-# Copyright (C) 2015  Carl J Smith
+# Copyright (C) 2016  Carl J Smith
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,12 +18,8 @@
 ########################################################################
 # add message of the day script to system startup for users
 ########################################################################
-sed -i "s/exit 0//g" /etc/rc.local
-sed -i "s/message-of-the-day//g" /etc/rc.local
-echo 'message-of-the-day' >> /etc/rc.local
-echo 'exit 0' >> /etc/rc.local
-# clear blank lines from the file
-sed -i '/^$/d' /etc/rc.local
+# add message of the day to the rc.local startup directory
+echo 'message-of-the-day' > /etc/rc.local.d/message-of-the-day
 # write the message of the day script
 echo "#! /bin/bash" > /usr/bin/message-of-the-day
 echo 'for dir in /home/*;do' >> /usr/bin/message-of-the-day
