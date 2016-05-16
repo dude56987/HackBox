@@ -26,4 +26,6 @@ if laptop-detect;then
 	sudo apt-get install fdpowermon --assume-yes
 	# install powertop top but for power management
 	sudo apt-get install powertop --assume-yes
+	# create a powertop autotune script to run on boot
+	echo "$(which powertop) --auto-tune" > /etc/rc.local.d/powertop
 fi
