@@ -616,6 +616,7 @@ catagory<:>rm-package<:>overlay-scrollbar
 catagory<:>message<:>Remove Ubuntu Scrollbar junk
 catagory<:>rm-package<:>overlay-scrollbar-gtk3
 # remove the dumb stuff from the indicator that ubuntu uses
+catagory<:>rm-package<:>indicator-session
 catagory<:>rm-package<:>indicator-appmenu
 catagory<:>rm-package<:>indicator-datetime
 catagory<:>rm-package<:>indicator-keyboard
