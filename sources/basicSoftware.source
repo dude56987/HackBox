@@ -15,6 +15,16 @@ pre<:>message<:>Installing custom themes
 pre<:>script<:>custom-themes
 main<:>message<:>Installing custom login theme
 main<:>script<:>login-theme
+# install custom cursor themes
+main<:>package<:>xcursor-themes
+main<:>package<:>dmz-cursor-theme
+main<:>package<:>chameleon-cursor-theme
+main<:>package<:>comixcursors
+main<:>package<:>comixcursors-righthanded
+main<:>package<:>comixcursors-lefthanded
+main<:>package<:>moblin-cursor-theme
+main<:>package<:>oxygen-cursor-theme
+main<:>package<:>oxygen-cursor-theme-extra
 # load preconfigured settings for apt-fast
 interactive<:>command<:>debconf-set-selections /opt/hackbox/preconfiguredsettings/debconf/apt-fast.conf
 # add 2 ppas one is for older verisons one is for 14.04+ versions
