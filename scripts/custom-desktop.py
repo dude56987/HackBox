@@ -83,6 +83,9 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 				# set user ownership for local files
 				print ('chown --recursive '+user+' '+os.path.join('/home',user))
 				os.system('chown --recursive '+user+' '+os.path.join('/home',user))
+		# reset gconf settings if they exist, this is all settings in ~/.gconf/
+		os.system('gconftool --shutdown')
+		os.system('gconftool --spawn')
 	if deleteMe==True:
 		# remove the config file if usersettings are not saved
 		os.system('rm /etc/hackbox/customDesktop.conf')
