@@ -28,6 +28,6 @@
 	<entry name="window_losefocus" type="bool" value="false"/>
 	<entry name="prompt_on_close_tab" type="int" value="0"/>
 	<entry name="prompt_on_quit" type="bool" value="true"/>
-	<entry name="use_popup" type="bool" value="true"/>
+	<entry name="use_popup" type="bool" value="false"/>
 	<entry name="use_trayicon" type="bool" value="false"/>
 </gconf>
