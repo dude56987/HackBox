@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="tab_ontop" type="bool" value="true"/>
+	<entry name="quick_open_enable" type="bool" value="true"/>
+	<entry name="scroll_output" type="bool" value="false"/>
+	<entry name="open_tab_cwd" type="bool" value="true"/>
+	<entry name="use_visible_bell" type="bool" value="true"/>
+	<entry name="compat_delete" type="string">
+		<stringvalue>delete-sequence</stringvalue>
+	</entry>
+	<entry name="compat_backspace" type="string">
+		<stringvalue>ascii-delete</stringvalue>
+	</entry>
+	<entry name="use_palette_font_and_background_color" type="bool" value="true"/>
+	<entry name="use_default_font" type="bool" value="true"/>
+	<entry name="scroll_keystroke" type="bool" value="true"/>
+	<entry name="history_size" type="int" value="4000"/>
+	<entry name="use_scrollbar" type="bool" value="true"/>
+	<entry name="mouse_display" type="bool" value="true"/>
+	<entry name="display_n" type="int" value="0"/>
+	<entry name="quick_open_command_line" type="string">
+		<stringvalue>exo-open %(file_path)s</stringvalue>
+	</entry>
+	<entry name="window_tabbar" type="bool" value="true"/>
+	<entry name="window_halignment" type="int" value="0"/>
+	<entry name="window_width_f" type="float" value="100"/>
+	<entry name="window_width" type="int" value="100"/>
+	<entry name="window_losefocus" type="bool" value="false"/>
+	<entry name="prompt_on_close_tab" type="int" value="0"/>
+	<entry name="prompt_on_quit" type="bool" value="true"/>
+	<entry name="use_popup" type="bool" value="true"/>
+	<entry name="use_trayicon" type="bool" value="false"/>
+</gconf>

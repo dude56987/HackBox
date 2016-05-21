@@ -547,13 +547,13 @@ catagory<:>localdeb<:>hackbox-mimetype-defaults<:>/usr/bin/fehOpen
 #cp /usr/share/applications/wally.desktop/wally.desktop /etc/xdg/autostart/wally.desktop
 catagory<:>message<:>Installing Conky(desktop widget program)
 catagory<:>package<:>conky-all
-# Install tilda and removing other drop down terminals
-catagory<:>message<:>Installing Tilda(drop down terminal)
-catagory<:>package<:>tilda
-catagory<:>message<:>Setting up Autostart for Tilda 
-catagory<:>command<:>cp -v /usr/share/applications/tilda.desktop /etc/xdg/autostart/tilda.desktop
+# Install guake and removing other drop down terminals
+catagory<:>message<:>Installing Guake(drop down terminal)
+catagory<:>package<:>guake
+catagory<:>message<:>Setting up Autostart for Guake
+catagory<:>command<:>cp -v /usr/share/applications/guake.desktop /etc/xdg/autostart/guake.desktop
 catagory<:>message<:>Removing other drop down terminals
-catagory<:>rm-package<:>guake
+catagory<:>rm-package<:>tilda
 catagory<:>rm-package<:>yeahconsole
 catagory<:>rm-package<:>yakuake
 #######

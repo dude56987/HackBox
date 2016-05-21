@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="clipboard_paste" type="string">
+		<stringvalue>&lt;Primary&gt;v</stringvalue>
+	</entry>
+	<entry name="clipboard_copy" type="string">
+		<stringvalue>&lt;Primary&gt;x</stringvalue>
+	</entry>
+	<entry name="next_tab" type="string">
+		<stringvalue>F4</stringvalue>
+	</entry>
+	<entry name="previous_tab" type="string">
+		<stringvalue>F3</stringvalue>
+	</entry>
+	<entry name="new_tab" type="string">
+		<stringvalue>F2</stringvalue>
+	</entry>
+</gconf>
