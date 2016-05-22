@@ -2,9 +2,9 @@
 Name=Distro Upgrade
 Comment=Do full release upgrade of distro
 GenericName=Distro Upgrade
-Exec=pkexec bash -c "do-release-upgrade || bash -c \"echo 'Press enter to end program...';read\""
+Exec=terminator -f -T "Full Release Upgrade" -x bash -c "pkexec do-release-upgrade;echo 'Press enter to end program...';read;"
 Icon=system-upgrade
-Terminal=true
+Terminal=false
 StartupNotify=true
 Type=Application
-Categories=System;Utility;X-XFCE-SystemSettings;X-XFCE-SettingsDialog;
+Categories=GNOME;GTK;Settings;HardwareSettings;X-GNOME-Settings-Panel;X-Unity-Settings-Panel;System;X-XFCE-SystemSettings;X-XFCE-SettingsDialog;
