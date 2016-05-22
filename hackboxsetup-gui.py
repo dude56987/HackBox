@@ -17,11 +17,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
 import os, sys
-if ("--upgrade" in sys.argv):
-	# if running an upgrade
-	print("Running a system upgrade...")
-	os.system('xterm -maximized -T Hackbox\ Setup -e "screen -c /opt/hackbox/media/screenConfig/screenConfigUpgrade"')
-else:
-	# openvt launches a tty on terminal 12 and waits till setup script has finished
-	os.system('pkexec openvt -c 12 -s -w -l hackboxlauncher')
+# openvt launches a tty on terminal 12 and waits till setup script has finished
+os.system('pkexec openvt -c 12 -s -w -l hackboxlauncher')
 exit()
