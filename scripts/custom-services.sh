@@ -16,6 +16,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
-# Copy over Hackbox systemd services directory onto system
+# Copy over Hackbox systemd services directory onto system and enable them
 ########################################################################
 cp -v /opt/hackbox/preconfiguredSettings/services/* /etc/systemd/system/
+# enable and activate all new services
+for service in /opt/hackbox/preconfiguredSettings/services/*;do
+	# clean up path to get service name
+	service=$(echo "$service" | sed "s/\.service//g")
+	service=$(echo "$service" | sed "s/\/opt\/hackbox\/preconfiguredSettings\/services\///g")
+	# enable the service so it will run at every boot
+	systemctl enable $service
+	# start the service
+	systemctl start $service
+done
