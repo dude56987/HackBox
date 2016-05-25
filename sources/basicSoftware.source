@@ -347,6 +347,10 @@ catagory<:>message<:>Installing iftop(Top for Network Usage)
 catagory<:>package<:>iftop
 catagory<:>message<:>Installing vnstat(stats on network usage)
 catagory<:>package<:>vnstat
+catagory<:>message<:>Installing vnstati(generate graphics of vnstat data)
+catagory<:>package<:>vnstati
+catagory<:>message<:>Installing nethogs(view programs using the most bandwith)
+catagory<:>package<:>nethogs
 catagory<:>message<:>Installing prettyping(Generate a ping graph with ASCII art)
 catagory<:>command<:>curl https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping >> /usr/bin/prettyping && chmod +x /usr/bin/prettyping
 # monitorix to track system usage over time
