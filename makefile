@@ -267,6 +267,8 @@ project-report: .git/*
 	mkdir -p report/docs/
 	pydoc3 -w hackboxlib
 	mv *.html report/docs/
+	# cleanup pydoc generated cache
+	rm -rv __pycache__
 	# write the log to a webpage
 	echo "<html><body>" > report/log.html
 	echo "<h1><a href='index.html'>Back</a></h1>" >> report/log.html
