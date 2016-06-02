@@ -31,6 +31,8 @@ catagory<:>message<:>Installing john (brute force password cracker)
 catagory<:>package<:>john
 catagory<:>message<:>Installing nmap (Port Scanner)
 catagory<:>package<:>nmap
+catagory<:>message<:>Installing zenmap (GUI for nmap)
+catagory<:>package<:>zenmap
 # root kit detection
 catagory<:>message<:>Installing chkrootkit(checks the sysytem for rootkits)
 catagory<:>package<:>chkrootkit
