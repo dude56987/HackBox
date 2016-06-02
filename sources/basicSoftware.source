@@ -353,10 +353,9 @@ catagory<:>message<:>Installing nethogs(view programs using the most bandwith)
 catagory<:>package<:>nethogs
 catagory<:>message<:>Installing prettyping(Generate a ping graph with ASCII art)
 catagory<:>command<:>curl https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping >> /usr/bin/prettyping && chmod +x /usr/bin/prettyping
-# monitorix to track system usage over time
-catagory<:>message<:>Installing monitorix(System Stat Tracker)
-catagory<:>deb-repo<:>deb http://apt.izzysoft.de/ubuntu generic universe<:>http://apt.izzysoft.de/izzysoft.asc
-catagory<:>package<:>monitorix
+# hackbox-system-monitor to track system usage over time
+catagory<:>message<:>Installing hackbox-system-monitor(System Stat Tracker)
+catagory<:>localdeb<:>hackbox-system-monitor<:>/usr/bin/hackbox-system-monitor-update
 ###################################
 catagory<:>message<:>Installing fdupes(Remove duplicate files)
 catagory<:>package<:>fdupes
