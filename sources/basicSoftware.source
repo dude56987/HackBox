@@ -121,8 +121,6 @@ catagory<:>message<:>Installing broadcast(message all user on the system)
 catagory<:>localdeb<:>broadcast<:>/usr/bin/broadcast
 catagory<:>message<:>Installing SSH(Remote Shell)
 catagory<:>package<:>ssh
-catagory<:>message<:>Installing SSHFS(mount remote filesystems locally via sftp)
-catagory<:>package<:>sshfs
 catagory<:>message<:>Installing MOSH(Improved SSH client)
 catagory<:>package<:>mosh
 ###################
@@ -512,6 +510,11 @@ catagory<:>message<:>Remove pulseaudio
 catagory<:>rm-package<:>pulseaudio
 catagory<:>message<:>Remove pavucontrol(pulseaudio volume control)
 catagory<:>rm-package<:>pavucontrol
+# mounting utilities and filesystem stuff #
+catagory<:>message<:>Installing mtpfs(media transfer protocol filesystem support)
+catagory<:>package<:>mtpfs
+catagory<:>message<:>Installing SSHFS(mount remote filesystems locally via sftp)
+catagory<:>package<:>sshfs
 ####
 catagory<:>message<:>Installing countdown timer(xfce4 panel plugin)
 catagory<:>package<:>xfce4-timer-plugin
