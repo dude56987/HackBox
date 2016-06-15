@@ -188,8 +188,17 @@ def downloadFile(fileAddress):
 		return False
 	# convert to text string
 	print("Finished Loading :"+fileAddress)
-	# convert downloaded object into a string and return
-	return downloadedFileObject.read()
+	# convert downloaded object into a string
+	tempString=''
+	for line in downloadedFileObject:
+		# decode the bytes into unicode
+		tempLine=line.decode('UTF-8')
+		# strip endlines and use \n line ends
+		tempLine=tempLine.strip()
+		# convert to a string and add endlines back
+		tempString+=str(tempLine)+'\n'
+	# return the file as a string
+	return tempString
 ########################################################################
 def replaceLineInFile(fileName,stringToSearchForInLine,replacementText):
 	'''
@@ -541,7 +550,21 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 				#/usr/share/doc/packagename is checked to see if the package has already been installed
 				# install package
 				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
-					os.system((packageManager+' install '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
+					# use noninteractive variable to set default on all prompts
+					systemVariables='DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true'
+					os.system((systemVariables+' && '+packageManager+' install '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
+				# if the package did not install correctly because no documentation exists then log a uninstalled package
+				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
+					# create fileText to store the log text
+					fileText=''
+					# check if a log exists
+					if os.path.exists('/opt/hackbox/Error_Log.txt'):
+						# load a existing log
+						fileText=loadFile('/opt/hackbox/Error_Log.txt')
+					# append the log
+					fileText+=('Package Could Not Be Installed : '+tempInfo[2]+'\n')
+					# write updated log
+					writeFile('/opt/hackbox/Error_Log.txt',fileText)
 			elif tempInfo[1] == 'cache-package':
 				# download the package to disk for caching this is used by the 
 				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
@@ -684,7 +707,7 @@ def createInstallLoad():
 	# post payload for stuff you should do last
 	postPayload = ''
 	# read list of datafiles
-	datafiles = os.listdir('sources/')
+	datafiles = os.listdir('/opt/hackbox/sources/')
 	# sort the files
 	datafiles.sort()
 	for fileName in datafiles:
@@ -699,7 +722,7 @@ def createInstallLoad():
 				#if file does not exist do not install the section
 				installSection = 'n'
 		# open the .source file
-		fileObject = loadFile(os.path.join('sources',fileName))
+		fileObject = loadFile(os.path.join('/opt/hackbox/sources',fileName))
 		if fileObject == False:
 			print('ERROR: Source file'+fileName+'does not exist!')
 		else:
@@ -718,7 +741,7 @@ def createInstallLoad():
 				print(line[6:])
 			elif line[:7]=='#BANNER':
 				# print the colorized banner file
-				banner = loadFile('media/banner.txt')
+				banner = loadFile('/opt/hackbox/media/banner.txt')
 				if banner != False:
 					if (("--no-curses" in sys.argv) != True):
 						backgroundTitle = 'Hackbox Setup'
