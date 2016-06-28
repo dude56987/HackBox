@@ -157,6 +157,9 @@ distro-build:
 	##############
 pullCustomSoftware:
 	mkdir -p customSoftwarePackages
+	# Hackbox System Monitor (Web frontend to munin and vnstati)
+	git clone https://github.com/dude56987/hackbox-system-monitor.git customSoftwarePackages/hackbox-system-monitor ||\
+	git -C customSoftwarePackages/hackbox-system-monitor pull
 	# mkrd (GUI Ram Disk Tool)
 	git clone https://github.com/dude56987/mkrd.git customSoftwarePackages/mkrd ||\
 	git -C customSoftwarePackages/mkrd pull
