@@ -30,8 +30,6 @@ if laptop-detect;then
 	sudo apt-get install tlp --assume-yes
 	# start tlp
 	sudo tlp start
-	# install fdpowermon battery indicator
-	sudo apt-get install fdpowermon --assume-yes
 	# install powertop top but for power management
 	sudo apt-get install powertop --assume-yes
 	# create a powertop autotune script to run on boot
