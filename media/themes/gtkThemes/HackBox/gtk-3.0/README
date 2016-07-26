@@ -1,0 +1,12 @@
+################################################################################
+# HACKBOX GTK3 THEME
+################################################################################
+Copyright 2009–2016 Simon Steinbeiß, Satyajit Sahoo, Pasi Lallinaho, Carl Smith
+HackBox-Theme is dual-licensed as GPLv2 or later and CC-BY-SA 3.0 or later.
+
+This theme is a customized version of the greybird theme for gtk3 shipped with
+ubuntu 16.04. 
+
+The source code this theme was adapted from can be found at the below link.
+
+https://github.com/shimmerproject/Greybird

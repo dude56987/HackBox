@@ -531,6 +531,12 @@ catagory<:>package<:>xfce4-weather-plugin
 ########################################################################
 # DESKTOP MODIFICATION UTILITIES : other
 ########################################################################
+# disable clientside decorations because it makes the desktop really inconsistant looking
+# TODO: this requires a ppa currently on ubuntu but it is debian unstable for the next release
+# TODO: remove the webupd8 ppa when ubuntu has this package
+interactive<:>ppa<:>ppa:nilarimogard/webupd8
+catagory<:>message<:>Installing gtk3-nocsd(disable clientside decorations)
+catagory<:>package<:>gtk3-nocsd
 # file manager stuff
 catagory<:>message<:>Installing Thunar(The Norse God of File Management)
 catagory<:>package<:>thunar
