@@ -1,5 +1,5 @@
 gtk-color-scheme =
-"bg_color:#FFFFFF\nfg_color:#000\nbase_color:#FFFFFF\ntext_color:#000\nselected_fg_color:#FFFFFF\nselected_bg_color:#555753"
+"bg_color:#FFFFFF\nfg_color:#000000\nbase_color:#FFFFFF\ntext_color:#000000\nselected_fg_color:#FFFFFF\nselected_bg_color:#555753"
 
 style "default"
 {
@@ -10,7 +10,7 @@ style "default"
         fg[PRELIGHT]            = @fg_color
         fg[SELECTED]            = @selected_fg_color
         
-        bg[ACTIVE]              = shade (0.9, @bg_color)
+        bg[ACTIVE]              = shade (0.8, @bg_color)
 	bg[NORMAL]              = @bg_color
         bg[INSENSITIVE]         = shade (0.95, @bg_color)
         bg[PRELIGHT]            = shade (1.03, @bg_color)
@@ -63,6 +63,7 @@ style "menuitem"
 	xthickness = 2
 
         fg[PRELIGHT]          = @selected_fg_color
+	bg[PRELIGHT]          = @selected_bg_color
 }
 
 style "menu" 
@@ -82,8 +83,6 @@ class "GtkMenu" style "menu"
 class "GtkEntry" style "entry"
 
 widget_class "*<GtkMenuItem>*" style "menuitem"
-
-
 
 # Work around for http://bugzilla.gnome.org/show_bug.cgi?id=382646
 # Note that the work around assumes that the combobox is _not_ in
