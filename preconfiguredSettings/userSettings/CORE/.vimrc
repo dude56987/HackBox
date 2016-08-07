@@ -3,6 +3,12 @@
 "############################################################"
 " Create alias for spell-checker, use :Spellcheck to turn it on"
 command Spellcheck setlocal spell spelllang=en_us
+"Commands to convert between tabs and spaces"
+command TabsToSpaces set et | ret!
+command SpacesToTabs set et! | ret!
+"Command to make whitespace visible"
+command ShowWhitespace set list
+command HideWhitespace set list!
 "Wrap text instead of being on one line"
 set lbr
 "Turn on smart indenting in line wrap mode"
@@ -10,7 +16,7 @@ if has('breakindent')
 	set breakindent
 endif
 "Turn on line numbering"
-set nu
+set number
 "Set syntax Highlighting on"
 syntax on
 "Indent automatically"
@@ -20,9 +26,15 @@ set autoindent
 set ic
 "Highlight search"
 set hls
+"Highlight the current line"
+set cul
 "Turn on mouse support"
 set mouse=a
 "Change the default color scheme"
-colorscheme ron
 "The following are the color schemes available by default"
 "blue darkblue default delek desert elflord evening koehler morning murphy pablo peachpuff ron shine slate torte zellner"
+colorscheme ron
+"Set tab width to 4 and shift width to 4 to line up with tabs"
+set tabstop=4
+set shiftwidth=4
+
