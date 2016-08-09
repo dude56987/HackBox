@@ -3,21 +3,26 @@
 <!ENTITY https-everywhere.about.ext_description "Encriptar la Web! Usar seguridad HTTPS automáticamente en la mayoría de los sitios.">
 <!ENTITY https-everywhere.about.version "Versión">
 <!ENTITY https-everywhere.about.created_by "Creado por">
+<!ENTITY https-everywhere.about.and ", y">
 <!ENTITY https-everywhere.about.librarians "Librería de conjunto de reglas">
+<!ENTITY https-everywhere.about.add_new_rule "Add New Rule">
 <!ENTITY https-everywhere.about.thanks "Gracias a">
+<!ENTITY https-everywhere.about.many_contributors "Muchisimos contribuyentes, incluyendo">
+<!ENTITY https-everywhere.about.noscript "También, partes de HTTPS Everywhere están basadas en el codigo de NoScript, de Giorgio Maone y otras. ¡Agradecemos su excelente trabajo!">
 <!ENTITY https-everywhere.about.contribute  "Si te gusta HTTPS Everywhere, puedes considerar">
 <!ENTITY https-everywhere.about.donate_tor "Donar a Tor">
 <!ENTITY https-everywhere.about.tor_lang_code "en">
 <!ENTITY https-everywhere.about.or "o">
 <!ENTITY https-everywhere.about.donate_eff "Donar a EFF">
 
+<!ENTITY https-everywhere.menu.donate_eff_imperative "Donar a EFF">
 <!ENTITY https-everywhere.menu.about "Acerca de HTTPS en todos lados">
 <!ENTITY https-everywhere.menu.observatory "Preferencias del Observatorio SSL">
 <!ENTITY https-everywhere.menu.globalEnable "Habilitar HTTPS En todos lados">
 <!ENTITY https-everywhere.menu.globalDisable "Deshabilitar HTTPS En todos lados">
-<!ENTITY https-everywhere.menu.blockHttpRequests "Bloquear todas las solicitudes HTTP">
+<!ENTITY https-everywhere.menu.blockUnencryptedRequests "Block all unencrypted requests">
 <!ENTITY https-everywhere.menu.showCounter "Mostrar contador">
-<!ENTITY https-everywhere.menu.viewAllRules "View All Rules">
+<!ENTITY https-everywhere.menu.viewAllRules "Ver todas las Reglas">
 
 <!ENTITY https-everywhere.prefs.title "Preferencias de HTTPS Everywhere">
 <!ENTITY https-everywhere.prefs.enable_all "Habilitar todo">
@@ -34,17 +39,19 @@
 <!ENTITY https-everywhere.prefs.reset_default "Restablecer valores predeterminados">
 <!ENTITY https-everywhere.prefs.view_xml_source "Ver código XML">
 
-<!ENTITY https-everywhere.source.downloading "Descargando">
-<!ENTITY https-everywhere.source.filename "Nombre del archivo">
-<!ENTITY https-everywhere.source.unable_to_download "No se puede descargar la fuente.">
+<!ENTITY https-everywhere.chrome.stable_rules "Reglas estables ">
+<!ENTITY https-everywhere.chrome.stable_rules_description "Forzar conexiones cifradas a estos sitios web:">
+<!ENTITY https-everywhere.chrome.experimental_rules "Reglas experimentales">
+<!ENTITY https-everywhere.chrome.experimental_rules_description "Puede causar alertas o incluso dejar de funcionar. Deshabilitada por defecto.">
+<!ENTITY https-everywhere.chrome.add_rule "Agregar una regla para este sitio">
+<!ENTITY https-everywhere.chrome.add_new_rule "Agregar una nueva regla para este sitio">
+<!ENTITY https-everywhere.chrome.always_https_for_host "Siempre usar https para este sitio">
+<!ENTITY https-everywhere.chrome.host "Host:">
+<!ENTITY https-everywhere.chrome.show_advanced "Mostrar avanzado">
+<!ENTITY https-everywhere.chrome.hide_advanced "Ocultar avanzado">
+<!ENTITY https-everywhere.chrome.rule_name "Nombre de la Regla">
+<!ENTITY https-everywhere.chrome.regex "Expresión regular coincidente">
+<!ENTITY https-everywhere.chrome.redirect_to "Redirigiar a">
+<!ENTITY https-everywhere.chrome.status_cancel_button "Cancelar">
 
-<!ENTITY https-everywhere.popup.title "Notificación HTTPS Everywhere 4.0development.11">
-<!ENTITY https-everywhere.popup.paragraph1 "Oops. Parece que estás usando la versión estable de HTTPS Everywhere, pero te hemos actualizado accidentalmente a una versión de desarrollo en nuestro último lanzamiento.">
-<!ENTITY https-everywhere.popup.paragraph2 "Quieres volver a estable?">
-<!ENTITY https-everywhere.popup.paragraph3 "Estaríamos encantados si continúas usando nuestra versión de desarrollo y nos ayudas a mejorar HTTPS Everywhere! Encontrarás que hay algunos bugs aquí y allá, los cuales puedes reportar a https-everywhere@eff.org. Perdón por el inconveniente, y gracias por utilizar HTTPS Everywhere.">
-<!ENTITY https-everywhere.popup.keep "Guárdame en la versión de desarrollo">
-<!ENTITY https-everywhere.popup.revert "Descarga la última versión estable">
 
-<!ENTITY https-everywhere.ruleset-tests.status_title "Probar los juegos de reglas de HTTPS Everywhere">
-<!ENTITY https-everywhere.ruleset-tests.status_cancel_button "Cancelar">
-<!ENTITY https-everywhere.ruleset-tests.status_start_button "Iniciar">

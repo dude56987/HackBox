@@ -6,7 +6,7 @@
         <em:type>2</em:type>
         <em:unpack>true</em:unpack>
         <em:name>Flashblock</em:name>
-        <em:version>1.5.18.1-signed</em:version>
+        <em:version>1.5.20</em:version>
         <em:description>Replaces Flash objects with a button you can click to view them.</em:description>
         <em:creator>The Flashblock Team</em:creator>
         <em:contributor>Ted Drake</em:contributor>
@@ -17,6 +17,7 @@
         <em:contributor>Special thanks to:</em:contributor>
         <em:contributor> - Jesse Ruderman (initial idea)</em:contributor>
         <em:contributor> - Neil Rashbrook (whitelist wizardry)</em:contributor>
+        <em:contributor>Giorgio Maone (e10s hacks)</em:contributor>
         <em:homepageURL>http://flashblock.mozdev.org/</em:homepageURL>
         <em:iconURL>chrome://flashblock/content/flashblock-32.png</em:iconURL>
         <em:optionsURL>chrome://flashblock/content/options.xul</em:optionsURL>
@@ -26,7 +27,16 @@
             <Description>
                 <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
                 <em:minVersion>17.0</em:minVersion>
-                <em:maxVersion>37.0</em:maxVersion>
+                <em:maxVersion>46.0</em:maxVersion>
+            </Description>
+        </em:targetApplication>
+
+       <!-- Pale Moon -->
+        <em:targetApplication>
+            <Description>
+                <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
+                <em:minVersion>25.0</em:minVersion>
+                <em:maxVersion>25.*</em:maxVersion>
             </Description>
         </em:targetApplication>
     </Description>

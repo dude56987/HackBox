@@ -43,8 +43,8 @@ const HTTPS = {
     var isSTS = securityService.isSecureURI(
         CI.nsISiteSecurityService.HEADER_HSTS, channel.URI, 0);
     if (blob === null) {
-      // Abort insecure requests if HTTP Nowhere is on
-      if (httpNowhereEnabled && channel.URI.schemeIs("http") && !isSTS) {
+      // Abort insecure non-onion requests if HTTP Nowhere is on
+      if (httpNowhereEnabled && channel.URI.schemeIs("http") && !isSTS && !/\.onion$/.test(channel.URI.host)) {
         IOUtil.abort(channel);
       }
       return false; // no rewrite
@@ -94,8 +94,6 @@ const HTTPS = {
       // This should not happen. We should only get exceptions if
       // the channel was already open.
       this.log(WARN, "Exception on nsIHttpChannel.redirectTo: "+e);
-
-      // Don't return: Fallback to NoScript ChannelReplacement.js
     }
     this.log(WARN,"Aborting redirection " + channel.name + ", should be HTTPS!");
     IOUtil.abort(channel);

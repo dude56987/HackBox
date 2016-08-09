@@ -1,5 +1,5 @@
 <!-- Observatory popup window -->
-<!ENTITY ssl-observatory.popup.details "Details and Privacy Information">
+<!ENTITY ssl-observatory.popup.details "Detalles e información de privacidad">
 <!ENTITY ssl-observatory.popup.later "Ask Me Later">
 <!ENTITY ssl-observatory.popup.no "No">
 
@@ -86,7 +86,7 @@ looked at.  Mouseover the options for further details:">
 
 <!ENTITY ssl-observatory.prefs.show "Show advanced options">
 
-<!ENTITY ssl-observatory.prefs.title "SSL Observatory Preferences">
+<!ENTITY ssl-observatory.prefs.title "Preferencias del Observatorio SSL">
 
 <!ENTITY ssl-observatory.prefs.use "Use the Observatory?">
 <!ENTITY ssl-observatory.warning.title "WARNING from EFF's SSL Observatory">
