@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Exec=bash -c "bash -i ~/.bashrc -c exit && bash -i ~/.profile -c exit"
+Name=LoginScripts
+Comment=Login scripts for terminals
+GenericName=LoginScripts

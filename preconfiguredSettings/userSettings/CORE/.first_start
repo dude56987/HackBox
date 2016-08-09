@@ -7,18 +7,22 @@
 SuccessCheck=1
 ##########################################################################
 # rename libpurple default users with username if exists
-temp=$(more ~/.purple/accounts.xml | grep -c AwesomeUserWhoMightBeANoob)
-if [ $temp -ge 1 ]; then
+if cat ~/.purple/accounts.xml | grep AwesomeUserWhoMightBeANoob; then
 	IRCusername=$(echo $(whoami)""$RANDOM"@")
 	username=$(echo $(whoami)"@"$(hostname))
 	sed -i.bak "s/AwesomeUserWhoMightBeANoob@/${IRCusername}/g" ~/.purple/accounts.xml
 	sed -i.bak "s/AwesomeUserWhoMightBeANoob/${username}/g" ~/.purple/accounts.xml
-	#########################
-	# check everything worked
-	temp=$(more ~/.purple/accounts.xml | grep -c AwesomeUserWhoMightBeANoob)
-	if [ $temp -ge 1 ]; then
-		SuccessCheck=0
-	fi
+fi
+# set profile directory name for firefox to the username of the current user
+if [ -d ~/.mozilla/firefox/mwad0hks.default ];then
+	username=$(whoami)
+	sed -i "s/mwad0hks/$username/g" ~/.mozilla/firefox/profiles.ini
+	mv ~/.mozilla/firefox/mwad0hks.default ~/.mozilla/firefox/$username.default
+fi
+if cat ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml | grep "\~\/"; then
+	# convert ~/ in xfce-desktop settings to the users home directory
+	username=$(whoami)
+	sed -i "s/\~\//\/home\/$username\//g" ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
 fi
 # generate the users icon based on their username and hostname converted into a md5sum
 identicon -s 256 -t -H $(echo "$(whoami)@$(hostname)"| md5sum | sed "s/[\ ,-]//g") -o ~/.face
