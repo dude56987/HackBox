@@ -233,11 +233,34 @@ fix-permissions:
 clean-logs:
 	sudo rm -vf /opt/hackbox/Install_Log.txt
 	sudo rm -vf Install_Log.txt
-clean-preconfigured-settings:
-	# clean up firefox config settings
-	rm -vf preconfiguredSettings/*Bar/.mozilla/firefox/mwad0hks.default/bookmarkbackups/*.json
-	rm -vf preconfiguredSettings/*Bar/.mozilla/firefox/mwad0hks.default/*.log
-	rm -vf preconfiguredSettings/*Bar/.mozilla/firefox/Crash\ Reports/*
+getCurrentFirefoxSettings:
+	# get bare minimum firefox settings of users current firefox profile
+	#
+	# remove existing firefox profile
+	rm -rv preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/*
+	# copy over the addons list
+	cp -v ~/.mozilla/firefox/*.default/addons.json preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
+	# user set preferences
+	cp -v ~/.mozilla/firefox/*.default/prefs.js preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
+	# this is a config that stores the extension list used by firefox
+	cp -v ~/.mozilla/firefox/*.default/extensions.json preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
+	# this is where the extension xpi files and data are stored
+	cp -rv ~/.mozilla/firefox/*.default/extensions preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
+	cp -rv ~/.mozilla/firefox/*.default/extension-data preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
+	# grab the configurations for the search plugins
+	cp -v ~/.mozilla/firefox/*.default/search.json preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
+	cp -v ~/.mozilla/firefox/*.default/search-metadata.json preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
+	cp -rv ~/.mozilla/firefox/*.default/searchplugins preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
+	# user agent switcher settings
+	cp -rv ~/.mozilla/firefox/*.default/useragentswitcher preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
+	# proxy selector settings
+	cp -v ~/.mozilla/firefox/*.default/proxyselector.rdf preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
+	# backup user styles stored by sylish
+	cp -v ~/.mozilla/firefox/*.default/stylish.sqlite preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
+	# get the bookmarks 
+	cp -rv ~/.mozilla/firefox/*.default/bookmarkbackups preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
+	# copy the settings for toolbar states
+	cp -rv ~/.mozilla/firefox/*.default/xulstore.json preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
 test: 
 	# Strange syntax is strange because you need a return value of 0 
 	# aka no errors for each line in a makefile or it will fail completely
