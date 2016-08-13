@@ -327,11 +327,12 @@ catagory<:>rm-package<:>xloadimage
 ####################
 # photo organizers #
 ####################
-catagory<:>message<:>Installing digikam(Photo Organizer)
-catagory<:>package<:>digikam
+catagory<:>message<:>Installing shotwell(Photo Manager)
+catagory<:>package<:>shotwell
 ###################################
-catagory<:>message<:>Removing Shotwell
-catagory<:>rm-package<:>shotwell
+catagory<:>message<:>Removing other photo managers
+catagory<:>rm-package<:>digikam
+catagory<:>rm-package<:>gwenview
 ###################################
 catagory<:>message<:>Installing Font Manager
 catagory<:>package<:>font-manager
