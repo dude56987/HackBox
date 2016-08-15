@@ -9,6 +9,8 @@ command SpacesToTabs set et! | ret!
 "Command to make whitespace visible"
 command ShowWhitespace set list
 command HideWhitespace set list!
+"Strip trailing whitespace from all lines in a file"
+command StripTrailingWhitespace :%s/\s\+$//e
 "Wrap text instead of being on one line"
 set lbr
 "Turn on smart indenting in line wrap mode"
