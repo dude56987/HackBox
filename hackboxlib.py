@@ -491,14 +491,22 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 				fileName=(fileName.replace('deb_',''))
 				fileName=(fileName.replace('__','_'))
 				fileName=(fileName.replace('___','_'))
-				# remove release from filename to prevent issues with updates
+				# remove $RELEASE and $VERSION from filename to prevent issues with updates
 				fileName=(fileName.replace('$RELEASE',''))
+				fileName=(fileName.replace('$VERSION',''))
 				# remove _ at the start of filename
 				fileName=(fileName.replace('^_',''))
 				# find the distro this is running on to replace instances of $RELEASE with
-				# the distro release name
-				release = os.popen('lsb_release -cs').read()
+				# the distro release name and instance of $VERSION with the version number
+				# use .strip to remove endlines created by popen output
+				release = os.popen('lsb_release -cs').read().strip()
 				tempInfo[2] = tempInfo[2].replace('$RELEASE',release)
+				# also replace the key path
+				tempInfo[3] = tempInfo[3].replace('$RELEASE',release)
+				# replace $VERSION with the version number
+				version = os.popen('lsb_release -rs').read().strip()
+				tempInfo[2] = tempInfo[2].replace('$VERSION',version)
+				tempInfo[3] = tempInfo[3].replace('$VERSION',version)
 				# The repo info will be overwritten if it already exists
 				# if a deb repo to add, add the repo as its own file in sources.list.d
 				writeFile(('/etc/apt/sources.list.d/'+fileName+'.list'),tempInfo[2])
