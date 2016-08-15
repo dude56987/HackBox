@@ -60,6 +60,8 @@ catagory<:>message<:>Installing FSlint
 catagory<:>package<:>fslint
 catagory<:>message<:>Installing Hardware Lister
 catagory<:>package<:>lshw-gtk
+catagory<:>message<:>Installing Hardware Info
+catagory<:>package<:>hardinfo
 catagory<:>message<:>Installing ncdu (CLI Disk Usage Analyzer)
 catagory<:>package<:>ncdu
 # stress test tools
