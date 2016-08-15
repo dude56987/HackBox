@@ -437,6 +437,7 @@ catagory<:>package<:>toxic
 interactive<:>deb-repo<:>deb http://apt.syncthing.net/ syncthing release<:>https://syncthing.net/release-key.txt
 catagory<:>message<:>Installing Syncthing-GTK(Sync directories)
 catagory<:>package<:>syncthing
+catagory<:>package<:>syncthing-gtk
 ######################
 # install RetroShare #
 ######################
