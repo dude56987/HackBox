@@ -27,14 +27,9 @@ main<:>package<:>oxygen-cursor-theme
 main<:>package<:>oxygen-cursor-theme-extra
 # load preconfigured settings for apt-fast
 interactive<:>command<:>debconf-set-selections /opt/hackbox/preconfiguredsettings/debconf/apt-fast.conf
-# add 2 ppas one is for older verisons one is for 14.04+ versions
-interactive<:>ppa<:>ppa:apt-fast/stable
+# ppa for apt-fast
 interactive<:>ppa<:>ppa:saiarcot895/myppa
 interactive<:>package<:>apt-fast
-interactive<:>localdeb<:>apt-fast_32bit
-interactive<:>localdeb<:>apt-fast_64bit
-# turn on progress bar in apt
-interactive<:>command<:>echo 'Dpkg::Progress-Fancy "1";' > /etc/apt/apt.conf.d/99progressbar
 # run the check package manager command to set it to apt fast if not already
 interactive<:>CHECK-PACKAGE-MANAGER
 # install the update command
