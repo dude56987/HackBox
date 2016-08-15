@@ -33,10 +33,8 @@
 # - replaceLineInFileOnce()
 # - writeFile()
 ########################################################################
-import os, sys, shutil, json, zipfile, socket, hashlib 
+import os, sys, shutil, socket, hashlib
 from urllib.request import urlopen
-from time import sleep
-from random import randrange
 ########################################################################
 # For Ubuntu Server Edition/Ubuntu Desktop Edition/Linux Mint
 ########################################################################
@@ -80,7 +78,7 @@ if (("--no-curses" in sys.argv) != True):
 ########################################################################
 def progressBar(percentage,messageText,banner):
 	'''
-	Draw a curses based progressbar with the current precentage, 
+	Draw a curses based progressbar with the current precentage,
 	displaying the messageText below the bar, and the banner text
 	being displayed in the top left.
 
@@ -118,7 +116,7 @@ def deleteFile(filePath):
 ########################################################################
 def loadFile(fileName):
 	'''
-	Read the file located at fileName. Return the contents of that 
+	Read the file located at fileName. Return the contents of that
 	file as a string if the file can be read. If the file can not
 	be read then return False.
 
@@ -203,10 +201,10 @@ def downloadFile(fileAddress):
 def replaceLineInFile(fileName,stringToSearchForInLine,replacementText):
 	'''
 	Takes fileName as a path and reads the file. Reads line by line.
-	If a line contains stringToSearchForInLine then replace that 
+	If a line contains stringToSearchForInLine then replace that
 	entire line with replacementText.
 
-	This command replaces ALL instances of found 
+	This command replaces ALL instances of found
 	stringToSearchForInLine in the file.
 
 	:return bool
@@ -249,8 +247,8 @@ def currentDirectory():
 def makeDir(remoteDir):
 	'''
 	Creates the remoteDir path, if a list of directories are listed
-	that do not exist then they will be created as well, so beware of 
-	spelling mistakes as this will create the specified directory you 
+	that do not exist then they will be created as well, so beware of
+	spelling mistakes as this will create the specified directory you
 	type mindlessly. Works like "mkdir -p"
 
 	:return bool
@@ -272,7 +270,7 @@ def makeDir(remoteDir):
 ########################################################################
 def replaceLineInFileOnce(fileName,StringToSearchFor,StringToReplaceWith):
 	'''
-	Takes a file and replaces a string in it with a new one, the 
+	Takes a file and replaces a string in it with a new one, the
 	function checks to that it wont dupe the replacements.
 
 	:return bool
@@ -281,7 +279,6 @@ def replaceLineInFileOnce(fileName,StringToSearchFor,StringToReplaceWith):
 	text = loadFile(fileName).replace(StringToReplaceWith,StringToSearchFor)
 	# then replace the string so there are no dupes
 	text = text.replace(StringToSearchFor,StringToReplaceWith)
-	checkWrite=writeFile(fileName,text)
 	return writeFile(fileName,text)
 ########################################################################
 def clear():
@@ -297,12 +294,12 @@ def colorText(text):
 	'''
 	Replaces tags in input text with color codes.
 	<defaultText>
-	  This would be the manual tag to use to clear 
+	  This would be the manual tag to use to clear
 	  all previously set colors.
 	<boldtext>
 	  Makes a block of text bold.
 	<blinktext>
-	  Makes a block of text blink. This may not 
+	  Makes a block of text blink. This may not
 	  always work as some terminals disable this.
 	<blacktext>
 	  Set the text color to black.
@@ -337,11 +334,11 @@ def colorText(text):
 	<whitebackground>
 	  Set the background color of the text to white.
 
-	Blocks can be ended with </> which simply closes 
+	Blocks can be ended with </> which simply closes
 	all previous tags.
 
 	So example syntax would be <boldtext><bluetext>this</>.
-	
+
 	:return string
 	'''
 	defaultText='\033[0m'
@@ -392,7 +389,7 @@ def colorText(text):
 def COPY(src,dest):
 	'''
 	Copies a directory recursively from the "src" to the "dest"
-	
+
 	:return bool
 	'''
 	if src.split('/')[len(src.split('/'))-1].find('.') > -1:
@@ -426,16 +423,16 @@ def COPY(src,dest):
 ########################################################################
 def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage):
 	'''
-	Reads a single line from a source file. Then takes aproprate 
+	Reads a single line from a source file. Then takes aproprate
 	action based on what the configuration option is. For more info
-	on configuration options you can read the INFO file in the 
+	on configuration options you can read the INFO file in the
 	/opt/hackbox/sources/ directory.
 
 	:return bool
 	'''
 	# set a variable to show update progress
 	showUpdate=True
-	# all lines starting with # are comments	
+	# all lines starting with # are comments
 	if line[:1] != '#':
 		if line.find('<:>') != -1:
 			# example format of file
@@ -460,7 +457,7 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 				else:
 					colorText('<greentext>'+tempInfo[2]+'</>...')
 			elif tempInfo[1] == 'script':
-				# dont update progress bar 
+				# dont update progress bar
 				# the scripts pump out a bunch of text
 				showUpdate=False
 				if os.path.exists('/opt/hackbox/scripts/'+tempInfo[2]+'.sh'):
@@ -499,7 +496,7 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 				# remove _ at the start of filename
 				fileName=(fileName.replace('^_',''))
 				# find the distro this is running on to replace instances of $RELEASE with
-				# the distro release name 
+				# the distro release name
 				release = os.popen('lsb_release -cs').read()
 				tempInfo[2] = tempInfo[2].replace('$RELEASE',release)
 				# The repo info will be overwritten if it already exists
@@ -572,13 +569,13 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 					# write updated log
 					writeFile('/opt/hackbox/Error_Log.txt',fileText)
 			elif tempInfo[1] == 'cache-package':
-				# download the package to disk for caching this is used by the 
+				# download the package to disk for caching this is used by the
 				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
 					os.system((packageManager+' install --download-only '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
 			elif tempInfo[1] == 'localdeb':
 				# install package in unsupported packages
 				tempInfo[2] = '/opt/hackbox/unsupportedPackages/'+tempInfo[2]+'.deb'
-				if os.path.exists(tempInfo[2]): 
+				if os.path.exists(tempInfo[2]):
 					hashObject=hashlib.md5()
 					#fileObject=open(tempInfo[2],'rb')
 					with open(tempInfo[2], "rb") as fileObject:
@@ -600,7 +597,7 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 							pass
 							#print "No new file, package not installed."
 						else:
-							# if no parity is found write a new md5 and install the new file	
+							# if no parity is found write a new md5 and install the new file
 							writeFile((tempInfo[2]+'.md5'),tempMD5)
 							os.system(('sudo gdebi --no '+tempInfo[2]))
 					else:
@@ -609,7 +606,7 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 						os.system(('sudo gdebi --no '+tempInfo[2])+' >> Install_Log.txt')
 				else:
 					print("ERROR:No "+tempInfo[2]+" exists!")
-	# this is at bottom of loop outside of if tree	
+	# this is at bottom of loop outside of if tree
 	if showUpdate == True:
 		# calc progress and display
 		if (("--no-curses" in sys.argv) != True):
@@ -621,11 +618,11 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 def installSourcesFile(fileNameOfFile):
 	'''
 	Finds the installed package manager to use. Then
-	reads payload file stored at path fileNameOfFile. 
+	reads payload file stored at path fileNameOfFile.
 	Performs error checking on the file and feeds each
 	line into readSourceFileLine() for correct actions
 	to be performed.
-	
+
 	:return bool
 	'''
 	# change this so that source files are split into 3 pieces of data
@@ -650,13 +647,12 @@ def installSourcesFile(fileNameOfFile):
 	else:
 		fileObject = fileObject.split('\n')
 	# setup progress calculations
-	progressPercent = ''
 	progress = 0.0
 	progressTotal = len(fileObject)
 	currentMessage = 'Starting install process...'
 	# go though each line of the file
 	for line in fileObject:
-		showUpdate=readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage)
+		readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage)
 		progress += 1
 	return True
 ########################################################################
@@ -717,7 +713,7 @@ def createInstallLoad():
 	# sort the files
 	datafiles.sort()
 	for fileName in datafiles:
-		# set the install section here to keep it in the scope of the file	
+		# set the install section here to keep it in the scope of the file
 		installSection = 'n'
 		# if the source file has already been configured use previous config
 		if useConfig == 'y':
@@ -783,7 +779,7 @@ def createInstallLoad():
 					prePayload += line+'\n'
 				elif tempInfo[0] == 'main':
 					mainPayload += line+'\n'
-					# if the line is a package command create a download entry to 
+					# if the line is a package command create a download entry to
 					# download the package before installing it
 					if tempInfo[1]=='package':
 						downloadPayload+='null<:>message<:>Downloading package : '+tempInfo[2]+'\n'
@@ -792,7 +788,7 @@ def createInstallLoad():
 					postPayload += line+'\n'
 				else:
 					# otherwise add uncatagorized payloads to main payload
-					mainPayload += line+'\n'	
+					mainPayload += line+'\n'
 		# extract any preconfigured launchers included for this section
 		if os.path.exists(('/opt/hackbox/preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip')):
 			mainPayload += 'null<:>command<:>unzip -o '+'/opt/hackbox/preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip -d /usr/share/applications\n'

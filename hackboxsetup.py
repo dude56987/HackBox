@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
-import os, sys, shutil, json, zipfile, socket
+import os, sys
 from time import sleep
 from random import randrange
 sys.path.append('/opt/hackbox/')
