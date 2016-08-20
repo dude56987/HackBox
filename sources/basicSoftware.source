@@ -253,6 +253,13 @@ catagory<:>script<:>install-custom-fonts
 ########################################################################
 # UTILITIES #
 ########################################################################
+# lnav views system logs, log cleaner removes logs on a timer
+catagory<:>message<:>Installing lnav (CLI System Log Viewer)
+catagory<:>package<:>lnav
+interactive<:>message<:>Installing log-cleaner(Manage cron job to delete logs)
+interactive<:>localdeb<:>log-cleaner<:>/usr/bin/log-cleaner
+# set the log cleaner to clean the logs yearly
+interactive<:>command<:>log-cleaner --yearly
 # for customizing the colors in gtk
 catagory<:>message<:>Installing gtk-theme-config
 catagory<:>package<:>gtk-theme-config

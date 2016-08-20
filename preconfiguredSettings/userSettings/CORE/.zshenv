@@ -9,7 +9,8 @@ alias grep='grep --color=auto' # colorize the output of grep
 alias fgrep='fgrep --color=auto' # colorize the output of grep
 alias egrep='egrep --color=auto' # colorize the output of grep
 alias diff='colordiff' # colorize the output of diff
-alias logview='tail -f /var/log/*' # View system log updates in realtime 
+alias viewlogs='sudo lnav /var/log/' # View system log updates in realtime
+alias cleanlogs='sudo find /var/log/ -type f -delete -print' # remove all stored system logs
 alias lol="espeak 'ha ha ha ha ha'" # Sometimes its good to have a sense of humor
 alias say="espeak" # Speak the following string of text
 alias ping="ping -c 5" # set default ping count to 5

@@ -157,6 +157,9 @@ distro-build:
 	##############
 pullCustomSoftware:
 	mkdir -p customSoftwarePackages
+	# log-cleaner (manage cron job to clean out system logs on interval)
+	git clone https://github.com/dude56987/log-cleaner.git customSoftwarePackages/log-cleaner ||\
+	git -C customSoftwarePackages/log-cleaner pull
 	# Hackbox System Monitor (Web frontend to munin and vnstati)
 	git clone https://github.com/dude56987/hackbox-system-monitor.git customSoftwarePackages/hackbox-system-monitor ||\
 	git -C customSoftwarePackages/hackbox-system-monitor pull
