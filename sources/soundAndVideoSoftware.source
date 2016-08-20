@@ -7,9 +7,11 @@
 interactive<:>ppa<:>ppa:maarten-baert/simplescreenrecorder
 interactive<:>package<:>simplescreenrecorder
 # NOTE:  It is in the script to be installed in the begining as it requires a ppa
-catagory<:>message<:>Installing Audacity
+catagory<:>message<:>Installing Audacity (Audio editing software)
 catagory<:>package<:>audacity
-catagory<:>message<:>Installing Linux Multimedia Studio
+catagory<:>message<:>Installing Mixxx (DJ Software)
+catagory<:>package<:>mixxx
+catagory<:>message<:>Installing Linux Multimedia Studio (Music composing software)
 catagory<:>package<:>lmms
 # openshot and plugins for openshot
 catagory<:>message<:>Installing openshot (Video Editor)
