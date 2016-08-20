@@ -28,6 +28,8 @@ if laptop-detect;then
 	echo "System is a laptop, configuring system..."
 	# install tlp (improves battery life in laptops)
 	sudo apt-get install tlp --assume-yes
+	# install tlp-rdw (tlp radio device wizard)
+	sudo apt-get install tlp-rdw --assume-yes
 	# start tlp
 	sudo tlp start
 	# install powertop top but for power management
