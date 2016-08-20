@@ -329,12 +329,19 @@ catagory<:>message<:>Removing other photo managers
 catagory<:>rm-package<:>digikam
 catagory<:>rm-package<:>gwenview
 ###################################
+# install quick launcher software
+catagory<:>message<:>Installing Kupfer (Quicklauncher)
+catagory<:>package<:>kupfer
+# remove other quick launcher software
+catagory<:>message<:>Removing other Quicklaunchers
+catagory<:>rm-package<:>gnome-do
+catagory<:>rm-package<:>synapse
+catagory<:>rm-package<:>launchy
+###################################
 catagory<:>message<:>Installing Font Manager
 catagory<:>package<:>font-manager
 catagory<:>message<:>Installing Catfish (File Search)
 catagory<:>package<:>catfish
-catagory<:>message<:>Installing Kupfer and setting it up to autostart
-catagory<:>package<:>kupfer
 catagory<:>message<:>Installing iotop(Top for I/O of disk)
 catagory<:>package<:>iotop
 catagory<:>message<:>Installing iftop(Top for Network Usage)
