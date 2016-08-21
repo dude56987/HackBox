@@ -450,7 +450,7 @@ catagory<:>package<:>syncthing-gtk
 ######################
 # File share / social network replacement
 catagory<:>message<:>Installing RetroShare
-interactive<:>ppa<:>ppa:csoler-users/retroshare
+interactive<:>ppa<:>ppa:retroshare/stable
 catagory<:>package<:>retroshare
 catagory<:>package<:>retroshare-linkscloud-plugin
 catagory<:>package<:>retroshare-feedreader-plugin
