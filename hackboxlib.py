@@ -562,8 +562,12 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 				# install package
 				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
 					# use noninteractive variable to set default on all prompts
-					systemVariables='DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true'
-					os.system((systemVariables+' && '+packageManager+' install '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
+					systemVariables='export DEBIAN_FRONTEND=noninteractive && export DEBCONF_NONINTERACTIVE_SEEN=true'
+					# force-confdef will install the package with the default options, this makes the 
+					# installer require less interaction by the user
+					noQuestions='-o Dpkg::Options::="--force-confdef"'
+					# run the created command
+					os.system((systemVariables+' && '+packageManager+' install '+tempInfo[2]+' --assume-yes '+noQuestions+' >> Install_Log.txt'))
 				# if the package did not install correctly because no documentation exists then log a uninstalled package
 				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
 					# create fileText to store the log text
