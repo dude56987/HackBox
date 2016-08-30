@@ -11,6 +11,8 @@ command ShowWhitespace set list
 command HideWhitespace set list!
 "Strip trailing whitespace from all lines in a file"
 command StripTrailingWhitespace :%s/\s\+$//e
+"Auto strip trailing whitespace when saving files"
+autocmd BufWritePre * :%s/\s\+$//e
 "Wrap text instead of being on one line"
 set lbr
 "Turn on smart indenting in line wrap mode"
@@ -39,4 +41,3 @@ colorscheme ron
 "Set tab width to 4 and shift width to 4 to line up with tabs"
 set tabstop=4
 set shiftwidth=4
-
