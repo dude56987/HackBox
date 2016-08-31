@@ -182,6 +182,8 @@ catagory<:>message<:>Installing lifeograph (Encryptable personal Journal)
 catagory<:>package<:>lifeograph
 catagory<:>message<:>Installing xchm (Compiled Help File Viewer) 
 catagory<:>package<:>xchm
+catagory<:>message<:>Installing Sqlite Browser (GUI for managing SQL databases) 
+catagory<:>package<:>sqlitebrowser
 # Install libreoffice & extras
 catagory<:>message<:>Installing LibreOffice
 catagory<:>package<:>libreoffice
