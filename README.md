@@ -1,7 +1,7 @@
 HackBox
 =======
 
-HackBox is a set of scripts designed to setup a desktop distro from a freshly installed Ubuntu based distro. It is recommended that you use it with a fresh install of Linux Mint XFCE edition, the standard Ubuntu desktop, or Xubuntu. Each of these platforms have been tested for compatibility with the script. However this script should work on any Ubuntu based system.
+HackBox is a set of scripts designed to setup a desktop distro from a freshly installed Ubuntu based system.
 
 This package is designed with a few key points in mind.
 - Defaults Should be Sane and Secure.
@@ -16,30 +16,38 @@ Copy and paste the below command into a terminal and hit enter to install the un
 
 ###INSTALL
 
-If you are on the webpage you will first have to download and unzip the repository. You can download this repo at the link below.
+####Dependencies
+You may need to install make and git in order to pull and build the software. You can install them on ubuntu with the below command.
 
-https://github.com/dude56987/HackBox/archive/master.zip
+	sudo apt-get install make git gdebi --assume-yes
 
-Once you have this repository downloaded and extracted. Open a terminal in the same folder as this README.md. Then enter the command below. 
+Once you have installed these all other dependency checking is handled automatically.
 
-    make install
+####Downloading
+You can download the source to build the installer with the below command.
+
+	git clone https://github.com/dude56987/hackbox
+
+####Building Source
+Once you have this repository downloaded. Open a terminal in the same folder as this README.md. Then enter the command below.
+
+    make
 
 ###USAGE
-
 You can launch the program from the command line with the following command.
 
-    hackboxsetup
-    
+    hackboxlauncher
+
 Or you can launch the graphical version with the command.
 
     hackboxsetup-gui
 
 ###UPGRADE
-To upgrade the existing version use the folloing command. 
+You can run "HackBox Upgrade" from the start menu. This will download the newest version of HackBox and install it. After HackBox has been upgraded it will run hackboxsetup-gui to update the system configuration. You can also launch a upgrade from the command line with the below command.
 
     hackboxsetup --upgrade
 
-Be sure to backup any configuration you wish to perserve. This is a major upgrade process.
+Be sure to backup any configuration you wish to perserve.
 
 ###UNINSTALL
 To remove the installer installed with this method use the local package manager. For Linux Mint and Ubuntu it would be
@@ -48,7 +56,4 @@ To remove the installer installed with this method use the local package manager
 
 ####NOTE:
 
-    Nothing has been built yet to remove all the changes the program does
-    to the system. Currently you would need to do a fresh reinstall of the
-    operating system to clean all the changes. However the above commands
-    do remove the installer itself and most media assets installed.
+	Currently you would need to do a fresh reinstall of the operating system to clean all the changes. However the above commands do remove the installer itself and most media assets installed.
