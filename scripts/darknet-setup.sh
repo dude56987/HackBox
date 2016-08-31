@@ -16,10 +16,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
+# make installs noninteractive
+export DEBIAN_FRONTEND=noninteractive
+export DEBCONF_NONINTERACTIVE_SEEN=true
 # install tor + privoxy
-apt-get install tor --assume-yes
-apt-get install privoxy --assume-yes
-apt-get install macchanger --assume-yes
+# use force-confdef to force default options
+apt-get install tor --assume-yes -o Dpkg::Options::="--force-confdef"
+apt-get install privoxy --assume-yes -o Dpkg::Options::="--force-confdef"
+apt-get install macchanger --assume-yes -o Dpkg::Options::="--force-confdef"
 if ! [ -f /etc/hackbox/i2pSetupDone ];then
 	# setting up i2p deepweb protocall though ppa ##########################
 	# set anwsers for setup dialouges
@@ -30,8 +34,7 @@ if ! [ -f /etc/hackbox/i2pSetupDone ];then
 	# add ppa update and install program
 	apt-add-repository ppa:i2p-maintainers/i2p --yes
 	apt-get update
-	apt-get install i2p --assume-yes
-	dpkg-reconfigure i2p
+	apt-get install i2p --assume-yes -o Dpkg::Options::="--force-confdef"
 	# create lock file so this process is not repeated
 	echo '' > /etc/hackbox/i2pSetupDone
 fi
