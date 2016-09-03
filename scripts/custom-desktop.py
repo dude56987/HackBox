@@ -56,7 +56,7 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 	# clean up the old default configs
 	os.system("rm -rvf /etc/skel/.*")
 	os.system("rm -rvf /etc/skel/*")
-	# install default core into /etc/skel 
+	# install default core into /etc/skel
 	os.system("cp -rvf /opt/hackbox/preconfiguredSettings/userSettings/CORE/. /etc/skel")
 	# install user picked settings package into the /etc/skel
 	if len(desktopLine) > 1:
@@ -75,17 +75,18 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 		for user in os.listdir('/home/'):
 			if (("." in user) or ("+" in user)) != True:
 				# build the themes/icons/fonts folder
-				os.system('mkdir -p '+os.path.join('/home',user,'.icons'))
-				os.system('mkdir -p '+os.path.join('/home',user,'.themes'))
-				os.system('mkdir -p '+os.path.join('/home',user,'.fonts'))
+				os.system('sudo -s '+user+' mkdir -p ~/.icons')
+				os.system('sudo -s '+user+' mkdir -p ~/.themes')
+				os.system('sudo -s '+user+' mkdir -p ~/.fonts')
 				# copy over /etc/skel recursively
-				os.system(('cp -rvf /etc/skel/. '+os.path.join('/home',user)))
+				os.system('sudo -s '+user+' cp -rvf /etc/skel/. ~/')
 				# set user ownership for local files
 				print ('chown --recursive '+user+' '+os.path.join('/home',user))
 				os.system('chown --recursive '+user+' '+os.path.join('/home',user))
-		# reset gconf settings if they exist, this is all settings in ~/.gconf/
-		os.system('gconftool --shutdown')
-		os.system('gconftool --spawn')
+				# reset gconf settings if they exist, this is all settings in ~/.gconf/
+				# this must be ran by each user because each user runs gconf
+				os.system('sudo -s '+user+' gconftool --shutdown')
+				os.system('sudo -s '+user+' gconftool --spawn')
 	if deleteMe==True:
 		# remove the config file if usersettings are not saved
 		os.system('rm /etc/hackbox/customDesktop.conf')
@@ -97,7 +98,7 @@ root=Dialog()
 choices=[]
 config=''
 ########################################################################
-# Build the user interface 
+# Build the user interface
 ########################################################################
 # grab a list of available default settings for the user to pick from
 for item in os.listdir("/opt/hackbox/preconfiguredSettings/userSettings/"):
@@ -113,7 +114,7 @@ if len(choices)>1:
 	# add to the config file
 	config+=('desktopLayout='+userChoice+'\n')
 ########################################################################
-# in the yesno dialog ok = yes, cancel = no 
+# in the yesno dialog ok = yes, cancel = no
 if "ok" == root.yesno("Would you like to overwrite all users current settings with the new default settings?\n\nWARNING:This will delete any settings you have changed in your applications.However your documents will remain untouched.",20,60):
 	config+='overwriteUsers=true\n'
 else:
