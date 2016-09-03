@@ -9,6 +9,11 @@
 ########################################################################
 # This section is automaticly installed 
 #AUTO-INSTALL
+# sets up the custom mimetype defaults for HackBox
+# this must be done before the custom-desktop script is ran
+interactive<:>message<:>Setting up mimetypes for HackBox
+interactive<:>localdeb<:>hackbox-mimetype-defaults<:>/usr/share/applications/exo-audio-player.desktop
+# setup custom desktop settings
 interactive<:>message<:>Installing custom desktop settings
 interactive<:>script<:>custom-desktop
 pre<:>message<:>Installing custom themes
@@ -586,9 +591,6 @@ catagory<:>message<:>Remove mate desktop notification system
 catagory<:>rm-package<:>mate-notification-daemon
 catagory<:>message<:>Installing Xfce OSD notification system
 catagory<:>package<:>xfce4-notifyd
-# sets up the custom mimetype defaults for HackBox
-catagory<:>message<:>Setting up mimetypes for HackBox
-catagory<:>localdeb<:>hackbox-mimetype-defaults<:>/usr/bin/fehOpen
 # install wally since it supports more desktops and desktop nova development seems stoped
 ##catagory<:>message<:>Installing Wally(wallpaper Switcher)
 #catagory<:>package<:>wally
