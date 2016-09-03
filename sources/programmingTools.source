@@ -1,38 +1,30 @@
 #BANNER
 #QUESTION:Would you like to install Programming Tools?
-catagory<:>message<:>Installing Bazaar (Version Control System)
-catagory<:>package<:>bzr-explorer
-catagory<:>message<:>Installing gedit plugins (turn text editor into IDE)
-catagory<:>package<:>gedit-plugins
 catagory<:>message<:>Installing Geany (General IDE)
 catagory<:>package<:>geany geany-plugins
+catagory<:>message<:>Installing vim (Command line based text editor SUPERUSER TOOL)
+catagory<:>package<:>vim
 catagory<:>message<:>Installing Meld Diff Viewer
 catagory<:>package<:>meld
-catagory<:>message<:>Installing Lazarus (Pascal RAD IDE)
-catagory<:>package<:>lazarus
 catagory<:>message<:>Installing Devhelp (Documentation Reader)
 catagory<:>package<:>devhelp
 catagory<:>message<:>Installing txt2tags (Markup Language to convert to other markup languages)
 catagory<:>package<:>txt2tags
 catagory<:>message<:>Installing txt2regex (Command line program to build regular expressions)
 catagory<:>package<:>txt2regex
-#TODO: create a .desktop file for txt2regx so it appears in start menu
-catagory<:>message<:>Installing vim (Command line based text editor SUPERUSER TOOL)
-catagory<:>package<:>vim
 catagory<:>message<:>Installing devtodo (CLI todo list manager)
 catagory<:>package<:>devtodo
 catagory<:>message<:>Installing GIT (Version Control System)
 catagory<:>package<:>git
-catagory<:>message<:>Installing Gource (GIT visualization generator)
-catagory<:>package<:>gource
-catagory<:>message<:>Installing gitstats (GIT statistics generator)
-catagory<:>package<:>gitstats
 catagory<:>message<:>Installing GitHub Backup(Backup User Repos on GitHub)
 catagory<:>package<:>github-backup
+catagory<:>message<:>Installing Alien (Convert between package formats)
+catagory<:>package<:>alien
+# toolkits
+catagory<:>message<:>Installing kivy (Cross platform GUI toolkit)
+catagory<:>package<:>python-kivy
 # install unsupported packages
 catagory<:>message<:>Installing git-cleanup (CLI util to shrink git repos)
 catagory<:>localdeb<:>git-cleanup_1.0_all<:>/usr/bin/git-cleanup
-catagory<:>message<:>Installing pyqt4-dev-tools (Qt for python)
-catagory<:>package<:>pyqt4-dev-tools
-catagory<:>message<:>Installing Alien (Convert between package formats)
-catagory<:>package<:>alien
+catagory<:>message<:>Installing project-report (Generate a project report website directory)
+catagory<:>localdeb<:>project-report<:>/usr/bin/project-report
