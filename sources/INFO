@@ -30,6 +30,11 @@
 # The below will add a repo to the system. It consists of a repo line and the location of the keyfile for the repo
 #catagory<:>deb-repo<:>deb https://myrepo.com/repos saucy main<:>https://myrepo.com/keys/myrepokey.pgp
 ####################
+# The below will create a cron job on the system that will run as the root user
+#catagory<:>cron<:>cronFileName<:>cronFrequency<:>command
+# The cronFrequency can be any acceptable cron time format @hourly @daily @weekly @monthly @yearly or a specific
+# cron time. Example cron files might be found in /etc/cron.d/
+####################
 # The catagory section decides the install order of things. By default the catagories and thier order is as below.
 # 1. "interactive"
 # 2. "pre"
