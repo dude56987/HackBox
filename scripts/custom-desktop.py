@@ -75,18 +75,18 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 		for user in os.listdir('/home/'):
 			if (("." in user) or ("+" in user)) != True:
 				# build the themes/icons/fonts folder
-				os.system('sudo -s '+user+' mkdir -p ~/.icons')
-				os.system('sudo -s '+user+' mkdir -p ~/.themes')
-				os.system('sudo -s '+user+' mkdir -p ~/.fonts')
+				os.system('sudo -u '+user+' -s mkdir -p ~/.icons')
+				os.system('sudo -u '+user+' -s mkdir -p ~/.themes')
+				os.system('sudo -u '+user+' -s mkdir -p ~/.fonts')
 				# copy over /etc/skel recursively
-				os.system('sudo -s '+user+' cp -rvf /etc/skel/. ~/')
+				os.system('sudo -u '+user+' -s cp -rvf /etc/skel/. ~/')
 				# set user ownership for local files
 				print ('chown --recursive '+user+' '+os.path.join('/home',user))
 				os.system('chown --recursive '+user+' '+os.path.join('/home',user))
 				# reset gconf settings if they exist, this is all settings in ~/.gconf/
 				# this must be ran by each user because each user runs gconf
-				os.system('sudo -s '+user+' gconftool --shutdown')
-				os.system('sudo -s '+user+' gconftool --spawn')
+				os.system('sudo -u '+user+' -s gconftool --shutdown')
+				os.system('sudo -u '+user+' -s gconftool --spawn')
 	if deleteMe==True:
 		# remove the config file if usersettings are not saved
 		os.system('rm /etc/hackbox/customDesktop.conf')
