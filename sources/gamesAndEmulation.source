@@ -44,25 +44,25 @@ catagory<:>package<:>retroarch-joypad-autoconfig
 catagory<:>package<:>libretro*
 # below lines are in case the above dont work
 # Super Nintendo Core for retroarch
-catagory<:>message<:>Installing Super Nintendo Core for retroarch 
+catagory<:>message<:>Installing Super Nintendo Core for retroarch
 catagory<:>package<:>libretro-snes9x-next
 # GBACore for retroarch
-catagory<:>message<:>Installing GBACore for retroarch 
+catagory<:>message<:>Installing GBACore for retroarch
 catagory<:>package<:>libretro-vba-next
 #Sega multi system Core for retroarch
-catagory<:>message<:>Installing Sega multi system Core for retroarch 
+catagory<:>message<:>Installing Sega multi system Core for retroarch
 catagory<:>package<:>libretro-picodrive
 # NES Core for retroarch
-catagory<:>message<:>Installing NES Core for retroarch 
+catagory<:>message<:>Installing NES Core for retroarch
 catagory<:>package<:>libretro-nestopia
 # Nintendo DS Core for retroarch
-catagory<:>message<:>Installing Nintendo DS Core for retroarch 
+catagory<:>message<:>Installing Nintendo DS Core for retroarch
 catagory<:>package<:>libretro-desmume
 # Playstation Core for retroarch
-catagory<:>message<:>Installing Playstation Core for retroarch 
+catagory<:>message<:>Installing Playstation Core for retroarch
 catagory<:>package<:>libretro-pcsx-rearmed
 # Scummvm for old adventure games
-catagory<:>message<:>Installing Scummvm Core for retroarch 
+catagory<:>message<:>Installing Scummvm Core for retroarch
 catagory<:>package<:>libretro-scummvm
 # dosbox for old dos apps
 catagory<:>message<:>Installing Dosbox

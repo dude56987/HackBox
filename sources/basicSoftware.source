@@ -3,11 +3,11 @@
 ########################################################################
 # GENERAL APPLICATIONS #
 ########################################################################
-# the section below is still general applications but these are apps 
+# the section below is still general applications but these are apps
 # that are installed just in case the standard distro does not include
 # them by default
 ########################################################################
-# This section is automaticly installed 
+# This section is automaticly installed
 #AUTO-INSTALL
 # sets up the custom mimetype defaults for HackBox
 # this must be done before the custom-desktop script is ran
@@ -187,9 +187,9 @@ interactive<:>ppa<:>ppa:jaap.karssenberg/zim
 catagory<:>package<:>zim
 catagory<:>message<:>Installing lifeograph (Encryptable personal Journal)
 catagory<:>package<:>lifeograph
-catagory<:>message<:>Installing xchm (Compiled Help File Viewer) 
+catagory<:>message<:>Installing xchm (Compiled Help File Viewer)
 catagory<:>package<:>xchm
-catagory<:>message<:>Installing Sqlite Browser (GUI for managing SQL databases) 
+catagory<:>message<:>Installing Sqlite Browser (GUI for managing SQL databases)
 catagory<:>package<:>sqlitebrowser
 # Install libreoffice & extras
 catagory<:>message<:>Installing LibreOffice
@@ -206,7 +206,7 @@ catagory<:>message<:>Installing MOC(CLI Music Player)
 catagory<:>package<:>moc
 catagory<:>message<:>Installing ffmpeg support for MOC
 catagory<:>package<:>moc-ffmpeg-plugin
-catagory<:>message<:>Installing GIMP (Image Manipulation Program) 
+catagory<:>message<:>Installing GIMP (Image Manipulation Program)
 catagory<:>package<:>gimp
 catagory<:>message<:>Installing GIMP plugin resynthesizer
 catagory<:>package<:>gimp-resynthesizer
@@ -229,17 +229,17 @@ catagory<:>package<:>cheese
 catagory<:>message<:>Installing TinyCameraMonitor(show when webcam is on)
 catagory<:>localdeb<:>tinycameramonitor
 # calculators
-catagory<:>message<:>Installing SpeedCrunch (Calculator) 
+catagory<:>message<:>Installing SpeedCrunch (Calculator)
 catagory<:>package<:>speedcrunch
-catagory<:>message<:>Installing Gnome-Genius (Really Advanced Graphing Calculator) 
+catagory<:>message<:>Installing Gnome-Genius (Really Advanced Graphing Calculator)
 catagory<:>package<:>gnome-genius
 # removing junk calculators
 catagory<:>message<:>Removing conflicting calculators
-catagory<:>rm-package<:>galculator 
+catagory<:>rm-package<:>galculator
 catagory<:>rm-package<:>gcalctool
 catagory<:>rm-package<:>kcalc
 ################
-catagory<:>message<:>Installing convertall (Unit Converter GUI) 
+catagory<:>message<:>Installing convertall (Unit Converter GUI)
 catagory<:>package<:>convertall
 catagory<:>message<:>Installing terminator (terminal with lots of nice features)
 catagory<:>package<:>terminator
@@ -305,7 +305,7 @@ catagory<:>message<:>Installing espeak-gui (GUI for espeak)
 catagory<:>package<:>espeak-gui
 catagory<:>message<:>Installing geolocate(Figure out the location of pcs)
 catagory<:>localdeb<:>geolocate<:>/usr/bin/geolocate
-# install colortest-python and link it to the colortest command 
+# install colortest-python and link it to the colortest command
 catagory<:>message<:>Installing colortest-python(shows terminal color settings)
 catagory<:>package<:>colortest-python
 catagory<:>command<:>link /usr/bin/colortest-python /usr/bin/colortest
