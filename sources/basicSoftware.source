@@ -249,6 +249,16 @@ catagory<:>rm-package<:>xarchiver
 # setup thunar archive intergration
 catagory<:>message<:>Installing archive support for thunar context actions
 catagory<:>package<:>thunar-archive-plugin
+# add cli tools to manage the trash can
+catagory<:>message<:>Installing trash-cli (CLI trash utility)
+catagory<:>package<:>trash-cli
+# install autotrash and setup a cron job to delete all trashed items
+# older then 40 days
+catagory<:>message<:>Installing autotrash (Manage emptying the trash based on metrics)
+catagory<:>package<:>autotrash
+# create cron job to delete trash items older than 40 days
+catagory<:>message<:>Setup cron job for autotrash to remove items after 40 days
+catagory<:>cron<:>autotrash<:>@daily<:>for user in /home/*;do user=$(echo $user | sed 's/\/home\///g');sudo -u $user autotrash -v -d 40;done
 ##### Additonal Fonts #####
 catagory<:>message<:>Installing fonts(opendyslexic)
 catagory<:>package<:>fonts-opendyslexic

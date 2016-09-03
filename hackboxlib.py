@@ -531,6 +531,10 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 				else:
 					# if the key is not downloaded delete the repo
 					os.system('rm /etc/apt/sources.list.d/'+str(fileName)+'.list')
+			elif tempInfo[1] == 'cron':
+				#category<:>cron<:>fileName<:>timeInterval<:>command
+				# create a cron job with name as the filename stored in /etc/cron.d/
+				writeFile(os.path.join('/etc/cron.d/',tempInfo[2]),(tempInfo[3]+' root '+tempInfo[4]))
 			elif tempInfo[1] == 'open-port':
 				# allow traffic from inside the given port
 				os.system('sudo ufw allow proto tcp from any to any port '+tempInfo[2])

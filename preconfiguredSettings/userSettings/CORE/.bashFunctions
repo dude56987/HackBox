@@ -1,11 +1,4 @@
 #! /bin/bash
-
-trash(){ # move a file to the trash can
-	# create the trash directory if it does not exist
-	mkdir -p ~/.local/share/Trash/files/
-	# move files to trash directory
-	mv -v $@ ~/.local/share/Trash/files/
-}
 emptyTrash(){ # empty the trash can
 	echo -n "Are you sure you would like to delete all files in the trash forever? [y/n]: "
 	read ANWSER
