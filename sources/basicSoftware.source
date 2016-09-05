@@ -146,8 +146,8 @@ catagory<:>rm-package<:>qpdfview
 catagory<:>rm-package<:>okular
 catagory<:>message<:>Installing Atril(Document Viewer/PDF Viewer)
 catagory<:>package<:>atril
-catagory<:>message<:>Installing Synapse (GUI package manager)
-catagory<:>package<:>synapse
+catagory<:>message<:>Installing Synaptic (GUI package manager)
+catagory<:>package<:>synaptic
 catagory<:>message<:>Installing Software Properties (GUI to manage repos)
 catagory<:>package<:>software-properties-gtk
 catagory<:>message<:>Installing Jockey(Propietry Driver Installer)
