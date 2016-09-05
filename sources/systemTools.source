@@ -14,11 +14,13 @@ catagory<:>rm-package<:>deja-dup
 # below tool is for cleanup of crap on the pc over time
 catagory<:>message<:>Installing Bleachbit (Clean up disk and write over old data)
 catagory<:>package<:>bleachbit
-# below is disk recovery tool
-catagory<:>message<:>Installing Testdisk(Disk Recovery Tool)
+# below is disk recovery tools
+catagory<:>message<:>Installing Testdisk (Disk Recovery Tool)
 catagory<:>package<:>testdisk
+catagory<:>message<:>Installing extundelete (File undelete tool)
+catagory<:>package<:>extundelete
 # partition management
-catagory<:>message<:>Installing Gparted(Disk Partition Tool)
+catagory<:>message<:>Installing Gparted (Disk Partition Tool)
 catagory<:>package<:>gparted
 # remote desktop tool
 catagory<:>message<:>Installing Vinagre (Remote Desktop Viewer)
@@ -48,7 +50,7 @@ catagory<:>message<:>Installing iftop (CLI network monitor)
 catagory<:>package<:>iftop
 catagory<:>message<:>Installing etherape (Graphical network monitor)
 catagory<:>package<:>etherape
-# install psensor, remove the autostart file 
+# install psensor, remove the autostart file
 catagory<:>message<:>Installing psensor (Graphing Temp Sensor Tool)
 catagory<:>package<:>psensor
 catagory<:>command<:>rm -f /etc/xdg/autostart/psensor.desktop
