@@ -533,6 +533,8 @@ catagory<:>message<:>Install alsa-utils
 catagory<:>package<:>alsa-utils
 catagory<:>message<:>Install volumeicon
 catagory<:>package<:>volumeicon-alsa
+catagory<:>message<:>Install gnome-alsamixer (alsamixer GUI)
+catagory<:>package<:>gnome-alsamixer
 # copy a launcher for the volumeicon to the autostart directory
 catagory<:>message<:>set volumeicon to autostart
 catagory<:>message<:>Remove xfce volumed(redundant with above program installed)

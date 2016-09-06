@@ -4,7 +4,7 @@ lmb_slider=true
 mmb_mute=false
 use_horizontal_slider=false
 show_sound_level=true
-onclick=xfce4-mixer
+onclick=gnome-alsamixer
 theme=Black Gnome
 
 [Hotkeys]
