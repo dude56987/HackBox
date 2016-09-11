@@ -4,11 +4,12 @@ alias sl='ls' # fix the common typing mistake
 alias l='ls' # fix the common typing mistake
 alias ll='ls -la | more -d' # This is shorthand to show hidden files and permissions
 alias c='clear' # Shorthand for clear screen
-alias less='less -R' # Show colors when escape sequences for them are used 
+alias less='less -R' # Show colors when escape sequences for them are used
 alias grep='grep --color=auto' # colorize the output of grep
 alias fgrep='fgrep --color=auto' # colorize the output of grep
 alias egrep='egrep --color=auto' # colorize the output of grep
 alias diff='colordiff' # colorize the output of diff
+alias trash='trash -v' # add verbosity to the trash command
 alias viewlogs='sudo lnav /var/log/' # View system log updates in realtime
 alias cleanlogs='sudo find /var/log/ -type f -delete -print' # remove all stored system logs
 alias lol="espeak 'ha ha ha ha ha'" # Sometimes its good to have a sense of humor
@@ -16,8 +17,8 @@ alias say="espeak" # Speak the following string of text
 alias ping="ping -c 5" # set default ping count to 5
 alias system-info="inxi -F" # set default ping count to 5
 alias root="sudo -s" # root logs into root mode for user
-alias pm="sudo aptitude" # shorthand to run a package manager command 
-alias mugshot-gen='identicon -s 256 -t -H $(echo "$(whoami)@$(hostname)"| md5sum | sed "s/[\ ,-]//g") -o ~/.face' 
+alias pm="sudo aptitude" # shorthand to run a package manager command
+alias mugshot-gen='identicon -s 256 -t -H $(echo "$(whoami)@$(hostname)"| md5sum | sed "s/[\ ,-]//g") -o ~/.face'
 alias invert-color="xcalib -invert -alter" # Invert monitor colors
 alias nightvision="export TERM=xterm-mono;unalias ls;prompt suse;xcalib -clear;xcalib -i -a;xcalib -green .1 0 1 -blue .1 0 1 -red 0.8 0 100 -alter"
 # install some helpfull tools for working on a console only system
@@ -59,7 +60,7 @@ fi
 # clear the screen again
 clear;
 # Show the user thier fortune for this login using cowsay
-#  To change the theme used replace tux with one of the 
+#  To change the theme used replace tux with one of the
 #  cowfiles listed by the command cowsay -l
 more ~/.motd | cowsay -f none
 # check if the user is in a fullscreen terminal
@@ -121,7 +122,7 @@ if tty | grep tty1 || tty | grep tty2 || tty | grep tty3 || tty | grep tty4; the
 		echo "=============================================================="
 		echo "Would you like to view the help file to get you started? [y/n]: ";
 		# read the user input into string variable
-		read userAnwserString; 
+		read userAnwserString;
 		if [ "$userAnwserString" = "y" ]; then
 			echo "Appending help file to launch with byobu...";
 			echo "screen -t MENU pdmenu" > ${configPath}windows;
