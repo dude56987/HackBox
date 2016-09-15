@@ -90,9 +90,9 @@
   <scanPopupUseGDMessage>1</scanPopupUseGDMessage>
   <pronounceOnLoadMain>0</pronounceOnLoadMain>
   <pronounceOnLoadPopup>0</pronounceOnLoadPopup>
-  <useExternalPlayer>0</useExternalPlayer>
-  <useInternalPlayer>1</useInternalPlayer>
-  <audioPlaybackProgram>mplayer</audioPlaybackProgram>
+  <useExternalPlayer>1</useExternalPlayer>
+  <useInternalPlayer>0</useInternalPlayer>
+  <audioPlaybackProgram>mpv</audioPlaybackProgram>
   <alwaysOnTop>0</alwaysOnTop>
   <searchInDock>0</searchInDock>
   <historyStoreInterval>0</historyStoreInterval>
