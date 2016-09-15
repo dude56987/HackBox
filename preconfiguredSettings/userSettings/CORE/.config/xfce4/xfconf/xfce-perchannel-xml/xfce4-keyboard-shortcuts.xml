@@ -35,6 +35,7 @@
       <property name="&lt;Primary&gt;Escape" type="string" value="xfdesktop --menu"/>
       <property name="override" type="bool" value="true"/>
       <property name="Print" type="string" value="screengrab"/>
+      <property name="&lt;Super&gt;d" type="string" value="bash -c &apos;goldendict &quot;$(xsel -o)&quot;&apos;"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
