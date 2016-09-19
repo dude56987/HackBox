@@ -2,7 +2,7 @@
 # This is a simple info file describing the files in the folder
 #############################################################
 
-#    Each of the files in this folder is a .source file. Each .source file has a list of messages and commands to be executed with its included section. This means if the user picks graphics tools to be installed via the main interface it will grab the info from the graphicsTools.source file to know what to install. These files also contain comments. Lines starting with # are comments. Some of the files contain the same packages to be installed which may be viewed as redundant, and it is. This is for instances when the user wants only one section but not all sections. Some commands would be nessassary for graphic design and also web design for example.
+#    Each of the files in this folder is a .source file. Each .source file has a list of messages and commands to be executed with its included section. This means if the user picks graphics tools to be installed via the main interface it will grab the info from the graphicsTools.source file to know what to install. These files also contain comments. Lines starting with # are comments. Some of the files contain the same packages to be installed which may be viewed as redundant, and it is. This is for instances when the user wants only one section but not all sections. Some commands would be necessary for graphic design and also web design for example.
 ####################
 # EXAMPLE NOTATION #
 ####################
@@ -35,15 +35,17 @@
 # The cronFrequency can be any acceptable cron time format @hourly @daily @weekly @monthly @yearly or a specific
 # cron time. Example cron files might be found in /etc/cron.d/
 ####################
-# The catagory section decides the install order of things. By default the catagories and thier order is as below.
+# The category section decides the install order of things. By default the categories and their order is as below.
 # 1. "interactive"
-# 2. "pre"
-# 3. "main"
-# 4. "post"
+# 2. "download"
+# 3. "pre"
+# 4. "main"
+# 5. "post"
 ####################
-# By default all items with a catagory not listed above will be placed into the "main" catagory. Catagories can be used with any type of entry. Here is some examples of the above package item with the diffrent cagagories.
+# By default all items with a category not listed above will be placed into the "main" category. Categories can be used with any type of entry. Here is some examples of the above package item with the different categories.
 ####################
 #interactive<:>package<:>packagename
+#download<:>package<:>packagename
 #pre<:>package<:>packagename
 #main<:>package<:>packagename
 #post<:>package<:>packagename

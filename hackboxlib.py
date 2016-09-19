@@ -154,6 +154,8 @@ def writeFile(fileName,contentToWrite):
 	filepath = fileName.split(os.sep)
 	filepath.pop()
 	filepath = os.sep.join(filepath)
+	# make directory if it does not exist
+	makeDir(filepath)
 	# check if path exists
 	if os.path.exists(filepath):
 		try:
@@ -567,7 +569,7 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
 					# use noninteractive variable to set default on all prompts
 					systemVariables='export DEBIAN_FRONTEND=noninteractive && export DEBCONF_NONINTERACTIVE_SEEN=true'
-					# force-confdef will install the package with the default options, this makes the 
+					# force-confdef will install the package with the default options, this makes the
 					# installer require less interaction by the user
 					noQuestions='-o Dpkg::Options::="--force-confdef"'
 					# run the created command
@@ -665,7 +667,7 @@ def installSourcesFile(fileNameOfFile):
 	# setup progress calculations
 	progress = 0.0
 	progressTotal = len(fileObject)
-	currentMessage = 'Starting install process...'
+	currentMessage = 'Processing...'
 	# go though each line of the file
 	for line in fileObject:
 		readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage)
@@ -783,23 +785,26 @@ def createInstallLoad():
 						installSection = raw_input('[y/n]:')# display prompt on a newline for y/n
 			# run sections if install is set to true for a file
 			if line[:1] != '#' and line.find('<:>') != -1 and installSection == 'y':
-				# catagories used to orignize the install order of packages
+				# split the line up to dertermine what it is
 				tempInfo = line.split('<:>')
+				# if the line is a package command create a download entry to
+				# download the package before installing it
+				if tempInfo[1]=='package':
+					downloadPayload += 'main<:>message<:>Downloading package : '+tempInfo[2]+'\n'
+					downloadPayload += 'main<:>cache-package<:>'+tempInfo[2]+'\n'
+				# catagories used to orignize the install order of packages
 				if tempInfo[1] == 'deb-repo':
 					repoPayload+= line+'\n'
-				if tempInfo[1] == 'ppa':
+				elif tempInfo[1] == 'ppa':
 					repoPayload += line+'\n'
+				elif tempInfo[0] == 'download':
+					downloadPayload += line+'\n'
 				elif tempInfo[0] == 'interactive':
 					interactivePayload += line+'\n'
 				elif tempInfo[0] == 'pre':
 					prePayload += line+'\n'
 				elif tempInfo[0] == 'main':
 					mainPayload += line+'\n'
-					# if the line is a package command create a download entry to
-					# download the package before installing it
-					if tempInfo[1]=='package':
-						downloadPayload+='null<:>message<:>Downloading package : '+tempInfo[2]+'\n'
-						downloadPayload+='null<:>cache-package<:>'+tempInfo[2]+'\n'
 				elif tempInfo[0] == 'post':
 					postPayload += line+'\n'
 				else:
@@ -810,7 +815,7 @@ def createInstallLoad():
 			mainPayload += 'null<:>command<:>unzip -o '+'/opt/hackbox/preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip -d /usr/share/applications\n'
 	repoPayload += 'null<:>command<:>apt-get update\n'
 	# orginize the payload contents
-	payload = repoPayload+interactivePayload+prePayload+downloadPayload+mainPayload+postPayload
+	payload = repoPayload+interactivePayload+downloadPayload+prePayload+mainPayload+postPayload
 	# write the payload to a text file
 	writeFile('/etc/hackbox/payload.source',payload)
 	# write configured file to show config has been built before on next run
