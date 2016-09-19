@@ -219,7 +219,6 @@ catagory<:>message<:>Installing screenfetch (Screenshot info tool)
 catagory<:>package<:>screenfetch
 catagory<:>message<:>Removing other screenshot tools
 catagory<:>rm-package<:>xfce4-screenshooter
-catagory<:>rm-package<:>screenfetch
 catagory<:>rm-package<:>shutter
 catagory<:>rm-package<:>gnome-screenshot
 catagory<:>rm-package<:>gtk-vector-screenshot
