@@ -419,6 +419,9 @@ catagory<:>localdeb<:>opennic-dns<:>/usr/bin/opennic-dns-scan
 # install firefox and firefox custom addons systemwide
 catagory<:>message<:>Installing Firefox
 catagory<:>package<:>firefox
+# remove other webbrowsers
+catagory<:>rm-package<:>webbrowser-app
+catagory<:>rm-package<:>dillo
 # remove ubuntu firefox modifications
 catagory<:>rm-package<:>xul-ext-ubufox
 # setup transmission and setup the transmission blocklist updater for security purposes
