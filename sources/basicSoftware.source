@@ -596,14 +596,10 @@ catagory<:>message<:>Remove mate desktop notification system
 catagory<:>rm-package<:>mate-notification-daemon
 catagory<:>message<:>Installing Xfce OSD notification system
 catagory<:>package<:>xfce4-notifyd
-# install wally since it supports more desktops and desktop nova development seems stoped
-##catagory<:>message<:>Installing Wally(wallpaper Switcher)
-#catagory<:>package<:>wally
-# disable wally for now since xfce is target desktop and it has built in wallpaper switching
-# need to look for a way to check for non xfce desktop and install wally if it isnt xfce
-# Setting up Autostart for Wally
-#cp /usr/share/applications/wally.desktop/wally.desktop /etc/xdg/autostart/wally.desktop
-catagory<:>message<:>Installing Conky(desktop widget program)
+# install utilities to beautify the desktop
+catagory<:>message<:>Installing Variety (wallpaper Switcher)
+catagory<:>package<:>variety
+catagory<:>message<:>Installing Conky (Desktop widget program)
 catagory<:>package<:>conky-all
 # Install guake and removing other drop down terminals
 catagory<:>message<:>Installing Guake(drop down terminal)
