@@ -19,7 +19,7 @@
 # Install custom fonts for all users on system
 ########################################################################
 # copy all fonts stored in the fonts directory into the system fonts directory
-cp -v /opt/hackbox/media/fonts/*.otf /usr/share/fonts/truetype/
-cp -v /opt/hackbox/media/fonts/*.ttf /usr/share/fonts/truetype/
-# Refresh the font cache in order to make the system reconize the new fonts
-fc-cache -f -v
+cp /opt/hackbox/media/fonts/*.otf /usr/share/fonts/truetype/ >> /opt/hackbox/Install_Log.txt
+cp /opt/hackbox/media/fonts/*.ttf /usr/share/fonts/truetype/ >> /opt/hackbox/Install_Log.txt
+# Refresh the font cache in order to make the system recognize the new fonts
+fc-cache -f -v >> /opt/hackbox/Install_Log.txt
