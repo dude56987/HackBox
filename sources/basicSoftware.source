@@ -486,7 +486,6 @@ catagory<:>package<:>syncthing-gtk
 catagory<:>message<:>Installing RetroShare
 interactive<:>ppa<:>ppa:retroshare/stable
 catagory<:>package<:>retroshare06
-catagory<:>package<:>retroshare06-nogui
 catagory<:>package<:>retroshare06-feedreader-plugin
 catagory<:>package<:>retroshare06-voip-plugin
 ################
