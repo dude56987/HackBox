@@ -533,6 +533,28 @@ def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage
 				else:
 					# if the key is not downloaded delete the repo
 					os.system('rm /etc/apt/sources.list.d/'+str(fileName)+'.list')
+			elif tempInfo[1] == 'disable-launcher':
+				# disables a system launcher by setting NoDisplay=true in the launcher
+				if os.path.exists(tempInfo[2]):
+					# load up the existing launcher
+					fileContents = loadFile(tempInfo[2])
+					newFileContent = ''
+					foundLine=False
+					# modify the file by changing existing line or
+					# by adding a new line at the end
+					for line in fileContents.split('\n'):
+						if 'Hidden=' in line:
+							newFileContent += 'NoDisplay=true\n'
+							foundLine = True
+						else:
+							newFileContent += (line+'\n')
+					if foundLine == False:
+						newFileContent += 'NoDisplay=true\n'
+					# remove blank lines from file
+					while newFileContent.find('\n\n') > 0:
+						newFileContent = newFileContent.replace('\n\n','\n')
+					# write the newly modified file
+					writeFile(tempInfo[2],newFileContent)
 			elif tempInfo[1] == 'cron':
 				#category<:>cron<:>fileName<:>timeInterval<:>command
 				# create a cron job with name as the filename stored in /etc/cron.d/

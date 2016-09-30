@@ -35,6 +35,10 @@
 # The cronFrequency can be any acceptable cron time format @hourly @daily @weekly @monthly @yearly or a specific
 # cron time. Example cron files might be found in /etc/cron.d/
 ####################
+# The below will disable a launcher file on the system. You will still be able to use the launcher for mime
+# type associations.
+#catagory<:>disable-launcher<:>/usr/share/applications/programlauncher.desktop
+####################
 # The category section decides the install order of things. By default the categories and their order is as below.
 # 1. "interactive"
 # 2. "download"
