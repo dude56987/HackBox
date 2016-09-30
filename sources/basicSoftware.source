@@ -332,6 +332,8 @@ catagory<:>message<:>Installing Disk Utility (Management tool for storage media)
 catagory<:>package<:>gnome-disk-utility
 catagory<:>message<:>Installing Midnight Commander
 catagory<:>package<:>mc
+catagory<:>disable-launcher<:>/usr/share/applications/mc.desktop
+catagory<:>disable-launcher<:>/usr/share/applications/mcedit.desktop
 catagory<:>message<:>Installing wmctrl command line app for window management
 catagory<:>package<:>wmctrl
 catagory<:>message<:>Installing Xfce Task Manager

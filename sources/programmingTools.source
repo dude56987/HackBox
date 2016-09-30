@@ -2,8 +2,9 @@
 #QUESTION:Would you like to install Programming Tools?
 catagory<:>message<:>Installing Geany (General IDE)
 catagory<:>package<:>geany geany-plugins
-catagory<:>message<:>Installing vim (Command line based text editor SUPERUSER TOOL)
+catagory<:>message<:>Installing vim (CLI text editor)
 catagory<:>package<:>vim
+catagory<:>disable-launcher<:>/usr/share/applications/vim.desktop
 catagory<:>message<:>Installing Meld Diff Viewer
 catagory<:>package<:>meld
 catagory<:>message<:>Installing Devhelp (Documentation Reader)
