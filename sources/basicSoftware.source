@@ -17,7 +17,18 @@ interactive<:>localdeb<:>hackbox-mimetype-defaults<:>/usr/share/applications/exo
 interactive<:>message<:>Installing custom desktop settings
 interactive<:>script<:>custom-desktop
 pre<:>message<:>Installing custom themes
+# setup custom themes and disable duplicated launchers used in control panel
 pre<:>script<:>custom-themes
+main<:>disable-launcher<:>/usr/share/applications/font-manager.desktop
+main<:>disable-launcher<:>/usr/share/applications/software-properties-drivers.desktop
+main<:>disable-launcher<:>/usr/share/applications/system-disks.desktop
+main<:>disable-launcher<:>/usr/share/applications/lshw-gtk.desktop
+main<:>disable-launcher<:>/usr/share/applications/gparted.desktop
+main<:>disable-launcher<:>/usr/share/applications/software-properties-gtk.desktop
+main<:>disable-launcher<:>/usr/share/applications/system-config-printer.desktop
+main<:>disable-launcher<:>/usr/share/applications/xfce4-taskmanager.desktop
+main<:>disable-launcher<:>/usr/share/applications/users.desktop
+################
 main<:>message<:>Installing custom login theme
 main<:>script<:>login-theme
 # install custom cursor themes
