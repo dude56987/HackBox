@@ -1,6 +1,0 @@
-#BANNER
-#QUESTION:Would you like to install Netflix client for linux (Video Streaming Service)?
-# Add the netflix repo and install it
-catagory<:>message<:>Installing Netflix-Desktop
-interactive<:>ppa<:>ppa:ehoover/compholio
-catagory<:>package<:>netflix-desktop
