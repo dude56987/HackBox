@@ -9,7 +9,8 @@ catagory<:>package<:>kvm
 catagory<:>package<:>qemu-kvm
 catagory<:>package<:>qemu-kvm-spice
 catagory<:>message<:>Installing TuxMath and Tux Typing
-catagory<:>package<:>tuxmath tuxtype
+catagory<:>package<:>tuxmath
+catagory<:>package<:>tuxtype
 catagory<:>message<:>Installing gtypist
 catagory<:>package<:>gtypist
 catagory<:>message<:>Installing pychess
@@ -27,7 +28,9 @@ catagory<:>script<:>bsdgames
 catagory<:>message<:>Installing Py-Tac-Toe
 catagory<:>localdeb<:>py-tac-toe_1.0_all<:>/usr/bin/py-tac-toe
 catagory<:>message<:>Installing TuxPaint
-catagory<:>package<:>tuxpaint tuxpaint-stamps tuxpaint-plugins
+catagory<:>package<:>tuxpaint
+catagory<:>package<:>tuxpaint-stamps-default
+catagory<:>package<:>tuxpaint-plugins-default
 catagory<:>message<:>Installing qjoypad
 catagory<:>package<:>qjoypad
 # ingame chat client
