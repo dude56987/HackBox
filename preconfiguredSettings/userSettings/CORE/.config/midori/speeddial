@@ -27,8 +27,8 @@ uri=https://reddit.com
 title=reddit: the front page of the internet
 
 [Dial 8]
-uri=https://4chan.org
-title=4chan
+uri=https://en.wikipedia.org
+title=Wikipedia
 
 [Dial 9]
 uri=http://everything2.com

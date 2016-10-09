@@ -1,30 +1,23 @@
 [settings]
-default-encoding=ISO-8859-1
+default-encoding=UTF-8
 monospace-font-family=Hermit
-enable-site-specific-quirks=true
-last-window-width=752
-last-window-height=470
+enable-developer-extras=true
+enable-spell-checking=true
+enable-webgl=true
+enable-javascript=true
+default-charset=UTF-8
+search-width=251
 last-window-state=MIDORI_WINDOW_MAXIMIZED
-last-panel-position=0
-show-menubar=true
-show-statusbar=false
-toolbar-style=MIDORI_TOOLBAR_ICONS
-toolbar-items=Back,Forward,Panel,Homepage,ReloadStop,Location,TabNew,BookmarkAdd,Bookmarks,
-homepage=about:blank
-text-editor=leafpad %f
 location-entry-search=https://duckduckgo.com/?q=%s
-enable-spell-checking=false
-enable-html5-database=true
-enable-html5-local-storage=true
-enable-offline-web-application-cache=true
-zoom-text-and-images=true
-proxy-type=MIDORI_PROXY_NONE
-http-proxy=localhost
-http-proxy-port=8118
+show-statusbar=false
+toolbar-items=Back,NextForward,Homepage,Panel,Location,ReloadStop,Bookmarks,
+open-tabs-in-the-background=false
+homepage=about:dial
+tabhome=about:dial
+toolbar-style=MIDORI_TOOLBAR_ICONS
+preferred-encoding=MIDORI_ENCODING_UNICODE
 identify-as=MIDORI_IDENT_GENUINE
-clear-private-data=145
-clear-data=page-icons,formhistory,web-cookies,flash-cookies,html5-databases,web-cache,offline-appcache,
-search-width=165
+user-agent=Mozilla/5.0 (X11; Linux) AppleWebKit/538.15+ Midori/0.5
 
 [extensions]
 libaddons.so=true
@@ -32,6 +25,7 @@ libcopy-tabs.so=true
 libcolorful-tabs.so=true
 libfeed-panel.so=true
 libshortcuts.so=true
+libhistory-list.so=true
 libcookie-manager.so=true
 libtoolbar-editor.so=true
 libadblock.so=true

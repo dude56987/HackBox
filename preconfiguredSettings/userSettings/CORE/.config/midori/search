@@ -2,19 +2,13 @@
 name=Duck Duck Go
 text=Privacy-aware Web Search
 uri=https://duckduckgo.com/?q=%s
+icon=https://duckduckgo.com/?q=customize%20midori%20buttons&t=midori
 token=dd
 
-[Yahoo]
-name=Yahoo
-text=Yahoo Web Search
-uri=http://search.yahoo.com/search?p=
-token=y
-
-[Google]
-name=Google
+[Startpage]
+name=Startpage
 text=Web Search
-uri=https://startpage.com/search?q=%s
-icon=
+uri=http://www.startpage.com/search?q=%s
 token=g
 
 [Wikipedia]
@@ -29,16 +23,20 @@ text=Dictionary, Encyclopedia and Thesaurus
 uri=http://www.thefreedictionary.com/%s
 token=fd
 
+[Google Translate]
+name=Google Translate
+text=Localize text or URL
+uri=http://translate.google.com/?q=
+token=gt
+
 [Debian Packages]
 name=Debian Packages
 text=Search Debian Packages
 uri=http://packages.debian.org/%s
-icon=
 token=d
 
 [Debian Bugs]
 name=Debian Bugs
 text=Debian Bugs Search
 uri=http://bugs.debian.org/%s
-icon=
 token=dbs
