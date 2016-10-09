@@ -35,7 +35,6 @@ main<:>script<:>login-theme
 main<:>package<:>xcursor-themes
 main<:>package<:>dmz-cursor-theme
 main<:>package<:>chameleon-cursor-theme
-main<:>package<:>comixcursors
 main<:>package<:>comixcursors-righthanded
 main<:>package<:>comixcursors-lefthanded
 main<:>package<:>moblin-cursor-theme
@@ -161,8 +160,8 @@ catagory<:>message<:>Installing Synaptic (GUI package manager)
 catagory<:>package<:>synaptic
 catagory<:>message<:>Installing Software Properties (GUI to manage repos)
 catagory<:>package<:>software-properties-gtk
-catagory<:>message<:>Installing Jockey(Propietry Driver Installer)
-catagory<:>package<:>jockey-gtk
+catagory<:>message<:>Installing Ubuntu-Drivers-Common(Propietry Driver Installer)
+catagory<:>package<:>ubuntu-drivers-common
 catagory<:>message<:>Installing leafpad(Simple Text Editor)
 catagory<:>package<:>leafpad
 catagory<:>message<:>Installing gnome-system-tools (Allows editing of users and groups)
@@ -311,8 +310,8 @@ catagory<:>message<:>Installing pdmenu(CLI Curses Menu)
 catagory<:>package<:>pdmenu
 catagory<:>message<:>Installing espeak (CLI electronic voice synth)
 catagory<:>package<:>espeak
-catagory<:>message<:>Installing espeak-gui (GUI for espeak)
-catagory<:>package<:>espeak-gui
+catagory<:>message<:>Installing gespeaker (GUI for espeak)
+catagory<:>package<:>gespeaker
 catagory<:>message<:>Installing geolocate(Figure out the location of pcs)
 catagory<:>localdeb<:>geolocate<:>/usr/bin/geolocate
 # install colortest-python and link it to the colortest command
@@ -476,6 +475,7 @@ catagory<:>message<:>Installing QTox(TOX GUI)
 catagory<:>package<:>qtox
 catagory<:>message<:>Installing toxic(TOX CLI)
 catagory<:>package<:>toxic
+main<:>disable-launcher<:>/usr/share/applications/toxic.desktop
 # Syncthing, its getting there
 interactive<:>deb-repo<:>deb http://apt.syncthing.net/ syncthing release<:>https://syncthing.net/release-key.txt
 catagory<:>message<:>Installing Syncthing-GTK(Sync directories)
