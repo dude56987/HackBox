@@ -4,10 +4,10 @@
 ###################################
 catagory<:>message<:>Installing GIMP (Image Minipulation Tool)
 catagory<:>package<:>gimp
-catagory<:>message<:>Installing GIMP (Resynthesizer)
-catagory<:>package<:>gimp-resynthesizer
 catagory<:>message<:>Installing GIMP (Plugins)
 catagory<:>package<:>gimp-plugin-registry
+catagory<:>package<:>gimp-texturize
+catagory<:>package<:>gimp-gap
 catagory<:>message<:>Installing imagemagick (CLI image manipulation tool)
 catagory<:>package<:>imagemagick
 catagory<:>disable-launcher<:>/usr/share/applications/display-im6.desktop
