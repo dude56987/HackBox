@@ -33,7 +33,7 @@
 # - replaceLineInFileOnce()
 # - writeFile()
 ########################################################################
-import os, sys, shutil, socket, hashlib
+import os, sys, shutil, socket, hashlib, apt
 from urllib.request import urlopen
 ########################################################################
 # For Ubuntu Server Edition/Ubuntu Desktop Edition/Linux Mint
@@ -260,9 +260,7 @@ def makeDir(remoteDir):
 	remoteDir= ''
 	for i in temp:
 		remoteDir += (i + '/')
-		if os.path.exists(remoteDir):
-			print(remoteDir+' : Already exists!, Moving on...')
-		else:
+		if not os.path.exists(remoteDir):
 			os.mkdir(remoteDir)
 	# check that the path was correctly created
 	if os.path.exists(checkDir):
@@ -423,278 +421,294 @@ def COPY(src,dest):
 			print('ERROR: a unknown error occurred when copying'+src+'to'+dest)
 			return False
 ########################################################################
-def readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage):
-	'''
-	Reads a single line from a source file. Then takes aproprate
-	action based on what the configuration option is. For more info
-	on configuration options you can read the INFO file in the
-	/opt/hackbox/sources/ directory.
+class installSourcesFile():
+	def __init__(self,fileNameOfFile):
+		'''
+		Finds the installed package manager to use. Then
+		reads payload file stored at path fileNameOfFile.
+		Performs error checking on the file and feeds each
+		line into self.readSourceFileLine() for correct actions
+		to be performed.
 
-	:return bool
-	'''
-	# set a variable to show update progress
-	showUpdate=True
-	# all lines starting with # are comments
-	if line[:1] != '#':
-		if line.find('<:>') != -1:
-			# example format of file
-			# subcatagory<:>type<:>data
-			# types are command, package, and message
-			# command will execute a bash command
-			# package requireds a extra component
-			# subcatagory<:>package<:>packageName
-			tempInfo = line.split('<:>')
-			if tempInfo[1]=='CHECK-PACKAGE-MANAGER':
-				# reset the package manager, perfer apt-fast
-				packageManager=False
-				if os.path.exists('/usr/bin/apt-get'):
-					packageManager = 'apt-get'
-				if os.path.exists('/usr/sbin/apt-fast'):
-					packageManager = 'apt-fast'
-				if packageManager == False:
-					return False
-			if tempInfo[1] == 'message':
-				if (("--no-curses" in sys.argv) != True):
-					currentMessage=(tempInfo[2]+'...')
-				else:
-					colorText('<greentext>'+tempInfo[2]+'</>...')
-			elif tempInfo[1] == 'script':
-				# dont update progress bar
-				# the scripts pump out a bunch of text
-				showUpdate=False
-				if os.path.exists('/opt/hackbox/scripts/'+tempInfo[2]+'.sh'):
-					# launch the script in bash if its a shell script
-					os.system('bash /opt/hackbox/scripts/'+tempInfo[2]+'.sh')
-				elif os.path.exists('/opt/hackbox/scripts/'+tempInfo[2]+'.py'):
-					# launch program in python if its a python script
-					os.system('python3 /opt/hackbox/scripts/'+tempInfo[2]+'.py')
-			elif tempInfo[1] == 'command':
-				# execute command
-				if (("--no-curses" in sys.argv) != True):
-					currentMessage=tempInfo[2]
-				else:
-					print(tempInfo[2])
-				# print the command to the install log
-				os.system('echo "'+tempInfo[2]+'" >> Install_Log.txt')
-				os.system(tempInfo[2]+' >> Install_Log.txt')
-			elif tempInfo[1] == 'deb-repo':
-				# dont update progress bar this part pumps out a bunch of text
-				showUpdate=False
-				# add a debian repo and keyfile for that repo
-				#######################
-				# create a clean filename from the url given for the repo
-				fileName=(tempInfo[2].strip())
-				fileName=(fileName.replace('.','_'))
-				fileName=(fileName.replace('/',''))
-				fileName=(fileName.replace(' ','_'))
-				fileName=(fileName.replace(':',''))
-				fileName=(fileName.replace('https',''))
-				fileName=(fileName.replace('http',''))
-				fileName=(fileName.replace('deb_',''))
-				fileName=(fileName.replace('__','_'))
-				fileName=(fileName.replace('___','_'))
-				# remove $RELEASE and $VERSION from filename to prevent issues with updates
-				fileName=(fileName.replace('$RELEASE',''))
-				fileName=(fileName.replace('$VERSION',''))
-				# remove _ at the start of filename
-				fileName=(fileName.replace('^_',''))
-				# find the distro this is running on to replace instances of $RELEASE with
-				# the distro release name and instance of $VERSION with the version number
-				# use .strip to remove endlines created by popen output
-				release = os.popen('lsb_release -cs').read().strip()
-				tempInfo[2] = tempInfo[2].replace('$RELEASE',release)
-				# also replace the key path
-				tempInfo[3] = tempInfo[3].replace('$RELEASE',release)
-				# replace $VERSION with the version number
-				version = os.popen('lsb_release -rs').read().strip()
-				tempInfo[2] = tempInfo[2].replace('$VERSION',version)
-				tempInfo[3] = tempInfo[3].replace('$VERSION',version)
-				# The repo info will be overwritten if it already exists
-				# if a deb repo to add, add the repo as its own file in sources.list.d
-				writeFile(('/etc/apt/sources.list.d/'+fileName+'.list'),tempInfo[2])
-				# then add the key to the repo
-				downloadedKeyFile=downloadFile(tempInfo[3])
-				if downloadedKeyFile != False:
-					''' This section contains some commented out code. The reason for this
-					Is that I think there is a better way to add keyfiles by directly
-					writing them into the keyfile directly. You may have to write them as
-					binary files. This is untested though and the current implementation
-					works now. In the future I would like to do this without apt-key but
-					right now it still works with apt-key '''
-					# write file to temp and add keyfile with apt-key
-					writeFile(('/tmp/'+str(fileName)+'.gpg'),downloadedKeyFile)
-					os.system('apt-key add /tmp/'+str(fileName)+'.gpg')
-					# clear the key from temp
-					os.system('rm /tmp/'+str(fileName)+'.gpg')
-					# write keyfile directly to trusted keyfile directory
-					#writeFile(('/etc/apt/trusted.gpg.d/'+str(fileName)+'.gpg'),downloadedKeyFile.decode('utf8'))
-					# update this newly added repo
-					#os.system(('apt-get update -o Dir::Etc::sourcelist="sources.list.d/'+fileName+'" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"'))
-				else:
-					# if the key is not downloaded delete the repo
-					os.system('rm /etc/apt/sources.list.d/'+str(fileName)+'.list')
-			elif tempInfo[1] == 'disable-launcher':
-				# disables a system launcher by setting NoDisplay=true in the launcher
-				if os.path.exists(tempInfo[2]):
-					# load up the existing launcher
-					fileContents = loadFile(tempInfo[2])
-					newFileContent = ''
-					foundLine=False
-					# modify the file by changing existing line or
-					# by adding a new line at the end
-					for line in fileContents.split('\n'):
-						if 'Hidden=' in line:
-							newFileContent += 'NoDisplay=true\n'
-							foundLine = True
-						else:
-							newFileContent += (line+'\n')
-					if foundLine == False:
-						newFileContent += 'NoDisplay=true\n'
-					# remove blank lines from file
-					while newFileContent.find('\n\n') > 0:
-						newFileContent = newFileContent.replace('\n\n','\n')
-					# write the newly modified file
-					writeFile(tempInfo[2],newFileContent)
-			elif tempInfo[1] == 'cron':
-				#category<:>cron<:>fileName<:>timeInterval<:>command
-				# create a cron job with name as the filename stored in /etc/cron.d/
-				writeFile(os.path.join('/etc/cron.d/',tempInfo[2]),(tempInfo[3]+' root '+tempInfo[4]))
-			elif tempInfo[1] == 'open-port':
-				# allow traffic from inside the given port
-				os.system('sudo ufw allow proto tcp from any to any port '+tempInfo[2])
-			elif tempInfo[1] == 'open-lan-port':
-				try:
-					# dertermine the lan prefix we are on
-					prefix = '.'.join(socket.gethostbyname(socket.gethostname()+'.local').split('.')[:3])
-					# allow traffic from inside the given port
-					os.system('sudo ufw allow proto tcp from '+prefix+'.0/24 to any port '+tempInfo[2])
-				except:
-					print("ERROR: Failed to dertermine lan structure!")
-					print("ERROR: Cannot open port "+tempInfo[2]+" on lan!")
-			elif tempInfo[1] == 'ppa':
-				# dont update progress bar this part pumps out a bunch of text
-				showUpdate=False
-				# if the package is a ppa source to add, use --yes to suppress confirmation
-				os.system(('apt-add-repository '+tempInfo[2]+' --yes'))
-				## BELOW IS BROKEN AS FUCK, above is a hackaround ##
-				# update only the added repo using its location in /etc/apt/sources.list.d/
-				# user must currently define this in the last argument in a ppa command
-				#os.system(('apt-get update -o Dir::Etc::sourcelist="sources.list.d/'+tempInfo[3]+'" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"'))
-			elif tempInfo[1] == 'rm-package':
-				#/usr/share/doc/packagename is checked to see if the package has already been installed
-				# remove package
-				if (os.path.exists('/usr/share/doc/'+tempInfo[2])):
-					os.system((packageManager+' purge '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
-			elif tempInfo[1] == 'package':
-				#/usr/share/doc/packagename is checked to see if the package has already been installed
-				# install package
-				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
-					# use noninteractive variable to set default on all prompts
-					systemVariables='export DEBIAN_FRONTEND=noninteractive && export DEBCONF_NONINTERACTIVE_SEEN=true'
-					# force-confdef will install the package with the default options, this makes the
-					# installer require less interaction by the user
-					noQuestions='-o Dpkg::Options::="--force-confdef"'
-					# run the created command
-					os.system((systemVariables+' && '+packageManager+' install '+tempInfo[2]+' --assume-yes '+noQuestions+' >> Install_Log.txt'))
-				# if the package did not install correctly because no documentation exists then log a uninstalled package
-				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
-					# create fileText to store the log text
-					fileText=''
-					# check if a log exists
-					if os.path.exists('/opt/hackbox/Error_Log.txt'):
-						# load a existing log
-						fileText=loadFile('/opt/hackbox/Error_Log.txt')
-					# append the log
-					fileText+=('Package Could Not Be Installed : '+tempInfo[2]+'\n')
-					# write updated log
-					writeFile('/opt/hackbox/Error_Log.txt',fileText)
-			elif tempInfo[1] == 'cache-package':
-				# download the package to disk for caching this is used by the
-				if (os.path.exists('/usr/share/doc/'+tempInfo[2]) != True):
-					os.system((packageManager+' install --download-only '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
-			elif tempInfo[1] == 'localdeb':
-				# install package in unsupported packages
-				tempInfo[2] = '/opt/hackbox/unsupportedPackages/'+tempInfo[2]+'.deb'
-				if os.path.exists(tempInfo[2]):
-					hashObject=hashlib.md5()
-					#fileObject=open(tempInfo[2],'rb')
-					with open(tempInfo[2], "rb") as fileObject:
-						temp = fileObject.read(128)
-						hashObject.update(temp)
-					# load the file to be converted to md5
-					#tempMD5 = loadFile(tempInfo[2])
-					#tempMD5 = str(tempMD5)
-					# encode file content string into bytes
-					#tempMD5 = tempMD5.encode('utf-8')
-					#tempMD5 = tempMD5.encode('utf-8')
-					# feed the bytes into a md5 hash object
-					#tempMD5 = hashlib.md5(tempMD5)
-					# convert the hash into a readable string
-					tempMD5 = hashObject.hexdigest()
-					#print (tempMD5)
-					if os.path.exists(tempInfo[2]+".md5"):
-						if loadFile(tempInfo[2]+".md5") == tempMD5:
-							pass
-							#print "No new file, package not installed."
-						else:
-							# if no parity is found write a new md5 and install the new file
-							writeFile((tempInfo[2]+'.md5'),tempMD5)
-							os.system(('sudo gdebi --no '+tempInfo[2]))
-					else:
-						# if file does not have a md5 file yet create one and install the program
-						writeFile((tempInfo[2]+'.md5'),tempMD5)
-						os.system(('sudo gdebi --no '+tempInfo[2])+' >> Install_Log.txt')
-				else:
-					print("ERROR:No "+tempInfo[2]+" exists!")
-	# this is at bottom of loop outside of if tree
-	if showUpdate == True:
-		# calc progress and display
-		if (("--no-curses" in sys.argv) != True):
-			progressBar(int((progress/progressTotal)*100),currentMessage,'Hackbox Setup')
+		:return bool
+		'''
+		# get the list of installed packages
+		self.installedPackages = apt.Cache()
+		# zero out the error log for packages that did not install
+		writeFile('/opt/hackbox/Error_Log.txt','')
+		# change this so that source files are split into 3 pieces of data
+		# first the type of data, second the message to print, third the data
+		# itself, the data would depend on the data type described in the first
+		# space of the line
+		if fileNameOfFile == False:
+			# if the build process fails
+			print("ERROR: payload.source failed to build!")
+		self.packageManager=False
+		if os.path.exists('/usr/bin/apt-get'):
+			self.packageManager = 'apt-get'
+		if os.path.exists('/usr/sbin/apt-fast'):
+			self.packageManager = 'apt-fast'
+		if self.packageManager == False:
+			print('ERROR: No sutiable package manager exists on the system!')
+		fileObject = loadFile(fileNameOfFile)
+		if fileObject == False:
+			print('ERROR: Source file'+fileNameOfFile+'does not exist!')
 		else:
-			writeFile('/tmp/INSTALLPROGRESS.txt',('%'+str((progress/progressTotal)*100)+' completed...'))
-	return showUpdate
-########################################################################
-def installSourcesFile(fileNameOfFile):
-	'''
-	Finds the installed package manager to use. Then
-	reads payload file stored at path fileNameOfFile.
-	Performs error checking on the file and feeds each
-	line into readSourceFileLine() for correct actions
-	to be performed.
+			fileObject = fileObject.split('\n')
+		# setup progress calculations
+		self.progress = 0.0
+		self.progressTotal = len(fileObject)
+		self.currentMessage = 'Processing...'
+		# go though each line of the file
+		for line in fileObject:
+			self.readSourceFileLine(line)
+			self.progress += 1
+	########################################################################
+	def packageInstalled(self,packageName):
+		if packageName in self.installedPackages.keys():
+			# is_installed returns true if installed
+			# and false if not installed
+			return (self.installedPackages[packageName].is_installed)
+		else:
+			return False
+	########################################################################
+	def readSourceFileLine(self,line):
+		'''
+		Reads a single line from a source file. Then takes aproprate
+		action based on what the configuration option is. For more info
+		on configuration options you can read the INFO file in the
+		/opt/hackbox/sources/ directory.
 
-	:return bool
-	'''
-	# change this so that source files are split into 3 pieces of data
-	# first the type of data, second the message to print, third the data
-	# itself, the data would depend on the data type described in the first
-	# space of the line
-	if fileNameOfFile == False:
-		# if the build process fails
-		print("ERROR: payload.source failed to build!")
-		return False
-	packageManager=False
-	if os.path.exists('/usr/bin/apt-get'):
-		packageManager = 'apt-get'
-	if os.path.exists('/usr/sbin/apt-fast'):
-		packageManager = 'apt-fast'
-	if packageManager == False:
-		return False
-	fileObject = loadFile(fileNameOfFile)
-	if fileObject == False:
-		print('ERROR: Source file'+fileNameOfFile+'does not exist!')
-		return False
-	else:
-		fileObject = fileObject.split('\n')
-	# setup progress calculations
-	progress = 0.0
-	progressTotal = len(fileObject)
-	currentMessage = 'Processing...'
-	# go though each line of the file
-	for line in fileObject:
-		readSourceFileLine(line,packageManager,progressTotal,progress,currentMessage)
-		progress += 1
-	return True
+		:return bool
+		'''
+		# set a variable to show update progress
+		showUpdate=True
+		# all lines starting with # are comments
+		if line[:1] != '#':
+			if line.find('<:>') != -1:
+				# example format of file
+				# subcatagory<:>type<:>data
+				# types are command, package, and message
+				# command will execute a bash command
+				# package requireds a extra component
+				# subcatagory<:>package<:>packageName
+				tempInfo = line.split('<:>')
+				if tempInfo[1]=='CHECK-PACKAGE-MANAGER':
+					# reset the package manager, perfer apt-fast
+					self.packageManager=False
+					if os.path.exists('/usr/bin/apt-get'):
+						self.packageManager = 'apt-get'
+					if os.path.exists('/usr/sbin/apt-fast'):
+						self.packageManager = 'apt-fast'
+					if self.packageManager == False:
+						return False
+				elif tempInfo[1] == 'CHECK-INSTALLED-PACKAGES':
+					# get the list of installed packages
+					self.installedPackages = apt.Cache()
+				elif tempInfo[1] == 'message':
+					if (("--no-curses" in sys.argv) != True):
+						self.currentMessage=(tempInfo[2]+'...')
+					else:
+						colorText('<greentext>'+tempInfo[2]+'</>...')
+				elif tempInfo[1] == 'script':
+					# dont update progress bar
+					# the scripts pump out a bunch of text
+					showUpdate=False
+					logString = ' >> /opt/hackbox/Install_Log.txt'
+					if tempInfo[0] == 'interactive':
+						# if the log is in interactive category don't pipe script to the log
+						logString = ''
+					if os.path.exists('/opt/hackbox/scripts/'+tempInfo[2]+'.sh'):
+						# launch the script in bash if its a shell script
+						os.system('bash /opt/hackbox/scripts/'+tempInfo[2]+'.sh'+logString)
+					elif os.path.exists('/opt/hackbox/scripts/'+tempInfo[2]+'.py'):
+						# launch program in python if its a python script
+						os.system('python3 /opt/hackbox/scripts/'+tempInfo[2]+'.py'+logString)
+				elif tempInfo[1] == 'command':
+					# execute command
+					if (("--no-curses" in sys.argv) != True):
+						self.currentMessage=tempInfo[2]
+					else:
+						print(tempInfo[2])
+					# print the command to the install log
+					os.system('echo "'+tempInfo[2]+'" >> Install_Log.txt')
+					os.system(tempInfo[2]+' >> Install_Log.txt')
+				elif tempInfo[1] == 'deb-repo':
+					# dont update progress bar this part pumps out a bunch of text
+					showUpdate=False
+					# add a debian repo and keyfile for that repo
+					#######################
+					# create a clean filename from the url given for the repo
+					fileName=(tempInfo[2].strip())
+					fileName=(fileName.replace('.','_'))
+					fileName=(fileName.replace('/',''))
+					fileName=(fileName.replace(' ','_'))
+					fileName=(fileName.replace(':',''))
+					fileName=(fileName.replace('https',''))
+					fileName=(fileName.replace('http',''))
+					fileName=(fileName.replace('deb_',''))
+					fileName=(fileName.replace('__','_'))
+					fileName=(fileName.replace('___','_'))
+					# remove $RELEASE and $VERSION from filename to prevent issues with updates
+					fileName=(fileName.replace('$RELEASE',''))
+					fileName=(fileName.replace('$VERSION',''))
+					# remove _ at the start of filename
+					fileName=(fileName.replace('^_',''))
+					# find the distro this is running on to replace instances of $RELEASE with
+					# the distro release name and instance of $VERSION with the version number
+					# use .strip to remove endlines created by popen output
+					release = os.popen('lsb_release -cs').read().strip()
+					tempInfo[2] = tempInfo[2].replace('$RELEASE',release)
+					# also replace the key path
+					tempInfo[3] = tempInfo[3].replace('$RELEASE',release)
+					# replace $VERSION with the version number
+					version = os.popen('lsb_release -rs').read().strip()
+					tempInfo[2] = tempInfo[2].replace('$VERSION',version)
+					tempInfo[3] = tempInfo[3].replace('$VERSION',version)
+					# The repo info will be overwritten if it already exists
+					# if a deb repo to add, add the repo as its own file in sources.list.d
+					writeFile(('/etc/apt/sources.list.d/'+fileName+'.list'),tempInfo[2])
+					# then add the key to the repo
+					downloadedKeyFile=downloadFile(tempInfo[3])
+					if downloadedKeyFile != False:
+						''' This section contains some commented out code. The reason for this
+						Is that I think there is a better way to add keyfiles by directly
+						writing them into the keyfile directly. You may have to write them as
+						binary files. This is untested though and the current implementation
+						works now. In the future I would like to do this without apt-key but
+						right now it still works with apt-key '''
+						# write file to temp and add keyfile with apt-key
+						writeFile(('/tmp/'+str(fileName)+'.gpg'),downloadedKeyFile)
+						os.system('apt-key add /tmp/'+str(fileName)+'.gpg')
+						# clear the key from temp
+						os.system('rm /tmp/'+str(fileName)+'.gpg')
+						# write keyfile directly to trusted keyfile directory
+						#writeFile(('/etc/apt/trusted.gpg.d/'+str(fileName)+'.gpg'),downloadedKeyFile.decode('utf8'))
+						# update this newly added repo
+						#os.system(('apt-get update -o Dir::Etc::sourcelist="sources.list.d/'+fileName+'" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"'))
+					else:
+						# if the key is not downloaded delete the repo
+						os.system('rm /etc/apt/sources.list.d/'+str(fileName)+'.list')
+				elif tempInfo[1] == 'disable-launcher':
+					# disables a system launcher by setting NoDisplay=true in the launcher
+					if os.path.exists(tempInfo[2]):
+						# load up the existing launcher
+						fileContents = loadFile(tempInfo[2])
+						newFileContent = ''
+						foundLine=False
+						# modify the file by changing existing line or
+						# by adding a new line at the end
+						for line in fileContents.split('\n'):
+							if 'Hidden=' in line:
+								newFileContent += 'NoDisplay=true\n'
+								foundLine = True
+							else:
+								newFileContent += (line+'\n')
+						if foundLine == False:
+							newFileContent += 'NoDisplay=true\n'
+						# remove blank lines from file
+						while newFileContent.find('\n\n') > 0:
+							newFileContent = newFileContent.replace('\n\n','\n')
+						# write the newly modified file
+						writeFile(tempInfo[2],newFileContent)
+				elif tempInfo[1] == 'cron':
+					#category<:>cron<:>fileName<:>timeInterval<:>command
+					# create a cron job with name as the filename stored in /etc/cron.d/
+					writeFile(os.path.join('/etc/cron.d/',tempInfo[2]),(tempInfo[3]+' root '+tempInfo[4]))
+				elif tempInfo[1] == 'open-port':
+					# allow traffic from inside the given port
+					os.system('sudo ufw allow proto tcp from any to any port '+tempInfo[2])
+				elif tempInfo[1] == 'open-lan-port':
+					try:
+						# dertermine the lan prefix we are on
+						prefix = '.'.join(socket.gethostbyname(socket.gethostname()+'.local').split('.')[:3])
+						# allow traffic from inside the given port
+						os.system('sudo ufw allow proto tcp from '+prefix+'.0/24 to any port '+tempInfo[2])
+					except:
+						print("ERROR: Failed to dertermine lan structure!")
+						print("ERROR: Cannot open port "+tempInfo[2]+" on lan!")
+				elif tempInfo[1] == 'ppa':
+					# dont update progress bar this part pumps out a bunch of text
+					showUpdate=False
+					# if the package is a ppa source to add, use --yes to suppress confirmation
+					os.system(('apt-add-repository '+tempInfo[2]+' --yes >> Install_Log.txt'))
+					## BELOW IS BROKEN AS FUCK, above is a hackaround ##
+					# update only the added repo using its location in /etc/apt/sources.list.d/
+					# user must currently define this in the last argument in a ppa command
+					#os.system(('apt-get update -o Dir::Etc::sourcelist="sources.list.d/'+tempInfo[3]+'" -o Dir::Etc::sourceparts="-" -o APT::Get::List-Cleanup="0"'))
+				elif tempInfo[1] == 'rm-package':
+					#/usr/share/doc/packagename is checked to see if the package has already been installed
+					# remove package
+					if (os.path.exists('/usr/share/doc/'+tempInfo[2])):
+						os.system((self.packageManager+' purge '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
+				elif tempInfo[1] == 'package':
+					#/usr/share/doc/packagename is checked to see if the package has already been installed
+					# install package
+					if not self.packageInstalled(tempInfo[2]):
+						# use noninteractive variable to set default on all prompts
+						systemVariables='export DEBIAN_FRONTEND=noninteractive && export DEBCONF_NONINTERACTIVE_SEEN=true'
+						# force-confdef will install the package with the default options, this makes the
+						# installer require less interaction by the user
+						noQuestions='-o Dpkg::Options::="--force-confdef"'
+						# run the created command
+						os.system((systemVariables+' && '+self.packageManager+' install '+tempInfo[2]+' --assume-yes '+noQuestions+' >> Install_Log.txt'))
+				elif tempInfo[1] == 'error-check-package':
+					# if the package did not install correctly then log a uninstalled package
+					if not self.packageInstalled(tempInfo[2]):
+						# create fileText to store the log text
+						fileText = ''
+						# check if a log exists
+						if os.path.exists('/opt/hackbox/Error_Log.txt'):
+							# load a existing log
+							fileText = loadFile('/opt/hackbox/Error_Log.txt')
+						# append the log
+						fileText += ('Package Could Not Be Installed : '+tempInfo[2]+'\n')
+						# write updated log
+						writeFile('/opt/hackbox/Error_Log.txt',fileText)
+				elif tempInfo[1] == 'cache-package':
+					# download the package to disk for caching this is used by the
+					if not self.packageInstalled(tempInfo[2]):
+						os.system((self.packageManager+' install --download-only '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
+				elif tempInfo[1] == 'localdeb':
+					# install package in unsupported packages
+					tempInfo[2] = '/opt/hackbox/unsupportedPackages/'+tempInfo[2]+'.deb'
+					if os.path.exists(tempInfo[2]):
+						hashObject=hashlib.md5()
+						#fileObject=open(tempInfo[2],'rb')
+						with open(tempInfo[2], "rb") as fileObject:
+							temp = fileObject.read(128)
+							hashObject.update(temp)
+						# load the file to be converted to md5
+						#tempMD5 = loadFile(tempInfo[2])
+						#tempMD5 = str(tempMD5)
+						# encode file content string into bytes
+						#tempMD5 = tempMD5.encode('utf-8')
+						#tempMD5 = tempMD5.encode('utf-8')
+						# feed the bytes into a md5 hash object
+						#tempMD5 = hashlib.md5(tempMD5)
+						# convert the hash into a readable string
+						tempMD5 = hashObject.hexdigest()
+						#print (tempMD5)
+						if os.path.exists(tempInfo[2]+".md5"):
+							if loadFile(tempInfo[2]+".md5") == tempMD5:
+								pass
+								#print "No new file, package not installed."
+							else:
+								# if no parity is found write a new md5 and install the new file
+								writeFile((tempInfo[2]+'.md5'),tempMD5)
+								os.system(('sudo gdebi --no '+tempInfo[2]))
+						else:
+							# if file does not have a md5 file yet create one and install the program
+							writeFile((tempInfo[2]+'.md5'),tempMD5)
+							os.system(('sudo gdebi --no '+tempInfo[2])+' >> Install_Log.txt')
+					else:
+						print("ERROR:No "+tempInfo[2]+" exists!")
+		# this is at bottom of loop outside of if tree
+		if showUpdate == True:
+			# calc progress and display
+			if (("--no-curses" in sys.argv) != True):
+				progressBar(int((self.progress/self.progressTotal)*100),self.currentMessage,'Hackbox Setup')
+		return showUpdate
 ########################################################################
 def createInstallLoad():
 	'''
@@ -748,6 +762,11 @@ def createInstallLoad():
 	mainPayload = ''
 	# post payload for stuff you should do last
 	postPayload = ''
+	if ('--debug' in sys.argv):
+		# error checking payload check for packages that were not correctly installed
+		errorCheckPayload = 'main<:>CHECK-INSTALLED-PACKAGES\n'
+	else:
+		errorCheckPayload = ''
 	# read list of datafiles
 	datafiles = os.listdir('/opt/hackbox/sources/')
 	# sort the files
@@ -812,8 +831,14 @@ def createInstallLoad():
 				# if the line is a package command create a download entry to
 				# download the package before installing it
 				if tempInfo[1]=='package':
+					# This ensures that packages are downloaded all at once before any packages
+					# are installed
 					downloadPayload += 'main<:>message<:>Downloading package : '+tempInfo[2]+'\n'
 					downloadPayload += 'main<:>cache-package<:>'+tempInfo[2]+'\n'
+				if ('--debug' in sys.argv):
+					# add the error checking for packages at the end
+					errorCheckPayload += 'errorChecking<:>message<:>Checking for errors in package : '+tempInfo[2]+'\n'
+					errorCheckPayload += 'errorChecking<:>error-check-package<:>'+tempInfo[2]+'\n'
 				# catagories used to orignize the install order of packages
 				if tempInfo[1] == 'deb-repo':
 					repoPayload+= line+'\n'
@@ -837,7 +862,7 @@ def createInstallLoad():
 			mainPayload += 'null<:>command<:>unzip -o '+'/opt/hackbox/preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip -d /usr/share/applications\n'
 	repoPayload += 'null<:>command<:>apt-get update\n'
 	# orginize the payload contents
-	payload = repoPayload+interactivePayload+downloadPayload+prePayload+mainPayload+postPayload
+	payload = repoPayload+interactivePayload+downloadPayload+prePayload+mainPayload+postPayload+errorCheckPayload
 	# write the payload to a text file
 	writeFile('/etc/hackbox/payload.source',payload)
 	# write configured file to show config has been built before on next run
