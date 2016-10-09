@@ -96,7 +96,7 @@ print('Preforming startup checks...')
 # run program as root if it is not being already done
 if os.geteuid() != 0:
 	if len(sys.argv) > 1:
-		os.system('sudo python3'+(os.path.abspath(__file__))+' '+sys.argv[1])
+		os.system('sudo python3 '+(os.path.abspath(__file__))+' '+sys.argv[1])
 	else:
 		os.system('sudo python3 '+(os.path.abspath(__file__)))
 	exit()
@@ -149,7 +149,7 @@ while connected == False:
 			print('Will retry again in '+str(20-int(i))+' seconds...')
 			sleep(1)
 ########################################################################
-hackboxlib.clear();
+hackboxlib.clear()
 os.chdir('/opt/hackbox')
 # create the install payload file, it will be installed after this stuff
 payloadFileLocation = hackboxlib.createInstallLoad()
