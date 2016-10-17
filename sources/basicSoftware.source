@@ -40,16 +40,11 @@ main<:>package<:>comixcursors-lefthanded
 main<:>package<:>moblin-cursor-theme
 main<:>package<:>oxygen-cursor-theme
 main<:>package<:>oxygen-cursor-theme-extra
-# load preconfigured settings for apt-fast
-interactive<:>command<:>debconf-set-selections /opt/hackbox/preconfiguredsettings/debconf/apt-fast.conf
-# ppa for apt-fast
-interactive<:>ppa<:>ppa:saiarcot895/myppa
-interactive<:>package<:>apt-fast
-# run the check package manager command to set it to apt fast if not already
-interactive<:>CHECK-PACKAGE-MANAGER
 # install the update command
 catagory<:>localdeb<:>update
-catagory<:>command<:>update --no-log
+# update the system packages
+catagory<:>command<:>sudo apt-get update --assume-yes
+catagory<:>command<:>sudo apt-get upgrade --assume-yes
 # getdeb and playdeb repos
 pre<:>localdeb<:>playdeb
 pre<:>localdeb<:>getdeb

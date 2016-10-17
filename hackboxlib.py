@@ -527,12 +527,19 @@ class installSourcesFile():
 				elif tempInfo[1] == 'command':
 					# execute command
 					if (("--no-curses" in sys.argv) != True):
+						# if the curses gui needs a current message set
 						self.currentMessage=tempInfo[2]
 					else:
+						# if running on cli only print the command executed
 						print(tempInfo[2])
 					# print the command to the install log
 					os.system('echo "'+tempInfo[2]+'" >> Install_Log.txt')
-					os.system(tempInfo[2]+' >> Install_Log.txt')
+					# if the script is interactive don't pipe the output to the
+					# install log, display it onscreen
+					if tempInfo[0] == 'interactive':
+						os.system(tempInfo[2])
+					else:
+						os.system(tempInfo[2]+' >> Install_Log.txt')
 				elif tempInfo[1] == 'deb-repo':
 					# dont update progress bar this part pumps out a bunch of text
 					showUpdate=False
