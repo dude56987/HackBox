@@ -251,15 +251,14 @@ catagory<:>message<:>Installing mcomix(Comic Book Viewer)
 catagory<:>package<:>mcomix
 catagory<:>message<:>Installing Disk Usage Tool
 catagory<:>package<:>baobab
-# Install archive support
-catagory<:>message<:>Installing File-Roller (Compressed file manager)
-catagory<:>package<:>file-roller
-################
-catagory<:>message<:>Removing Xarchiver (Compressed file manager)
-catagory<:>rm-package<:>xarchiver
-# setup thunar archive intergration
+# Install compressed archive manager support
+catagory<:>message<:>Installing Engrampa (Compressed archive manager)
+catagory<:>package<:>engrampa
 catagory<:>message<:>Installing archive support for thunar context actions
 catagory<:>package<:>thunar-archive-plugin
+catagory<:>message<:>Removing other compressed archive managers
+catagory<:>rm-package<:>xarchiver
+catagory<:>rm-package<:>file-roller
 # add cli tools to manage the trash can
 catagory<:>message<:>Installing trash-cli (CLI trash utility)
 catagory<:>package<:>trash-cli
