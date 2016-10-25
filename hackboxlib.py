@@ -76,7 +76,7 @@ if (("--no-curses" in sys.argv) != True):
 	queryboxes = dialog.Dialog()
 # define functions
 ########################################################################
-def progressBar(percentage,messageText,banner):
+def progressBar(percentage,messageText,banner,logFile='/opt/hackbox/Install_Log.txt'):
 	'''
 	Draw a curses based progressbar with the current precentage,
 	displaying the messageText below the bar, and the banner text
@@ -84,22 +84,27 @@ def progressBar(percentage,messageText,banner):
 
 	:return None
 	'''
-	if (("--no-curses" in sys.argv) != True):
+	if '--no-curses' in sys.argv:
+		# display progress by clearing the screen and writing the updates
+		clear()
+		# draw the banner if the file path exists
+		if os.path.exists('/opt/hackbox/media/banner.txt'):
+			print(loadFile('/opt/hackbox/media/banner.txt'))
+		barWidth = int(percentage / 2)
+		print('='*80)
+		print(messageText)
+		print('Total Progress: [' + ('#' * barWidth) + ((50 - barWidth) * ' ') + ']' + str(percentage) + '%')
+		print('='*80)
+		# print the last several lines of output on refresh
+		os.system('tail ' + logFile + ' || echo "WARNING : No log found..."')
+	else:
 		percentage=int(percentage)
 		messageText=str(messageText)
 		progressBar = dialog.Dialog()
 		progressBar.setBackgroundTitle(banner)
-		progressBar.gauge_start(percent=percentage,text=messageText)#DEBUG
-		#progressBar.gauge_update(percentage,messageText)#DEBUG
-		progressBar.gauge_stop()#DEBUG
-		return True
-	else:
-		percentage=str(percentage)
-		messageText=str(messageText)
-		print('#'*80)
-		print(messageText)
-		print(percentage+'%')
-		print('#'*80)
+		progressBar.gauge_start(percent=percentage,text=messageText)
+		progressBar.gauge_stop()
+	return True
 ########################################################################
 def deleteFile(filePath):
 	'''
@@ -483,6 +488,9 @@ class installSourcesFile():
 		'''
 		# set a variable to show update progress
 		showUpdate=True
+		# global log strings
+		logFile = '/opt/hackbox/Install_Log.txt'
+		logString = ' >> '+logFile
 		# all lines starting with # are comments
 		if line[:1] != '#':
 			if line.find('<:>') != -1:
@@ -506,15 +514,11 @@ class installSourcesFile():
 					# get the list of installed packages
 					self.installedPackages = apt.Cache()
 				elif tempInfo[1] == 'message':
-					if (("--no-curses" in sys.argv) != True):
-						self.currentMessage=(tempInfo[2]+'...')
-					else:
-						colorText('<greentext>'+tempInfo[2]+'</>...')
+					self.currentMessage=(tempInfo[2]+'...')
 				elif tempInfo[1] == 'script':
 					# dont update progress bar
 					# the scripts pump out a bunch of text
 					showUpdate=False
-					logString = ' >> /opt/hackbox/Install_Log.txt'
 					if tempInfo[0] == 'interactive':
 						# if the log is in interactive category don't pipe script to the log
 						logString = ''
@@ -526,20 +530,15 @@ class installSourcesFile():
 						os.system('python3 /opt/hackbox/scripts/'+tempInfo[2]+'.py'+logString)
 				elif tempInfo[1] == 'command':
 					# execute command
-					if (("--no-curses" in sys.argv) != True):
-						# if the curses gui needs a current message set
-						self.currentMessage=tempInfo[2]
-					else:
-						# if running on cli only print the command executed
-						print(tempInfo[2])
+					self.currentMessage=tempInfo[2]
 					# print the command to the install log
-					os.system('echo "'+tempInfo[2]+'" >> Install_Log.txt')
+					os.system('echo "' + tempInfo[2] + '"' + logString)
 					# if the script is interactive don't pipe the output to the
 					# install log, display it onscreen
 					if tempInfo[0] == 'interactive':
 						os.system(tempInfo[2])
 					else:
-						os.system(tempInfo[2]+' >> Install_Log.txt')
+						os.system(tempInfo[2] + logString)
 				elif tempInfo[1] == 'deb-repo':
 					# dont update progress bar this part pumps out a bunch of text
 					showUpdate=False
@@ -638,7 +637,7 @@ class installSourcesFile():
 					# dont update progress bar this part pumps out a bunch of text
 					showUpdate=False
 					# if the package is a ppa source to add, use --yes to suppress confirmation
-					os.system(('apt-add-repository '+tempInfo[2]+' --yes >> Install_Log.txt'))
+					os.system(('apt-add-repository '+tempInfo[2]+' --yes '+logString))
 					## BELOW IS BROKEN AS FUCK, above is a hackaround ##
 					# update only the added repo using its location in /etc/apt/sources.list.d/
 					# user must currently define this in the last argument in a ppa command
@@ -647,7 +646,7 @@ class installSourcesFile():
 					#/usr/share/doc/packagename is checked to see if the package has already been installed
 					# remove package
 					if (os.path.exists('/usr/share/doc/'+tempInfo[2])):
-						os.system((self.packageManager+' purge '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
+						os.system((self.packageManager+' purge '+tempInfo[2]+' --assume-yes '+logString))
 				elif tempInfo[1] == 'package':
 					#/usr/share/doc/packagename is checked to see if the package has already been installed
 					# install package
@@ -658,7 +657,7 @@ class installSourcesFile():
 						# installer require less interaction by the user
 						noQuestions='-o Dpkg::Options::="--force-confdef"'
 						# run the created command
-						os.system((systemVariables+' && '+self.packageManager+' install '+tempInfo[2]+' --assume-yes '+noQuestions+' >> Install_Log.txt'))
+						os.system((systemVariables+' && '+self.packageManager+' install '+tempInfo[2]+' --assume-yes '+noQuestions+' '+logString))
 				elif tempInfo[1] == 'error-check-package':
 					# if the package did not install correctly then log a uninstalled package
 					if not self.packageInstalled(tempInfo[2]):
@@ -675,7 +674,7 @@ class installSourcesFile():
 				elif tempInfo[1] == 'cache-package':
 					# download the package to disk for caching this is used by the
 					if not self.packageInstalled(tempInfo[2]):
-						os.system((self.packageManager+' install --download-only '+tempInfo[2]+' --assume-yes >> Install_Log.txt'))
+						os.system((self.packageManager+' install --download-only '+tempInfo[2]+' --assume-yes '+logString))
 				elif tempInfo[1] == 'localdeb':
 					# install package in unsupported packages
 					tempInfo[2] = '/opt/hackbox/unsupportedPackages/'+tempInfo[2]+'.deb'
@@ -685,14 +684,6 @@ class installSourcesFile():
 						with open(tempInfo[2], "rb") as fileObject:
 							temp = fileObject.read(128)
 							hashObject.update(temp)
-						# load the file to be converted to md5
-						#tempMD5 = loadFile(tempInfo[2])
-						#tempMD5 = str(tempMD5)
-						# encode file content string into bytes
-						#tempMD5 = tempMD5.encode('utf-8')
-						#tempMD5 = tempMD5.encode('utf-8')
-						# feed the bytes into a md5 hash object
-						#tempMD5 = hashlib.md5(tempMD5)
 						# convert the hash into a readable string
 						tempMD5 = hashObject.hexdigest()
 						#print (tempMD5)
@@ -707,14 +698,14 @@ class installSourcesFile():
 						else:
 							# if file does not have a md5 file yet create one and install the program
 							writeFile((tempInfo[2]+'.md5'),tempMD5)
-							os.system(('sudo gdebi --no '+tempInfo[2])+' >> Install_Log.txt')
+							os.system(('sudo gdebi --no '+tempInfo[2])+' '+logString)
 					else:
 						print("ERROR:No "+tempInfo[2]+" exists!")
 		# this is at bottom of loop outside of if tree
 		if showUpdate == True:
+			tempProgress = int((self.progress/self.progressTotal)*100)
 			# calc progress and display
-			if (("--no-curses" in sys.argv) != True):
-				progressBar(int((self.progress/self.progressTotal)*100),self.currentMessage,'Hackbox Setup')
+			progressBar(tempProgress, self.currentMessage, 'Hackbox Setup')
 		return showUpdate
 ########################################################################
 def createInstallLoad():
@@ -741,9 +732,11 @@ def createInstallLoad():
 					useConfig = 'n'
 					os.system('rm -rvf /etc/hackbox/*')
 			else:
+				if os.path.exists('/opt/hackbox/media/banner.txt'):
+					print(loadFile('/opt/hackbox/media/banner.txt'))
 				# otherwise ask the user if they want to use it
 				print('A config already exists, would you like to use it?')
-				useConfig = raw_input('[y/n]:')
+				useConfig = input('[y/n]: ')
 	# create a payload variables to orgnize catagories
 	payload = ''
 	# catagory for ppas and repos
@@ -830,7 +823,7 @@ def createInstallLoad():
 							installSection = 'n'
 					else:
 						print(line[10:])# show question
-						installSection = raw_input('[y/n]:')# display prompt on a newline for y/n
+						installSection = input('[y/n]: ')# display prompt on a newline for y/n
 			# run sections if install is set to true for a file
 			if line[:1] != '#' and line.find('<:>') != -1 and installSection == 'y':
 				# split the line up to dertermine what it is
