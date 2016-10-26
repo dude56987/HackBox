@@ -41,6 +41,8 @@ catagory<:>package<:>chkrootkit
 interactive<:>message<:>Installing rkhunter(checks the sysytem for rootkits)
 interactive<:>package<:>rkhunter
 # monitoring tools
+catagory<:>message<:>Installing glances (Quick system overview tool)
+catagory<:>package<:>glances
 catagory<:>message<:>Installing htop (CLI Task Manager)
 catagory<:>package<:>htop
 catagory<:>message<:>Installing iotop (CLI Disk I/O Manager)
