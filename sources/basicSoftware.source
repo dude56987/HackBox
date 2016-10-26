@@ -29,6 +29,9 @@ main<:>disable-launcher<:>/usr/share/applications/system-config-printer.desktop
 main<:>disable-launcher<:>/usr/share/applications/xfce4-taskmanager.desktop
 main<:>disable-launcher<:>/usr/share/applications/users.desktop
 ################
+main<:>message<:>Installing qt4 theme manager
+main<:>package<:>qt4-qtconfig
+################
 main<:>message<:>Installing custom login theme
 main<:>script<:>login-theme
 # install custom cursor themes
