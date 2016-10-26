@@ -7,8 +7,8 @@ catagory<:>message<:>Installing Scribus
 catagory<:>package<:>scribus
 catagory<:>message<:>Installing Booklet Imposer(Create printable booklets)
 catagory<:>package<:>bookletimposer
-catagory<:>message<:>Installing FreeMind
-catagory<:>package<:>freemind
+catagory<:>message<:>Installing View Your Mind (Mind mapping software)
+catagory<:>package<:>vym
 catagory<:>message<:>Installing Planner(Project Management)
 catagory<:>package<:>planner
 catagory<:>message<:>Installing DIA(Flowchart Tool)
