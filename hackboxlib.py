@@ -76,6 +76,23 @@ if (("--no-curses" in sys.argv) != True):
 	queryboxes = dialog.Dialog()
 # define functions
 ########################################################################
+def logMessage(message,logfile='/opt/hackbox/Install_Log.txt'):
+	# display the message
+	print(message)
+	# append the message to the logfile
+	fileObject = open(logfile,'r')
+	newFileContent = ''
+	for line in fileObject:
+		newFileContent += line
+	newFileContent += message+'\n'
+	fileObject.close()
+	# open new file object to write the new version of the log with the
+	# appended message
+	fileObject = open(logfile,'w')
+	fileObject.write(newFileContent)
+	fileObject.close()
+	return True
+########################################################################
 def progressBar(percentage,messageText,banner,logFile='/opt/hackbox/Install_Log.txt'):
 	'''
 	Draw a curses based progressbar with the current precentage,
@@ -93,7 +110,8 @@ def progressBar(percentage,messageText,banner,logFile='/opt/hackbox/Install_Log.
 		barWidth = int(percentage / 2)
 		print('='*80)
 		print(messageText)
-		print('Total Progress: [' + ('#' * barWidth) + ((50 - barWidth) * ' ') + ']' + str(percentage) + '%')
+		colorBar=colorText('<greenbackground> </>')
+		print('Total Progress : [' + (colorBar * barWidth) + ((50 - barWidth) * ' ') + '] ' + str(percentage) + '%')
 		print('='*80)
 		# print the last several lines of output on refresh
 		os.system('tail ' + logFile + ' || echo "WARNING : No log found..."')
@@ -116,7 +134,7 @@ def deleteFile(filePath):
 		os.remove(filePath)
 		return True
 	else:
-		print("ERROR: file does not exist, so can not remove it.")
+		logMessage("ERROR: file does not exist, so can not remove it.")
 		return False
 ########################################################################
 def loadFile(fileName):
@@ -169,10 +187,10 @@ def writeFile(fileName,contentToWrite):
 			fileObject.close()
 			return True
 		except:
-			print('Failed to write file:'+fileName)
+			logMessage('Failed to write file:'+fileName)
 			return False
 	else:
-		print('Failed to write file, path:'+filepath+'does not exist!')
+		logMessage('Failed to write file, path:'+filepath+'does not exist!')
 		return False
 ########################################################################
 def downloadFile(fileAddress):
@@ -189,7 +207,7 @@ def downloadFile(fileAddress):
 	try:
 		downloadedFileObject = urlopen(fileAddress)
 	except:
-		print("Failed to download :"+fileAddress)
+		logMessage("Failed to download :"+fileAddress)
 		return False
 	# convert to text string
 	print("Finished Loading :"+fileAddress)
@@ -447,17 +465,17 @@ class installSourcesFile():
 		# space of the line
 		if fileNameOfFile == False:
 			# if the build process fails
-			print("ERROR: payload.source failed to build!")
+			logMessage("ERROR: payload.source failed to build!")
 		self.packageManager=False
 		if os.path.exists('/usr/bin/apt-get'):
 			self.packageManager = 'apt-get'
 		if os.path.exists('/usr/sbin/apt-fast'):
 			self.packageManager = 'apt-fast'
 		if self.packageManager == False:
-			print('ERROR: No sutiable package manager exists on the system!')
+			logMessage('ERROR: No sutiable package manager exists on the system!')
 		fileObject = loadFile(fileNameOfFile)
 		if fileObject == False:
-			print('ERROR: Source file'+fileNameOfFile+'does not exist!')
+			logMessage('ERROR: Source file'+fileNameOfFile+'does not exist!')
 		else:
 			fileObject = fileObject.split('\n')
 		# setup progress calculations
@@ -631,8 +649,8 @@ class installSourcesFile():
 						# allow traffic from inside the given port
 						os.system('sudo ufw allow proto tcp from '+prefix+'.0/24 to any port '+tempInfo[2])
 					except:
-						print("ERROR: Failed to dertermine lan structure!")
-						print("ERROR: Cannot open port "+tempInfo[2]+" on lan!")
+						logMessage("ERROR: Failed to dertermine lan structure!")
+						logMessage("ERROR: Cannot open port "+tempInfo[2]+" on lan!")
 				elif tempInfo[1] == 'ppa':
 					# dont update progress bar this part pumps out a bunch of text
 					showUpdate=False
@@ -645,8 +663,9 @@ class installSourcesFile():
 				elif tempInfo[1] == 'rm-package':
 					#/usr/share/doc/packagename is checked to see if the package has already been installed
 					# remove package
-					if (os.path.exists('/usr/share/doc/'+tempInfo[2])):
-						os.system((self.packageManager+' purge '+tempInfo[2]+' --assume-yes '+logString))
+					if self.packageInstalled(tempInfo[2]):
+						# remove the existing package, and remove hanging dependencies with --auto-remove
+						os.system((self.packageManager+' purge '+tempInfo[2]+' --auto-remove --assume-yes '+logString))
 				elif tempInfo[1] == 'package':
 					#/usr/share/doc/packagename is checked to see if the package has already been installed
 					# install package
@@ -700,7 +719,7 @@ class installSourcesFile():
 							writeFile((tempInfo[2]+'.md5'),tempMD5)
 							os.system(('sudo gdebi --no '+tempInfo[2])+' '+logString)
 					else:
-						print("ERROR:No "+tempInfo[2]+" exists!")
+						logMessage("ERROR : No "+tempInfo[2]+" exists!")
 		# this is at bottom of loop outside of if tree
 		if showUpdate == True:
 			tempProgress = int((self.progress/self.progressTotal)*100)
@@ -708,7 +727,7 @@ class installSourcesFile():
 			progressBar(tempProgress, self.currentMessage, 'Hackbox Setup')
 		return showUpdate
 ########################################################################
-def createInstallLoad():
+def createInstallLoad(arguments=sys.argv):
 	'''
 	Create the payload file used by installSourcesFile() by reading
 	all of the source files stored in /opt/hackbox/sources/
@@ -720,11 +739,11 @@ def createInstallLoad():
 	useConfig = 'n'
 	# check if a payload has already been built
 	if os.path.exists('/etc/hackbox/sources/configured'):
-		if ('--force-use-config' in sys.argv):
+		if ('--force-use-config' in arguments):
 			# create a config file based on the setup options
 			useConfig = 'y'
 		else:
-			if (("--no-curses" in sys.argv) != True):
+			if (("--no-curses" in arguments) != True):
 				# returns 0 for yes and 1 for no
 				if queryboxes.yesno('A config already exists, would you like to use it?')=='ok':
 					useConfig = 'y'
@@ -762,7 +781,7 @@ def createInstallLoad():
 	mainPayload = ''
 	# post payload for stuff you should do last
 	postPayload = ''
-	if ('--debug' in sys.argv):
+	if ('--debug' in arguments):
 		# error checking payload check for packages that were not correctly installed
 		errorCheckPayload = 'main<:>CHECK-INSTALLED-PACKAGES\n'
 	else:
@@ -785,7 +804,7 @@ def createInstallLoad():
 		# open the .source file
 		fileObject = loadFile(os.path.join('/opt/hackbox/sources',fileName))
 		if fileObject == False:
-			print('ERROR: Source file'+fileName+'does not exist!')
+			logMessage('ERROR: Source file'+fileName+'does not exist!')
 		else:
 			fileObject = fileObject.split('\n')
 		# clear the screen before loading stuff in this file
@@ -804,7 +823,7 @@ def createInstallLoad():
 				# print the colorized banner file
 				banner = loadFile('/opt/hackbox/media/banner.txt')
 				if banner != False:
-					if (("--no-curses" in sys.argv) != True):
+					if (("--no-curses" in arguments) != True):
 						backgroundTitle = 'Hackbox Setup'
 						if line[:8]=='#BANNER:':
 							backgroundTitle =  line[8:]
@@ -813,7 +832,7 @@ def createInstallLoad():
 			elif line[:10]=='#QUESTION:':
 				# check for install confrimation
 				if installSection != 'y' and useConfig != 'y':# if the AUTO-INSTALL is not set
-					if (("--no-curses" in sys.argv) != True):
+					if (("--no-curses" in arguments) != True):
 						# returns 0 for yes and 1 for no
 						if queryboxes.yesno(line[10:]) == 'ok':
 							# write file for next run
@@ -835,10 +854,37 @@ def createInstallLoad():
 					# are installed
 					downloadPayload += 'main<:>message<:>Downloading package : '+tempInfo[2]+'\n'
 					downloadPayload += 'main<:>cache-package<:>'+tempInfo[2]+'\n'
-				if ('--debug' in sys.argv):
-					# add the error checking for packages at the end
-					errorCheckPayload += 'errorChecking<:>message<:>Checking for errors in package : '+tempInfo[2]+'\n'
-					errorCheckPayload += 'errorChecking<:>error-check-package<:>'+tempInfo[2]+'\n'
+					if ('--debug' in arguments):
+						# add the error checking for packages at the end
+						errorCheckPayload += 'errorChecking<:>message<:>Checking for errors in package : '+tempInfo[2]+'\n'
+						errorCheckPayload += 'errorChecking<:>error-check-package<:>'+tempInfo[2]+'\n'
+				# convert upgrade lines in the package into the upgradable packages
+				# themselves
+				if tempInfo[1] == 'upgrade':
+					line = ''
+					tempCache = apt.Cache()
+					try:
+						tempCache.update()
+					except:
+						logMessage('ERROR: Apt update errors occured!')
+					tempCache.open(None)
+					try:
+						tempCache.upgrade()
+					except:
+						logMessage('ERROR: Apt upgrade errors occured!')
+					for package in tempCache.get_changes():
+						if package.marked_upgrade:
+							# set the message to show while upgrading the package
+							line += tempInfo[0]+'<:>message<:>Upgrading : '+package.name+'\n'
+							# add the package to the download section to have it cached
+							# no error checking is appended to the upgraded packages
+							downloadPayload += 'download<:>cache-package<:>'+package.name+'\n'
+							# create package line for upgradable packages
+							line += tempInfo[0]+'<:>package<:>'+package.name+'\n'
+						if package.is_auto_installed:
+							# set command to mark upgraded packages that were auto installed to maintain
+							# thier auto installed status during update
+							line += tempInfo[0]+'<:>command<:>apt-mark auto '+package.name+'\n'
 				# catagories used to orignize the install order of packages
 				if tempInfo[1] == 'deb-repo':
 					repoPayload+= line+'\n'
@@ -860,6 +906,8 @@ def createInstallLoad():
 		# extract any preconfigured launchers included for this section
 		if os.path.exists(('/opt/hackbox/preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip')):
 			mainPayload += 'null<:>command<:>unzip -o '+'/opt/hackbox/preconfiguredSettings/launchers/'+fileName.split('.')[0]+'.zip -d /usr/share/applications\n'
+	# Update the package lists at the end of the repo payload, after all
+	# the new repos were added
 	repoPayload += 'null<:>command<:>apt-get update\n'
 	# orginize the payload contents
 	payload = repoPayload+interactivePayload+downloadPayload+prePayload+mainPayload+postPayload+errorCheckPayload

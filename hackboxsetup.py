@@ -154,7 +154,7 @@ while connected == False:
 hackboxlib.clear()
 os.chdir('/opt/hackbox')
 # create the install payload file, it will be installed after this stuff
-payloadFileLocation = hackboxlib.createInstallLoad()
+payloadFileLocation = hackboxlib.createInstallLoad(sys.argv)
 ########################################################################
 # run some commands that will keeps the screen from blanking during install
 # these will fail in the terminal but that wont stop the program

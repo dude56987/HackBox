@@ -46,8 +46,7 @@ main<:>package<:>oxygen-cursor-theme-extra
 # install the update command
 catagory<:>localdeb<:>update
 # update the system packages
-catagory<:>command<:>sudo apt-get update --assume-yes
-catagory<:>command<:>sudo apt-get upgrade --assume-yes
+catagory<:>upgrade
 # getdeb and playdeb repos
 pre<:>localdeb<:>playdeb
 pre<:>localdeb<:>getdeb
