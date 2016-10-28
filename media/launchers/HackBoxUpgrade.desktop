@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Version=1.0
 Type=Application
-Exec=terminator -f -T "Hackbox Upgrade" -x bash -c "screen -c /opt/hackbox/media/screenConfig/screenConfigUpgrade;echo 'Press enter to end the program...';read;"
+Exec=terminator -f -T "Hackbox Upgrade" -x bash -c "hackboxsetup --upgrade;echo 'Press enter to end the program...';read;"
 Name=HackBox Upgrade
 Comment=Runs HackBox Upgrade GUI
 Categories=XFCE;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;

@@ -18,5 +18,5 @@
 ########################################################################
 import os, sys
 # openvt launches a tty on terminal 12 and waits till setup script has finished
-os.system('pkexec openvt -c 12 -s -w -l hackboxlauncher')
+os.system('pkexec openvt -c 12 -s -w -l hackboxsetup')
 exit()
