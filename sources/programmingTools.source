@@ -1,7 +1,8 @@
 #BANNER
 #QUESTION:Would you like to install Programming Tools?
 catagory<:>message<:>Installing Geany (General IDE)
-catagory<:>package<:>geany geany-plugins
+catagory<:>package<:>geany
+catagory<:>package<:>geany-plugins
 catagory<:>message<:>Installing vim (CLI text editor)
 catagory<:>package<:>vim
 catagory<:>disable-launcher<:>/usr/share/applications/vim.desktop
