@@ -70,11 +70,31 @@ whitebackground= '\033[47m'
 # reset to default style
 resetTextStyle=defaultText
 # use the gui if it exists
-if (("--no-curses" in sys.argv) != True):
+try:
 	#from dialog import Dialog
 	import dialog
 	queryboxes = dialog.Dialog()
+except:
+	logMessage('ERROR : Curses dialog did not work!')
+########################################################################
 # define functions
+########################################################################
+def askQuestion(questionText):
+	# try to use curses dialog first
+	try:
+		# returns 0 for yes and 1 for no
+		if queryboxes.yesno(questionText)=='ok':
+			anwser = 'y'
+		else:
+			anwser = 'n'
+	except:
+		# use text gui if curses fails
+		if os.path.exists('/opt/hackbox/media/banner.txt'):
+			print(loadFile('/opt/hackbox/media/banner.txt'))
+		# otherwise ask the user if they want to use it
+		print(questionText)
+		anwser = input('[y/n]: ')
+	return anwser
 ########################################################################
 def logMessage(message,logfile='/opt/hackbox/Install_Log.txt'):
 	# display the message
@@ -93,7 +113,7 @@ def logMessage(message,logfile='/opt/hackbox/Install_Log.txt'):
 	fileObject.close()
 	return True
 ########################################################################
-def progressBar(percentage,messageText,banner,logFile='/opt/hackbox/Install_Log.txt'):
+def progressBar(percentage,messageText,banner,logFile='/opt/hackbox/Install_Log.txt',noCurses=False):
 	'''
 	Draw a curses based progressbar with the current precentage,
 	displaying the messageText below the bar, and the banner text
@@ -101,7 +121,9 @@ def progressBar(percentage,messageText,banner,logFile='/opt/hackbox/Install_Log.
 
 	:return None
 	'''
-	if '--no-curses' in sys.argv:
+	percentage=int(percentage)
+	messageText=str(messageText)
+	if noCurses:
 		# display progress by clearing the screen and writing the updates
 		clear()
 		# draw the banner if the file path exists
@@ -116,12 +138,18 @@ def progressBar(percentage,messageText,banner,logFile='/opt/hackbox/Install_Log.
 		# print the last several lines of output on refresh
 		os.system('tail ' + logFile + ' || echo "WARNING : No log found..."')
 	else:
-		percentage=int(percentage)
-		messageText=str(messageText)
-		progressBar = dialog.Dialog()
-		progressBar.setBackgroundTitle(banner)
-		progressBar.gauge_start(percent=percentage,text=messageText)
-		progressBar.gauge_stop()
+		# try using dialog
+		try:
+			dialogBar = dialog.Dialog()
+			dialogBar.setBackgroundTitle(banner)
+			dialogBar.gauge_start(percent=percentage,text=messageText)
+			dialogBar.gauge_stop()
+		except:
+			# log messages
+			logMessage('ERROR : Curses dialog failed!')
+			logMessage('DEBUG : percentage = "'+str(percentage)+'", messageText = "'+messageText+'", banner = "'+banner+'"')
+			# run command again with no curses interface
+			progressBar(percentage,messageText,banner,logFile,noCurses=True)
 	return True
 ########################################################################
 def deleteFile(filePath):
@@ -455,6 +483,11 @@ class installSourcesFile():
 
 		:return bool
 		'''
+		# check for no curses dialog argument
+		if '--no-curses' in sys.argv:
+			self.noCurses = True
+		else:
+			self.noCurses = False
 		# get the list of installed packages
 		self.installedPackages = apt.Cache()
 		# zero out the error log for packages that did not install
@@ -482,6 +515,8 @@ class installSourcesFile():
 		self.progress = 0.0
 		self.progressTotal = len(fileObject)
 		self.currentMessage = 'Processing...'
+		# draw the progress bar before anything starts to avoid blank screen
+		progressBar(0, self.currentMessage, 'Hackbox Setup', noCurses=self.noCurses)
 		# go though each line of the file
 		for line in fileObject:
 			self.readSourceFileLine(line)
@@ -724,7 +759,7 @@ class installSourcesFile():
 		if showUpdate == True:
 			tempProgress = int((self.progress/self.progressTotal)*100)
 			# calc progress and display
-			progressBar(tempProgress, self.currentMessage, 'Hackbox Setup')
+			progressBar(tempProgress, self.currentMessage, 'Hackbox Setup', noCurses=self.noCurses)
 		return showUpdate
 ########################################################################
 def createInstallLoad(arguments=sys.argv):
@@ -743,19 +778,9 @@ def createInstallLoad(arguments=sys.argv):
 			# create a config file based on the setup options
 			useConfig = 'y'
 		else:
-			if (("--no-curses" in arguments) != True):
-				# returns 0 for yes and 1 for no
-				if queryboxes.yesno('A config already exists, would you like to use it?')=='ok':
-					useConfig = 'y'
-				else:
-					useConfig = 'n'
-					os.system('rm -rvf /etc/hackbox/*')
-			else:
-				if os.path.exists('/opt/hackbox/media/banner.txt'):
-					print(loadFile('/opt/hackbox/media/banner.txt'))
-				# otherwise ask the user if they want to use it
-				print('A config already exists, would you like to use it?')
-				useConfig = input('[y/n]: ')
+			useConfig = askQuestion('A config already exists, would you like to use it?')
+			if useConfig != 'y':
+				os.system('rm -rvf /etc/hackbox/*')
 	# create a payload variables to orgnize catagories
 	payload = ''
 	# catagory for ppas and repos
@@ -790,7 +815,15 @@ def createInstallLoad(arguments=sys.argv):
 	datafiles = os.listdir('/opt/hackbox/sources/')
 	# sort the files
 	datafiles.sort()
+	# remove the info file from the file list
+	datafiles.remove('INFO')
+	# store the total length of the data files to be processed
+	totalFiles=len(datafiles)
+	# counter for total questions
+	questionCounter = 0
+	# process each of the data files
 	for fileName in datafiles:
+		questionCounter += 1
 		# set the install section here to keep it in the scope of the file
 		installSection = 'n'
 		# if the source file has already been configured use previous config
@@ -832,17 +865,14 @@ def createInstallLoad(arguments=sys.argv):
 			elif line[:10]=='#QUESTION:':
 				# check for install confrimation
 				if installSection != 'y' and useConfig != 'y':# if the AUTO-INSTALL is not set
-					if (("--no-curses" in arguments) != True):
-						# returns 0 for yes and 1 for no
-						if queryboxes.yesno(line[10:]) == 'ok':
-							# write file for next run
-							writeFile(os.path.join('/etc/hackbox/sources/',fileName),'')
-							installSection = 'y'
-						else:
-							installSection = 'n'
-					else:
-						print(line[10:])# show question
-						installSection = input('[y/n]: ')# display prompt on a newline for y/n
+					# ask the question from the install section
+					installSection = askQuestion('['+str(questionCounter)+'/'+str(totalFiles)+'] '+line[10:])
+					if installSection == 'y':
+						# write config file for next run
+						writeFile(os.path.join('/etc/hackbox/sources/',fileName),'')
+				else:
+					# if questions are not being asked display a progress bar
+					progressBar(((questionCounter/totalFiles)*100), ('Pre-processing source file '+fileName), 'Hackbox Setup')
 			# run sections if install is set to true for a file
 			if line[:1] != '#' and line.find('<:>') != -1 and installSection == 'y':
 				# split the line up to dertermine what it is

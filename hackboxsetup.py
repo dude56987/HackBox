@@ -95,15 +95,13 @@ if ("--upgrade" in sys.argv) or ("-u" in sys.argv) or ("--update" in sys.argv):
 print('Preforming startup checks...')
 # run program as root if it is not being already done
 if os.geteuid() != 0:
-	if len(sys.argv) > 1:
-		os.system('sudo python3 '+(os.path.abspath(__file__))+' '+(' '.join(sys.argv[1:])))
-	else:
-		os.system('sudo python3 '+(os.path.abspath(__file__)))
+	# try to run the program with dialog
+	os.system('sudo python3 '+(os.path.abspath(__file__))+' '+(' '.join(sys.argv[1:])))
 	exit()
 # set current directory to be same as this file
 os.chdir('/opt/hackbox')
 # create the install log
-os.system('echo "Starting Install Process..." >> Install_Log.txt');
+os.system('echo "Starting Install Process..." > Install_Log.txt');
 os.system('echo "Started on ${date}" >> Install_Log.txt');
 # set the background for the dialouges
 if (("--no-curses" in sys.argv) != True):
