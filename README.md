@@ -12,7 +12,7 @@ This package is designed with a few key points in mind.
 ###One-liner UNSTABLE Version Install
 Copy and paste the below command into a terminal and hit enter to install the unstable version of HackBox.
 
-    sudo apt-get install git python gdebi && git clone https://github.com/dude56987/HackBox.git && cd HackBox && make install
+    sudo apt-get install git python gdebi make && git clone https://github.com/dude56987/HackBox.git && cd HackBox && make && hackboxsetup
 
 ###INSTALL
 
