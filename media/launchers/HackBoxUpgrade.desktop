@@ -6,6 +6,5 @@ Exec=terminator -f -T "Hackbox Upgrade" -x bash -c "hackboxsetup --upgrade;echo 
 Name=HackBox Upgrade
 Comment=Runs HackBox Upgrade GUI
 Categories=XFCE;GTK;Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-SystemSettings;
-OnlyShowIn=XFCE;
 GenericName=System Configuration Utility
 Icon=hackboxLogo
