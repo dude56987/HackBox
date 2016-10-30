@@ -70,25 +70,12 @@ if ("--help" in sys.argv) or ("-h" in sys.argv):
 	print("\tcurrent user.")
 	print("--upgrade or -u")
 	print("\tUpgrade this software with the latest version from git, then run it.")
+	print("--changes or -c")
+	print('\tShow the changes since last run with "--upgrade".')
+	print("--changelog or -C")
+	print("\tShow the entire changelog since the project was moved into version control.")
 	print("########################################################################")
 	# end the program after displaying the help menu
-	exit()
-if ("--create-relay" in sys.argv):
-	# run the setup-relay-server script to set the current copy in /opt/hackbox/update to act as a master relay
-	os.system('sudo bash /opt/hackbox/scripts/relayScripts/server-setup-relay.sh')
-	exit()
-if ("--upgrade" in sys.argv) or ("-u" in sys.argv) or ("--update" in sys.argv):
-	if os.path.exists("/etc/hackbox/relayServer"):
-		# copy over the pull relay script to run as a cron job
-		os.system('sudo cp -f /opt/hackbox/scripts/relayScripts/client-pull-from-relay.sh /etc/cron.daily/00-hackbox-client-pull-relay')
-		os.system('sudo chmod +x /etc/cron.daily/00-hackbox-client-pull-relay')
-		# launch the previously created update script if it has not been launched already
-		os.system("sudo bash /etc/cron.daily/00-hackbox-client-pull-relay")
-	else:
-		# pull the latest version from git and install it
-		os.system('sudo git clone https://github.com/dude56987/HackBox.git /opt/hackbox/update/ || sudo git -C /opt/hackbox/update/ pull')
-		os.system('cd /opt/hackbox/update/;sudo make install')
-		os.system('sudo hackboxsetup --force-use-config')
 	exit()
 ########################################################################
 # Pre-run checks
@@ -98,6 +85,72 @@ if os.geteuid() != 0:
 	# try to run the program with dialog
 	os.system('sudo python3 '+(os.path.abspath(__file__))+' '+(' '.join(sys.argv[1:])))
 	exit()
+########################################################################
+if ("--create-relay" in sys.argv):
+	# run the setup-relay-server script to set the current copy in /opt/hackbox/update to act as a master relay
+	os.system('bash /opt/hackbox/scripts/relayScripts/server-setup-relay.sh')
+	exit()
+########################################################################
+if ("--upgrade" in sys.argv) or ("-u" in sys.argv) or ("--update" in sys.argv):
+	# upgrade hackbox with the latest version from git or the latest version from your setup relay server
+	if os.path.exists("/etc/hackbox/relayServer"):
+		# copy over the pull relay script to run as a cron job
+		os.system('cp -f /opt/hackbox/scripts/relayScripts/client-pull-from-relay.sh /etc/cron.daily/00-hackbox-client-pull-relay')
+		os.system('chmod +x /etc/cron.daily/00-hackbox-client-pull-relay')
+		# launch the previously created update script if it has not been launched already
+		os.system("bash /etc/cron.daily/00-hackbox-client-pull-relay")
+	else:
+		# if the system has not updated before pull a update
+		if not os.path.exists('/opt/hackbox/update/'):
+			# run clone and if it fails run a pull to update
+			os.system('git clone https://github.com/dude56987/HackBox.git /opt/hackbox/update/ || git -C /opt/hackbox/update/ pull')
+		# store the existing updates
+		os.system('git -C /opt/hackbox/update/ log > /etc/hackbox/changes.old')
+		# pull the latest version from git
+		os.system('git clone https://github.com/dude56987/HackBox.git /opt/hackbox/update/ || git -C /opt/hackbox/update/ pull')
+		os.system('git -C /opt/hackbox/update/ log > /etc/hackbox/changes.new')
+		# check for system changes without overwriting the changes log
+		changes = os.system('diff /etc/hackbox/changes.old /etc/hackbox/changes.new')
+		# if no changes were found no updates need to be done
+		if changes == 0:
+			print('No updates found, exiting HackBox Setup!')
+		else:
+			# changes were found, so write the new update changes to the log
+			os.system('diff /etc/hackbox/changes.old /etc/hackbox/changes.new > /etc/hackbox/changes.log')
+			# the system needs to build and install the updates
+			os.system('cd /opt/hackbox/update/;make install')
+			os.system('hackboxsetup --force-use-config')
+	exit()
+########################################################################
+if ("--changes" in sys.argv) or ("-c" in sys.argv):
+	if os.path.exists('/etc/hackbox/changes.log'):
+		# show changes in last update and exit
+		os.system('less /etc/hackbox/changes.log')
+		exit()
+	else:
+		anwser = hackboxlib.askQuestion('No updates have been done to detect changes! Would you like to update HackBox?')
+		if anwser == 'y':
+			os.system('hackboxsetup --update')
+			os.system('hackboxsetup --changes')
+			exit()
+		else:
+			print('Nothing has been done, exiting HackBox Setup!')
+			exit()
+########################################################################
+if ("--changelog" in sys.argv) or ("-C" in sys.argv):
+	if os.path.exists('/etc/hackbox/changes.new'):
+		os.system('git -C /opt/hackbox/update/ log')
+		exit()
+	else:
+		anwser = hackboxlib.askQuestion('No updates have been done to detect changes! Would you like to update HackBox?')
+		if anwser == 'y':
+			os.system('hackboxsetup --update')
+			os.system('hackboxsetup --changelog')
+			exit()
+		else:
+			print('Nothing has been done, exiting HackBox Setup!')
+			exit()
+########################################################################
 # set current directory to be same as this file
 os.chdir('/opt/hackbox')
 # create the install log
