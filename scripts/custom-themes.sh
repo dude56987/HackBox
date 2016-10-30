@@ -26,29 +26,45 @@
 # inctall custom icon themes in hackbox #
 #########################################
 for iconPack in /opt/hackbox/media/icons/*;do
-	cp -vr $iconPack /usr/share/icons;
+	if echo $iconPack | grep "\.tar";then
+		# extract tar archives
+		tar --extract --file $iconPack --directory /usr/share/icons;
+	else
+		# copy directories containing icons
+		cp -vr $iconPack /usr/share/icons;
+	fi
 done
 ################################
 # install the libnotify themes #
 ################################
 for notifyTheme in /opt/hackbox/media/themes/libnotify/*;do
-	cp -vr $notifyTheme /usr/share/themes;
+	if echo $notifyTheme | grep "\.tar";then
+		# extract tar archives
+		tar --extract --file $notifyTheme --directory /usr/share/themes;
+	else
+		cp -vr $notifyTheme /usr/share/themes;
+	fi
 done
 #################################
 # install the custom gtk themes #
 #################################
 for theme in /opt/hackbox/media/themes/gtkThemes/*;do
-	cp -vr $theme /usr/share/themes;
+	if echo $theme | grep "\.tar";then
+		# extract tar archives
+		tar --extract --file $theme --directory /usr/share/themes;
+	else
+		cp -vr $theme /usr/share/themes;
+	fi
 done
 ########################
 # Install Custom Fonts #
 ########################
-# create a directory to store customized fonts, this is for sanitys sake since all fonts in /usr/share/fonts/ are added by a recursive scan of the subdirectories 
+# create a directory to store customized fonts, this is for sanity's sake since all fonts in /usr/share/fonts/ are added by a recursive scan of the subdirectories
 mkdir -p /usr/share/fonts/hackbox/
 # copy all fonts over to the hackbox fonts location
 cp -vf /opt/hackbox/media/fonts/ /usr/share/fonts/hackbox/
 # refresh the font index on the system to add new fonts
-fc-cache -f -v
+fc-cache -v
 #############################
 # Install custom wallpapers #
 #############################
