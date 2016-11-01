@@ -54,6 +54,8 @@ pre<:>localdeb<:>getdeb
 interactive<:>ppa<:>ppa:gottcode/gcppa
 main<:>package<:>xfce4-whiskermenu-plugin
 # here are some logical scripts
+catagory<:>message<:>Configuring custom network settings
+catagory<:>script<:>custom-network-settings
 interactive<:>message<:>Adding custom systemd services
 interactive<:>script<:>custom-services
 interactive<:>message<:>Setting up darknet access
