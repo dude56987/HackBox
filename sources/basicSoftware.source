@@ -161,8 +161,13 @@ catagory<:>message<:>Installing Software Properties (GUI to manage repos)
 catagory<:>package<:>software-properties-gtk
 catagory<:>message<:>Installing Ubuntu-Drivers-Common(Propietry Driver Installer)
 catagory<:>package<:>ubuntu-drivers-common
-catagory<:>message<:>Installing leafpad(Simple Text Editor)
-catagory<:>package<:>leafpad
+catagory<:>message<:>Installing Pluma(Simple Text Editor)
+catagory<:>package<:>pluma
+catagory<:>message<:>Removing redundant text editors
+catagory<:>rm-package<:>leafpad
+catagory<:>rm-package<:>gedit
+catagory<:>rm-package<:>kate
+catagory<:>rm-package<:>mousepad
 catagory<:>message<:>Installing gnome-system-tools (Allows editing of users and groups)
 catagory<:>package<:>gnome-system-tools
 catagory<:>message<:>Removing redundant image burners(brasero)
