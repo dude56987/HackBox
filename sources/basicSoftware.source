@@ -350,11 +350,13 @@ pre<:>package<:>apt-transport-https
 ########################
 # install image viewer #
 ########################
-catagory<:>message<:>Installing gpicview (Image Viewer)
-catagory<:>package<:>gpicview
+catagory<:>message<:>Installing Eye of Mate(Image Viewer)
+catagory<:>package<:>eom
 ##################################
 catagory<:>message<:>Remove Redundant Image Viewers
+catagory<:>rm-package<:>gpicview
 catagory<:>rm-package<:>feh
+catagory<:>rm-package<:>viewnoir
 catagory<:>rm-package<:>gthumb
 catagory<:>rm-package<:>eog
 catagory<:>rm-package<:>ristretto
