@@ -1,0 +1,30 @@
+################################################################################
+This directory contains preconfigured settings that will be installed to the
+system. These settings are organized into directories depending on the type of
+config.
+################################################################################
+- ./userSettings/
+  - This directory contains subdirectories that will be installed as the default
+    settings for new users on the system. All subdirectories of this directory
+	should contain "." files. e.g. Configuration files that would be in the
+	users home directory.
+  - ./CORE/ directory will be installed automatically.
+  - Other directories will be listed to chose from as desktop layout choices
+    during the install.
+- ./services/
+  - This is a directory that contains systemd services to be automatically
+    installed to the system. All ".service" files listed here will be installed
+	automatically.
+- ./launchers/
+  - This directory contains two subdirectories that hold ".desktop" launcher files.
+  - ./autostart/
+    - All ".desktop" files placed in here will be installed to /etc/xdg/autostart/
+	  This means that they will be launched for each user when they login to
+	  the system. The launchers will run with the login users account privileges.
+  - ./applications/
+    - ".desktop" files in this directory will be placed in /usr/share/applications/
+	  This will make the launchers visible in the start menu for all users on the
+	  system.
+- ./debconf/
+  - This directory holds debconf configuration settings. These are used for
+    answering questions during a packages install without asking the user.
