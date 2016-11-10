@@ -242,12 +242,13 @@ catagory<:>package<:>cheese
 catagory<:>message<:>Installing TinyCameraMonitor(show when webcam is on)
 catagory<:>localdeb<:>tinycameramonitor
 # calculators
-catagory<:>message<:>Installing SpeedCrunch (Calculator)
-catagory<:>package<:>speedcrunch
+catagory<:>message<:>Installing Qualculate (Calculator)
+catagory<:>package<:>qalculate-gtk
 catagory<:>message<:>Installing Gnome-Genius (Really Advanced Graphing Calculator)
 catagory<:>package<:>gnome-genius
 # removing junk calculators
 catagory<:>message<:>Removing conflicting calculators
+catagory<:>rm-package<:>speedcrunch
 catagory<:>rm-package<:>galculator
 catagory<:>rm-package<:>gcalctool
 catagory<:>rm-package<:>kcalc
