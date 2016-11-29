@@ -2,7 +2,7 @@
 # launched on first user startup, this script is used for things that only
 # need to be done once. This script must delete itself at the end.
 ##########################################################################
-# set SuccessCheck to 1 if anything dont work set it to 0 so the script 
+# set SuccessCheck to 1 if anything dont work set it to 0 so the script
 # will run again
 SuccessCheck=1
 ##########################################################################
@@ -13,11 +13,38 @@ if cat ~/.purple/accounts.xml | grep AwesomeUserWhoMightBeANoob; then
 	sed -i.bak "s/AwesomeUserWhoMightBeANoob@/${IRCusername}/g" ~/.purple/accounts.xml
 	sed -i.bak "s/AwesomeUserWhoMightBeANoob/${username}/g" ~/.purple/accounts.xml
 fi
-# set profile directory name for firefox to the username of the current user
-if [ -d ~/.mozilla/firefox/mwad0hks.default ];then
+# randomize the firefox profile names
+if [ -d ~/.mozilla/firefox/ ];then
 	username=$(whoami)
-	sed -i "s/mwad0hks/$username/g" ~/.mozilla/firefox/profiles.ini
-	mv ~/.mozilla/firefox/mwad0hks.default ~/.mozilla/firefox/$username.default
+	counter=0
+	# remove the exiting profiles config
+	rm -v /home/$username/.mozilla/firefox/profiles.ini
+	# regenerate all the profiles found in the firefox directory
+	for profile in ~/.mozilla/firefox/*;do
+		# check if a dot exists in the folder name, to dertermine if it is a user profile
+		# also make sure the file is not the profiles.ini file or Crash Reports directory
+		if echo "$profile" | grep "." ;then
+			if ! bash -c "echo $profile | grep 'profiles.ini'" ;then
+				if ! bash -c "echo $profile | grep 'Crash Reports'" ;then
+					# kill all running firefox processes before making changes
+					killall firefox
+					# increment the counter
+					let counter=counter+1
+					# store the name and include a random number to randomize the name
+					# the counter makes sure that the name is always unique, $RANDOM
+					# can sometimes generate the same random numbers
+					tempName=$username$counter$RANDOM
+					# generate the path of the new profile
+					profileString=$(echo "/home/$username/.mozilla/firefox/$tempName.default/")
+					if mv -v "$profile" "$profileString";then
+						# have firefox create a profile for the existing renamed profile in the
+						# profile.ini file, do so without opening the main window
+						firefox -CreateProfile "$tempName $profileString" -silent
+					fi
+				fi
+			fi
+		fi
+	done
 fi
 if cat ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml | grep "\~\/"; then
 	# convert ~/ in xfce-desktop settings to the users home directory
