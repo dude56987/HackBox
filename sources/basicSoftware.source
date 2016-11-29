@@ -239,6 +239,8 @@ catagory<:>rm-package<:>gtk-vector-screenshot
 # webcam stuff #
 catagory<:>message<:>Installing cheese (webcam photobooth)
 catagory<:>package<:>cheese
+catagory<:>message<:>Installing fswebcam (CLI webcam picture tool)
+catagory<:>package<:>fswebcam
 catagory<:>message<:>Installing TinyCameraMonitor(show when webcam is on)
 catagory<:>localdeb<:>tinycameramonitor
 # calculators
