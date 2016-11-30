@@ -81,6 +81,7 @@ build:
 	pycompile *.py
 	cp -vf hackboxsetup.py ./debian/opt/hackbox/hackboxsetup.py
 	cp -vf hackboxlib.py ./debian/opt/hackbox/hackboxlib.py
+	cp -vf hackboxgui.py ./debian/opt/hackbox/hackboxgui.py
 	cp -vf hackboxsetup-gui.py ./debian/opt/hackbox/hackboxsetup-gui.py
 	# clean up those bytecode files
 	rm -vf *.pyc

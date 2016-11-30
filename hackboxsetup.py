@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 ########################################################################
 # Program Designed to setup a new Linux system automatically via scripts
-# Copyright (C) 2015  Carl J Smith
+# Copyright (C) 2016  Carl J Smith
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,20 +19,16 @@
 import os, sys
 from time import sleep
 from random import randrange
+########################################################################
 sys.path.append('/opt/hackbox/')
 import hackboxlib
+import hackboxgui
 ########################################################################
 Version = '0.5.0'
 # For Ubuntu Server Edition/Ubuntu Desktop Edition/Linux Mint
 ########################################################################
 #TODO:
 # ~ custom distro???
-########################################################################
-# use the gui if it exists
-if (("--no-curses" in sys.argv) != True):
-	#from dialog import Dialog
-	import dialog
-	queryboxes = dialog.Dialog()
 ########################################################################
 # if the user is running the help command
 if ("--help" in sys.argv) or ("-h" in sys.argv):
@@ -128,7 +124,7 @@ if ("--changes" in sys.argv) or ("-c" in sys.argv):
 		os.system('less /etc/hackbox/changes.log')
 		exit()
 	else:
-		anwser = hackboxlib.askQuestion('No updates have been done to detect changes! Would you like to update HackBox?')
+		anwser = hackboxgui.askQuestion('No updates have been done to detect changes! Would you like to update HackBox?')
 		if anwser == 'y':
 			os.system('hackboxsetup --update')
 			os.system('hackboxsetup --changes')
@@ -142,7 +138,7 @@ if ("--changelog" in sys.argv) or ("-C" in sys.argv):
 		os.system('git -C /opt/hackbox/update/ log')
 		exit()
 	else:
-		anwser = hackboxlib.askQuestion('No updates have been done to detect changes! Would you like to update HackBox?')
+		anwser = hackboxgui.askQuestion('No updates have been done to detect changes! Would you like to update HackBox?')
 		if anwser == 'y':
 			os.system('hackboxsetup --update')
 			os.system('hackboxsetup --changelog')
@@ -156,16 +152,13 @@ os.chdir('/opt/hackbox')
 # create the install log
 os.system('echo "Starting Install Process..." > Install_Log.txt');
 os.system('echo "Started on ${date}" >> Install_Log.txt');
-# set the background for the dialouges
-if (("--no-curses" in sys.argv) != True):
-	queryboxes.setBackgroundTitle("HackBox Setup")
 # only prompt the user if --force-use-config is not used in the program launch
 if (('--force-use-config' in sys.argv) == False):
 	if (("--no-curses" in sys.argv) != True):
-		temp = 'This script will install and configure settings for a new system automatically.\n\n'
-		temp += 'Proceed?'
+		question = 'This script will install and configure settings for a new system automatically.\n\n'
+		question += 'Proceed?'
 		# returns 0 for yes and 1 for no
-		if (queryboxes.yesno(temp)=='ok'):
+		if hackboxgui.askQuestion(question) == 'y':
 			print('Starting setup...')
 		else:
 			hackboxlib.clear();
@@ -216,7 +209,7 @@ os.system('xset -dpms')
 # install the payload created previously
 hackboxlib.installSourcesFile(payloadFileLocation)
 # show 100 percent at end
-hackboxlib.progressBar(100,'Script finished, System setup complete :D',"Hackbox Setup")
+hackboxgui.progressBar(100,'Script finished, System setup complete :D',"Hackbox Setup")
 os.system('nohup broadcast 100% System setup complete :D> /dev/null')
 if os.path.exists('/etc/mdm/Init/Default'):
 	# clear the mdm configured startup of hackboxsetup
