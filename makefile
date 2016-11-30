@@ -110,6 +110,8 @@ build:
 	sed -i 's/\\n*DEBIAN*//g' ./debian/DEBIAN/md5sums
 	# copy over the debdata files
 	cp -rv .debdata/. debian/DEBIAN/
+	# generate the changelog
+	git log > ./debian/DEBIAN/changelog
 	# figure out the size of the installed package and save the size in kb to a file
 	du -sx --exclude DEBIAN ./debian/ | sed "s/[abcdefghijklmnopqrstuvwxyz\ /.]//g" | tr -d "\n" | tr -d "\r" | sed "s/ //g" | sed "s/\t//g" > packageSize.txt
 	# run bash script to edit the control file of the package
