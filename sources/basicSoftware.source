@@ -335,6 +335,8 @@ catagory<:>message<:>Installing Qshutdown
 catagory<:>package<:>qshutdown
 catagory<:>message<:>Installing Disk Utility (Management tool for storage media)
 catagory<:>package<:>gnome-disk-utility
+catagory<:>message<:>Installing rpl (CLI string replacement utility)
+catagory<:>package<:>rpl
 catagory<:>message<:>Installing Midnight Commander
 catagory<:>package<:>mc
 catagory<:>disable-launcher<:>/usr/share/applications/mc.desktop
