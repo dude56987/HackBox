@@ -5,4 +5,4 @@ Exec=xkill
 Terminal=false
 Type=Application
 StartupNotify=false
-Icon=/usr/share/icons/Vibrantly-Simple/actions/48/window-close.png
+Icon=xfce-wm-close
