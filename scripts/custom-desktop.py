@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 ########################################################################
 # Script to install custom desktop settings
-# Copyright (C) 2015  Carl J Smith
+# Copyright (C) 2016  Carl J Smith
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -101,7 +101,7 @@ config=''
 # Build the user interface
 ########################################################################
 # grab a list of available default settings for the user to pick from
-for item in os.listdir("/opt/hackbox/preconfiguredSettings/userSettings/"):
+for item in os.listdir("/usr/share/desktop-layout-picker/layouts/"):
 	if (item != "CORE") and (("." in item) != True):
 		if "default" in item:
 			choices.append((item,'',1))
@@ -110,7 +110,7 @@ for item in os.listdir("/opt/hackbox/preconfiguredSettings/userSettings/"):
 if len(choices)>1:
 	userChoice=root.radiolist('Which desktop enviorment layout would you like to be the default?',20,60,15,choices)
 	# returns a 2 value tuple, grab value # 1
-	userChoice=("/opt/hackbox/preconfiguredSettings/userSettings/"+userChoice[1])
+	userChoice=("/usr/share/desktop-layout-picker/layouts/"+userChoice[1])
 	# add to the config file
 	config+=('desktopLayout='+userChoice+'\n')
 ########################################################################

@@ -13,11 +13,14 @@
 # this must be done before the custom-desktop script is ran
 interactive<:>message<:>Setting up mimetypes for HackBox
 interactive<:>localdeb<:>hackbox-mimetype-defaults<:>/usr/share/applications/exo-audio-player.desktop
+# Custom desktop settings requires desktop-layout-picker to work
+interactive<:>message<:>Installing Desktop Layout Picker (Change desktop layout)
+interactive<:>localdeb<:>desktop-layout-picker<:>/usr/bin/desktop-layout-picker
 # setup custom desktop settings
 interactive<:>message<:>Installing custom desktop settings
 interactive<:>script<:>custom-desktop
-pre<:>message<:>Installing custom themes
 # setup custom themes and disable duplicated launchers used in control panel
+pre<:>message<:>Installing custom themes
 pre<:>script<:>custom-themes
 main<:>disable-launcher<:>/usr/share/applications/font-manager.desktop
 main<:>disable-launcher<:>/usr/share/applications/software-properties-drivers.desktop
@@ -644,8 +647,6 @@ catagory<:>package<:>clipit
 # install desktop nova and the xfce module of the program
 # catagory<:>message<:>Installing Desktop-Nova(Wallpaper Switcher)####catagory<:>package<:>desktopnova
 # Setting up xfce desktop Support####catagory<:>package<:>desktopnova-module-xfce
-catagory<:>message<:>Installing Desktop Layout Picker(Change desktop layout)
-catagory<:>localdeb<:>desktop-layout-picker<:>/usr/bin/desktop-layout-picker
 catagory<:>message<:>Installing xfce whiskermenu
 catagory<:>package<:>xfce4-whiskermenu-plugin
 catagory<:>message<:>Installing mugshot(User info management)
