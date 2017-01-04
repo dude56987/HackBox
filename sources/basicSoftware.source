@@ -382,12 +382,14 @@ catagory<:>rm-package<:>digikam
 catagory<:>rm-package<:>gwenview
 ###################################
 # install quick launcher software
-catagory<:>message<:>Installing Kupfer (Quicklauncher)
-catagory<:>package<:>kupfer
+catagory<:>message<:>Installing Synapse (Quicklauncher)
+catagory<:>package<:>synapse
+# set synapse to autostart by default
+catagory<:>command<:>cp -v /usr/share/applications/synapse.desktop /etc/xdg/autostart/synapse.desktop
 # remove other quick launcher software
 catagory<:>message<:>Removing other Quicklaunchers
 catagory<:>rm-package<:>gnome-do
-catagory<:>rm-package<:>synapse
+catagory<:>rm-package<:>kupfer
 catagory<:>rm-package<:>launchy
 ###################################
 catagory<:>message<:>Installing Font Manager
