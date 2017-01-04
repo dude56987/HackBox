@@ -18,6 +18,7 @@ alias ping="ping -c 5" # set default ping count to 5
 alias system-info="inxi -F" # set default ping count to 5
 alias root="sudo -s" # root logs into root mode for user
 alias pm="sudo aptitude" # shorthand to run a package manager command
+alias fix-permissions='sudo chmod u+rwX -R ~/. && sudo chmod g-w -R ~/. && sudo chmod g+rX -R ~/. && sudo chmod o-rwx -R ~/. && sudo chown -R $USER ~/'
 alias mugshot-gen='identicon -s 256 -t -H $(echo "$(whoami)@$(hostname)"| md5sum | sed "s/[\ ,-]//g") -o ~/.face'
 alias invert-color="xcalib -invert -alter" # Invert monitor colors
 alias nightvision="export TERM=xterm-mono;unalias ls;prompt suse;xcalib -clear;xcalib -i -a;xcalib -green .1 0 1 -blue .1 0 1 -red 0.8 0 100 -alter"
