@@ -610,9 +610,6 @@ catagory<:>rm-package<:>nautilus
 # link them to thunar
 catagory<:>command<:>link /usr/bin/thunar /usr/bin/nemo
 catagory<:>command<:>link /usr/bin/thunar /usr/bin/nautilus
-# Dothis shortcuts to give the desktop functionality it should have already
-catagory<:>message<:>Installing DoThis Shortcuts
-catagory<:>localdeb<:>doThis<:>/usr/bin/speakthis
 # reboot notifyer
 catagory<:>message<:>Install reboot-required
 catagory<:>localdeb<:>reboot-required<:>/usr/bin/reboot-required
