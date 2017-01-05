@@ -467,8 +467,17 @@ catagory<:>package<:>quiterss
 # email contacts and calendar
 catagory<:>message<:>Installing Thunderbird (Email/Calendar)
 catagory<:>package<:>thunderbird
-catagory<:>message<:>Installing calendar extention to thunderbird
+catagory<:>message<:>Installing calendar extention to Thunderbird
 catagory<:>package<:>xul-ext-lightning
+catagory<:>message<:>Installing adblock extention to Thunderbird and Firefox
+catagory<:>package<:>xul-ext-ublock-origin
+# removing other email clients
+catagory<:>message<:>Removing conflicting email clients
+catagory<:>rm-package<:>evolution
+catagory<:>rm-package<:>geary
+catagory<:>rm-package<:>sylpheed
+catagory<:>rm-package<:>kmail
+###########
 catagory<:>message<:>Installing Marble
 catagory<:>package<:>marble
 # Recipe Manager
