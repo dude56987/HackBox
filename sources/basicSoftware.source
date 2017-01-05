@@ -451,6 +451,9 @@ catagory<:>rm-package<:>webbrowser-app
 catagory<:>rm-package<:>dillo
 # remove ubuntu firefox modifications
 catagory<:>rm-package<:>xul-ext-ubufox
+# desktop download manager
+catagory<:>message<:>Installing uGet (Desktop download manager/accelerator)
+catagory<:>package<:>uget
 # setup transmission and setup the transmission blocklist updater for security purposes
 catagory<:>message<:>Installing Transmission (Torrent Client)
 catagory<:>package<:>transmission-gtk
