@@ -1,7 +1,7 @@
 #! /bin/bash
 ########################################################################
 # Script to setup custom login themes
-# Copyright (C) 2015  Carl J Smith
+# Copyright (C) 2016  Carl J Smith
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,6 +19,7 @@
 # Graphical Login Manager
 ########################################################################
 # install the lightdm gtk login manager
+apt-get install lightdm --assume-yes
 apt-get install lightdm-gtk-greeter --assume-yes
 # install the gui to edit the login settings
 apt-get install lightdm-gtk-greeter-settings --assume-yes
