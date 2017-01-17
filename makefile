@@ -1,6 +1,6 @@
 ########################################################################
-# Makefile for ubuntuSetup
-# Copyright (C) 2014  Carl J Smith
+# Makefile to build HackBox into a debian package
+# Copyright (C) 2017  Carl J Smith
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,18 +15,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
-all:
-	sudo make install 
-	# This is the default run that builds and installs the program as a package. Everything should be installed if your seeing this.
-	# When you log out and back in the installer will run automaticly in graphics mode.
+all: install
+	# This is the default run that builds and installs the program as a
+	# Debian package.
 install: build-deb install-deb
 	echo 'END OF LINE'
 installtosystem:
 	mkdir /opt/hackbox
 	cp -vr * /opt/hackbox
 	echo "#! /bin/bash\npython3 /opt/hackbox/hackboxsetup.py" > /usr/bin/hackboxsetup
-	sudo chmod +x /usr/bin/hackboxsetup
-	sudo chmod -Rv ugo+r /opt/hackbox/media/
+	chmod +x /usr/bin/hackboxsetup
+	chmod -Rv ugo+r /opt/hackbox/media/
 uninstallfromsystem:
 	rm -rv -v /opt/hackbox
 	rm -rv /usr/bin/hackboxsetup
@@ -44,13 +43,13 @@ update-version-number:
 #	less .debdata/control
 	# fix it back
 #	cp .debdata/control.backup .debdata/control
-update-relay: 
+update-relay:
 	# copy current directory to the relay directory
 	# If a relay is setup this will update the package pushed
 	# when the cron job is next run.
 	sudo cp -rv * /opt/hackbox/update
 	sudo bash /etc/cron.daily/00-hackbox-server-update-relay
-build: 
+build:
 	mkdir -p debian;
 	mkdir -p debian/DEBIAN;
 	mkdir -p debian/usr;
@@ -86,13 +85,12 @@ build:
 	# clean up those bytecode files
 	rm -vf *.pyc
 	# give everyone read permissions for the media directory of hackbox
-	chmod -Rv ugo+r ./debian/opt/hackbox/media/.
+	chmod -Rv ugo+r ./debian/opt/hackbox/media/
 	# compress the preconfigured settings files
 	# escape the endings to cd works since each line is executed as a separate process
 	cp -rvf preconfiguredSettings/userSettings/* debian/opt/hackbox/preconfiguredSettings/userSettings/
 	# fix permissions on usersettings
-	chmod -R ugo-xw debian/opt/hackbox/preconfiguredSettings/userSettings/
-	chmod -R ugo+rX debian/opt/hackbox/preconfiguredSettings/userSettings/
+	chmod -R ugo-xw+rX debian/opt/hackbox/preconfiguredSettings/userSettings/
 	chmod -R u+w debian/opt/hackbox/preconfiguredSettings/userSettings/
 	# add config files n such
 	cp -vfr ./preconfiguredSettings ./debian/opt/hackbox/
@@ -124,8 +122,8 @@ build:
 	#~ ';
 	# set permissions correctly on things
 	chmod -R 775 ./debian/DEBIAN
-	chmod -Rv ugo+r ./debian/opt/hackbox/media
-	chmod -Rv ugo+x ./debian/opt/hackbox/media/launchers
+	chmod -Rv ugo+rX ./debian/opt/hackbox/media
+	chmod -Rv ugo+x ./debian/opt/hackbox/media/launchers/.
 build-deb: build
 	# max compression on package
 	dpkg-deb -Z xz -z 9 -S extreme --build debian
@@ -214,7 +212,7 @@ pullCustomSoftware:
 	# hackbox-mimetypes
 	git clone https://github.com/dude56987/HackBox-Mimetype-Defaults.git customSoftwarePackages/hackbox-mimetype-defaults ||\
 	git -C customSoftwarePackages/hackbox-mimetype-defaults pull
-customSoftwareStatus: 
+customSoftwareStatus:
 	git -C customSoftwarePackages/distro-upgrade status
 	git -C customSoftwarePackages/reboot-required status
 	git -C customSoftwarePackages/lanscan status
@@ -230,15 +228,15 @@ customSoftwareStatus:
 	git -C customSoftwarePackages/hackbox-mimetype-defaults status
 	git -C customSoftwarePackages/geolocate status
 fix-permissions:
-	# run all commands with sudo or it will fail
-	# read allowed for all files and all users
-	sudo chmod -R ugo+r *
-	# remove write and execute for all files
-	sudo chmod -R ugo-wx *
-	# user has write permissions on all files
-	sudo chmod -R u+w *
-	# execute and read directories allowed for everyone
-	sudo chmod -R ugo+X *
+	# group and other users may not write or execute files but may read them
+	chmod -R go-rwx *
+	# also work on hidden files
+	chmod -R go-rwx ./.*
+	# user has write, read, and directory access permissions, also make all
+	# files non executable since during build the files will be given execute
+	# permissions in the package
+	chmod -R u-x,u+rwX *
+	chmod -R u-x,u+rwX ./.*
 clean-logs:
 	sudo rm -vf /opt/hackbox/Install_Log.txt
 	sudo rm -vf Install_Log.txt
@@ -266,14 +264,14 @@ getCurrentFirefoxSettings:
 	cp -v ~/.mozilla/firefox/*.default/proxyselector.rdf preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
 	# backup user styles stored by sylish
 	cp -v ~/.mozilla/firefox/*.default/stylish.sqlite preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
-	# get the bookmarks 
+	# get the bookmarks
 	cp -rv ~/.mozilla/firefox/*.default/bookmarkbackups preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
 	# copy the settings for toolbar states
 	cp -rv ~/.mozilla/firefox/*.default/xulstore.json preconfiguredSettings/userSettings/CORE/.mozilla/firefox/mwad0hks.default/
-test: 
-	# Strange syntax is strange because you need a return value of 0 
+test:
+	# Strange syntax is strange because you need a return value of 0
 	# aka no errors for each line in a makefile or it will fail completely
-	# and stop execution on the spot. Grep returns a error if no occurences
+	# and stop execution on the spot. Grep returns a error if no occurrences
 	# of the search are found. So it must be done this way to keep the
 	# searches going.
 	bash -c "more /opt/hackbox/Install_Log.txt | grep Error;exit 0"
