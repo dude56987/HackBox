@@ -443,14 +443,23 @@ catagory<:>message<:>Installing lanscan(scans lan for connected devices)
 catagory<:>localdeb<:>lanscan<:>/usr/bin/lanscan
 catagory<:>message<:>Installing Open NIC DNS(Open Unchained DNS Project)
 catagory<:>localdeb<:>opennic-dns<:>/usr/bin/opennic-dns-scan
+################################################################################
 # install firefox and firefox custom addons systemwide
+################################################################################
 catagory<:>message<:>Installing Firefox
 catagory<:>package<:>firefox
 # remove other webbrowsers
 catagory<:>rm-package<:>webbrowser-app
 catagory<:>rm-package<:>dillo
+# add custom firefox addons
+#-------------------------------------------------------------------------------
+# set default action to temporarly add security exceptions
+catagory<:>package<:>xul-ext-y-u-no-validate
+# add the ublock origin package to firefox and thunderbird for all users on the system
+catagory<:>package<:>xul-ext-ublock-origin
 # remove ubuntu firefox modifications
 catagory<:>rm-package<:>xul-ext-ubufox
+################################################################################
 # desktop download manager
 catagory<:>message<:>Installing uGet (Desktop download manager/accelerator)
 catagory<:>package<:>uget
