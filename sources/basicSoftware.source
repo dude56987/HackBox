@@ -351,10 +351,12 @@ catagory<:>package<:>xfce4-taskmanager
 catagory<:>message<:>Installing menulibre (Editor for system menu)
 catagory<:>package<:>menulibre
 # package manager improvements
-catagory<:>message<:>Installing aptitude (CLI Package Management Tool)
+catagory<:>message<:>Installing aptitude (CLI Package Management for apt)
 catagory<:>package<:>aptitude
 pre<:>message<:>Installing apt https support(repos can use https)
 pre<:>package<:>apt-transport-https
+catagory<:>message<:>Installing snapd (CLI Package manager for snap packages)
+catagory<:>package<:>snapd
 ########################
 # install image viewer #
 ########################
