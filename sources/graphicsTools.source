@@ -15,10 +15,12 @@ catagory<:>disable-launcher<:>/usr/share/applications/display-im6.q16.desktop
 ###################################
 catagory<:>message<:>Installing Blender (3D Design Tool)
 catagory<:>package<:>blender
-catagory<:>message<:>Installing Inkscape(Vector graphics tool)
+catagory<:>message<:>Installing Inkscape (Vector graphics tool)
 catagory<:>package<:>inkscape
-catagory<:>message<:>Installing Birdfont(Font design tool)
+catagory<:>message<:>Installing Birdfont (Font design tool)
 catagory<:>package<:>birdfont
+catagory<:>message<:>Installing Ubuntu Studio fonts (All available fonts)
+catagory<:>package<:>ubuntustudio-fonts
 catagory<:>message<:>Installing MyPaint
 catagory<:>package<:>mypaint
 catagory<:>message<:>Installing Gpick(A color picker that also figures out color schemes)
