@@ -1,7 +1,7 @@
 #! /usr/bin/python3
 ########################################################################
 # Program Designed to setup a new Linux system automatically via scripts
-# Copyright (C) 2015  Carl J Smith
+# Copyright (C) 2016  Carl J Smith
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -113,20 +113,20 @@ def loadFile(fileName):
 	except:
 		print("Failed to load : "+fileName)
 		return False
-	fileText=''
-	lineCount = 0
-	for line in fileObject:
-		fileText += line
-		#sys.stdout.write('Loading line '+str(lineCount)+'...\r')
-		lineCount += 1
-	#print "Finished Loading :",fileName
+	# get the size of the file being loaded to show progress
+	total=os.path.getsize(fileName)
+	loopBuffer = fileObject.read(4096)
+	outputBuffer = ''
+	while loopBuffer:
+		outputBuffer += loopBuffer
+		loopBuffer = fileObject.read(4096)
+		sys.stdout.write('\rLoading '+fileName+' '+str(int(float(len(outputBuffer))/total))+'%')
+	# create a newline
+	print()
+	# close the file
 	fileObject.close()
-	if fileText == None:
-		return False
-	else:
-		return fileText
-	#if somehow everything fails return fail
-	return False
+	# return the file output as a string
+	return outputBuffer
 ########################################################################
 def writeFile(fileName,contentToWrite):
 	'''
