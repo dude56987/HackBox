@@ -109,6 +109,10 @@ pre<:>rm-package<:>kde
 pre<:>rm-package<:>ubuntu-desktop
 pre<:>rm-package<:>unity
 ###################
+# hidden parts of the desktop
+pre<:>message<:>Installing ntp (Automated clock sync)
+pre<:>package<:>ntp
+###################
 # Password interface changes
 catagory<:>message<:>Make sudo have password feedback
 catagory<:>script<:>passwordFeedback
