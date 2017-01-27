@@ -631,6 +631,8 @@ catagory<:>package<:>gtk3-nocsd
 catagory<:>message<:>Installing Thunar(The Norse God of File Management)
 catagory<:>package<:>thunar
 catagory<:>package<:>thunar-volman
+# Add ShareOnLan package since it integrates into Thunar
+catagory<:>localdeb<:>shareonlan<:>/usr/bin/shareonlan
 # remove other file managers
 catagory<:>rm-package<:>nemo
 catagory<:>rm-package<:>nautilus
