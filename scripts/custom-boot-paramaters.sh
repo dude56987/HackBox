@@ -28,15 +28,15 @@
 # - Quiet boot
 #   - "quiet"
 #   - Boot faster
-# - Disable perdictable network names
+# - Disable predictable network names
 #   - "net.ifnames=0 biosdevname=0"
 #   - This makes it work like legacy, e.g. with eth0, wlan0, eth1, wlan1, etc.
 #     This should work perfectly for 99% of the people. Complex network card
 #     configurations are not what the default settings should address.
-# the line to be stubstuted, to add more options change the below line
+#   - If you use lots of network interfaces you may want to leave this out
+########################################################################
+# The line to be substituted, to add more options change the below subLine value
 subLine='GRUB_CMDLINE_LINUX_DEFAULT="quiet consoleblank=0 net.ifnames=0 biosdevname=0"'
-#subLine='GRUB_CMDLINE_LINUX_DEFAULT="quiet consoleblank=0 biosdevname=0"'
-#subLine='GRUB_CMDLINE_LINUX_DEFAULT="quiet consoleblank=0"'
 if ! cat /etc/default/grub | grep "$subLine";then
 	# uncomment the grub commandline options if they are commented out
 	sed -i -e 's/#GRUB_CMDLINE_LINUX_DEFAULT/GRUB_CMDLINE_LINUX_DEFAULT/g' /etc/default/grub
@@ -47,5 +47,5 @@ if ! cat /etc/default/grub | grep "$subLine";then
 	# update grub config
 	update-grub
 fi
-# install biosdevname if it is not already on the system
+# install biosdevname if it is not already on the system since the parameters given use it
 apt-get install biosdevname --assume-yes

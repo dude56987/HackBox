@@ -63,6 +63,8 @@ interactive<:>message<:>Adding custom systemd services
 interactive<:>script<:>custom-services
 interactive<:>message<:>Setting up darknet access
 interactive<:>script<:>darknet-setup
+interactive<:>message<:>Setting custom boot paramaters
+interactive<:>script<:>custom-boot-paramaters
 catagory<:>message<:>Setup power control login names for tty logins
 catagory<:>script<:>power-control-logins
 catagory<:>message<:>Checking if this is a laptop
@@ -73,12 +75,8 @@ catagory<:>message<:>Encrypting the swap partition
 catagory<:>script<:>encrypt-swap
 catagory<:>message<:>Fix Home Permissions(Users can't see other users stuff now)
 catagory<:>script<:>fix-home-permissions
-catagory<:>message<:>Disable console screen blanking
-catagory<:>script<:>disable-screenblank
 catagory<:>message<:>Changing the grub boot menu
 catagory<:>script<:>customize-grub
-catagory<:>message<:>Disable graphical bootsplash
-catagory<:>script<:>disable-bootsplash
 # ADD COWSAY and use it to display message that user interaction is no longer required
 # Add fortune, cowsay, and create none cow
 catagory<:>message<:>Setup cowsay and fortune
