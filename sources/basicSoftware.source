@@ -432,8 +432,6 @@ catagory<:>command<:>ufw enable
 ###################################
 catagory<:>message<:>Installing woof (CLI lan/internet file transfer)
 catagory<:>package<:>woof
-catagory<:>message<:>Open lan ports for woof right click functionality
-catagory<:>open-lan-port<:>9119
 catagory<:>message<:>Installing zeroconf support
 catagory<:>package<:>avahi-daemon
 catagory<:>package<:>avahi-discover
@@ -630,7 +628,10 @@ catagory<:>message<:>Installing Thunar(The Norse God of File Management)
 catagory<:>package<:>thunar
 catagory<:>package<:>thunar-volman
 # Add ShareOnLan package since it integrates into Thunar
+catagory<:>message<:>Installing ShareOnLAN (Share files over HTTP)
 catagory<:>localdeb<:>shareonlan<:>/usr/bin/shareonlan
+catagory<:>message<:>Open ports for ShareOnLan functionality
+catagory<:>open-port<:>9119
 # remove other file managers
 catagory<:>rm-package<:>nemo
 catagory<:>rm-package<:>nautilus

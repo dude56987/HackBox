@@ -158,6 +158,9 @@ distro-build:
 	##############
 pullCustomSoftware:
 	mkdir -p customSoftwarePackages
+	# ShareOnLAN (Share files on the LAN)
+	git clone https://github.com/dude56987/shareonlan.git customSoftwarePackages/shareonlan ||\
+	git -C customSoftwarePackages/shareonlan pull
 	# project-report (generate project reports for git repositories)
 	git clone https://github.com/dude56987/project-report.git customSoftwarePackages/project-report ||\
 	git -C customSoftwarePackages/project-report pull
