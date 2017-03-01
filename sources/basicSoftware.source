@@ -597,6 +597,8 @@ catagory<:>rm-package<:>pulseaudio
 catagory<:>message<:>Remove pavucontrol(pulseaudio volume control)
 catagory<:>rm-package<:>pavucontrol
 # mounting utilities and filesystem stuff #
+catagory<:>message<:>Installing MAT and MAT-GUI (File metadata cleaner)
+catagory<:>package<:>mat
 catagory<:>message<:>Installing mtpfs(media transfer protocol filesystem support)
 catagory<:>package<:>mtpfs
 catagory<:>message<:>Installing SSHFS(mount remote filesystems locally via sftp)
