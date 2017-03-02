@@ -12,12 +12,13 @@
 <action>
 	<icon>printer-printing-symbolic</icon>
 	<name>Print File</name>
-	<unique-id>1485302692406837-5</unique-id>
-	<command>lp %f</command>
+	<unique-id>1488440204843518-2</unique-id>
+	<command>lpr %f || lp %f || notify-send &quot;Failed to print %f&quot;</command>
 	<description>Prints the Selected file</description>
-	<patterns>*</patterns>
+	<patterns>*.odt;*.txt;*.doc;*.pdf;*.jpg;*.png;*.gif</patterns>
 	<startup-notify/>
 	<image-files/>
+	<other-files/>
 	<text-files/>
 </action>
 <action>
@@ -33,8 +34,8 @@
 <action>
 	<icon>audio-x-generic-symbolic</icon>
 	<name>Convert to audio</name>
-	<unique-id>1485302668964731-4</unique-id>
-	<command>avconv -i %f %f.mp3</command>
+	<unique-id>1488418911851219-6</unique-id>
+	<command>bash -c &quot;avconv -i %f %f.mp3 || ffmpeg -i %f %f.mp3 || notify-send &apos;Could not strip audio from %f&apos;&quot; | zenity --progress --pulsate --auto-close --auto-kill --no-cancel --title=&quot;Stripping audio from %f&quot; --text=&quot;Stripping audio from %f&quot;</command>
 	<description>Converts selected video to mp3 file</description>
 	<patterns>*</patterns>
 	<video-files/>
@@ -42,18 +43,18 @@
 <action>
 	<icon>emblem-system-symbolic</icon>
 	<name>Compress PDF</name>
-	<unique-id>1485303128648566-7</unique-id>
-	<command>terminator -x gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=%d/COMPRESSED_%n %f</command>
+	<unique-id>1488409518826942-12</unique-id>
+	<command>gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=%d/COMPRESSED_%n %f | zenity --progress --pulsate --auto-close --no-cancel --auto-kill --text=&quot;Compressing PDF %f&quot; &amp;&amp; notify-send &quot;Finished compressing %f&quot; || notify-send &quot;Failed to compress %f&quot;</command>
 	<description>Compresses a pdf file</description>
 	<patterns>*.pdf</patterns>
 	<startup-notify/>
 	<other-files/>
 </action>
 <action>
-	<icon>application-x-appliance-symbolic</icon>
+	<icon>text-x-generic-symbolic</icon>
 	<name>Crop PDF</name>
-	<unique-id>1485303150190173-8</unique-id>
-	<command>terminator -x pdfcrop %f %d/CROPED_%n</command>
+	<unique-id>1488440514439110-3</unique-id>
+	<command>pdfcrop %f %d/CROPPED_%n | zenity --progress --pulsate --auto-close --no-cancel --cancel-label=&quot;Stop Cropping&quot; --auto-kill --title=&quot;Cropping PDF %f&quot; --text=&quot;Cropping PDF %f&quot; &amp;&amp; notify-send &quot;Cropping of %f was successfull&quot;</command>
 	<description>Crops the edges off a pdf</description>
 	<patterns>*.pdf</patterns>
 	<startup-notify/>
@@ -155,5 +156,38 @@
 	<patterns>*</patterns>
 	<startup-notify/>
 	<directories/>
+</action>
+<action>
+	<icon>security-high-symbolic</icon>
+	<name>Scan for Viruses</name>
+	<unique-id>1485761305256896-10</unique-id>
+	<command>clamtk %f</command>
+	<description>Scan a directory for viruses</description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>edit-copy-symbolic</icon>
+	<name>Compare</name>
+	<unique-id>1488440843590254-6</unique-id>
+	<command>meld %F || notify-send &quot;Could not compare %F&quot;</command>
+	<description>Compare the differences between two to three files</description>
+	<patterns>*</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>list-add-symbolic</icon>
+	<name>Create Launcher</name>
+	<unique-id>1487188916341557-9</unique-id>
+	<command>exo-desktop-item-edit -t Application -c ~/.local/share/applications --command=&quot;$(echo .%d/%n)&quot; --name=%n</command>
+	<description>Create a custom launcher for a file</description>
+	<patterns>*</patterns>
+	<other-files/>
 </action>
 </actions>
