@@ -462,6 +462,9 @@ catagory<:>package<:>xul-ext-ublock-origin
 # remove ubuntu firefox modifications
 catagory<:>rm-package<:>xul-ext-ubufox
 ################################################################################
+# youtube-dl-selection is a easy graphical interface for youtube-dl
+catagory<:>message<:>Installing youtube-dl-selection (GUI for youtube-dl)
+catagory<:>localdeb<:>youtube-dl-selection<:>/usr/bin/youtube-dl-selection
 # desktop download manager
 catagory<:>message<:>Installing uGet (Desktop download manager/accelerator)
 catagory<:>package<:>uget

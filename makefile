@@ -158,6 +158,9 @@ distro-build:
 	##############
 pullCustomSoftware:
 	mkdir -p customSoftwarePackages
+	# youtube-dl-selection (Pass selection on clipboard to youtube-dl queue)
+	git clone https://github.com/dude56987/youtube-dl-selection.git customSoftwarePackages/youtube-dl-selection ||\
+	git -C customSoftwarePackages/youtube-dl-selection pull
 	# ShareOnLAN (Share files on the LAN)
 	git clone https://github.com/dude56987/shareonlan.git customSoftwarePackages/shareonlan ||\
 	git -C customSoftwarePackages/shareonlan pull
