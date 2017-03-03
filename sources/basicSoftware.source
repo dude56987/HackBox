@@ -623,6 +623,8 @@ catagory<:>message<:>Installing verve (xfce4 panel plugin)
 catagory<:>package<:>xfce4-verve-plugin
 catagory<:>message<:>Installing weather plugin (xfce4 panel plugin)
 catagory<:>package<:>xfce4-weather-plugin
+catagory<:>message<:>Installing Blueman (Bluetooth device manager)
+catagory<:>package<:>blueman
 ########################################################################
 # DESKTOP MODIFICATION UTILITIES : other
 ########################################################################
