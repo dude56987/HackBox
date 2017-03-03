@@ -436,6 +436,8 @@ catagory<:>message<:>Installing zeroconf support
 catagory<:>package<:>avahi-daemon
 catagory<:>package<:>avahi-discover
 catagory<:>package<:>libnss-mdns
+catagory<:>message<:>Installing graphical zeroconf browser
+catagory<:>package<:>avahi-ui-utils
 catagory<:>message<:>Installing curl and wget (CLI downloaders)
 catagory<:>package<:>wget
 catagory<:>package<:>curl
