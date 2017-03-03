@@ -5,25 +5,25 @@ catagory<:>message<:>Installing Hamster Time Tracker
 catagory<:>package<:>hamster-applet
 catagory<:>message<:>Installing Scribus
 catagory<:>package<:>scribus
-catagory<:>message<:>Installing Booklet Imposer(Create printable booklets)
+catagory<:>message<:>Installing Booklet Imposer (Create printable booklets)
 catagory<:>package<:>bookletimposer
 catagory<:>message<:>Installing View Your Mind (Mind mapping software)
 catagory<:>package<:>vym
-catagory<:>message<:>Installing Planner(Project Management)
+catagory<:>message<:>Installing Planner (Project Management)
 catagory<:>package<:>planner
-catagory<:>message<:>Installing DIA(Flowchart Tool)
+catagory<:>message<:>Installing DIA (Flowchart Tool)
 catagory<:>package<:>dia
 catagory<:>message<:>Installing HomeBank
 catagory<:>package<:>homebank
-catagory<:>message<:>Installing Calibre(Book Management Software)
+catagory<:>message<:>Installing Calibre (Book Management Software)
 catagory<:>package<:>calibre
 catagory<:>disable-launcher<:>/usr/share/applications/lrfviewer.desktop
 catagory<:>disable-launcher<:>/usr/share/applications/ebook-viewer.desktop
-catagory<:>message<:>Installing FocusWriter(Writing tool)
+catagory<:>message<:>Installing FocusWriter (Writing tool)
 catagory<:>package<:>focuswriter
-catagory<:>message<:>Installing Simple Scan(Interface for scanning documents)
+catagory<:>message<:>Installing Simple Scan (Interface for scanning documents)
 catagory<:>package<:>simple-scan
 # Workrave is commented out since it autostarts every login and
 # if you dont like it that is annoying
-#catagory<:>message<:>Installing Workrave(RSI Prevention tool)
+#catagory<:>message<:>Installing Workrave (RSI Prevention tool)
 #catagory<:>package<:>workrave

@@ -23,13 +23,13 @@ catagory<:>message<:>Installing Ubuntu Studio fonts (All available fonts)
 catagory<:>package<:>ubuntustudio-fonts
 catagory<:>message<:>Installing MyPaint
 catagory<:>package<:>mypaint
-catagory<:>message<:>Installing Gpick(A color picker that also figures out color schemes)
+catagory<:>message<:>Installing Gpick (A color picker that also figures out color schemes)
 catagory<:>package<:>gpick
-catagory<:>message<:>Installing gcolor2(A simple color picker)
+catagory<:>message<:>Installing gcolor2 (A simple color picker)
 catagory<:>package<:>gcolor2
-catagory<:>message<:>Installing QtQr(QR code Generator + Reader)
+catagory<:>message<:>Installing QtQr (QR code Generator + Reader)
 catagory<:>package<:>qtqr
 catagory<:>message<:>Installing Screen Ruler
 catagory<:>package<:>screenruler
-catagory<:>message<:>Installing Simple Scan(Interface for scanning documents)
+catagory<:>message<:>Installing Simple Scan (Interface for scanning documents)
 catagory<:>package<:>simple-scan

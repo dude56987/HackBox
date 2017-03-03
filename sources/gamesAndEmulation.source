@@ -34,13 +34,13 @@ catagory<:>package<:>tuxpaint-plugins-default
 catagory<:>message<:>Installing qjoypad
 catagory<:>package<:>qjoypad
 # ingame chat client
-catagory<:>message<:>Installing mumble(voip for games)
+catagory<:>message<:>Installing mumble (voip for games)
 catagory<:>package<:>mumble
 # add ppa for retroarch
 interactive<:>ppa<:>ppa:libretro/stable
 # retro console emulation with retroarch yo
 # hackbox.py installs the ppa at the begining
-catagory<:>message<:>Installing Retroarch(Retro Console Emulator)
+catagory<:>message<:>Installing Retroarch (Retro Console Emulator)
 catagory<:>package<:>retroarch
 catagory<:>package<:>retroarch-joypad-autoconfig
 # attempt to install all libretro cores

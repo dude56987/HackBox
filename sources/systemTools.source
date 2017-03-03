@@ -36,9 +36,9 @@ catagory<:>package<:>nmap
 catagory<:>message<:>Installing zenmap (GUI for nmap)
 catagory<:>package<:>zenmap
 # root kit detection
-catagory<:>message<:>Installing chkrootkit(checks the sysytem for rootkits)
+catagory<:>message<:>Installing chkrootkit (checks the sysytem for rootkits)
 catagory<:>package<:>chkrootkit
-interactive<:>message<:>Installing rkhunter(checks the sysytem for rootkits)
+interactive<:>message<:>Installing rkhunter (checks the sysytem for rootkits)
 interactive<:>package<:>rkhunter
 # monitoring tools
 catagory<:>message<:>Installing glances (Quick system overview tool)

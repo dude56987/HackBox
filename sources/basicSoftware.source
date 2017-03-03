@@ -69,11 +69,11 @@ catagory<:>message<:>Setup power control login names for tty logins
 catagory<:>script<:>power-control-logins
 catagory<:>message<:>Checking if this is a laptop
 catagory<:>script<:>laptop-check
-catagory<:>message<:>Change the system swappiness(Improve use of system RAM)
+catagory<:>message<:>Change the system swappiness (Improve use of system RAM)
 catagory<:>script<:>change-swappiness
 catagory<:>message<:>Encrypting the swap partition
 catagory<:>script<:>encrypt-swap
-catagory<:>message<:>Fix Home Permissions(Users can't see other users stuff now)
+catagory<:>message<:>Fix Home Permissions (Users can't see other users stuff now)
 catagory<:>script<:>fix-home-permissions
 catagory<:>message<:>Changing the grub boot menu
 catagory<:>script<:>customize-grub
@@ -94,7 +94,7 @@ catagory<:>command<:>cowsay -f tux "User Interaction is no longer required. You 
 ###################
 ## Install XFCE4 ##
 ###################
-pre<:>message<:>Installing XFCE4(Desktop Enviorment)
+pre<:>message<:>Installing XFCE4 (Desktop Enviorment)
 pre<:>package<:>xfce4
 # removing other desktop enviorments
 pre<:>rm-package<:>ubuntu-mate-desktop
@@ -114,37 +114,37 @@ pre<:>package<:>ntp
 # Password interface changes
 catagory<:>message<:>Make sudo have password feedback
 catagory<:>script<:>passwordFeedback
-catagory<:>message<:>Install gksu(graphical password input)
+catagory<:>message<:>Install gksu (graphical password input)
 catagory<:>package<:>gksu
 catagory<:>message<:>Make gksu launch automaticly for admin tools
 catagory<:>package<:>policykit-1-gnome
 ###################
-pre<:>message<:>Installing gdebi(Grapical Package Installer)
+pre<:>message<:>Installing gdebi (Grapical Package Installer)
 pre<:>package<:>gdebi
-pre<:>message<:>Installing debconf-utils(tools for working with deb files)
+pre<:>message<:>Installing debconf-utils (tools for working with deb files)
 pre<:>package<:>debconf-utils
 ###################
 # setup the shell #
 ###################
-catagory<:>message<:>Installing ZSH(Shell)
+catagory<:>message<:>Installing ZSH (Shell)
 catagory<:>package<:>zsh
 # set default shell
 catagory<:>script<:>set-default-shell
 ###################
-catagory<:>message<:>Installing broadcast(message all user on the system)
+catagory<:>message<:>Installing broadcast (message all user on the system)
 catagory<:>localdeb<:>broadcast<:>/usr/bin/broadcast
-catagory<:>message<:>Installing SSH(Remote Shell)
+catagory<:>message<:>Installing SSH (Remote Shell)
 catagory<:>package<:>ssh
-catagory<:>message<:>Installing MOSH(Improved SSH client)
+catagory<:>message<:>Installing MOSH (Improved SSH client)
 catagory<:>package<:>mosh
 ###################
 # video player
 ###################
-catagory<:>message<:>Installing VLC(Video Player)
+catagory<:>message<:>Installing VLC (Video Player)
 catagory<:>package<:>vlc
 catagory<:>package<:>vlc-nox
 catagory<:>package<:>vlc-plugin-vlsub
-catagory<:>message<:>Installing MPV(Simple Powerfull Video Player)
+catagory<:>message<:>Installing MPV (Simple Powerfull Video Player)
 catagory<:>package<:>mpv
 # remove other video players
 catagory<:>rm-package<:>totem
@@ -152,21 +152,21 @@ catagory<:>rm-package<:>totem
 # add ppa for xbmc but do not install it, this so if the user installs xbmc it will be at the latest version
 catagory<:>ppa<:>ppa:team-xbmc/ppa
 # Remove other document viewers and install atril
-catagory<:>message<:>Removing Evince(Document Viewer)
+catagory<:>message<:>Removing Evince (Document Viewer)
 # Incompatible with Xfce themes
 catagory<:>rm-package<:>evince
 # The below two are also good pdf viewers, however Atril is more user friendly
 catagory<:>rm-package<:>qpdfview
 catagory<:>rm-package<:>okular
-catagory<:>message<:>Installing Atril(Document Viewer/PDF Viewer)
+catagory<:>message<:>Installing Atril (Document Viewer/PDF Viewer)
 catagory<:>package<:>atril
 catagory<:>message<:>Installing Synaptic (GUI package manager)
 catagory<:>package<:>synaptic
 catagory<:>message<:>Installing Software Properties (GUI to manage repos)
 catagory<:>package<:>software-properties-gtk
-catagory<:>message<:>Installing Ubuntu-Drivers-Common(Propietry Driver Installer)
+catagory<:>message<:>Installing Ubuntu-Drivers-Common (Propietry Driver Installer)
 catagory<:>package<:>ubuntu-drivers-common
-catagory<:>message<:>Installing Pluma(Simple Text Editor)
+catagory<:>message<:>Installing Pluma (Simple Text Editor)
 catagory<:>package<:>pluma
 catagory<:>message<:>Removing redundant text editors
 catagory<:>rm-package<:>leafpad
@@ -175,11 +175,11 @@ catagory<:>rm-package<:>kate
 catagory<:>rm-package<:>mousepad
 catagory<:>message<:>Installing gnome-system-tools (Allows editing of users and groups)
 catagory<:>package<:>gnome-system-tools
-catagory<:>message<:>Removing redundant image burners(brasero)
+catagory<:>message<:>Removing redundant image burners (brasero)
 catagory<:>rm-package<:>brasero
-catagory<:>message<:>Removing redundant image burners(k3b)
+catagory<:>message<:>Removing redundant image burners (k3b)
 catagory<:>rm-package<:>k3b
-catagory<:>message<:>Installing Image Burner(xfburn)
+catagory<:>message<:>Installing Image Burner (xfburn)
 catagory<:>package<:>xfburn
 ########################################################################
 # The rest of these are apps that are probably not default but should be
@@ -190,15 +190,15 @@ catagory<:>package<:>stopwatch
 # this is nessary since I cant figure out the configs for perfered applications completely
 catagory<:>message<:>Installing xterm
 catagory<:>package<:>xterm
-catagory<:>message<:>Installing Goldendict(A dictionary that pulls from Wikipedia and Wiktionary)
+catagory<:>message<:>Installing Goldendict (A dictionary that pulls from Wikipedia and Wiktionary)
 catagory<:>package<:>goldendict
-catagory<:>message<:>Installing Goldendict Wordnet(A locally stored dictionary)
+catagory<:>message<:>Installing Goldendict Wordnet (A locally stored dictionary)
 catagory<:>package<:>goldendict-wordnet
-catagory<:>message<:>Installing GCP(CP but verbose)
+catagory<:>message<:>Installing GCP (CP but verbose)
 catagory<:>package<:>gcp
 # below package is required for gcp to work correctly
 catagory<:>package<:>python-progressbar
-catagory<:>message<:>Installing colordiff(colorize diff output)
+catagory<:>message<:>Installing colordiff (colorize diff output)
 catagory<:>package<:>colordiff
 # install zim and install it from the ppa if possible
 catagory<:>message<:>Installing Zim (Desktop wiki)
@@ -215,13 +215,13 @@ catagory<:>message<:>Installing LibreOffice
 catagory<:>package<:>libreoffice
 catagory<:>message<:>Installing Open Clipart resources for LibreOffice
 catagory<:>package<:>openclipart-libreoffice
-catagory<:>message<:>Removing Rhythmbox(Music Player)
+catagory<:>message<:>Removing Rhythmbox (Music Player)
 catagory<:>rm-package<:>rhythmbox
 # The Package banshee-community-extensions is pulling for user confirmation to setup the infrared remote, so its been removed
 # latter I will add back the comunity extensions individually excluding the IR remote one
-catagory<:>message<:>Installing Banshee(Music Player)
+catagory<:>message<:>Installing Banshee (Music Player)
 catagory<:>package<:>banshee
-catagory<:>message<:>Installing MOC(CLI Music Player)
+catagory<:>message<:>Installing MOC (CLI Music Player)
 catagory<:>package<:>moc
 catagory<:>message<:>Installing ffmpeg support for MOC
 catagory<:>package<:>moc-ffmpeg-plugin
@@ -246,7 +246,7 @@ catagory<:>message<:>Installing cheese (webcam photobooth)
 catagory<:>package<:>cheese
 catagory<:>message<:>Installing fswebcam (CLI webcam picture tool)
 catagory<:>package<:>fswebcam
-catagory<:>message<:>Installing TinyCameraMonitor(show when webcam is on)
+catagory<:>message<:>Installing TinyCameraMonitor (show when webcam is on)
 catagory<:>localdeb<:>tinycameramonitor
 # calculators
 catagory<:>message<:>Installing Qualculate (Calculator)
@@ -264,7 +264,7 @@ catagory<:>message<:>Installing convertall (Unit Converter GUI)
 catagory<:>package<:>convertall
 catagory<:>message<:>Installing terminator (terminal with lots of nice features)
 catagory<:>package<:>terminator
-catagory<:>message<:>Installing mcomix(Comic Book Viewer)
+catagory<:>message<:>Installing mcomix (Comic Book Viewer)
 catagory<:>package<:>mcomix
 catagory<:>message<:>Installing Disk Usage Tool
 catagory<:>package<:>baobab
@@ -287,7 +287,7 @@ catagory<:>package<:>autotrash
 catagory<:>message<:>Setup cron job for autotrash to remove items after 40 days
 catagory<:>cron<:>autotrash<:>@daily<:>for user in /home/*;do user=$(echo $user | sed 's/\/home\///g');sudo -u $user autotrash -v -d 40;done
 ##### Additonal Fonts #####
-catagory<:>message<:>Installing fonts(opendyslexic)
+catagory<:>message<:>Installing fonts (opendyslexic)
 catagory<:>package<:>fonts-opendyslexic
 catagory<:>message<:>Installing other custom fonts
 catagory<:>script<:>install-custom-fonts
@@ -297,14 +297,14 @@ catagory<:>script<:>install-custom-fonts
 # lnav views system logs, log cleaner removes logs on a timer
 catagory<:>message<:>Installing lnav (CLI System Log Viewer)
 catagory<:>package<:>lnav
-interactive<:>message<:>Installing log-cleaner(Manage cron job to delete logs)
+interactive<:>message<:>Installing log-cleaner (Manage cron job to delete logs)
 interactive<:>localdeb<:>log-cleaner<:>/usr/bin/logcleanersetup
 # set the log cleaner to clean the logs yearly
 interactive<:>command<:>logcleanersetup --yearly
 # for customizing the colors in gtk
 catagory<:>message<:>Installing gtk-theme-config
 catagory<:>package<:>gtk-theme-config
-catagory<:>message<:>Installing xcalib(calibrate video)
+catagory<:>message<:>Installing xcalib (calibrate video)
 catagory<:>package<:>xcalib
 catagory<:>message<:>Installing texlive-extra-utils (for pdf croping and compressing commands)
 catagory<:>package<:>texlive-extra-utils
@@ -317,22 +317,22 @@ catagory<:>message<:>Enable ttys to work correctly
 catagory<:>script<:>enable-grub-terminal
 catagory<:>message<:>Installing screen (splitscreen and multiterminal switching)
 catagory<:>package<:>screen
-catagory<:>message<:>Installing pdmenu(CLI Curses Menu)
+catagory<:>message<:>Installing pdmenu (CLI Curses Menu)
 catagory<:>package<:>pdmenu
 catagory<:>message<:>Installing espeak (CLI electronic voice synth)
 catagory<:>package<:>espeak
 catagory<:>message<:>Installing gespeaker (GUI for espeak)
 catagory<:>package<:>gespeaker
-catagory<:>message<:>Installing geolocate(Figure out the location of pcs)
+catagory<:>message<:>Installing geolocate (Figure out the location of pcs)
 catagory<:>localdeb<:>geolocate<:>/usr/bin/geolocate
 # install colortest-python and link it to the colortest command
-catagory<:>message<:>Installing colortest-python(shows terminal color settings)
+catagory<:>message<:>Installing colortest-python (shows terminal color settings)
 catagory<:>package<:>colortest-python
 catagory<:>command<:>link /usr/bin/colortest-python /usr/bin/colortest
 ########################################################################
 # unetbootin has some issues currently as a depend is not included
 # to the below installs it for ya
-catagory<:>message<:>Installing USB Creator(Burns image files to flash drives)
+catagory<:>message<:>Installing USB Creator (Burns image files to flash drives)
 catagory<:>package<:>usb-creator-common
 catagory<:>package<:>usb-creator-gtk
 ########################################################################
@@ -355,14 +355,14 @@ catagory<:>package<:>menulibre
 # package manager improvements
 catagory<:>message<:>Installing aptitude (CLI Package Management for apt)
 catagory<:>package<:>aptitude
-pre<:>message<:>Installing apt https support(repos can use https)
+pre<:>message<:>Installing apt https support (repos can use https)
 pre<:>package<:>apt-transport-https
 catagory<:>message<:>Installing snapd (CLI Package manager for snap packages)
 catagory<:>package<:>snapd
 ########################
 # install image viewer #
 ########################
-catagory<:>message<:>Installing Eye of Mate(Image Viewer)
+catagory<:>message<:>Installing Eye of Mate (Image Viewer)
 catagory<:>package<:>eom
 ##################################
 catagory<:>message<:>Remove Redundant Image Viewers
@@ -378,7 +378,7 @@ catagory<:>rm-package<:>xloadimage
 ####################
 # photo organizers #
 ####################
-catagory<:>message<:>Installing shotwell(Photo Manager)
+catagory<:>message<:>Installing Shotwell (Photo Manager)
 catagory<:>package<:>shotwell
 ###################################
 catagory<:>message<:>Removing other photo managers
@@ -400,25 +400,25 @@ catagory<:>message<:>Installing Font Manager
 catagory<:>package<:>font-manager
 catagory<:>message<:>Installing Catfish (File Search)
 catagory<:>package<:>catfish
-catagory<:>message<:>Installing iotop(Top for I/O of disk)
+catagory<:>message<:>Installing iotop (Top for I/O of disk)
 catagory<:>package<:>iotop
-catagory<:>message<:>Installing iftop(Top for Network Usage)
+catagory<:>message<:>Installing iftop (Top for Network Usage)
 catagory<:>package<:>iftop
-catagory<:>message<:>Installing vnstat(stats on network usage)
+catagory<:>message<:>Installing vnstat (Stats on network usage)
 catagory<:>package<:>vnstat
-catagory<:>message<:>Installing vnstati(generate graphics of vnstat data)
+catagory<:>message<:>Installing vnstati (Generate graphics of vnstat data)
 catagory<:>package<:>vnstati
-catagory<:>message<:>Installing nethogs(view programs using the most bandwith)
+catagory<:>message<:>Installing nethogs (view programs using the most bandwith)
 catagory<:>package<:>nethogs
-catagory<:>message<:>Installing prettyping(Generate a ping graph with ASCII art)
+catagory<:>message<:>Installing prettyping (Generate a ping graph with ASCII art)
 catagory<:>command<:>curl https://raw.githubusercontent.com/denilsonsa/prettyping/master/prettyping >> /usr/bin/prettyping && chmod +x /usr/bin/prettyping
 # hackbox-system-monitor to track system usage over time
-catagory<:>message<:>Installing hackbox-system-monitor(System Stat Tracker)
+catagory<:>message<:>Installing hackbox-system-monitor (System Stat Tracker)
 catagory<:>localdeb<:>hackbox-system-monitor<:>/usr/bin/hackbox-system-monitor-update
 ###################################
-catagory<:>message<:>Installing fdupes(Remove duplicate files)
+catagory<:>message<:>Installing fdupes (Remove duplicate files)
 catagory<:>package<:>fdupes
-catagory<:>message<:>Installing resetsettings(resets settings to defaults)
+catagory<:>message<:>Installing resetsettings (resets settings to defaults)
 catagory<:>localdeb<:>resetsettings<:>/usr/bin/resetsettings
 ########################################################################
 # SECTION FOR INTERNET SOFTWARE #
@@ -441,11 +441,11 @@ catagory<:>package<:>avahi-ui-utils
 catagory<:>message<:>Installing curl and wget (CLI downloaders)
 catagory<:>package<:>wget
 catagory<:>package<:>curl
-catagory<:>message<:>Installing dnsmasq(Cache local DNS queries)
+catagory<:>message<:>Installing dnsmasq (Cache local DNS queries)
 catagory<:>package<:>dnsmasq
-catagory<:>message<:>Installing lanscan(scans lan for connected devices)
+catagory<:>message<:>Installing lanscan (scans lan for connected devices)
 catagory<:>localdeb<:>lanscan<:>/usr/bin/lanscan
-catagory<:>message<:>Installing Open NIC DNS(Open Unchained DNS Project)
+catagory<:>message<:>Installing Open NIC DNS (Open Unchained DNS Project)
 catagory<:>localdeb<:>opennic-dns<:>/usr/bin/opennic-dns-scan
 ################################################################################
 # install firefox and firefox custom addons systemwide
@@ -501,27 +501,27 @@ catagory<:>message<:>Installing Gourmet (Recipe Manager)...
 catagory<:>package<:>gourmet
 # Bitcoin wallet
 interactive<:>ppa<:>ppa:bitcoin/bitcoin
-catagory<:>message<:>Installing Bitcoin Core(e-Currency wallet)
+catagory<:>message<:>Installing Bitcoin Core (e-Currency wallet)
 catagory<:>package<:>bitcoin-qt
 ##########################################################
 # encrypted internet communications programs in progress #
 ##########################################################
 # bitmessage (something like email replacement with built in encryption and no central authority)
-catagory<:>message<:>Installing pybitmessage-stable-updater(Encrypted Messaging System)
+catagory<:>message<:>Installing pybitmessage-stable-updater (Encrypted Messaging System)
 # this package pulls the stable github repo for bitmessage
 catagory<:>localdeb<:>pybitmessage-stable-updater<:>/usr/bin/bitmessage-update
 # tox ( encrypted decentralized instant messageing, voice/video, and file transfer)
 # currently using the opensuse build service version of the tox repo
 catagory<:>deb-repo<:>deb http://download.opensuse.org/repositories/home:/antonbatenev:/tox/xUbuntu_$VERSION /<:>http://download.opensuse.org/repositories/home:antonbatenev:tox/xUbuntu_$VERSION/Release.key
 # the tox gui package is qtox, there are more, I like qtox
-catagory<:>message<:>Installing QTox(TOX GUI)
+catagory<:>message<:>Installing QTox (TOX GUI)
 catagory<:>package<:>qtox
-catagory<:>message<:>Installing toxic(TOX CLI)
+catagory<:>message<:>Installing toxic (TOX CLI)
 catagory<:>package<:>toxic
 main<:>disable-launcher<:>/usr/share/applications/toxic.desktop
 # Syncthing, its getting there
 interactive<:>deb-repo<:>deb http://apt.syncthing.net/ syncthing release<:>https://syncthing.net/release-key.txt
-catagory<:>message<:>Installing Syncthing-GTK(Sync directories)
+catagory<:>message<:>Installing Syncthing-GTK (Sync directories)
 catagory<:>package<:>syncthing
 catagory<:>package<:>syncthing-gtk
 ######################
@@ -536,7 +536,7 @@ catagory<:>package<:>retroshare06-voip-plugin
 ################
 #install pidgin#
 ################
-catagory<:>message<:>Installing Pidgin(Instant Messenger)
+catagory<:>message<:>Installing Pidgin (Instant Messenger)
 catagory<:>package<:>pidgin
 # allow the firewall to passthrough for pidgin
 catagory<:>message<:>Configuring firewall for bonjour chat on lan
@@ -544,46 +544,46 @@ catagory<:>open-lan-port<:>5298
 ##########################
 # install pidgin plugins #
 ##########################
-catagory<:>message<:>Installing Pidgin Plugin(Away on Lock)
+catagory<:>message<:>Installing Pidgin Plugin (Away on Lock)
 # away on lock installs gnome-screensaver, so nope for now
 #catagory<:>package<:>pidgin-awayonlock
-catagory<:>message<:>Installing Pidgin Plugin(Encryption)
+catagory<:>message<:>Installing Pidgin Plugin (Encryption)
 catagory<:>package<:>pidgin-encryption
-catagory<:>message<:>Installing Pidgin Plugin(Prefs)
+catagory<:>message<:>Installing Pidgin Plugin (Prefs)
 catagory<:>package<:>pidgin-extprefs
-catagory<:>message<:>Installing Pidgin Plugin(Telegram)
+catagory<:>message<:>Installing Pidgin Plugin (Telegram)
 catagory<:>package<:>telegram-purple
-catagory<:>message<:>Installing Pidgin Plugin(Facebook)
+catagory<:>message<:>Installing Pidgin Plugin (Facebook)
 catagory<:>package<:>pidgin-facebookchat
 catagory<:>package<:>purple-facebook
-catagory<:>message<:>Installing Pidgin Plugin(Hotkeys)
+catagory<:>message<:>Installing Pidgin Plugin (Hotkeys)
 catagory<:>package<:>pidgin-hotkeys
-catagory<:>message<:>Installing Pidgin Plugin(Notify)
+catagory<:>message<:>Installing Pidgin Plugin (Notify)
 catagory<:>package<:>pidgin-libnotify
-catagory<:>message<:>Installing Pidgin Plugin(Microblog)
+catagory<:>message<:>Installing Pidgin Plugin (Microblog)
 catagory<:>package<:>pidgin-microblog
-catagory<:>message<:>Installing Pidgin Plugin(OTR)
+catagory<:>message<:>Installing Pidgin Plugin (OTR)
 catagory<:>package<:>pidgin-otr
-catagory<:>message<:>Installing Pidgin Plugin(Skype)
+catagory<:>message<:>Installing Pidgin Plugin (Skype)
 catagory<:>package<:>pidgin-skype
-catagory<:>message<:>Installing Pidgin Plugin(Themes)
+catagory<:>message<:>Installing Pidgin Plugin (Themes)
 catagory<:>package<:>pidgin-themes
-catagory<:>message<:>Installing Pidgin Plugin(Twitter)
+catagory<:>message<:>Installing Pidgin Plugin (Twitter)
 catagory<:>package<:>pidgin-twitter
-catagory<:>message<:>Installing Pidgin Plugin(Privacy Please)
+catagory<:>message<:>Installing Pidgin Plugin (Privacy Please)
 catagory<:>package<:>pidgin-privacy-please
-catagory<:>message<:>Installing Pidgin Plugin(Pack)
+catagory<:>message<:>Installing Pidgin Plugin (Pack)
 catagory<:>package<:>pidgin-plugin-pack
 ########################################################################
 # DESKTOP MODIFICATION UTILITIES : xfce plugins/ tray stuff
 ########################################################################
 # Indicator is now nessary to make some applications work as some things no longer support systray
-catagory<:>message<:>Install Xfce indicator plugin(ubuntu version of systray)
+catagory<:>message<:>Install Xfce indicator plugin (ubuntu version of systray)
 catagory<:>package<:>xfce4-indicator-plugin
 # kdocker (click to make any program a tray icon)
 catagory<:>package<:>kdocker
 #### install volumeicon and remove volumed service to remove redundancy, also remove pulseaudio to simplify the volume options for users, install alsa as sound system
-catagory<:>message<:>Install ALSA(Sound System)
+catagory<:>message<:>Install ALSA (Sound System)
 catagory<:>package<:>alsa
 catagory<:>message<:>Install alsa-oss
 catagory<:>package<:>alsa-oss
@@ -595,31 +595,31 @@ catagory<:>message<:>Install gnome-alsamixer (alsamixer GUI)
 catagory<:>package<:>gnome-alsamixer
 # copy a launcher for the volumeicon to the autostart directory
 catagory<:>message<:>set volumeicon to autostart
-catagory<:>message<:>Remove xfce volumed(redundant with above program installed)
+catagory<:>message<:>Remove xfce volumed (redundant with above program installed)
 catagory<:>rm-package<:>xfce4-volumed
 catagory<:>message<:>Remove pulseaudio
 catagory<:>rm-package<:>pulseaudio
-catagory<:>message<:>Remove pavucontrol(pulseaudio volume control)
+catagory<:>message<:>Remove pavucontrol (pulseaudio volume control)
 catagory<:>rm-package<:>pavucontrol
 # mounting utilities and filesystem stuff #
 catagory<:>message<:>Installing MAT and MAT-GUI (File metadata cleaner)
 catagory<:>package<:>mat
-catagory<:>message<:>Installing mtpfs(media transfer protocol filesystem support)
+catagory<:>message<:>Installing mtpfs (media transfer protocol filesystem support)
 catagory<:>package<:>mtpfs
-catagory<:>message<:>Installing SSHFS(mount remote filesystems locally via sftp)
+catagory<:>message<:>Installing SSHFS (mount remote filesystems locally via sftp)
 catagory<:>package<:>sshfs
 catagory<:>message<:>Installing sshshuttle (Send all connections though a ssh tunnel)
 catagory<:>package<:>sshshuttle
 ####
-catagory<:>message<:>Installing countdown timer(xfce4 panel plugin)
+catagory<:>message<:>Installing countdown timer (xfce4 panel plugin)
 catagory<:>package<:>xfce4-timer-plugin
-catagory<:>message<:>Installing places(xfce4 panel plugin)
+catagory<:>message<:>Installing places (xfce4 panel plugin)
 catagory<:>package<:>xfce4-places-plugin
-catagory<:>message<:>Installing system load plugin(xfce4 panel plugin)
+catagory<:>message<:>Installing system load plugin (xfce4 panel plugin)
 catagory<:>package<:>xfce4-systemload-plugin
-catagory<:>message<:>Installing smartbookmark(xfce4 panel plugin)
+catagory<:>message<:>Installing smartbookmark (xfce4 panel plugin)
 catagory<:>package<:>xfce4-smartbookmark-plugin
-catagory<:>message<:>Installing verve(xfce4 panel plugin)
+catagory<:>message<:>Installing verve (xfce4 panel plugin)
 catagory<:>package<:>xfce4-verve-plugin
 catagory<:>message<:>Installing weather plugin (xfce4 panel plugin)
 catagory<:>package<:>xfce4-weather-plugin
@@ -630,10 +630,10 @@ catagory<:>package<:>xfce4-weather-plugin
 # TODO: this requires a ppa currently on ubuntu but it is debian unstable for the next release
 # TODO: remove the webupd8 ppa when ubuntu has this package
 interactive<:>ppa<:>ppa:nilarimogard/webupd8
-catagory<:>message<:>Installing gtk3-nocsd(disable clientside decorations)
+catagory<:>message<:>Installing gtk3-nocsd (disable clientside decorations)
 catagory<:>package<:>gtk3-nocsd
 # file manager stuff
-catagory<:>message<:>Installing Thunar(The Norse God of File Management)
+catagory<:>message<:>Installing Thunar (The Norse God of File Management)
 catagory<:>package<:>thunar
 catagory<:>package<:>thunar-volman
 # Add ShareOnLan package since it integrates into Thunar
@@ -663,7 +663,7 @@ catagory<:>package<:>variety
 catagory<:>message<:>Installing Conky (Desktop widget program)
 catagory<:>package<:>conky-all
 # Install guake and removing other drop down terminals
-catagory<:>message<:>Installing Guake(drop down terminal)
+catagory<:>message<:>Installing Guake (drop down terminal)
 catagory<:>package<:>guake
 catagory<:>message<:>Setting up Autostart for Guake
 catagory<:>command<:>cp -v /usr/share/applications/guake.desktop /etc/xdg/autostart/guake.desktop
@@ -672,22 +672,22 @@ catagory<:>rm-package<:>tilda
 catagory<:>rm-package<:>yeahconsole
 catagory<:>rm-package<:>yakuake
 #######
-catagory<:>message<:>Installing tumblerd-extra-plugins(renders thumbnails of videos)
+catagory<:>message<:>Installing tumblerd-extra-plugins (renders thumbnails of videos)
 catagory<:>package<:>tumbler-plugins-extra
 # Setup clipboard manager stuff
 catagory<:>message<:>Clearing old clipboard managers
 catagory<:>rm-package<:>clipman
 catagory<:>rm-package<:>klipper
-catagory<:>message<:>Installing Clipit(Clipboard Manager)
+catagory<:>message<:>Installing Clipit (Clipboard Manager)
 catagory<:>package<:>clipit
 # install desktop nova and the xfce module of the program
-# catagory<:>message<:>Installing Desktop-Nova(Wallpaper Switcher)####catagory<:>package<:>desktopnova
+# catagory<:>message<:>Installing Desktop-Nova (Wallpaper Switcher)####catagory<:>package<:>desktopnova
 # Setting up xfce desktop Support####catagory<:>package<:>desktopnova-module-xfce
 catagory<:>message<:>Installing xfce whiskermenu
 catagory<:>package<:>xfce4-whiskermenu-plugin
-catagory<:>message<:>Installing mugshot(User info management)
+catagory<:>message<:>Installing mugshot (User info management)
 catagory<:>package<:>mugshot
-catagory<:>message<:>Installing identicon(Generate unique images from MD5 Hashes)
+catagory<:>message<:>Installing identicon (Generate unique images from MD5 Hashes)
 catagory<:>localdeb<:>identicon-bash
 catagory<:>message<:>Installing xfce power manager
 catagory<:>package<:>xfce4-power-manager
@@ -722,7 +722,7 @@ catagory<:>message<:>Installing fail2ban
 catagory<:>package<:>fail2ban
 catagory<:>message<:>Installing Virus Scanner
 catagory<:>package<:>clamtk
-interactive<:>message<:>Installing CryptKeeper(Create encrypted folders)
+interactive<:>message<:>Installing CryptKeeper (Create encrypted folders)
 interactive<:>package<:>cryptkeeper
 ########################################################################
 # catagory<:>message<:>Remove stupid shit from Ubuntu that tracks your activity
