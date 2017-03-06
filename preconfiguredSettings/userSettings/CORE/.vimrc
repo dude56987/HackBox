@@ -3,6 +3,7 @@
 "############################################################"
 " Create alias for spell-checker, use :Spellcheck to turn it on"
 command Spellcheck setlocal spell spelllang=en_us
+command SpellcheckOff setlocal nospell
 "Commands to convert between tabs and spaces"
 command TabsToSpaces set et | ret!
 command SpacesToTabs set et! | ret!
