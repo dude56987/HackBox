@@ -64,7 +64,7 @@ clear;
 #  To change the theme used replace tux with one of the
 #  cowfiles listed by the command cowsay -l
 more ~/.motd | cowsay -f none
-# check if the user is in a fullscreen terminal
+# check if the user is in a fullscreen terminal, tty1 though 4 will be opened as byobu instances
 if tty | grep tty1 || tty | grep tty2 || tty | grep tty3 || tty | grep tty4; then
 	# if Xorg is not running then launch a graphical window system
 	if ! ps -e | grep Xorg; then
@@ -78,77 +78,8 @@ if tty | grep tty1 || tty | grep tty2 || tty | grep tty3 || tty | grep tty4; the
 		fi
 		# if x does not need started or does not exist then launch byobu
 	fi
-	# check where the byobu settings are being stored
-	if [ -d .byobu/ ]; then
-		configPath=".byobu/";
-	elif [ -d .local/share/byobu ]; then
-		configPath=".local/share/byobu/";
-	fi
-	echo "Config path set as ${configPath}"
-	# check if the user is new and would like help
-	if [ ! -f ${configPath}advanceduser ]; then
-		# check if programs are installed for enviorment
-		if [ ! -f /usr/bin/screen ]; then
-			echo "Screen was not found!";
-			echo "Please enter your password to install it...";
-			sudo apt-get install screen --assume-yes;
-		fi
-		if [ ! -f /usr/bin/pdmenu ]; then
-			echo "pdmenu was not found!";
-			echo "Please enter your password to install it...";
-			sudo apt-get install pdmenu --assume-yes;
-		fi
-		if [ ! -f /usr/bin/vlock ]; then
-			echo "vlock was not found!";
-			echo "Please enter your password to install it...";
-			sudo apt-get install vlock --assume-yes;
-		fi
-		if locate libgpm | grep libgpm; then
-			echo "gpm was not found!";
-			echo "Please enter your password to install it...";
-			sudo apt-get install gpm --assume-yes;
-		fi
-		# set the caps lock to work as the escape key
-		if more /etc/default/keyboard | grep 'XKBOPTIONS=\"\"'; then
-			sudo sed -i 's/XKBOPTIONS=""/XKBOPTIONS="caps:escape"/g' /etc/default/keyboard
-			sudo dpkg-reconfigure keyboard-configuration
-		fi
-
-		#set byobu backend to screen for following stuff to work
-		byobu-select-backend screen;
-		# asks user for input
-		clear
-		echo "=============================================================="
-		echo "It has been detected that this is your first time using a TTY!"
-		echo "=============================================================="
-		echo "Would you like to view the help file to get you started? [y/n]: ";
-		# read the user input into string variable
-		read userAnwserString;
-		if [ "$userAnwserString" = "y" ]; then
-			echo "Appending help file to launch with byobu...";
-			echo "screen -t MENU pdmenu" > ${configPath}windows;
-			echo "screen -t HELP bash -c 'less ~/.terminalHelpFile'" >> ${configPath}windows;
-			echo "screen -t SHELL zsh" >> ${configPath}windows;
-			sort -u ${configPath}windows -o ${configPath}windows;
-			echo "select HELP" >> ${configPath}windows;
-		else
-			# write window setup file
-			echo "screen -t MENU pdmenu" > ${configPath}windows;
-			echo "screen -t SHELL zsh" >> ${configPath}windows;
-			echo "select SHELL" >> ${configPath}windows;
-			# check if the user wants to disable help menu forever
-			echo "Ask about the help file next time? [y/n]: ";
-			read userConfirmForever;
-			if [ "$userConfirmForever" = "n" ]; then
-				# add the flag file that prevents this from running
-				echo 'You are truly a supa hakka!' > ${configPath}advanceduser;
-				echo 'To view the help file at any time use the following command.';
-				echo 'less ~/.terminalHelpFile';
-				echo 'Press enter to proceed...';
-				read;
-			fi
-		fi
-	fi
+	# set byobu backend to screen for the customized configuration to work
+	byobu-select-backend screen;
 	# launch byobu
 	byobu;
 	# exit when all terminals are closed

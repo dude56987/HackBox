@@ -1,4 +1,18 @@
 #! /bin/bash
+helpStartCLI(){ # CLI help function to cleanup automated help
+	less ~/.terminalHelpFile;
+	# if the help file is still default in the terminal interface ask if the user wants it removed forever
+	if cat ~/.byobu/windows | grep "HELP";then
+		if dialog --yesno "Disable HELP forever?" 0 0;then
+			# remove the help window in the config
+			sed -i "s/^screen -t HELP.*$//g" ~/.byobu/windows;
+			# select the shell by default
+			sed -i "s/select HELP/select SHELL/g" ~/.byobu/windows;
+			# display one last message to the user
+			dialog --msgbox "You can still access the help with the 'helpStartCLI' command after this." 0 0;
+		fi
+	fi
+}
 emptyTrash(){ # empty the trash can
 	echo -n "Are you sure you would like to delete all files in the trash forever? [y/n]: "
 	read ANWSER
@@ -19,20 +33,20 @@ download-random-wallpapers(){
 	cd
 }
 download-random-anime-wallpapers(){
-	curl http://boards.4chan.org/w/ | sed 's/ /\n/g' | grep "href" | sed 's/\"/\n/g' | grep //i.4cdn.org/w/ | sort -u | sed 's/\/\/i/http:\/\/i/g' > /tmp/images.list 
+	curl http://boards.4chan.org/w/ | sed 's/ /\n/g' | grep "href" | sed 's/\"/\n/g' | grep //i.4cdn.org/w/ | sort -u | sed 's/\/\/i/http:\/\/i/g' > /tmp/images.list
 	mkdir -p ~/Pictures/Wallpapers/
 	cd ~/Pictures/Wallpapers/
-	wget -i /tmp/images.list 
+	wget -i /tmp/images.list
 	fdupes -rdN ~/Pictures/Wallpapers
 	cd
 }
 download-random-quote-wallpapers(){
-	wget http://reddit.com/r/QuotesPorn/ -O /tmp/images.list 
-	sed -i 's/\"/\n/g' /tmp/images.list 
-	more /tmp/images.list | grep http://i.imgur.com/ > /tmp/images.final 
+	wget http://reddit.com/r/QuotesPorn/ -O /tmp/images.list
+	sed -i 's/\"/\n/g' /tmp/images.list
+	more /tmp/images.list | grep http://i.imgur.com/ > /tmp/images.final
 	mkdir -p ~/Pictures/Wallpapers/
 	cd  ~/Pictures/Wallpapers/
-	wget -i /tmp/images.final 
+	wget -i /tmp/images.final
 	fdupes -rdN ~/Pictures/Wallpapers/
 	find ~/Pictures/Wallpapers/ -type f -size -100k -exec rm -v {} \;
 	cd

@@ -19,6 +19,8 @@ interactive<:>localdeb<:>desktop-layout-picker<:>/usr/bin/desktop-layout-picker
 # setup custom desktop settings
 interactive<:>message<:>Installing custom desktop settings
 interactive<:>script<:>custom-desktop
+interactive<:>message<:>Configuring custom key bindings
+interactive<:>script<:>custom-keyboard
 # setup custom themes and disable duplicated launchers used in control panel
 pre<:>message<:>Installing custom themes
 pre<:>script<:>custom-themes
@@ -294,6 +296,17 @@ catagory<:>script<:>install-custom-fonts
 ########################################################################
 # UTILITIES #
 ########################################################################
+# CLI desktop interface basics
+catagory<:>message<:>Installing screen (CLI Screen management)
+catagory<:>package<:>screen
+catagory<:>message<:>Installing byobu (CLI multi terminal interface)
+catagory<:>package<:>byobu
+catagory<:>message<:>Installing pdmenu (CURSES Application Menu)
+catagory<:>package<:>pdmenu
+catagory<:>message<:>Installing vlock (CURSES terminal session lock)
+catagory<:>package<:>vlock
+catagory<:>message<:>Installing gpm (Mouse support in the terminal)
+catagory<:>package<:>gpm
 # lnav views system logs, log cleaner removes logs on a timer
 catagory<:>message<:>Installing lnav (CLI System Log Viewer)
 catagory<:>package<:>lnav

@@ -1,0 +1,4 @@
+screen -t MENU pdmenu
+screen -t HELP bash -c ". ~/.bashFunctions;helpStartCLI;"
+screen -t SHELL zsh
+select HELP
