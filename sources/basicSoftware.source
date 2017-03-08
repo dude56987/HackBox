@@ -17,6 +17,11 @@ interactive<:>localdeb<:>hackbox-mimetype-defaults<:>/usr/share/applications/exo
 interactive<:>message<:>Installing Desktop Layout Picker (Change desktop layout)
 interactive<:>localdeb<:>desktop-layout-picker<:>/usr/bin/desktop-layout-picker
 # setup custom desktop settings
+interactive<:>message<:>Configuring custom default settings for all users
+interactive<:>script<:>custom-default-settings
+# randomize the firefox profile after the above so the default firefox profile exists
+interactive<:>message<:>Randomizing firefox profile paths
+interactive<:>script<:>randomize-firefox-profile
 interactive<:>message<:>Installing custom desktop settings
 interactive<:>script<:>custom-desktop
 interactive<:>message<:>Configuring custom key bindings

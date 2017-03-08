@@ -1,6 +1,24 @@
 #! /bin/bash
-# launched on first user startup, this script is used for things that only
-# need to be done once. This script must delete itself at the end.
+########################################################################
+# Run things that only need done on the users first login
+# Copyright (C) 2017  Carl J Smith
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+########################################################################
+# Launched on first user startup, this script is used for things that only need
+# to be done once. This script will be launched and deleted by .profile on the
+# users first run
 ##########################################################################
 # set SuccessCheck to 1 if anything dont work set it to 0 so the script
 # will run again
@@ -12,39 +30,6 @@ if cat ~/.purple/accounts.xml | grep AwesomeUserWhoMightBeANoob; then
 	username=$(echo $(whoami)"@"$(hostname))
 	sed -i.bak "s/AwesomeUserWhoMightBeANoob@/${IRCusername}/g" ~/.purple/accounts.xml
 	sed -i.bak "s/AwesomeUserWhoMightBeANoob/${username}/g" ~/.purple/accounts.xml
-fi
-# randomize the firefox profile names
-if [ -d ~/.mozilla/firefox/ ];then
-	username=$(whoami)
-	counter=0
-	# remove the exiting profiles config
-	rm -v /home/$username/.mozilla/firefox/profiles.ini
-	# regenerate all the profiles found in the firefox directory
-	for profile in ~/.mozilla/firefox/*;do
-		# check if a dot exists in the folder name, to dertermine if it is a user profile
-		# also make sure the file is not the profiles.ini file or Crash Reports directory
-		if echo "$profile" | grep "." ;then
-			if ! bash -c "echo $profile | grep 'profiles.ini'" ;then
-				if ! bash -c "echo $profile | grep 'Crash Reports'" ;then
-					# kill all running firefox processes before making changes
-					killall firefox
-					# increment the counter
-					let counter=counter+1
-					# store the name and include a random number to randomize the name
-					# the counter makes sure that the name is always unique, $RANDOM
-					# can sometimes generate the same random numbers
-					tempName=$username$counter$RANDOM
-					# generate the path of the new profile
-					profileString=$(echo "/home/$username/.mozilla/firefox/$tempName.default/")
-					if mv -v "$profile" "$profileString";then
-						# have firefox create a profile for the existing renamed profile in the
-						# profile.ini file, do so without opening the main window
-						firefox -CreateProfile "$tempName $profileString" -silent
-					fi
-				fi
-			fi
-		fi
-	done
 fi
 if cat ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml | grep "\~\/"; then
 	# convert ~/ in xfce-desktop settings to the users home directory
@@ -61,3 +46,9 @@ mkdir -p ~/Desktop
 mkdir -p ~/Pictures
 mkdir -p ~/Documents
 mkdir -p ~/Videos
+mkdir -p ~/Books
+mkdir -p ~/Programming
+# build the themes/icons/fonts folder
+mkdir -p ~/.icons
+mkdir -p ~/.themes
+mkdir -p ~/.fonts

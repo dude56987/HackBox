@@ -53,11 +53,6 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 	#######################################
 	# begin applying config file set flags
 	#######################################
-	# clean up the old default configs
-	os.system("rm -rvf /etc/skel/.*")
-	os.system("rm -rvf /etc/skel/*")
-	# install default core into /etc/skel
-	os.system("cp -rvf /opt/hackbox/preconfiguredSettings/userSettings/CORE/. /etc/skel")
 	# install user picked settings package into the /etc/skel
 	if len(desktopLine) > 1:
 		print("cp -rvf "+desktopLine+"/. /etc/skel")
@@ -74,10 +69,6 @@ if os.path.exists('/etc/hackbox/customDesktop.conf'):
 		# overwrite the users default settings
 		for user in os.listdir('/home/'):
 			if (("." in user) or ("+" in user)) != True:
-				# build the themes/icons/fonts folder
-				os.system('sudo -u '+user+' -s mkdir -p ~/.icons')
-				os.system('sudo -u '+user+' -s mkdir -p ~/.themes')
-				os.system('sudo -u '+user+' -s mkdir -p ~/.fonts')
 				# copy over /etc/skel recursively
 				os.system('sudo -u '+user+' -s cp -rvf /etc/skel/. ~/')
 				# set user ownership for local files
