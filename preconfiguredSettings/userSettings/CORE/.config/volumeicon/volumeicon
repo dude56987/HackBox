@@ -4,7 +4,7 @@ lmb_slider=true
 mmb_mute=false
 use_horizontal_slider=false
 show_sound_level=true
-onclick=gnome-alsamixer
+onclick=pavucontrol || gnome-alsamixer
 theme=Black Gnome
 
 [Hotkeys]
@@ -14,4 +14,4 @@ mute_enabled=true
 
 [Alsa]
 card=default
-channel=Front
+channel=Master
