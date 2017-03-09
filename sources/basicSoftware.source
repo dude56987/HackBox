@@ -26,6 +26,8 @@ interactive<:>message<:>Installing custom desktop settings
 interactive<:>script<:>custom-desktop
 interactive<:>message<:>Configuring custom key bindings
 interactive<:>script<:>custom-keyboard
+pre<:>message<:>Installing numlockx (Manage the num lock from CLI)
+pre<:>package<:>numlockx
 # setup custom themes and disable duplicated launchers used in control panel
 pre<:>message<:>Installing custom themes
 pre<:>script<:>custom-themes
