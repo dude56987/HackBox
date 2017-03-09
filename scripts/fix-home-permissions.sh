@@ -1,6 +1,6 @@
 ########################################################################
 # Make each users home directory private
-# Copyright (C) 2015  Carl J Smith
+# Copyright (C) 2017  Carl J Smith
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,6 +16,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
 # make home directories only readable by thier owners
-sudo chmod 0750 /home/*
+echo "Changing the permissions of existing users..."
+chmod --recursive u+rwX,g-rwx,o-rwx /home/*
 # make the above the default for new users
-sudo sed -i "s/DIR_MODE=[0987654321]\{1,4\}/DIR_MODE=0750/g" /etc/adduser.conf
+echo "Changing the default permissions of new users..."
+sed -i "s/DIR_MODE=[0987654321]\{1,4\}/DIR_MODE=0700/g" /etc/adduser.conf
+grep "DIR_MODE=" /etc/adduser.conf
