@@ -20,12 +20,7 @@
 profileName=$(hostname | sha512sum | cut -d " " -f 1)
 # use only the first 20 characters of the hash
 profileName=${profileName:0:20}
-# chanage default hackbox config into the new profile name
-if [ -f /etc/skel/.mozilla/firefox/hackbox.default ];then
-	# change the default profile to use the profileName
-	mv /etc/skel/.mozilla/firefox/hackbox.default /etc/skel/.mozilla/firefox/$profileName.default
-fi
-if [ -f /etc/skel/.mozilla/firefox/profiles.ini ];then
-	# change the default profile.ini file
-	sed -i "s/hackbox/$profileName/g" /etc/skel/.mozilla/firefox/profiles.ini
-fi
+# change the default profile to use the profileName
+mv /etc/skel/.mozilla/firefox/hackbox.default /etc/skel/.mozilla/firefox/$profileName.default
+# change the default profile.ini file
+sed -i "s/hackbox/$profileName/g" /etc/skel/.mozilla/firefox/profiles.ini
