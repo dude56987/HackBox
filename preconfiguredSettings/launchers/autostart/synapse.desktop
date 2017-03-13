@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Synapse
+Icon=synapse
+Exec=bash -c "killall synapse;killall kupfer;synapse -s &"
+Type=Application
+Categories=Utility;
+StartupNotify=true
+NoDisplay=true

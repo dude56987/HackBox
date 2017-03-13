@@ -1,8 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=Kupfer
-Icon=kupfer
-Exec=kupfer --no-splash
-Type=Application
-Categories=Utility;
-StartupNotify=true
