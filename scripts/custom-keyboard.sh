@@ -16,6 +16,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #####################################################################
+# Make dpkg run without prompts, use default answers for all questions
+export DEBIAN_FRONTEND=noninteractive
+export DEBCONF_NONINTERACTIVE_SEEN=true
 # set the caps lock to work as the escape key
 if grep -q 'XKBOPTIONS=\"\"' /etc/default/keyboard; then
 	sed -i 's/XKBOPTIONS=""/XKBOPTIONS="caps:escape"/g' /etc/default/keyboard
