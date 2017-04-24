@@ -742,8 +742,9 @@ catagory<:>message<:>Installing fail2ban
 catagory<:>package<:>fail2ban
 catagory<:>message<:>Installing Virus Scanner
 catagory<:>package<:>clamtk
-interactive<:>message<:>Installing CryptKeeper (Create encrypted folders)
-interactive<:>package<:>cryptkeeper
+interactive<:>message<:>Installing GNOME EncFS Manager(Create encrypted folders)
+interactive<:>ppa<:>ppa:gencfsm/ppa
+interactive<:>package<:>gnome-encfs-manager
 ########################################################################
 # catagory<:>message<:>Remove stupid shit from Ubuntu that tracks your activity
 ########################################################################
