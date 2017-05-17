@@ -36,6 +36,10 @@ catagory<:>package<:>qjoypad
 # ingame chat client
 catagory<:>message<:>Installing mumble (voip for games)
 catagory<:>package<:>mumble
+# game console emulators
+main<:>package<:>Installing Dolphin (Nintendo Gamecube and Wii Emulator)
+main<:>ppa<:>ppa:dolphin-emu/ppa
+main<:>package<:>dolphin-emu-master
 # add ppa for retroarch
 interactive<:>ppa<:>ppa:libretro/stable
 # retro console emulation with retroarch yo
