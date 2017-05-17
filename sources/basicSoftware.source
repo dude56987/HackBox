@@ -595,9 +595,9 @@ catagory<:>package<:>pidgin-plugin-pack
 ########################################################################
 # DESKTOP MODIFICATION UTILITIES : xfce plugins/ tray stuff
 ########################################################################
-# Indicator is now nessary to make some applications work as some things no longer support systray
-catagory<:>message<:>Install Xfce indicator plugin (ubuntu version of systray)
-catagory<:>package<:>xfce4-indicator-plugin
+# indicator is no longer nessassary since everything seems to be compatible with systray again
+main<:>message<:>Remove Xfce indicator plugin (ubuntu version of systray)
+main<:>rm-package<:>xfce4-indicator-plugin
 # kdocker (click to make any program a tray icon)
 catagory<:>package<:>kdocker
 #### install volumeicon and remove volumed service to remove redundancy, also remove pulseaudio to simplify the volume options for users, install alsa as sound system
@@ -760,6 +760,7 @@ catagory<:>rm-package<:>overlay-scrollbar
 catagory<:>message<:>Remove Ubuntu Scrollbar junk
 catagory<:>rm-package<:>overlay-scrollbar-gtk3
 # remove the dumb stuff from the indicator that ubuntu uses
+catagory<:>rm-package<:>indicator-messages
 catagory<:>rm-package<:>indicator-session
 catagory<:>rm-package<:>indicator-appmenu
 catagory<:>rm-package<:>indicator-datetime
