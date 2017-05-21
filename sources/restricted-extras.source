@@ -1,9 +1,8 @@
 #BANNER
 #QUESTION:Would you like to install Restricted Extras (Codecs,DVD Support,Flash,Java)?
-catagory<:>message<:>Installing Ubuntu Restriced Extras
-catagory<:>package<:>ubuntu-restricted-extras
-catagory<:>message<:>Installing DVD support
-catagory<:>package<:>libdvdread4
-catagory<:>command<:>bash /usr/share/doc/libdvdread4/install-css.sh
-catagory<:>message<:>Installing openJDK (java framework)
-catagory<:>package<:>default-jdk
+main<:>message<:>Installing Ubuntu Restricted Extras
+main<:>package<:>ubuntu-restricted-extras
+main<:>message<:>Installing DVD support
+main<:>package<:>libdvd-pkg
+main<:>message<:>Installing openJDK (java framework)
+main<:>package<:>default-jdk
