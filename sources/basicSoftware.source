@@ -285,16 +285,11 @@ catagory<:>package<:>thunar-archive-plugin
 catagory<:>message<:>Removing other compressed archive managers
 catagory<:>rm-package<:>xarchiver
 catagory<:>rm-package<:>file-roller
-# add cli tools to manage the trash can
-catagory<:>message<:>Installing trash-cli (CLI trash utility)
-catagory<:>package<:>trash-cli
-# install autotrash and setup a cron job to delete all trashed items
-# older then 40 days
-catagory<:>message<:>Installing autotrash (Manage emptying the trash based on metrics)
-catagory<:>package<:>autotrash
-# create cron job to delete trash items older than 40 days
-catagory<:>message<:>Setup cron job for autotrash to remove items after 40 days
-catagory<:>cron<:>autotrash<:>@daily<:>for user in /home/*;do user=$(echo $user | sed 's/\/home\///g');sudo -u $user autotrash -v -d 40;done
+# Add cli tools to manage the trash can, and automate emptying the trash
+main<:>message<:>Installing trash-cli (CLI trash utility)
+main<:>package<:>trash-cli
+# A autostart launcher is installed through preconfigured settings to run on login to delete trash items older than 40 days. A cron job is also created below for users who stay logged in for long periods of time.
+main<:>cron<:>autotrash<:>@daily<:>for user in /home/*;do user=$(echo $user | sed 's/\/home\///g');sudo -u $user trash-empty 40;done
 ##### Additonal Fonts #####
 catagory<:>message<:>Installing fonts (opendyslexic)
 catagory<:>package<:>fonts-opendyslexic
