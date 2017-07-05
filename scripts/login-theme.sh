@@ -29,8 +29,11 @@ cp -fv /opt/hackbox/media/loginThemes/lightdmGtkTheme/lightdm-gtk-greeter.conf /
 echo '[SeatDefaults]' > /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
 echo 'greeter-session=lightdm-gtk-greeter'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
 echo 'user-session=xfce'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
+# show manual login and hide the usernames
+# this means you must type your username to login
+echo 'greeter-show-manual-login=true'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
+echo 'greeter-hide-users=true'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
 echo 'allow-guest=false'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
-echo 'greeter-hide-users=false'>> /usr/share/lightdm/lightdm.conf.d/90-hackbox.conf
 ########################################################################
 # TTY Login Manager
 ########################################################################
