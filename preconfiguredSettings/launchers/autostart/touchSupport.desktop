@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=touchegg
+Comment=Start touchegg for touchscreen support
+Exec=touchegg
+Exec=bash -c "if [ -f /usr/bin/touchegg ]; then while ! pgrep -xc touchegg;do touchegg;done; fi;"
+Terminal=false
+Type=Application
+StartupNotify=false
+NoDisplay=true

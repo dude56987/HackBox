@@ -340,6 +340,9 @@ catagory<:>message<:>Installing gespeaker (GUI for espeak)
 catagory<:>package<:>gespeaker
 catagory<:>message<:>Installing geolocate (Figure out the location of pcs)
 catagory<:>localdeb<:>geolocate<:>/usr/bin/geolocate
+# touchscreen support
+main<:>message<:>Installing touchegg (Touchscreen gesture support)
+main<:>package<:>touchegg
 # install colortest-python and link it to the colortest command
 catagory<:>message<:>Installing colortest-python (shows terminal color settings)
 catagory<:>package<:>colortest-python
