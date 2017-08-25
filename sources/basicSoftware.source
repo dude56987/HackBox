@@ -593,6 +593,9 @@ catagory<:>package<:>pidgin-plugin-pack
 ########################################################################
 # DESKTOP MODIFICATION UTILITIES : xfce plugins/ tray stuff
 ########################################################################
+# install custom launchers for application menu entries and autostart programs
+# set them to be installed last
+post<:>script<:>custom-launchers
 # indicator is no longer nessassary since everything seems to be compatible with systray again
 main<:>message<:>Remove Xfce indicator plugin (ubuntu version of systray)
 main<:>rm-package<:>xfce4-indicator-plugin
@@ -775,5 +778,3 @@ catagory<:>rm-package<:>update-notifier
 # check if its a low ram system
 catagory<:>message<:>Low ram system check
 catagory<:>script<:>low-ram-system
-# add custom autostart files to /etc/xdg/autostart to work on all desktops
-catagory<:>command<:>cp -v /opt/hackbox/preconfiguredSettings/launchers/autostart/* /etc/xdg/autostart
