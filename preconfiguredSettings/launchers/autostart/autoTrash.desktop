@@ -1,5 +1,11 @@
 [Desktop Entry]
+Encoding=UTF-8
+Version=1.0
 Type=Application
+Icon=system-run-symbolic
+Name=Auto Trash Cleanup
+GenericName=Auto Trashcan Cleaner
+Comment=Remove items from trash more than 40 days old
 Exec=trash-empty 40
-TryExec=trash-empty 40
 NoDisplay=true
+Terminal=false

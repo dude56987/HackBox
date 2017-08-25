@@ -2,7 +2,10 @@
 Encoding=UTF-8
 Version=1.0
 Type=Application
-Exec=bash -c "if [ -f /usr/bin/volumeicon ]; then while ! pgrep -xc volumeicon;do volumeicon;done; fi;"
+Icon=system-run-symbolic
 Name=VolumeIcon
-Comment=Volumeicon for alsa
 GenericName=VolumeIcon
+Comment=Volumeicon for alsa
+Exec=bash -c "if [ -f /usr/bin/volumeicon ]; then while ! pgrep -xc volumeicon;do volumeicon;done; fi;"
+NoDisplay=true
+Terminal=false

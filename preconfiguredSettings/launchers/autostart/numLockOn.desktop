@@ -1,5 +1,12 @@
 [Desktop Entry]
+Encoding=UTF-8
+Version=1.0
 Type=Application
-Exec=xnumlock on
-TryExec=xnumlock on
+Icon=system-run-symbolic
+Name=Num lock on
+GenericName=Num Lock Activator
+Comment=Set the Num lock to on
+Exec=numlockx on
 NoDisplay=true
+Terminal=false
+

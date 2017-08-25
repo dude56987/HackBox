@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Xkill
 Comment=Kill a Program
-Exec=xkill
+Exec=bash -c "notify-send 'Left click on a window to kill the program.\nRight click to cancel.';xkill"
 Terminal=false
 Type=Application
 StartupNotify=false

@@ -1,6 +1,11 @@
 [Desktop Entry]
+Encoding=UTF-8
+Version=1.0
 Type=Application
+Icon=system-run-symbolic
 Name=Screensaver
-Icon=preferences-desktop-screensaver
+GenericName=Screensaver
+Comment=Start the screensaver service
 Exec=xscreensaver -no-splash
-TryExec=xscreensaver
+NoDisplay=true
+Terminal=false

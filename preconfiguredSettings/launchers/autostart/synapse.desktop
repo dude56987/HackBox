@@ -1,9 +1,11 @@
 [Desktop Entry]
+Encoding=UTF-8
 Version=1.0
-Name=Synapse
-Icon=synapse
-Exec=bash -c "killall synapse;killall kupfer;synapse -s &"
 Type=Application
-Categories=Utility;
-StartupNotify=true
+Icon=system-run-symbolic
+Name=Synapse
+GenericName=Quick Launcher
+Comment=Start the quick launcher service
+Exec=bash -c "killall synapse;killall kupfer;synapse -s &"
 NoDisplay=true
+Terminal=false
