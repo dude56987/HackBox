@@ -602,24 +602,27 @@ main<:>rm-package<:>xfce4-indicator-plugin
 # kdocker (click to make any program a tray icon)
 catagory<:>package<:>kdocker
 #### install volumeicon and remove volumed service to remove redundancy, also remove pulseaudio to simplify the volume options for users, install alsa as sound system
-catagory<:>message<:>Install ALSA (Sound System)
-catagory<:>package<:>alsa
-catagory<:>message<:>Install alsa-oss
-catagory<:>package<:>alsa-oss
-catagory<:>message<:>Install alsa-utils
-catagory<:>package<:>alsa-utils
+catagory<:>message<:>Remove ALSA (Sound System)
+catagory<:>rm-package<:>alsa
+catagory<:>message<:>Remove alsa-oss
+catagory<:>rm-package<:>alsa-oss
+# can not remove alsa utils yet, it is required by ubuntu-drivers-common package
+#catagory<:>message<:>Remove alsa-utils
+#catagory<:>rm-package<:>alsa-utils
+catagory<:>message<:>Remove alsa-firmware-loaders
+catagory<:>rm-package<:>alsa-firmware-loaders
+catagory<:>message<:>Remove other GUI mixers & tools
+catagory<:>rm-package<:>xfce4-volumed
+catagory<:>rm-package<:>gnome-alsamixer
+# install sound system
+catagory<:>message<:>Install PulseAudio (2nd Tier Sound system)
+catagory<:>package<:>pulseaudio
+catagory<:>message<:>Install pavucontrol (Sound Mixer GUI)
+catagory<:>package<:>pavucontrol
+catagory<:>message<:>Install paprefs (Pulseaudio Preferences GUI)
+catagory<:>package<:>paprefs
 catagory<:>message<:>Install volumeicon
 catagory<:>package<:>volumeicon-alsa
-catagory<:>message<:>Install gnome-alsamixer (alsamixer GUI)
-catagory<:>package<:>gnome-alsamixer
-# copy a launcher for the volumeicon to the autostart directory
-catagory<:>message<:>set volumeicon to autostart
-catagory<:>message<:>Remove xfce volumed (redundant with above program installed)
-catagory<:>rm-package<:>xfce4-volumed
-catagory<:>message<:>Remove pulseaudio
-catagory<:>rm-package<:>pulseaudio
-catagory<:>message<:>Remove pavucontrol (pulseaudio volume control)
-catagory<:>rm-package<:>pavucontrol
 # mounting utilities and filesystem stuff #
 catagory<:>message<:>Installing MAT and MAT-GUI (File metadata cleaner)
 catagory<:>package<:>mat
