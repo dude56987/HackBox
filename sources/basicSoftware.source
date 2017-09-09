@@ -195,6 +195,8 @@ catagory<:>package<:>xfburn
 ########################################################################
 catagory<:>message<:>Installing stopwatch
 catagory<:>package<:>stopwatch
+catagory<:>message<:>Installing ktimer (Countdown Timer)
+catagory<:>package<:>ktimer
 # xterm is set as default terminal emulator but custom configs make it look nicer
 # this is nessary since I cant figure out the configs for perfered applications completely
 catagory<:>message<:>Installing xterm
