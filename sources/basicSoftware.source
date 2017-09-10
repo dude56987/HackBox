@@ -528,15 +528,12 @@ catagory<:>package<:>bitcoin-qt
 catagory<:>message<:>Installing pybitmessage-stable-updater (Encrypted Messaging System)
 # this package pulls the stable github repo for bitmessage
 catagory<:>localdeb<:>pybitmessage-stable-updater<:>/usr/bin/bitmessage-update
-# tox ( encrypted decentralized instant messageing, voice/video, and file transfer)
-# currently using the opensuse build service version of the tox repo
-catagory<:>deb-repo<:>deb http://download.opensuse.org/repositories/home:/antonbatenev:/tox/xUbuntu_$VERSION /<:>http://download.opensuse.org/repositories/home:antonbatenev:tox/xUbuntu_$VERSION/Release.key
-# the tox gui package is qtox, there are more, I like qtox
-catagory<:>message<:>Installing QTox (TOX GUI)
-catagory<:>package<:>qtox
-catagory<:>message<:>Installing toxic (TOX CLI)
-catagory<:>package<:>toxic
-main<:>disable-launcher<:>/usr/share/applications/toxic.desktop
+# Install Decentralized Encrypted Video/Voice/Chat and remove conflicting applications
+main<:>message<:>Installing GNU Ring (Decentralized Encrypted Video/Voice/Chat)
+main<:>package<:>ring
+main<:>message<:>Removing conflicting chat applications
+main<:>rm-package<:>toxic
+main<:>rm-package<:>utox
 # Syncthing, its getting there
 interactive<:>deb-repo<:>deb http://apt.syncthing.net/ syncthing release<:>https://syncthing.net/release-key.txt
 catagory<:>message<:>Installing Syncthing-GTK (Sync directories)
