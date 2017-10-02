@@ -568,9 +568,6 @@ catagory<:>message<:>Installing Pidgin Plugin (Prefs)
 catagory<:>package<:>pidgin-extprefs
 catagory<:>message<:>Installing Pidgin Plugin (Telegram)
 catagory<:>package<:>telegram-purple
-catagory<:>message<:>Installing Pidgin Plugin (Facebook)
-catagory<:>package<:>pidgin-facebookchat
-catagory<:>package<:>purple-facebook
 catagory<:>message<:>Installing Pidgin Plugin (Hotkeys)
 catagory<:>package<:>pidgin-hotkeys
 catagory<:>message<:>Installing Pidgin Plugin (Notify)
