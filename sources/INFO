@@ -29,6 +29,17 @@
 ####################
 # The below will add a repo to the system. It consists of a repo line and the location of the keyfile for the repo
 #catagory<:>deb-repo<:>deb https://myrepo.com/repos saucy main<:>https://myrepo.com/keys/myrepokey.pgp
+# For distro version specific repos you can use substutues
+# $VERSION
+#    The version will be replaced with the version number of the currently running distro.
+#    e.g. 17.04
+#    You can use the bash command "lsb_release -rs" to get the same string used.
+#    catagory<:>deb-repo<:>deb https://myrepo.com/repos $VERSION main<:>https://myrepo.com/keys/myrepokey.pgp
+# $RELEASE
+#    The release will be the name of the release.
+#    e.g. "saucy"
+#    You can use the bash command "lsb_release -cs" to get the same string used.
+#    catagory<:>deb-repo<:>deb https://myrepo.com/repos $RELEASE main<:>https://myrepo.com/keys/myrepokey.pgp
 ####################
 # The below will create a cron job on the system that will run as the root user
 #catagory<:>cron<:>cronFileName<:>cronFrequency<:>command
