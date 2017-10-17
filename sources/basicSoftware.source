@@ -545,9 +545,9 @@ catagory<:>package<:>syncthing-gtk
 # File share / social network replacement
 catagory<:>message<:>Installing RetroShare
 interactive<:>ppa<:>ppa:retroshare/stable
-catagory<:>package<:>retroshare06
-catagory<:>package<:>retroshare06-feedreader-plugin
-catagory<:>package<:>retroshare06-voip-plugin
+catagory<:>package<:>retroshare
+catagory<:>package<:>retroshare-feedreader-plugin
+catagory<:>package<:>retroshare-voip-plugin
 ################
 #install pidgin#
 ################
