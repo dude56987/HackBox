@@ -534,11 +534,12 @@ main<:>package<:>ring
 main<:>message<:>Removing conflicting chat applications
 main<:>rm-package<:>toxic
 main<:>rm-package<:>utox
-# Syncthing, its getting there
-interactive<:>deb-repo<:>deb http://apt.syncthing.net/ syncthing release<:>https://syncthing.net/release-key.txt
-catagory<:>message<:>Installing Syncthing-GTK (Sync directories)
-catagory<:>package<:>syncthing
-catagory<:>package<:>syncthing-gtk
+# Syncthing (Decentralized directory sharing between computers)
+# LibreVault, may replace syncthing when it becomes more stable
+interactive<:>deb-repo<:>deb https://apt.syncthing.net/ syncthing stable<:>https://syncthing.net/release-key.txt
+main<:>message<:>Installing Syncthing-GTK (Sync directories)
+main<:>package<:>syncthing
+main<:>package<:>syncthing-gtk
 ######################
 # install RetroShare #
 ######################
