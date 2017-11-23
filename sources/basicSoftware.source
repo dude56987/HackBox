@@ -633,7 +633,7 @@ catagory<:>package<:>mtpfs
 catagory<:>message<:>Installing SSHFS (mount remote filesystems locally via sftp)
 catagory<:>package<:>sshfs
 catagory<:>message<:>Installing sshshuttle (Send all connections though a ssh tunnel)
-catagory<:>package<:>sshshuttle
+catagory<:>package<:>sshuttle
 ####
 catagory<:>message<:>Installing countdown timer (xfce4 panel plugin)
 catagory<:>package<:>xfce4-timer-plugin
