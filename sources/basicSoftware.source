@@ -90,7 +90,12 @@ catagory<:>script<:>customize-grub
 # Add fortune, cowsay, and create none cow
 catagory<:>message<:>Setup cowsay and fortune
 catagory<:>package<:>cowsay
-catagory<:>package<:>fortune
+catagory<:>package<:>fortune-mod
+catagory<:>package<:>fortunes-off
+catagory<:>package<:>fortunes-min
+catagory<:>package<:>fortunes-spam
+catagory<:>package<:>fortunes-bofh-excuses
+catagory<:>package<:>fortunes-debian-hints
 # allow root to launch fortune and cowsay
 catagory<:>command<:>link /usr/games/fortune /usr/bin/fortune
 catagory<:>command<:>link /usr/games/cowsay /usr/bin/cowsay
