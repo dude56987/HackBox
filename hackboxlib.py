@@ -587,18 +587,47 @@ class installSourcesFile():
 						# modify the file by changing existing line or
 						# by adding a new line at the end
 						for line in fileContents.split('\n'):
-							if 'Hidden=' in line:
-								newFileContent += 'NoDisplay=true\n'
-								foundLine = True
+							if 'NoDisplay=' in line:
+								pass
+							elif 'Hidden=' in line:
+								pass
 							else:
 								newFileContent += (line+'\n')
-						if foundLine == False:
-							newFileContent += 'NoDisplay=true\n'
+						newFileContent += 'NoDisplay=true\n'
 						# remove blank lines from file
 						while newFileContent.find('\n\n') > 0:
 							newFileContent = newFileContent.replace('\n\n','\n')
 						# write the newly modified file
 						writeFile(tempInfo[2],newFileContent)
+					# Check if the launcher was successfully modified, write output to error log
+					# load the existing log, if it does not exist create a blank one
+					if os.path.exists("/opt/hackbox/Error_Log.txt"):
+						errorLog = loadFile("/opt/hackbox/Error_Log.txt")
+					else:
+						errorLog = ''
+					# if the path exists at all
+					if os.path.exists(tempInfo[2]):
+						launcherContent = loadFile(tempInfo[2])
+						# create a switch to be flipped if the line is found in the file
+						found = False
+						#errorDebug=str()#DEBUG
+						# if the file was loaded successfully
+						if launcherContent:
+							for line in launcherContent.split('\n'):
+								#errorDebug += line + ' #DEBUG\n'#DEBUG
+								if "NoDisplay=true" == line:
+									#errorDebug += 'Line found to match "NoDisplay=true" #DEBUG\n'#DEBUG
+									found = True
+									break
+						if not found:
+							# write the error to the log
+							errorMsg = 'Launcher could not be modified at "' + tempInfo[2] + '"\n'
+							#errorMsg += errorDebug #DEBUG
+							writeFile('/opt/hackbox/Error_Log.txt',(errorLog + errorMsg))
+					else:
+						# the path to the launcher was not even found
+						errorMsg = 'Launcher does not exist at "' + tempInfo[2] + '"\n'
+						writeFile('/opt/hackbox/Error_Log.txt',(errorLog + errorMsg))
 				elif tempInfo[1] == 'cron':
 					#category<:>cron<:>fileName<:>timeInterval<:>command
 					# create a cron job with name as the filename stored in /etc/cron.d/
