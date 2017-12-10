@@ -31,6 +31,11 @@ pre<:>package<:>numlockx
 # setup custom themes and disable duplicated launchers used in control panel
 pre<:>message<:>Installing custom themes
 pre<:>script<:>custom-themes
+# install custom desktop themes
+main<:>package<:>numix-blue-gtk-theme
+main<:>package<:>numix-gtk-theme
+main<:>package<:>numix-icon-theme
+# disable launchers that conflict with system launchers
 main<:>disable-launcher<:>/usr/share/applications/font-manager.desktop
 main<:>disable-launcher<:>/usr/share/applications/software-properties-drivers.desktop
 main<:>disable-launcher<:>/usr/share/applications/system-disks.desktop
