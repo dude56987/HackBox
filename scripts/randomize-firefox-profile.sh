@@ -22,5 +22,7 @@ profileName=$(hostname | sha512sum | cut -d " " -f 1)
 profileName=${profileName:0:20}
 # change the default profile to use the profileName
 mv /etc/skel/.mozilla/firefox/hackbox.default /etc/skel/.mozilla/firefox/$profileName.default
+# just for good measure remove the old profile name
+rm -rv /etc/skel/.mozilla/firefox/hackbox.default
 # change the default profile.ini file
 sed -i "s/hackbox/$profileName/g" /etc/skel/.mozilla/firefox/profiles.ini
