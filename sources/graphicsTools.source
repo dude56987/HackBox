@@ -13,12 +13,14 @@ catagory<:>package<:>imagemagick
 catagory<:>disable-launcher<:>/usr/share/applications/display-im6.desktop
 catagory<:>disable-launcher<:>/usr/share/applications/display-im6.q16.desktop
 ###################################
-catagory<:>message<:>Installing Blender (3D Design Tool)
-catagory<:>package<:>blender
-main<:>message<:>Installing Stopmotion (Stop motion animation tool)
+main<:>message<:>Installing Blender (3D Multipurpose Design Tool)
+main<:>package<:>blender
+main<:>message<:>Installing Pencil2D (2D Animation Tool)
+main<:>package<:>pencil2d
+main<:>message<:>Installing Stopmotion (Stop Motion Animation Tool)
 main<:>package<:>stopmotion
-catagory<:>message<:>Installing Inkscape (Vector graphics tool)
-catagory<:>package<:>inkscape
+main<:>message<:>Installing Inkscape (Vector Graphics Tool)
+main<:>package<:>inkscape
 catagory<:>message<:>Installing Birdfont (Font design tool)
 catagory<:>package<:>birdfont
 catagory<:>message<:>Installing Ubuntu Studio fonts (All available fonts)
