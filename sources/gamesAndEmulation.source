@@ -5,9 +5,15 @@ interactive<:>message<:>Installing PlayOnLinux (Windows Game/Software Emulation)
 interactive<:>package<:>playonlinux
 catagory<:>message<:>Installing Virt Manager (GUI Virtual Machine Interface)
 catagory<:>package<:>virt-manager
+catagory<:>package<:>ubuntu-virt
 catagory<:>package<:>kvm
 catagory<:>package<:>qemu-kvm
 catagory<:>package<:>qemu-kvm-spice
+catagory<:>message<:>Removing other virtual machine interfaces
+catagory<:>rm-package<:>virtualbox
+catagory<:>rm-package<:>virtualbox-qt
+catagory<:>rm-package<:>gnome-boxes
+catagory<:>rm-package<:>virtualbricks
 catagory<:>message<:>Installing TuxMath and Tux Typing
 catagory<:>package<:>tuxmath
 catagory<:>package<:>tuxtype
@@ -37,7 +43,7 @@ catagory<:>package<:>qjoypad
 catagory<:>message<:>Installing mumble (voip for games)
 catagory<:>package<:>mumble
 # game console emulators
-main<:>package<:>Installing Dolphin (Nintendo Gamecube and Wii Emulator)
+main<:>message<:>Installing Dolphin (Nintendo Gamecube and Wii Emulator)
 main<:>ppa<:>ppa:dolphin-emu/ppa
 main<:>package<:>dolphin-emu-master
 # add ppa for retroarch
