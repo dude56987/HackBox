@@ -248,8 +248,10 @@ catagory<:>message<:>Installing ffmpeg support for MOC
 catagory<:>package<:>moc-ffmpeg-plugin
 catagory<:>message<:>Installing GIMP (Image Manipulation Program)
 catagory<:>package<:>gimp
-catagory<:>message<:>Installing GIMP plugin resynthesizer
-catagory<:>package<:>gimp-resynthesizer
+catagory<:>message<:>Installing GIMP extras
+catagory<:>package<:>gimp-texturize
+catagory<:>package<:>gimp-data-extras
+catagory<:>package<:>gimp-plugin-registry
 # screenshot tool
 catagory<:>message<:>Installing screengrab (Screenshot tool)
 catagory<:>package<:>screengrab
