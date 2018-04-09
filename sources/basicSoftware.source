@@ -501,10 +501,13 @@ catagory<:>localdeb<:>youtube-dl-selection<:>/usr/bin/youtube-dl-selection
 catagory<:>message<:>Installing uGet (Desktop download manager/accelerator)
 catagory<:>package<:>uget
 # setup transmission and setup the transmission blocklist updater for security purposes
-catagory<:>message<:>Installing Transmission (Torrent Client)
-catagory<:>package<:>transmission-gtk
-catagory<:>message<:>Setting up Transmission blocklist updater
-catagory<:>localdeb<:>transmission-blocklist-updater<:>/usr/bin/transmission-blocklist-updater
+main<:>message<:>Installing Transmission (Torrent Client)
+main<:>package<:>transmission-qt
+main<:>package<:>transmission-cli
+main<:>message<:>Removing other Torrent Clients
+main<:>rm-package<:>transmission-gtk
+main<:>message<:>Setting up Transmission blocklist updater
+main<:>localdeb<:>transmission-blocklist-updater<:>/usr/bin/transmission-blocklist-updater
 # RSS client stuff
 catagory<:>message<:>Removing RSS reader
 catagory<:>rm-package<:>liferea
