@@ -640,6 +640,7 @@ catagory<:>message<:>Installing MAT and MAT-GUI (File metadata cleaner)
 catagory<:>package<:>mat
 catagory<:>message<:>Installing mtpfs (media transfer protocol filesystem support)
 catagory<:>package<:>mtpfs
+catagory<:>package<:>mtp-tools
 catagory<:>message<:>Installing SSHFS (mount remote filesystems locally via sftp)
 catagory<:>package<:>sshfs
 catagory<:>message<:>Installing sshshuttle (Send all connections though a ssh tunnel)
