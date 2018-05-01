@@ -548,6 +548,7 @@ main<:>message<:>Installing GNU Ring (Decentralized Encrypted Video/Voice/Chat)
 main<:>package<:>ring
 main<:>message<:>Removing conflicting chat applications
 main<:>rm-package<:>toxic
+main<:>rm-package<:>qtox
 main<:>rm-package<:>utox
 # Syncthing (Decentralized directory sharing between computers)
 # LibreVault, may replace syncthing when it becomes more stable
