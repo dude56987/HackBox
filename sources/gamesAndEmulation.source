@@ -3,45 +3,45 @@
 # games and emulation source file
 interactive<:>message<:>Installing PlayOnLinux (Windows Game/Software Emulation)
 interactive<:>package<:>playonlinux
-catagory<:>message<:>Installing Virt Manager (GUI Virtual Machine Interface)
-catagory<:>package<:>virt-manager
-catagory<:>package<:>ubuntu-virt
-catagory<:>package<:>kvm
-catagory<:>package<:>qemu-kvm
-catagory<:>package<:>qemu-kvm-spice
-catagory<:>message<:>Removing other virtual machine interfaces
-catagory<:>rm-package<:>virtualbox
-catagory<:>rm-package<:>virtualbox-qt
-catagory<:>rm-package<:>gnome-boxes
-catagory<:>rm-package<:>virtualbricks
-catagory<:>message<:>Installing TuxMath and Tux Typing
-catagory<:>package<:>tuxmath
-catagory<:>package<:>tuxtype
-catagory<:>message<:>Installing gtypist
-catagory<:>package<:>gtypist
-catagory<:>message<:>Installing pychess
-catagory<:>package<:>pychess
-catagory<:>message<:>Installing Gbrainy
-catagory<:>package<:>gbrainy
-catagory<:>message<:>Installing Pipe Walker
-catagory<:>package<:>pipewalker
-catagory<:>message<:>Installing nInvaders
-catagory<:>package<:>ninvaders
-catagory<:>message<:>Installing Bsd Games
-catagory<:>package<:>bsdgames
-catagory<:>message<:>Installing Bsd Games (list command)
-catagory<:>script<:>bsdgames
-catagory<:>message<:>Installing Py-Tac-Toe
-catagory<:>localdeb<:>py-tac-toe_1.0_all<:>/usr/bin/py-tac-toe
-catagory<:>message<:>Installing TuxPaint
-catagory<:>package<:>tuxpaint
-catagory<:>package<:>tuxpaint-stamps-default
-catagory<:>package<:>tuxpaint-plugins-default
-catagory<:>message<:>Installing qjoypad
-catagory<:>package<:>qjoypad
+main<:>message<:>Installing Virt Manager (GUI Virtual Machine Interface)
+main<:>package<:>virt-manager
+main<:>package<:>ubuntu-virt
+main<:>package<:>kvm
+main<:>package<:>qemu-kvm
+main<:>package<:>qemu-kvm-spice
+main<:>message<:>Removing other virtual machine interfaces
+main<:>rm-package<:>virtualbox
+main<:>rm-package<:>virtualbox-qt
+main<:>rm-package<:>gnome-boxes
+main<:>rm-package<:>virtualbricks
+main<:>message<:>Installing TuxMath and Tux Typing
+main<:>package<:>tuxmath
+main<:>package<:>tuxtype
+main<:>message<:>Installing gtypist
+main<:>package<:>gtypist
+main<:>message<:>Installing pychess
+main<:>package<:>pychess
+main<:>message<:>Installing Gbrainy
+main<:>package<:>gbrainy
+main<:>message<:>Installing Pipe Walker
+main<:>package<:>pipewalker
+main<:>message<:>Installing nInvaders
+main<:>package<:>ninvaders
+main<:>message<:>Installing Bsd Games
+main<:>package<:>bsdgames
+main<:>message<:>Installing Bsd Games (list command)
+main<:>script<:>bsdgames
+main<:>message<:>Installing Py-Tac-Toe
+main<:>localdeb<:>py-tac-toe_1.0_all<:>/usr/bin/py-tac-toe
+main<:>message<:>Installing TuxPaint
+main<:>package<:>tuxpaint
+main<:>package<:>tuxpaint-stamps-default
+main<:>package<:>tuxpaint-plugins-default
+main<:>message<:>Installing qjoypad
+main<:>package<:>qjoypad
 # ingame chat client
-catagory<:>message<:>Installing mumble (voip for games)
-catagory<:>package<:>mumble
+main<:>message<:>Installing mumble (voip for games)
+main<:>package<:>mumble
 # game console emulators
 main<:>message<:>Installing Dolphin (Nintendo Gamecube and Wii Emulator)
 main<:>ppa<:>ppa:dolphin-emu/ppa
@@ -50,33 +50,33 @@ main<:>package<:>dolphin-emu-master
 interactive<:>ppa<:>ppa:libretro/stable
 # retro console emulation with retroarch yo
 # hackbox.py installs the ppa at the begining
-catagory<:>message<:>Installing Retroarch (Retro Console Emulator)
-catagory<:>package<:>retroarch
-catagory<:>package<:>retroarch-joypad-autoconfig
+main<:>message<:>Installing Retroarch (Retro Console Emulator)
+main<:>package<:>retroarch
+main<:>package<:>retroarch-joypad-autoconfig
 # attempt to install all libretro cores
-catagory<:>package<:>libretro*
+main<:>package<:>libretro*
 # below lines are in case the above dont work
 # Super Nintendo Core for retroarch
-catagory<:>message<:>Installing Super Nintendo Core for retroarch
-catagory<:>package<:>libretro-snes9x-next
+main<:>message<:>Installing Super Nintendo Core for retroarch
+main<:>package<:>libretro-snes9x-next
 # GBACore for retroarch
-catagory<:>message<:>Installing GBACore for retroarch
-catagory<:>package<:>libretro-vba-next
+main<:>message<:>Installing GBACore for retroarch
+main<:>package<:>libretro-vba-next
 #Sega multi system Core for retroarch
-catagory<:>message<:>Installing Sega multi system Core for retroarch
-catagory<:>package<:>libretro-picodrive
+main<:>message<:>Installing Sega multi system Core for retroarch
+main<:>package<:>libretro-picodrive
 # NES Core for retroarch
-catagory<:>message<:>Installing NES Core for retroarch
-catagory<:>package<:>libretro-nestopia
+main<:>message<:>Installing NES Core for retroarch
+main<:>package<:>libretro-nestopia
 # Nintendo DS Core for retroarch
-catagory<:>message<:>Installing Nintendo DS Core for retroarch
-catagory<:>package<:>libretro-desmume
+main<:>message<:>Installing Nintendo DS Core for retroarch
+main<:>package<:>libretro-desmume
 # Playstation Core for retroarch
-catagory<:>message<:>Installing Playstation Core for retroarch
-catagory<:>package<:>libretro-pcsx-rearmed
+main<:>message<:>Installing Playstation Core for retroarch
+main<:>package<:>libretro-pcsx-rearmed
 # Scummvm for old adventure games
-catagory<:>message<:>Installing Scummvm Core for retroarch
-catagory<:>package<:>libretro-scummvm
+main<:>message<:>Installing Scummvm Core for retroarch
+main<:>package<:>libretro-scummvm
 # dosbox for old dos apps
-catagory<:>message<:>Installing Dosbox
-catagory<:>package<:>dosbox
+main<:>message<:>Installing Dosbox
+main<:>package<:>dosbox

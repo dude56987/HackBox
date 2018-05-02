@@ -1,17 +1,17 @@
 #BANNER
 #QUESTION:Would you like to install Web Design Tools?
-catagory<:>message<:>Installing FileZilla
-catagory<:>package<:>filezilla
-catagory<:>message<:>Installing Chromium Web Browser
-catagory<:>package<:>chromium-browser
-catagory<:>message<:>Installing Midori Web Browser
-catagory<:>package<:>midori
-catagory<:>message<:>Installing Links Text Web Browser
-catagory<:>package<:>links
-catagory<:>message<:>Installing Bluefish (Web IDE)
-catagory<:>package<:>bluefish
+main<:>message<:>Installing FileZilla
+main<:>package<:>filezilla
+main<:>message<:>Installing Chromium Web Browser
+main<:>package<:>chromium-browser
+main<:>message<:>Installing Midori Web Browser
+main<:>package<:>midori
+main<:>message<:>Installing Links Text Web Browser
+main<:>package<:>links
+main<:>message<:>Installing Bluefish (Web IDE)
+main<:>package<:>bluefish
 # BROKEN NO LONGER IN THE REPOS
-# catagory<:>message<:>Installing firefox Web Developer addon
-#catagory<:>package<:>firefox-webdeveloper
-catagory<:>message<:>Installing Screen Ruler
-catagory<:>package<:>screenruler
+# main<:>message<:>Installing firefox Web Developer addon
+#main<:>package<:>firefox-webdeveloper
+main<:>message<:>Installing Screen Ruler
+main<:>package<:>screenruler

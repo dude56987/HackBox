@@ -1,32 +1,32 @@
 #BANNER
 #QUESTION:Would you like to install Programming Tools?
-catagory<:>message<:>Installing Geany (General IDE)
-catagory<:>package<:>geany
-catagory<:>package<:>geany-plugins
-catagory<:>message<:>Installing vim (CLI text editor)
-catagory<:>package<:>vim
-catagory<:>disable-launcher<:>/usr/share/applications/vim.desktop
-catagory<:>message<:>Installing Meld Diff Viewer
-catagory<:>package<:>meld
-catagory<:>message<:>Installing Devhelp (Documentation Reader)
-catagory<:>package<:>devhelp
-catagory<:>message<:>Installing txt2tags (Markup Language to convert to other markup languages)
-catagory<:>package<:>txt2tags
-catagory<:>message<:>Installing txt2regex (Command line program to build regular expressions)
-catagory<:>package<:>txt2regex
-catagory<:>message<:>Installing devtodo (CLI todo list manager)
-catagory<:>package<:>devtodo
-catagory<:>message<:>Installing GIT (Version Control System)
-catagory<:>package<:>git
-catagory<:>message<:>Installing GitHub Backup(Backup User Repos on GitHub)
-catagory<:>package<:>github-backup
-catagory<:>message<:>Installing Alien (Convert between package formats)
-catagory<:>package<:>alien
+main<:>message<:>Installing Geany (General IDE)
+main<:>package<:>geany
+main<:>package<:>geany-plugins
+main<:>message<:>Installing vim (CLI text editor)
+main<:>package<:>vim
+main<:>disable-launcher<:>/usr/share/applications/vim.desktop
+main<:>message<:>Installing Meld Diff Viewer
+main<:>package<:>meld
+main<:>message<:>Installing Devhelp (Documentation Reader)
+main<:>package<:>devhelp
+main<:>message<:>Installing txt2tags (Markup Language to convert to other markup languages)
+main<:>package<:>txt2tags
+main<:>message<:>Installing txt2regex (Command line program to build regular expressions)
+main<:>package<:>txt2regex
+main<:>message<:>Installing devtodo (CLI todo list manager)
+main<:>package<:>devtodo
+main<:>message<:>Installing GIT (Version Control System)
+main<:>package<:>git
+main<:>message<:>Installing GitHub Backup(Backup User Repos on GitHub)
+main<:>package<:>github-backup
+main<:>message<:>Installing Alien (Convert between package formats)
+main<:>package<:>alien
 # toolkits
-catagory<:>message<:>Installing kivy (Cross platform GUI toolkit)
-catagory<:>package<:>python-kivy
+main<:>message<:>Installing kivy (Cross platform GUI toolkit)
+main<:>package<:>python-kivy
 # install unsupported packages
-catagory<:>message<:>Installing git-cleanup (CLI util to shrink git repos)
-catagory<:>localdeb<:>git-cleanup_1.0_all<:>/usr/bin/git-cleanup
-catagory<:>message<:>Installing project-report (Generate a project report website directory)
-catagory<:>localdeb<:>project-report<:>/usr/bin/project-report
+main<:>message<:>Installing git-cleanup (CLI util to shrink git repos)
+main<:>localdeb<:>git-cleanup_1.0_all<:>/usr/bin/git-cleanup
+main<:>message<:>Installing project-report (Generate a project report website directory)
+main<:>localdeb<:>project-report<:>/usr/bin/project-report

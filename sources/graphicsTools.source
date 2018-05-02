@@ -2,16 +2,16 @@
 #QUESTION:Would you like to install Graphic Design Tools?:
 # Gimp and a lot of the plugins to improve the functionality for users
 ###################################
-catagory<:>message<:>Installing GIMP (Image Minipulation Tool)
-catagory<:>package<:>gimp
-catagory<:>message<:>Installing GIMP (Plugins)
-catagory<:>package<:>gimp-plugin-registry
-catagory<:>package<:>gimp-texturize
-catagory<:>package<:>gimp-gap
-catagory<:>message<:>Installing imagemagick (CLI image manipulation tool)
-catagory<:>package<:>imagemagick
-catagory<:>disable-launcher<:>/usr/share/applications/display-im6.desktop
-catagory<:>disable-launcher<:>/usr/share/applications/display-im6.q16.desktop
+main<:>message<:>Installing GIMP (Image Minipulation Tool)
+main<:>package<:>gimp
+main<:>message<:>Installing GIMP (Plugins)
+main<:>package<:>gimp-plugin-registry
+main<:>package<:>gimp-texturize
+main<:>package<:>gimp-gap
+main<:>message<:>Installing imagemagick (CLI image manipulation tool)
+main<:>package<:>imagemagick
+main<:>disable-launcher<:>/usr/share/applications/display-im6.desktop
+main<:>disable-launcher<:>/usr/share/applications/display-im6.q16.desktop
 ###################################
 main<:>message<:>Installing Blender (3D Multipurpose Design Tool)
 main<:>package<:>blender
@@ -21,19 +21,19 @@ main<:>message<:>Installing Stopmotion (Stop Motion Animation Tool)
 main<:>package<:>stopmotion
 main<:>message<:>Installing Inkscape (Vector Graphics Tool)
 main<:>package<:>inkscape
-catagory<:>message<:>Installing Birdfont (Font design tool)
-catagory<:>package<:>birdfont
-catagory<:>message<:>Installing Ubuntu Studio fonts (All available fonts)
-catagory<:>package<:>ubuntustudio-fonts
-catagory<:>message<:>Installing MyPaint
-catagory<:>package<:>mypaint
-catagory<:>message<:>Installing Gpick (A color picker that also figures out color schemes)
-catagory<:>package<:>gpick
-catagory<:>message<:>Installing gcolor2 (A simple color picker)
-catagory<:>package<:>gcolor2
-catagory<:>message<:>Installing QtQr (QR code Generator + Reader)
-catagory<:>package<:>qtqr
-catagory<:>message<:>Installing Screen Ruler
-catagory<:>package<:>screenruler
-catagory<:>message<:>Installing Simple Scan (Interface for scanning documents)
-catagory<:>package<:>simple-scan
+main<:>message<:>Installing Birdfont (Font design tool)
+main<:>package<:>birdfont
+main<:>message<:>Installing Ubuntu Studio fonts (All available fonts)
+main<:>package<:>ubuntustudio-fonts
+main<:>message<:>Installing MyPaint
+main<:>package<:>mypaint
+main<:>message<:>Installing Gpick (A color picker that also figures out color schemes)
+main<:>package<:>gpick
+main<:>message<:>Installing gcolor2 (A simple color picker)
+main<:>package<:>gcolor2
+main<:>message<:>Installing QtQr (QR code Generator + Reader)
+main<:>package<:>qtqr
+main<:>message<:>Installing Screen Ruler
+main<:>package<:>screenruler
+main<:>message<:>Installing Simple Scan (Interface for scanning documents)
+main<:>package<:>simple-scan

@@ -1,29 +1,29 @@
 #BANNER
 #QUESTION:Would you like to install Office Software?
 # office software sources file
-catagory<:>message<:>Installing Hamster Time Tracker
-catagory<:>package<:>hamster-applet
-catagory<:>message<:>Installing Scribus
-catagory<:>package<:>scribus
-catagory<:>message<:>Installing Booklet Imposer (Create printable booklets)
-catagory<:>package<:>bookletimposer
-catagory<:>message<:>Installing View Your Mind (Mind mapping software)
-catagory<:>package<:>vym
-catagory<:>message<:>Installing Planner (Project Management)
-catagory<:>package<:>planner
-catagory<:>message<:>Installing DIA (Flowchart Tool)
-catagory<:>package<:>dia
-catagory<:>message<:>Installing HomeBank
-catagory<:>package<:>homebank
-catagory<:>message<:>Installing Calibre (Book Management Software)
-catagory<:>package<:>calibre
-catagory<:>disable-launcher<:>/usr/share/applications/lrfviewer.desktop
-catagory<:>disable-launcher<:>/usr/share/applications/ebook-viewer.desktop
-catagory<:>message<:>Installing FocusWriter (Writing tool)
-catagory<:>package<:>focuswriter
-catagory<:>message<:>Installing Simple Scan (Interface for scanning documents)
-catagory<:>package<:>simple-scan
+main<:>message<:>Installing Hamster Time Tracker
+main<:>package<:>hamster-applet
+main<:>message<:>Installing Scribus
+main<:>package<:>scribus
+main<:>message<:>Installing Booklet Imposer (Create printable booklets)
+main<:>package<:>bookletimposer
+main<:>message<:>Installing View Your Mind (Mind mapping software)
+main<:>package<:>vym
+main<:>message<:>Installing Planner (Project Management)
+main<:>package<:>planner
+main<:>message<:>Installing DIA (Flowchart Tool)
+main<:>package<:>dia
+main<:>message<:>Installing HomeBank
+main<:>package<:>homebank
+main<:>message<:>Installing Calibre (Book Management Software)
+main<:>package<:>calibre
+main<:>disable-launcher<:>/usr/share/applications/lrfviewer.desktop
+main<:>disable-launcher<:>/usr/share/applications/ebook-viewer.desktop
+main<:>message<:>Installing FocusWriter (Writing tool)
+main<:>package<:>focuswriter
+main<:>message<:>Installing Simple Scan (Interface for scanning documents)
+main<:>package<:>simple-scan
 # Workrave is commented out since it autostarts every login and
 # if you dont like it that is annoying
-#catagory<:>message<:>Installing Workrave (RSI Prevention tool)
-#catagory<:>package<:>workrave
+#main<:>message<:>Installing Workrave (RSI Prevention tool)
+#main<:>package<:>workrave

@@ -7,53 +7,53 @@
 interactive<:>ppa<:>ppa:maarten-baert/simplescreenrecorder
 interactive<:>package<:>simplescreenrecorder
 # NOTE:  It is in the script to be installed in the begining as it requires a ppa
-catagory<:>message<:>Installing Audacity (Audio editing software)
-catagory<:>package<:>audacity
-catagory<:>message<:>Installing Mixxx (DJ Software)
-catagory<:>package<:>mixxx
-catagory<:>message<:>Installing Linux Multimedia Studio (Music composing software)
-catagory<:>package<:>lmms
+main<:>message<:>Installing Audacity (Audio editing software)
+main<:>package<:>audacity
+main<:>message<:>Installing Mixxx (DJ Software)
+main<:>package<:>mixxx
+main<:>message<:>Installing Linux Multimedia Studio (Music composing software)
+main<:>package<:>lmms
 # openshot and plugins for openshot
-catagory<:>message<:>Installing openshot (Video Editor)
-catagory<:>package<:>openshot
-catagory<:>message<:>Installing openshot (Additonal Plugins)
-catagory<:>package<:>frei0r-plugins
+main<:>message<:>Installing openshot (Video Editor)
+main<:>package<:>openshot
+main<:>message<:>Installing openshot (Additonal Plugins)
+main<:>package<:>frei0r-plugins
 ####################
 # CONVERSION TOOLS #
 ####################
 # winff does launch bash scripts it creates but does create them correctly
-catagory<:>message<:>Installing winff (audio/video converter)
-catagory<:>package<:>winff
-catagory<:>message<:>Installing mkvtoolnix
-catagory<:>package<:>mkvtoolnix-gui
-catagory<:>message<:>Installing Sound Converter
-catagory<:>package<:>soundconverter
+main<:>message<:>Installing winff (audio/video converter)
+main<:>package<:>winff
+main<:>message<:>Installing mkvtoolnix
+main<:>package<:>mkvtoolnix-gui
+main<:>message<:>Installing Sound Converter
+main<:>package<:>soundconverter
 # backwards compatiblity handbrake package name changed for gui version
-catagory<:>message<:>Installing Handbrake (Video Transcoder)
-catagory<:>package<:>handbrake-gtk
-catagory<:>message<:>Installing Handbrake (Video Transcoder)
-catagory<:>package<:>handbrake
+main<:>message<:>Installing Handbrake (Video Transcoder)
+main<:>package<:>handbrake-gtk
+main<:>message<:>Installing Handbrake (Video Transcoder)
+main<:>package<:>handbrake
 # DVD stuff
-catagory<:>message<:>Installing DeVeDe
-catagory<:>package<:>devede
-catagory<:>message<:>Installing Ogmrip (DVD Ripper)
-catagory<:>package<:>ogmrip
+main<:>message<:>Installing DeVeDe
+main<:>package<:>devede
+main<:>message<:>Installing Ogmrip (DVD Ripper)
+main<:>package<:>ogmrip
 ########################
 # MEDIA METADATA TOOLS #
 ########################
-catagory<:>message<:>Installing mediainfo-gui (audio/video info tool)
-catagory<:>package<:>mediainfo-gui
-catagory<:>message<:>Installing Easytag (MP3 Tag Editor)
-catagory<:>package<:>easytag
+main<:>message<:>Installing mediainfo-gui (audio/video info tool)
+main<:>package<:>mediainfo-gui
+main<:>message<:>Installing Easytag (MP3 Tag Editor)
+main<:>package<:>easytag
 #########
 # OTHER #
 #########
-catagory<:>message<:>Installing gPodder Podcast Client
-catagory<:>package<:>gpodder
-catagory<:>message<:>Installing Radio Tray (Radio Stream Player)
-catagory<:>package<:>radiotray
-catagory<:>message<:>Installing Pithos(Desktop Pandora Client)
-catagory<:>ppa<:>ppa:pithos/ppa
-catagory<:>package<:>pithos
-catagory<:>message<:>Installing VLC (Video Player)
-catagory<:>package<:>vlc
+main<:>message<:>Installing gPodder Podcast Client
+main<:>package<:>gpodder
+main<:>message<:>Installing Radio Tray (Radio Stream Player)
+main<:>package<:>radiotray
+main<:>message<:>Installing Pithos(Desktop Pandora Client)
+main<:>ppa<:>ppa:pithos/ppa
+main<:>package<:>pithos
+main<:>message<:>Installing VLC (Video Player)
+main<:>package<:>vlc
